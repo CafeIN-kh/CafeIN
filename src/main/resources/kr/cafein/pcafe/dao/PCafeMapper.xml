@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.cafein.pcafe.dao.PCafeMapper">  
+
+   <select id="list" parameterType="map" resultType="pcafeCommand">
+	  <!-- replace title에서 태그를 못쓰도록 <,>를 &lt,&gt로 대체함 -->  
+		SELECT 
+		*
+		FROM (SELECT 
+		  			a.*, 
+		  			rownum rnum 
+		  		FROM (SELECT pcafe.*, 
+		  					 pc_reply.pc_reply_cnt, 
+		  					 pc_like.pc_like_cnt
+		  				FROM private_cafe pcafe 
+		                  	LEFT JOIN (SELECT pcafe_num, count(*) pc_reply_cnt 
+		                  				FROM private_cafe_reply 
+		                  				GROUP BY pcafe_num)pc_reply 
+		                  	ON pcafe.pcafe_num = pc_reply.pcafe_num  
+	                 		LEFT JOIN (SELECT pcafe_num, count(*) pc_like_cnt 
+	                 					FROM u_like 
+	                 					GROUP BY pcafe_num) pc_like
+	                		ON pcafe.pcafe_num = pc_like.pcafe_num
+	           		<!-- 최신순 정렬 -->
+	           		<if test="category == 1">
+	           			ORDER BY pcafe.pcafe_reg_date DESC)a)
+	           		</if>
+	           		<!-- 조회순 정렬 -->
+	           		<if test="category == 2">
+	           			ORDER BY pcafe.pcafe_visit DESC)a)
+	           		</if>
+	           		<!-- 좋아요순 정렬 -->
+	           		<if test="category == 3">
+	           			ORDER BY pc_like.pc_like_cnt DESC nulls last)a)
+	           		</if>
+	           		<!-- 사장권한 내글보기순 정렬 -->
+	           		<if test="category == 4">
+	           			<![CDATA[
+	           			WHERE pcafe.u_uid = #{u_uid}
+	           			]]>	
+	           			ORDER BY pcafe.pcafe_reg_date DESC)a)
+	           		</if>
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 메인의  카테코리에 따른 카페 count -->
+   <select id="getRowCount" parameterType="map" resultType="integer">
+      SELECT count(*) FROM private_cafe
+	      <if test="category == 4">
+	         <![CDATA[
+				WHERE u_uid = #{u_uid}
+			 ]]>	
+	      </if>
+   </select>
+   
+   <select id="menuList" parameterType="map" resultType="pcafeMenuCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * FROM private_cafe_menu 
+		       		 WHERE pcafe_num = #{pcafe_num}
+		             ORDER BY pmenu_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 검색된 수에 대한 count -->
+   <!-- <select id="getRowCount" parameterType="map" resultType="integer">
+      SELECT count(*) FROM pcafe_num
+      <where>
+              <if test="keyword !='' and keyfield=='title'">
+                 title like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='writer'">
+                 id like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='content'">
+                 content like '%' || #{keyword} || '%'
+              </if>
+                 <if test="keyword !='' and keyfield=='all'">
+                 title like '%' || #{keyword} || '%' or
+                 id like '%' || #{keyword} || '%' or
+                 content like '%' || #{keyword} || '%'
+              </if>
+              
+           </where>   
+   </select> -->
+   
+   <!-- 댓글처리 -->
+   <select id="replyList" parameterType="map" resultType="pcafeReplyCommand">
+   		SELECT 
+			preply_num,
+			pcafe_num,
+			u_uid,
+			preply_content,
+			preply_nickname,
+			to_char(preply_reg_date,'YYYY-MM-DD HH24:MI:SS') preply_reg_date
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT 
+			  			*
+			  		FROM private_cafe_reply
+			  		WHERE pcafe_num = #{pcafe_num}
+			  		ORDER BY preply_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+</mapper>

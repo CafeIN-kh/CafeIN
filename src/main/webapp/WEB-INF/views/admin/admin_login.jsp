@@ -26,26 +26,34 @@
 	 <body class="login-content">
  <!-- Login --------------------------------->
  
-            <div class="lc-block toggled" id="l-login">
+       <div class="lc-block toggled" id="l-login">
      
       <span id ="message_1"></span>
      
-        <form:form action="adminLogin.do" commandName="command">
+   <form:form action="adminLogin.do" commandName="command"> 
+        
+      <%--  <form action="#" method="post" id="admin_loginform">  --%>
+         
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="md md-person"></i></span>
                 <div class="fg-line">
-                   <form:input path="u_email" placeholder="Email" name="u_email" class="form-control" />
+                
+                	<form:input path="u_email" placeholder="Email" name="u_email" id="u_email" class="form-control" />
                 </div>
-                <form:errors path="u_email" class="error-color" />
+               <form:errors path="u_email" class="error-color" /> 
+          <!--      <span id ="1message_email"></span> -->
             </div>
             
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="md md-accessibility"></i></span>
                 <div class="fg-line">
-                    <form:password path="u_password" placeholder="Password" name="u_password" class="form-control" />
-              
+                   <form:password path="u_password" placeholder="Password" name="u_password" class="form-control" />  
+                   
+                <!-- <input type="password" id="u_password" placeholder="Password" name="u_password" class="form-control" />  -->
+                
                 </div>
-                  <form:errors path="u_password" class="error-color" />
+          <form:errors path="u_password" class="error-color" /> 
+            <!--  <span id ="1message_password"></span> -->
             </div>
             
             <div class="clearfix"></div>
@@ -58,7 +66,7 @@
                 </label>
             </div> -->
           
-            <button type="submit" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
+            <button type="submit" id="admin_loginBtn" name="admin_loginBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
             
             
             </form:form>
@@ -76,22 +84,28 @@
         
         <div class="lc-block" id="l-register">
          <span id ="message_2"></span>
-        
-         <form action="adminRegister.do" method="post" id="admin_registerform">
+         
+				<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/ajax-loader.gif"
+					width="16" height="16" style="display:none;" id="loading">
+         
+         
+        <!-- adminRegister.do -->
+         <form action="#" method="post" id="admin_registerform">
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="md md-person"></i></span>
                 <div class="fg-line">
-                    <input type="text" id="u_name" placeholder="Username" name="u_name" class="form-control" />
+                    <input type="text" id="r_u_name" placeholder="Username" class="form-control" />
                 </div>
-              
+              	 <span id ="message_name"></span>
             </div>
             
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="md md-mail"></i></span>
                 <div class="fg-line">
-                       <input type="text" id="u_email" placeholder="Email" name="u_email" class="form-control"/>
+                       <input type="text" id="r_u_email" placeholder="Email" class="form-control"/>
                     
                 </div>
+                <span id ="message_email"></span>
             </div>
              
 	      
@@ -100,10 +114,10 @@
             <div class="input-group m-b-20">
                 <span class="input-group-addon"><i class="md md-accessibility"></i></span>
                 <div class="fg-line">
-                   <input type="password" id="u_password" placeholder="Password" name="u_password" class="form-control" />
+                   <input type="password" id="r_u_password" placeholder="Password" class="form-control" />
                
                 </div>
-                 
+                 <span id ="message_password"></span>
             </div>
             
             <div class="clearfix"></div>
@@ -116,7 +130,7 @@
                 </label>
             </div> -->
             
-                <button type="submit" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
+                <button type="submit" id="admin_RegisterBtn" name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
             
             
             

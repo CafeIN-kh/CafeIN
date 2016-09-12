@@ -19,7 +19,7 @@ $(document).ready(function(){
 		    if (!filter.test(email.value)) {
 		    $('#message_id').css('color','red').text('Please enter a VALID email address(영어,숫자)');
 		    
-		    email.focus;
+		    email.focus();
 		    return false;
 		 }
 		    

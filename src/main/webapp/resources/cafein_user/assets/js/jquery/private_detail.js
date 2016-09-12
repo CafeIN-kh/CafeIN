@@ -4,6 +4,7 @@ jQuery(document).ready(function() {
 	Login.initLogin();
 	//ContactForm.initContactForm();
 	PageContactForm.initPageContactForm();
+	Registration.initRegistration();
 	/* OwlRecentWorks.initOwlRecentWorksV1();   */   
 });
 

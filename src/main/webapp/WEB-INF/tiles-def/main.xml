@@ -276,6 +276,8 @@
         	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/contact.js"/> -->
         		<!-- 개인카페 메뉴 유효성(한 화면에 두개의 유효성검사 안먹는듯 해서 쪼갬) sky-form5 -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/page_contact_form.js"/>
+        		<!-- 개인카페 신고 유효성(한 화면에 두개의 유효성검사 안먹는듯 해서 쪼갬) sky-form4 -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/page_registration.js"/>
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/private_detail.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/private_detail_reply.js"/>

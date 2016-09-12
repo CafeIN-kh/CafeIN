@@ -1,5 +1,5 @@
 var ContactForm = function () {
-
+//커스텀마이징 수정폼 사용
     return {
         
         //Contact Form

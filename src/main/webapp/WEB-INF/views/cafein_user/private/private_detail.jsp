@@ -196,12 +196,8 @@
 		                    <li style="padding:5px 5px;"><i class="fa fa-eye color-green"></i> ${pcafe_info.pcafe_visit}</li>
 		                    <li style="padding:5px 5px;" id="like_count"><i class="fa fa-heart color-green" style="font-size:15px;"></i> ${pcafe_info.pc_like_cnt}</li>
 	                	</ul>
-                    	<p class='korean-font' style="margin-bottom:30px;"> ${pcafe_info.pcafe_introduce} <br>
-                    				카페어클락은 고객님들께 고품질의 커피를 드리기 위하여 ‘100% 아라비카원두 전 매장공급’과
-									‘로스팅 후 30일내 판매’라는 기본 원칙을 충실히 수행하고 있습니다. 2010년에는 
-									커피연구소를 설립하여 커피 전문 인력과 인프라를 통해 지속적인 연구개발을 진행하여 왔습니다.
-									2015년 4월 1일에는 카페어클락의 모든 것을 담아 ‘고객과 소통하는 커피연구소’로써 
-									500평 규모로 커피에 대한 모든 것을 경험할 수 있는 장소인 ‘카페어클락커피랩’을 이디야빌딩 1~2층에 오픈하여 운영 중입니다.
+                    	<p class='korean-font' style="margin-bottom:30px;"> 
+                    		${pcafe_info.pcafe_introduce} <br>
 						</p>
 						<!-- likeCount가 0이라면 해당 아이디는 좋아요를 하지 않은 것임 -->
                 		<c:if test="${likeCount == 0}">
@@ -511,28 +507,28 @@
                  </div>
                  <div class="modal-body">
                     <form action="custom/register.do" method="post"
-                       enctype="multipart/form-data" id="sky-form3" class="sky-form"
+                       enctype="multipart/form-data" id="sky-form4" class="sky-form"
                        style="border: 0;">
                        <fieldset>
                           <section>
                              <label class="label">신고자 ID (E-mail 주소를 등록해주세요)</label> <label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
-                                <input type="text" name="custom_hash_tag"
-                                id="custom_hash_tag">
+                                <input type="text" name="mem_id"
+                                id="mem_id">
                              </label>
                           </section>
                           
                           <section>
                              <label class="label">피신고자 ID (E-mail 주소를 등록해주세요)</label> <label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
-                                <input type="text" name="custom_hash_tag"
-                                id="custom_hash_tag">
+                                <input type="text" name="d_mem_id"
+                                id="d_mem_id">
                              </label>
                           </section>
 
                           <section>
                              <label class="label">신고 내용</label> <label
                                 class="textarea"> <!-- <i class="icon-append fa fa-comment"></i> -->
-                                <textarea rows="4" name="custom_introduce"
-                                   id="custom_introduce"></textarea>
+                                <textarea rows="4" name="d_content"
+                                   id="d_content"></textarea>
                              </label>
                           </section>
 

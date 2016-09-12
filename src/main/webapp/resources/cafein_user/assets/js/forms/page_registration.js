@@ -1,5 +1,5 @@
 var Registration = function () {
-//로그인에서 사용
+//로그인에서 사용,개인카페 신고 모달에서 사용
     return {
         
         //Registration Form
@@ -42,7 +42,19 @@ var Registration = function () {
 	                terms:
 	                {
 	                    required: true
-	                }
+	                },
+	                mem_id:
+	                {
+	                	required: true
+	                },
+	                d_mem_id:
+	                {
+	                	required: true
+	                },
+	                d_content:
+	                {
+	                	required: true
+	                }          
 	            },
 	            
 	            // Messages for form validation
@@ -77,7 +89,19 @@ var Registration = function () {
 	                terms:
 	                {
 	                    required: 'You must agree with Terms and Conditions'
-	                }
+	                },
+	                mem_id:
+	                {
+	                	required: 'Please select your name'
+	                },
+	                d_mem_id:
+	                {
+	                	required: 'Please select your name'
+	                },
+	                d_content:
+	                {
+	                	required: 'Please select your declear content'
+	                } 
 	            },                  
 	            
 	            // Do not change code below

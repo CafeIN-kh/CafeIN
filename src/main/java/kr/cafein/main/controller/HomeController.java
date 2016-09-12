@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/cafein_user/main/main.do", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cafein_user/main/main.do", method = RequestMethod.GET)
 	public String home() {
 		System.out.println("main");
 		return "main";
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/cafein_user/private/private_main.do", method = RequestMethod.GET)

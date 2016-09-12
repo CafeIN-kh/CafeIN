@@ -22,7 +22,7 @@
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
 	
 	<!-- 사용자 메인 페이지 설정 -->
-	<mvc:view-controller path="/tiles/main/main.do" view-name="main"/>
+	<!-- <mvc:view-controller path="/tiles/main/main.do" view-name="main"/> -->
 	<!-- 관리자 메인 페이지 설정 -->
 	<mvc:view-controller path="/admin/main.do" view-name="adminMain"/>
 	

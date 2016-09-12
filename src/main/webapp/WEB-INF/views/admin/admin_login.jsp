@@ -10,7 +10,7 @@
 <tiles:importAttribute name="cssList" ignore="true"/>
 <tiles:importAttribute name="jsList" ignore="true"/> 
 
-<html lang="en"> 
+<html lang="en"> <!--git확인  -->
 
   <head>
         <meta charset="utf-8">

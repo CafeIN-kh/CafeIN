@@ -50,15 +50,22 @@ public class FranchiseDetailController {
 		map.put("end", page.getEndCount());
 		map.put("start", page.getStartCount());
 		
-		
 		List<FC_FranchiseMenuCommand> franchiseMenu = franchiseService.menuList(map);
 		
 		ModelAndView mav = new ModelAndView();
+		
+		String u_name = (String)session.getAttribute("u_name");
+		String u_uid = (String)session.getAttribute("u_uid");
+		
+		if(u_name == null){
+			u_name = "Guest";
+		}
 		
 		mav.setViewName("franchise_detail");
 		mav.addObject("franchise", franchise);
 		mav.addObject("franchiseMenu", franchiseMenu);
 		mav.addObject("pagingHtml", page.getPagingHtml());
+		mav.addObject("u_name", u_name);
 		
 		if(log.isDebugEnabled()){
 			log.debug("mav : " + mav);
@@ -70,7 +77,7 @@ public class FranchiseDetailController {
 	@RequestMapping(value="/cafein_user/franchise/franchise_replylist.do")
 	@ResponseBody
 	public Map<String, Object> franchiseReplyList(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
-			@RequestParam("franchise_num") int franchise_num){
+			@RequestParam("franchise_num") int franchise_num, HttpSession session){
 		
 		int count = franchiseService.getReplyRowCount(franchise_num);
 		//System.out.println("count : " + count);

@@ -32,10 +32,10 @@ public class HomeController {
 		return "franchise_main";
 	}*/
 	
-	@RequestMapping(value="/cafein_user/franchise/franchise_detail.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/franchise/franchise_detail.do", method = RequestMethod.GET)
 	public String franchise_detail() {
 		return "franchise_detail";
-	}
+	}*/
 	
 	@RequestMapping(value="/cafein_user/customizing/customizing_main.do", method = RequestMethod.GET)
 	public String customizing_main() {

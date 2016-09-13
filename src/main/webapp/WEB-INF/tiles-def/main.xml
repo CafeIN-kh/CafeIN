@@ -98,6 +98,8 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/pages/portfolio-v1.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
+        	<!-- PBK Franchise -->
+    		<add-attribute value="/CafeIN/resources/cafein_user/assets/css/franchise.css"/>
         </put-list-attribute>
         <put-list-attribute name="jsList">
         	<!-- JS Global Compulsory -->	
@@ -156,9 +158,10 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/cube-portfolio/cube-portfolio-lightbox.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/cube-portfolio/cube-portfolio-lightbox.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/franchise_detail.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/franchise_menu.js"/>
         </put-list-attribute>
     </definition>
     

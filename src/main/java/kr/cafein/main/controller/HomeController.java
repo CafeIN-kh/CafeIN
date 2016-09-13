@@ -17,10 +17,10 @@ public class HomeController {
 	}*/
 	
 	
-	@RequestMapping(value="/cafein_user/private/private_main.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/private/private_main.do", method = RequestMethod.GET)
 	public String private_main() {
 		return "private_main";
-	}
+	}*/
 	
 	/*@RequestMapping(value="/cafein_user/private/private_detail.do", method = RequestMethod.GET)
 	public String private_detail() {

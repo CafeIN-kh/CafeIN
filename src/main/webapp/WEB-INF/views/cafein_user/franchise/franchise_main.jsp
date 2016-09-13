@@ -16,7 +16,7 @@
     <!--=== End Breadcrumbs ===-->
 
     <!--=== Content Part ===-->
-    <div class="container content-sm portfolio-4-columns">  
+    <div class="container content-sm portfolio-4-columns" style="margin-bottom:5%;">  
     
     	<div class="text-center margin-bottom-10">
             <h2 class="title-v2 title-center">Franchise Cafe</h2>

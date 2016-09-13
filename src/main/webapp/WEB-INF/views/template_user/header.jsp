@@ -10,7 +10,7 @@
         <div class="container">
             <!-- Logo -->
             <a class="logo" href="${pageContext.request.contextPath}/cafein_user/main/main.do">
-                <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/logo1-default.png" alt="Logo">
+                <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/cafeinLogo.png" alt="Logo">
             </a>
             <!-- End Logo -->
             

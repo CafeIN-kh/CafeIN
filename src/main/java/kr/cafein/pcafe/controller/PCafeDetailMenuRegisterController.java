@@ -54,7 +54,7 @@ public class PCafeDetailMenuRegisterController {
 			System.out.println("첨부파일 있을 경우 파일 메뉴업로드에 저장");
 			File file = new File (FileUtil_PrivateMenu.UPLOAD_PATH + "/" +newName);
 			pcafeMenuCommand.getUpload_menu().transferTo(file);
-			FileUtil_PrivateMenu.createThumbnail(newName, newName, 720, 720);
+			FileUtil_PrivateMenu.createThumbnail(newName, newName, 460, 460);
 		}
 
 		Map<String,String> map = new HashMap<String,String>();

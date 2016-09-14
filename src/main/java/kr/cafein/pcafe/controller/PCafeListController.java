@@ -24,7 +24,7 @@ public class PCafeListController {
 	
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	private int rowCount = 12;
+	private int rowCount = 9;
 	private int pageCount = 12;
 	
 	@Resource
@@ -36,7 +36,10 @@ public class PCafeListController {
 		
 		//u_level 일반회원:0, 사업자:1 뷰에 보여줄때 사업자의 경우만 카페등록/내글보기 버튼 활성화 하기 위해.
 		//로그인시 회원의 level도 세션에 가지고 있기. 세션에서 값 뽑아오기
-		int u_level = (Integer)session.getAttribute("u_level");
+		int u_level = 0;
+		if(session.getAttribute("u_level") != null) {
+			u_level = (Integer)session.getAttribute("u_level");
+		}
 		//int u_level = 1;
 		
 		ModelAndView mav = new ModelAndView();

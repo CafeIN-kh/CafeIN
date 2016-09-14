@@ -67,8 +67,7 @@ create table franchise_reply(
    freply_nickname varchar2(15) not null,
    freply_reg_date date not null,
    constraint franchise_reply_pk primary key (freply_num),
-   constraint franchise_reply_fk1 foreign key (franchise_num) references franchise(franchise_num),
-   constraint franchise_reply_fk2 foreign key (u_uid) references u_user(u_uid)
+   constraint franchise_reply_fk1 foreign key (franchise_num) references franchise(franchise_num)
 );
 
 drop sequence franchise_reply_seq;

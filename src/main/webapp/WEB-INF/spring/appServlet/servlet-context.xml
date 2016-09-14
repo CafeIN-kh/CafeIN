@@ -16,6 +16,7 @@
 	<context:component-scan base-package="kr.cafein.member.controller"/>
 	<context:component-scan base-package="kr.cafein.main.controller"/>
 	<context:component-scan base-package="kr.cafein.pcafe.controller"/>
+	<context:component-scan base-package="kr.cafein.franchise.controller"/>
 	
 	<!-- Spring3 Validator -->
 	<mvc:annotation-driven/>

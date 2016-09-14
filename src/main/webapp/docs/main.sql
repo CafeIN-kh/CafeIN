@@ -290,25 +290,25 @@ create table P_log(
 drop sequence P_log_seq;
 create sequence P_log_seq;
 
-/* report 테이블 - 게시물 혹은 댓글 신고시 신고한 내역이 저장되는 테이블 
+/* declare 테이블 - 게시물 혹은 댓글 신고시 신고한 내역이 저장되는 테이블 
  * 
  * target_type : 1- 게시글 2- 프랜차이즈 3- 개인카페 댓글 */
 drop table report;
 
-create table declear(
+create table declared(
    d_seq number(20) not null,
    d_target_id number(20) not null,
    d_target_path number(20) not null,
-   mem_id varchar2(20) not null, 
-   d_mem_id varchar2(20),
+   d_mem_id number(20) not null, 
+   d_target_mem_id number(20),
    d_reg_date date not null,
    d_content varchar2(200),
    d_state number(20) not null,
    constraint report_pk primary key (d_seq)
 );
 
-drop sequence declear_seq;
-create sequence declear_seq;
+drop sequence declared_seq;
+create sequence declared_seq;
 
 /* mlog 테이블 - 회원관리 로그 테이블
  * 

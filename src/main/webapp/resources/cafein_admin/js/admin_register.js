@@ -161,7 +161,7 @@ $(document).ready(function(){
 				$('#loading').hide(); // 로딩이미지 감추기
 				
 				if(data.result == 'success'){
-					$('#message_2').css('color','red').text('가입되었습니다.');
+					$('#message_1').css('color','red').text('가입되었습니다.');
 					
 				}else if(data.result=='failure'){
 					$('#message_2').css('color','red').text('가입 실패.');

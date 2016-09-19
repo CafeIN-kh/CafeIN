@@ -11,6 +11,7 @@
                 <li><a href="${pageContext.request.contextPath}/cafein_user/main/main.do">Home</a></li>
                 <li><a href="franchise_main.do">Franchise Cafe</a></li>
                 <li class="active">Franchise Info</li>
+                <input type="hidden" value="${u_uid}" id="u_uid">
             </ul>
         </div>
     </div>
@@ -198,7 +199,7 @@
             
             <form action="${pageContext.request.contextPath}/cafein_user/franchise/writeReply.do?franchise_num=${franchise.franchise_num}" method="post" id="reply" class="reply">
             	<input type="hidden" value="${franchise.franchise_num}" id="franchise_num" name="franchise_num">
-                <label style="font-size:17px;"><i class="fa fa-user">&nbsp;&nbsp;</i>test</label>
+                <label style="font-size:17px;" id="u_name"><i class="fa fa-user">&nbsp;&nbsp;</i>${u_name} </label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-12 col-md-offset-0">
                         <textarea class="form-control" rows="5" id="freply_content" name="freply_content"></textarea>

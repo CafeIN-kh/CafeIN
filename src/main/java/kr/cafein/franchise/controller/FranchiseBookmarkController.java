@@ -28,28 +28,38 @@ public class FranchiseBookmarkController {
 			BindingResult result, HttpSession session) throws Exception{
 		
 		int count = franchiseService.selectBookmarkID(franchiseBookmarkCommand);
-		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		if(count == 0){
-			franchiseService.insertBookmark(franchiseBookmarkCommand);
-			map.put("result", "bookmarkInsert");
-			System.out.println("合付农 insert 贸府 肯丰");
+		String u_uid = (String)session.getAttribute("u_uid");
+		if(u_uid == null){
+			franchiseBookmarkCommand.setU_uid("Guest");
+			map.put("result", "logout");
 		}else{
-			franchiseService.deleteBookmark(franchiseBookmarkCommand);
-			map.put("result", "bookmarkDelete");
-			System.out.println("合付农 delete 贸府 肯丰");
+			if(count == 0){
+				franchiseService.insertBookmark(franchiseBookmarkCommand);
+				map.put("result", "bookmarkInsert");
+				System.out.println("合付农 insert 贸府 肯丰");
+			}else{
+				franchiseService.deleteBookmark(franchiseBookmarkCommand);
+				map.put("result", "bookmarkDelete");
+				System.out.println("合付农 delete 贸府 肯丰");
+			}
 		}
-		
 		return map;
 	}
 	
 	@RequestMapping(value="/cafein_user/franchise/selectbookmark.do", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> checkBookmark(@ModelAttribute FC_FranchiseBookmarkCommand franchiseBookmarkCommand, BindingResult result, HttpSession seeion){ 
+	public Map<String, String> checkBookmark(@ModelAttribute FC_FranchiseBookmarkCommand franchiseBookmarkCommand, BindingResult result, HttpSession session){ 
 		int count = franchiseService.selectBookmarkID(franchiseBookmarkCommand);
 		//System.out.println(count);
 		Map<String, String> map = new HashMap<String, String>();
+		
+		String u_uid = (String)session.getAttribute("u_uid");
+		
+		if(u_uid == null){
+			map.put("result", "logout");
+		}
 		
 		if(count == 0){
 			map.put("result", "notCheked");

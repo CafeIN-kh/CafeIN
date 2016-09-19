@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,18 +22,27 @@ public class FranchiseReplyWriteController {
 	
 	@RequestMapping(value="/cafein_user/franchise/writeReply.do")
 	@ResponseBody
-	public Map<String, String> writeReply(@ModelAttribute FC_FranchiseReplyCommand franchiseReplyCommand, @RequestParam("franchise_num") int franchise_num){
+	public Map<String, String> writeReply(@ModelAttribute FC_FranchiseReplyCommand franchiseReplyCommand, @RequestParam("franchise_num") int franchise_num,
+			HttpSession session){
 		
 		//System.out.println("write 컨트롤러 진입");
 		
 		//int franchise_num = 1;
-		String u_uid = "test";
-		String freply_nickname = "test";
+
+		String freply_nickname = (String)session.getAttribute("u_name");
+		String u_uid = (String)session.getAttribute("u_uid");
+		
+		if(freply_nickname == null){
+			freply_nickname = "Guest";
+		}
+		
+		if(u_uid == null){
+			u_uid = "Guest";
+		}
 		
 		franchiseReplyCommand.setFranchise_num(franchise_num);
-		franchiseReplyCommand.setU_uid(u_uid);
 		franchiseReplyCommand.setFreply_nickname(freply_nickname);
-		//System.out.println(franchiseReplyCommand);
+		franchiseReplyCommand.setU_uid(u_uid);
 		franchiseService.insertReply(franchiseReplyCommand);
 		
 		Map<String, String> map = new HashMap<String, String>();

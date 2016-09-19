@@ -1,7 +1,9 @@
 $(document).ready(function(){
 	
 	var franchise_num = $('#franchise_num').val();
-	var u_uid = 'test';
+	var u_name = $('#u_name').val();
+	var u_uid = $('#u_uid').val();
+	
 	$.ajax({
 		type:'get',
 		data:{
@@ -18,6 +20,7 @@ $(document).ready(function(){
 				$('#star').addClass("fa fa-star");
 			}
 		},error:function(){
+			//alert(u_uid);
 			alert('북마크 오류 발생');
 		}
 	});
@@ -35,17 +38,20 @@ $(document).ready(function(){
 			cache:false,
 			timeout:30000,
 			success:function(data){
-				if(data.result == 'bookmarkInsert'){
-					$('#star').removeClass("fa fa-star-o");
-					$('#star').addClass("fa fa-star");
+				if(data.result == 'logout'){
+					alert('로그인해야 이용 가능합니다.');
+				}else{
+					if(data.result == 'bookmarkInsert'){
+						$('#star').removeClass("fa fa-star-o");
+						$('#star').addClass("fa fa-star");
+					}
+					if(data.result == 'bookmarkDelete'){
+						$('#star').removeClass("fa fa-star");
+						$('#star').addClass("fa fa-star-o");
+					}
 				}
-				if(data.result == 'bookmarkDelete'){
-					$('#star').removeClass("fa fa-star");
-					$('#star').addClass("fa fa-star-o");
-				}
-				
 			},error:function(){
-				alert('네트워크 오류 발생! : ');
+				alert('네트워크 오류 발생!');
 			}
 		});
 	});
@@ -80,7 +86,7 @@ $(document).ready(function(){
 					$('#replyList').append(
 						'<div class="media-body">' + 
 						'<input type="hidden" value="' + item.freply_num + '" id="freply_num">' +
-						'<h4 class="media-heading korean-font">' + item.u_uid + '<span>' + 
+						'<h4 class="media-heading korean-font">' + item.freply_nickname + '<span>' + 
 						item.freply_reg_date + ' <a href="" id="deleteReply">삭제</a> | <a href="">신고</a></span></h4>' + 
 						'<br>' + 
 						'<div class="col-md-11">' + 

@@ -32,7 +32,7 @@
 
 						<ul>
 							<li><a href='memberlist.do'>User Data Tables</a></li>
-							<li><a href="Report.html">report Board</a></li>
+							<li><a href='declaredlist.do'>report Board</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href=""><i
 							class="md md-my-library-books"></i> Franchise Write & inquiry</a>

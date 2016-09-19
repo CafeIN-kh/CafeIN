@@ -309,7 +309,6 @@ create table declared(
 drop sequence declared_seq;
 create sequence declared_seq;
 
-
 /* mlog 테이블 - 회원관리 로그 테이블
  * 
  * mlog_num : 0-삭제 1-수정 2-기타 */

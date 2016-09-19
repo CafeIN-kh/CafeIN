@@ -54,12 +54,17 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="typeAliasesPackage" value="kr.cafein.domain,
 												   kr.cafein.main.domain,
+												   kr.cafein.admin.domain,
 												   kr.cafein.franchise.domain"/>
+
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.cafein.member.dao,
 											kr.cafein.pcafe.dao,
 											kr.cafein.main.dao,
+											kr.cafein.admin.dao,
 											kr.cafein.franchise.dao"/>
+
+										
 	</bean>
 </beans>

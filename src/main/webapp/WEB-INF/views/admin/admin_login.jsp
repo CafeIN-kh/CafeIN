@@ -130,10 +130,17 @@
                 </label>
             </div> -->
             
-                <button type="submit" id="admin_RegisterBtn" name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
             
+             
+            <a href="" id="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></a>
             
-            
+<!--             <input type="button" id="admin_RegisterBtn"  name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i>
+ 	 	         <button type="submit" id="admin_RegisterBtn" name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
+ submit은 모든 form 의 정보를 다 가져감 
+ 정보를 따로 보내고 싶다면 input type button .
+ 근데 input type button  는 이미지를 안에다 못넣음.
+ 따러서  a 로 바꿈
+ -->           
             
             <ul class="login-navigation">
                 <li data-block="#l-login" class="bgm-green">Login</li>

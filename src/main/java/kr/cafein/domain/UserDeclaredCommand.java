@@ -2,7 +2,7 @@ package kr.cafein.domain;
 
 import java.sql.Date;
 
-public class DeclaredCommand {
+public class UserDeclaredCommand {
 	
 	private int d_seq;
 	private int d_target_id;

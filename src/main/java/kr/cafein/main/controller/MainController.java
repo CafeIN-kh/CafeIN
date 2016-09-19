@@ -73,21 +73,24 @@ public class MainController {
 		privateCafeCommand = mainService.selectBookmarkPrivateCafe();
 		
 		
+		List<ULikeCommand> selectFMLike = null;
 		//프랜차이즈 메뉴 좋아요
 		List<ULikeCommand> fmenuLikeCommand = null;
 		List<FranchiseMenuCommand> fmenuCommandL;
-		fmenuLikeCommand = mainService.selectFMLike();
+		//fmenuLikeCommand = mainService.selectFMLike();
+		fmenuLikeCommand = selectFMLike;
 		fmenuCommandL = mainService.selectLikeFmenu();
 		
 		
 		System.out.println("fmenuCommandL.size() : " + fmenuCommandL.size());
 		System.out.println("fmenuCommandL.toString() : " + fmenuCommandL.toString());
 		
-		
+		List<ULikeCommand> selectPMLike = null;
 		//개인카페 메뉴 좋아요
 		List<ULikeCommand> pmenuLikeCommand = null;
 		List<PrivateCafeMenuCommand> pmenuCommandL;
-		pmenuLikeCommand = mainService.selectPMLike();
+		//pmenuLikeCommand = mainService.selectPMLike();
+		pmenuLikeCommand = selectPMLike;
 		pmenuCommandL = mainService.selectLikePmenu();
 		
 		System.out.println("pmenuCommandL.size() : " + pmenuCommandL.size());

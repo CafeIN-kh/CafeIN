@@ -3,19 +3,15 @@ package kr.cafein.pcafe.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.domain.BookmarkCommand;
-import kr.cafein.domain.DeclaredCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
+import kr.cafein.domain.UserDeclaredCommand;
 
 @Transactional
 public interface PCafeService {
@@ -78,6 +74,6 @@ public interface PCafeService {
 	//private_detail_reply_declared
 	public PCafeReplyCommand selectDeclaredReply(Integer preply_num);
 	public MemberCommand selectDeclaredMember(String u_uid);
-	public void insertDeclaredReply(DeclaredCommand declared);
+	public void insertDeclaredReply(UserDeclaredCommand declared);
 
 }

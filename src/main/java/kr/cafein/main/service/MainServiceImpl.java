@@ -25,10 +25,10 @@ public class MainServiceImpl implements MainService{
 	private MainMapper mainMapper;
 	
 	//커스텀마이징 메뉴 좋아요
-	@Override
+	/*@Override
 	public List<ULikeCommand> uList(Map<String, Object> map) {
 		return null;
-	}
+	}*/
 	@Override
 	public List<ULikeCommand> selectCLike() {
 		return mainMapper.selectCLike();
@@ -41,10 +41,10 @@ public class MainServiceImpl implements MainService{
 
 
 	//프랜차이즈 즐겨찾기
-	@Override
+	/*@Override
 	public List<MainBookmarkCommand> bList(Map<String, Object> map) {
 		return null;
-	}
+	}*/
 
 
 	@Override
@@ -59,20 +59,20 @@ public class MainServiceImpl implements MainService{
 	}
 	
 	//프랜차이즈 메뉴 좋아요
-	@Override
+	/*@Override
 	public List<ULikeCommand> selectFMLike() {
 		return null;
-	}
+	}*/
 	@Override
 	public List<FranchiseMenuCommand> selectLikeFmenu() {
 		return mainMapper.selectLikeFmenu();
 	}
 		
 	//개인카페 메뉴 좋아요
-	@Override
+	/*@Override
 	public List<ULikeCommand> selectPMLike() {
 		return null;
-	}
+	}*/
 	@Override
 	public List<PrivateCafeMenuCommand> selectLikePmenu() {
 		return mainMapper.selectLikePmenu();

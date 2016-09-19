@@ -1,7 +1,6 @@
 package kr.cafein.admin.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -29,11 +28,11 @@ public class DeclaredServiceImpl implements  DeclaredService{
 	}
 	
 	
-	@Override
+	/*@Override
 	public List<DeclaredCommand> getDeclaredList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return declaredMapper.getDeclaredList(map);
-	}
+	}*/
 
 
 

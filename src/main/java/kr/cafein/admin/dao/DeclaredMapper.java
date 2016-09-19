@@ -1,7 +1,6 @@
 package kr.cafein.admin.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -14,11 +13,11 @@ public interface DeclaredMapper {
 
 	// 신고테이블 
 	// 관리자 페이지
-		public List<DeclaredCommand> getDeclaredList(Map<String,Object> map);
-		@Select("SELECT count(*) FROM declared")
-		public int getDeclaredCount();
-		
-		@Select("SELECT * FROM declared")
-		public List<DeclaredCommand> getAllDeclaredList();
+	//public List<DeclaredCommand> getDeclaredList(Map<String,Object> map);
+	@Select("SELECT count(*) FROM declared")
+	public int getDeclaredCount();
+	
+	@Select("SELECT * FROM declared")
+	public List<DeclaredCommand> getAllDeclaredList();
 	
 }

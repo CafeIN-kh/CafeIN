@@ -16,14 +16,14 @@ import kr.cafein.domain.ULikeCommand;
 public interface MainService { 
 	
 	//커스텀마이징 메뉴 좋아요
-	public List<ULikeCommand> uList(Map<String, Object> map);
+	//public List<ULikeCommand> uList(Map<String, Object> map);
 	
 	public List<ULikeCommand> selectCLike();
 	public List<CustomizingCommand> selectLikeCustomizing();
 	
 	
 	//프랜차이즈 즐겨찾기
-	public List<MainBookmarkCommand> bList(Map<String, Object> map);
+	//public List<MainBookmarkCommand> bList(Map<String, Object> map);
 	
 	public FranchiseCommand selectBookmarkFranchise();
 	
@@ -31,12 +31,12 @@ public interface MainService {
 	public List<PrivateCafeCommand> selectBookmarkPrivateCafe();
 	
 	//프랜차이즈 메뉴 좋아요
-	public List<ULikeCommand> selectFMLike();
+	//public List<ULikeCommand> selectFMLike();
 	public List<FranchiseMenuCommand> selectLikeFmenu();
 		
 	
 	//개인카페 메뉴 좋아요
-	public List<ULikeCommand> selectPMLike();
+	//public List<ULikeCommand> selectPMLike();
 	public List<PrivateCafeMenuCommand> selectLikePmenu();
 
 	

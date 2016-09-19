@@ -19,7 +19,7 @@ import kr.cafein.domain.ULikeCommand;
 public interface MainMapper {
 	
 	// * 커스텀마이징 메뉴 좋아요 * 
-	public List<ULikeCommand> uList(Map<String, Object> map);
+	//public List<ULikeCommand> uList(Map<String, Object> map);
 	//좋아요 높은 커스텀마이징 메뉴 번호 구하기 (순서)
 	@Select("select c.custom_num, count(*) custom_like from customizing c , u_like u where c.custom_num = u.custom_num and c.custom_num in (select custom_num from u_like) group by c.custom_num order by custom_like desc")
 	public List<ULikeCommand> selectCLike();
@@ -28,7 +28,7 @@ public interface MainMapper {
 	public List<CustomizingCommand> selectLikeCustomizing();
 	
 	// * 프랜차이즈 즐겨찾기 *
-	public List<MainBookmarkCommand> bList(Map<String, Object> map);
+	//public List<MainBookmarkCommand> bList(Map<String, Object> map);
 	
 	@Select("select * from (select f.franchise_num, f.franchise_name, f.franchise_img, f.franchise_introduce ,count(*) as count from franchise f, bookmark b where f.franchise_num =  b.franchise_num group by f.franchise_num, f.franchise_name, f.franchise_img, f.franchise_introduce order by count desc) where rownum =1")
 	public FranchiseCommand selectBookmarkFranchise();
@@ -42,13 +42,13 @@ public interface MainMapper {
 	public List<PrivateCafeCommand> selectBookmarkPrivateCafe();
 	
 	//프랜차이즈 메뉴 좋아요
-	public List<ULikeCommand> selectFMLike();
+	//public List<ULikeCommand> selectFMLike();
 	@Select("select f.franchise_name, fm.fmenu_name, fm.fmenu_img, count(*) fcount from franchise f join franchise_menu fm on f.franchise_num = fm.franchise_num join u_like u on fm.fmenu_num = u.fmenu_num and fm.franchise_num in (select fmenu_num from u_like) group by f.franchise_name, fm.fmenu_name, fm.fmenu_img order by fcount desc")
 	public List<FranchiseMenuCommand> selectLikeFmenu();
 		
 	
 	//개인카페 메뉴 좋아요
-	public List<ULikeCommand> selectPMLike();
+	//public List<ULikeCommand> selectPMLike();
 	@Select("select p.pcafe_name, pm.pmenu_name, pm.pmenu_img, p.pcafe_reg_date, count(*) pcount from private_cafe p join private_cafe_menu pm on p.pcafe_num = pm.pcafe_num join u_like u on pm.pmenu_num = u.pmenu_num group by  p.pcafe_name,pm.pmenu_name,pm.pmenu_img, p.pcafe_reg_date order by pcount desc")
 	public List<PrivateCafeMenuCommand> selectLikePmenu();
 	

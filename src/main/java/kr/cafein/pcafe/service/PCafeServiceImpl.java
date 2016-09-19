@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.BookmarkCommand;
-import kr.cafein.domain.DeclaredCommand;
+import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
@@ -160,7 +160,7 @@ public class PCafeServiceImpl implements PCafeService{
 	}
 
 	@Override
-	public void insertDeclaredReply(DeclaredCommand declared) {
+	public void insertDeclaredReply(UserDeclaredCommand declared) {
 		pcafeMapper.insertDeclaredReply(declared);
 	}
 

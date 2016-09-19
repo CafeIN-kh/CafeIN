@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.cafein.domain.DeclaredCommand;
+import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeReplyCommand;
 import kr.cafein.pcafe.service.PCafeService;
@@ -82,7 +82,7 @@ public class PCafeDetailReplyDeclaredController {
 	//댓글 신고 insert
 	@RequestMapping(value="/cafein_user/private/private_detailReplyDeclaredRegister.do", method=RequestMethod.POST)
 	//@ResponseBody 써주면 에이작스로 인식해서 string 형태로 return 시킴
-	public String submit(@ModelAttribute DeclaredCommand declaredCommand,
+	public String submit(@ModelAttribute UserDeclaredCommand declaredCommand,
 						 int pcafe_num,
 						 HttpSession session ) throws Exception{
 		

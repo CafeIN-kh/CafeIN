@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.BookmarkCommand;
-import kr.cafein.domain.DeclaredCommand;
+import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
@@ -112,6 +112,6 @@ public interface PCafeMapper {
 	@Select("SELECT * FROM u_user WHERE u_uid = #{u_uid}")
 	public MemberCommand selectDeclaredMember(String u_uid);
 	@Insert("INSERT INTO declared (d_seq,d_target_id,d_target_path,d_mem_id,d_target_mem_id,d_reg_date,d_content,d_state) VALUES (declared_seq.nextval,#{d_target_id},#{d_target_path},#{d_mem_id},#{d_target_mem_id},sysdate,#{d_content},#{d_state})")
-	public void insertDeclaredReply(DeclaredCommand declared);
+	public void insertDeclaredReply(UserDeclaredCommand declared);
 	
 }

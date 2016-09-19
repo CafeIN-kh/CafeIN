@@ -63,9 +63,10 @@ public class MainController {
 		
 		franchiseCommandB = mainService.selectBookmarkFranchise();
 		
-		System.out.println("franchiseCommand name :" + franchiseCommandB.getFranchise_name());
-		System.out.println("franchiseCommand Fnum : " + franchiseCommandB.getFranchise_num());
-		
+		if(franchiseCommandB != null) {
+			System.out.println("franchiseCommand name :" + franchiseCommandB.getFranchise_name());
+			System.out.println("franchiseCommand Fnum : " + franchiseCommandB.getFranchise_num());
+		}
 		
 		//개인카페 즐겨찾기
 		List<PrivateCafeCommand> privateCafeCommand = null;

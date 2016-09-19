@@ -56,9 +56,10 @@ public class PagingUtil {
 				pagingHtml.append("<li><a href="+pageUrl+"&pageNum="+ (startPage - 1) + addKey +">");
 				//pagingHtml.append("<a href="+pageUrl+"?pageNum="+ (startPage - 1) + addKey +">");
 			}else{
-				pagingHtml.append("<a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (startPage - 1) + addKey +">");
+				//pagingHtml.append("<a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (startPage - 1) + addKey +">");
+				pagingHtml.append("<li><a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (startPage - 1) + addKey +">");
 			}
-			pagingHtml.append("짬");
+			pagingHtml.append("이전");
 			pagingHtml.append("</a></li>");
 			//pagingHtml.append("이전");
 			//pagingHtml.append("</a>");
@@ -83,7 +84,8 @@ public class PagingUtil {
 					pagingHtml.append("<li><a class='pageNum' value='"+i+"' href='"+pageUrl+"&pageNum=");
 					//pagingHtml.append("&nbsp;<a href='"+pageUrl+"?pageNum=");
 				}else{
-					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
+					//pagingHtml.append("&nbsp;<a href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
+					pagingHtml.append("<li><a class='pageNum' value='"+i+"' href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
 				}
 				pagingHtml.append(i);
 				pagingHtml.append(addKey+"'>");
@@ -100,9 +102,10 @@ public class PagingUtil {
 				pagingHtml.append("<li><a href="+pageUrl+"&pageNum="+ (endPage + 1) + addKey +">");
 				//pagingHtml.append("<a href="+pageUrl+"?pageNum="+ (endPage + 1) + addKey +">");
 			}else{
-				pagingHtml.append("<a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (endPage + 1) + addKey +">");
+				//pagingHtml.append("<a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (endPage + 1) + addKey +">");
+				pagingHtml.append("<li><a href="+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum="+ (endPage + 1) + addKey +">");
 			}
-			pagingHtml.append("쨩");
+			pagingHtml.append("다음");
 			pagingHtml.append("</a></li>");
 			//pagingHtml.append("다음");
 			//pagingHtml.append("</a>");

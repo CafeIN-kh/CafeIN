@@ -28,8 +28,8 @@ public class PCafeDetailListController {
 
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	private int rowCount = 6;
-	private int pageCount = 8;
+	private int rowCount;
+	private int pageCount;
 	
 	//페이징 버튼 클릭 할 경우 tabindex=1 속성 추가
 	//private StringBuffer pagingClick;
@@ -43,6 +43,7 @@ public class PCafeDetailListController {
 								@RequestParam(value="pageNum",defaultValue="1") int currentPage, 
 								HttpSession session) {
 		
+		System.out.println("private_detail.do 진입");
 		if(log.isDebugEnabled()) {
 			log.debug("pcafe_num : " + pcafe_num);
 			//log.debug("currentPage : " + currentPage);
@@ -91,6 +92,8 @@ public class PCafeDetailListController {
 		}
 		
 		//개인카페 메뉴 페이징 처리 하는 부분
+		rowCount = 6;
+		pageCount = 8;
 		HashMap<String,Object> map = new HashMap<String,Object>();
 		map.put("pcafe_num",pcafe_num);
 				
@@ -100,7 +103,9 @@ public class PCafeDetailListController {
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_detail.do?pcafe_num="+pcafe_num);
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		System.out.println("pcafe_num : " + pcafe_num + ", count : " + count + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
+		System.out.println("currentPage: " + currentPage + ", count : " + count);
+		System.out.println("rowCount: " + rowCount + ", pageCount : " + pageCount);
+		System.out.println("pcafe_num : " + pcafe_num + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
 
 		List<PCafeMenuCommand> menuList = null;
 		
@@ -140,8 +145,8 @@ public class PCafeDetailListController {
 			log.debug("pcafe_num : " + pcafe_num);
 		}
 		
-		rowCount = 5;
-		pageCount = 5;
+		//rowCount = 5;
+		//pageCount = 5;
 		
 		PCafeCommand pcafe_info_list = pcafeService.selectPCafe(pcafe_num);
 		System.out.println("pcafe_info_list : " +  pcafe_info_list);
@@ -204,16 +209,20 @@ public class PCafeDetailListController {
 	//에이작스로 데이터 불러와서 해당카페의 댓글 정보 상세페이지에 뿌리기(페이징처리)
 	@RequestMapping("/cafein_user/private/private_detailReply_ajax.do")
 	@ResponseBody
-	public Map<String,Object> PCafe_detailReply_ajax(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
+	public Map<String,Object> PCafe_detailReply_ajax(@RequestParam(value="pageNum", defaultValue="1") int reply_currentPage,
 											  @RequestParam int pcafe_num,
 											  HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
-			log.debug("currentPage : " + currentPage);
+			log.debug("reply_currentPage : " + reply_currentPage);
 			log.debug("pcafe_num : " + pcafe_num);
 		}
 		
 		System.out.println("private_detailReply_ajax 진입");
+		
+		//한 화면에 보여질 아이템 수
+		rowCount = 5;
+		pageCount = 5;
 		
 		HashMap<String,Object> map = new HashMap<String,Object>();
 		map.put("pcafe_num",pcafe_num);
@@ -221,13 +230,13 @@ public class PCafeDetailListController {
 		//총 메뉴의 갯수
 		int count = pcafeService.getRowReplyCount(map);
 
-		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_detailMenu_ajax.do?pcafe_num="+pcafe_num);
+		PagingUtil page = new PagingUtil(reply_currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_detailMenu_ajax.do?pcafe_num="+pcafe_num);
 
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		System.out.println("pcafe_num : " + pcafe_num + ", count : " + count + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
 
-		System.out.println("count : " + count + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
+		//System.out.println("count : " + count + ", reply_start: " + page.getStartCount() + ", end: " + page.getEndCount());
 		
 		List<PCafeReplyCommand> replyList = null;
 		

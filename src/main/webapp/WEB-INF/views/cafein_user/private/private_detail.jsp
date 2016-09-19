@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> --%>
+<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
 
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
@@ -238,7 +240,7 @@
         <div class="tag-box tag-box-v2">
         	<div class="col-md-6">
         		<ul class="list-unstyled">
-        			<li class="korean-font"><i class="fa fa-map-marker color-green"></i> ${pcafe_info.pcafe_address}</li>
+        			<li class="korean-font" id="pcafe_address"><i class="fa fa-map-marker color-green"></i> ${pcafe_info.pcafe_address}</li>
         		</ul>
         	</div>
         	<div class="col-md-6">
@@ -270,6 +272,7 @@
 
             <!-- Basic Map -->
             <div class="headline"><h3>Cafe Map</h3></div>
+            <div id="map_tag"></div>
             <div id="map" class="map margin-bottom-50"></div>
             <!-- End Basic Map -->
 
@@ -393,15 +396,25 @@
                     </a>
                 </div> --%>
            	
-           	
            	<!-- 카페 메뉴 정보 페이징 하는 부분 -->
            	<c:if test="${count == 0}">
 				<div class="korean-font" style="text-align:center;font-size: xx-large;color:#72c02c;margin: 200px 0;">등록된 메뉴가 없습니다.</div>
 			</c:if>
 			<c:if test="${count > 0}">
 	            <div id="grid-container" class="cbp-l-grid-gallery pcafeMenuList">
+					
 					<c:forEach var="menuList" items="${menuList}" varStatus="status">
-		                <div class="cbp-item illustration web-design menuList${status.index}">
+		                <div class="cbp-item illustration web-design menuList${status.index} easy-block-v1">
+		                
+			                <!-- 현재  등록된 카페의 u_uid와 세션의 u_uid 값이 같으면 메뉴 삭제 버튼 생성 -->
+	        				<c:if test="${pcafe_info.u_uid == u_uid}">
+	        					<!-- 메뉴 삭제 부분 -->
+				            	<a onclick="pcafeMenuDelete(${menuList.pmenu_num},${pcafe_info.pcafe_num})"
+				            		class="easy-block-v1-badge rgba-red" style="text-decoration:none;position:initial;line-height:30px;cursor:pointer;">
+				            		<i class="fa fa-trash-o"></i> Delete
+				            	</a> 
+			            	</c:if>
+			            	
 		                	<!-- cube-portfolio-lightbox.js 파일로 ajax 처리해서 정보 아래 뿌리는거! -->
 		                	<a href="/CafeIN/cafein_user/private/private_detailMenuDetail_ajax.do?pmenu_num=${menuList.pmenu_num}" class="menuListNum${status.index} cbp-caption cbp-singlePageInline"
 		                       data-title="World Clock Widget<br>by Paul Flavius Nechita">
@@ -421,32 +434,14 @@
 	                </c:forEach>
 	            </div><!--/end Grid Container-->
             	<div class="text-center">
-	        		<ul class="pagination paging_button">
+	        		<ul class="pagination">
 	        			${pagingHtml}
 	        		</ul>  
 	        	</div>
             </c:if>
 			<!-- END 카페 메뉴 정보 페이징 하는 부분 -->
-			
             <br><br>
             
-        	<!-- <button type="button" class="btn-u btn-block">Load More</button> -->
-        	<!--Pagination-->
-	        <!-- <div class="text-center">
-	            <ul class="pagination">
-	                <li><a href="#">«</a></li>
-	                <li class="active"><a href="#">1</a></li>
-	                <li><a href="#">2</a></li>
-	                <li><a href="#">3</a></li>
-	                <li><a href="#">4</a></li>
-	                <li><a href="#">5</a></li>
-	                <li><a href="#">6</a></li>
-	                <li><a href="#">7</a></li>
-	                <li><a href="#">8</a></li>
-	                <li><a href="#">»</a></li>
-	            </ul>                                                            
-	        </div> -->
-	        <!--END Pagination-->
         </div>
         <!-- End Cube Portfolio -->
     	
@@ -506,29 +501,33 @@
                     <h4 class="modal-title korean-font" id="myModalLabel4">신고</h4>
                  </div>
                  <div class="modal-body">
-                    <form action="custom/register.do" method="post"
-                       enctype="multipart/form-data" id="sky-form4" class="sky-form"
-                       style="border: 0;">
+                    <form action="/CafeIN/cafein_user/private/private_detailReplyDeclaredRegister.do" novalidate="novalidate"
+                    	  id="sky-form4" class="sky-form" method="post" style="border: 0;">
                        <fieldset>
+                       
+                       	  <!-- 현재 선택한 댓글의 시퀀스 -->
+                       	  <input type="hidden" id="d_target_id" name="d_target_id" value="${declaredReply.preply_num}">
+                       	  
+                       	  <!-- d_target_path : 0[프랜차이즈 댓글] 1[개인카페 댓글] 2[커스터마이징 댓글] 개인카페 쪽이므로 1번으로 박아서 넘김 -->
+                       	  <input type="hidden" id="d_target_path" name="d_target_path" value="1">
+                       	  
+                       	  <input type="hidden" name="pcafe_num" value="${pcafe_info.pcafe_num}" id="pcafe_num">
+                       	  
                           <section>
-                             <label class="label">신고자 ID (E-mail 주소를 등록해주세요)</label> <label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
-                                <input type="text" name="mem_id"
-                                id="mem_id">
-                             </label>
+                          	 <!-- 신고한 사람의 정보는 세션에서 가져오기 -->
+                             <label class="label" id="d_mem_id_name" name="d_mem_id_name" style="font-weight:bold;">신고자 ID : ${u_name}</label> 
+                             <input type="hidden" name="d_mem_id" id="d_mem_id" value="${u_uid}">
                           </section>
                           
                           <section>
-                             <label class="label">피신고자 ID (E-mail 주소를 등록해주세요)</label> <label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
-                                <input type="text" name="d_mem_id"
-                                id="d_mem_id">
-                             </label>
+                             <label class="label" id="d_target_mem_id_name" name="d_target_mem_id_name" value="" style="font-weight:bold;">피신고자 ID : </label> 
+                             <input type="hidden" name="d_target_mem_id" id="d_target_mem_id" value="">
                           </section>
 
                           <section>
-                             <label class="label">신고 내용</label> <label
+                             <label class="label korean-font">신고 내용</label> <label
                                 class="textarea"> <!-- <i class="icon-append fa fa-comment"></i> -->
-                                <textarea rows="4" name="d_content"
-                                   id="d_content"></textarea>
+                                <textarea rows="4" name="d_content" id="d_content" class="korean-font"></textarea>
                              </label>
                           </section>
 

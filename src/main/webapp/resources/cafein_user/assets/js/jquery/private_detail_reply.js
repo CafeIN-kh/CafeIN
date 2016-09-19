@@ -68,32 +68,6 @@ $(document).ready(function(){
 						//문서 객체에 추가 
 						$('#output').append(output);
 						
-						//문서 객체에 추가 
-						/*$('#output').append(
-							'<div class="media-body">' +
-							'<input type="hidden" id="preply_num' + index + '" value=" ' + item.preply_num + ' ">' +
-								'<input type="hidden" id="u_uid' + index + '" value=" ' + item.u_uid + ' ">' +
-								'<h4 class="media-heading korean-font-bold">' + item.preply_nickname + 
-									'<span id="modify_delete'+index+'">' + item.preply_reg_date + ' | <a href="">신고</a></span>' + 
-								'</h4>' +
-								'<br>' +
-								'<div class="col-md-11">' +
-									'<p class="korean-font">' + item.preply_content + '</p>' +
-								'</div>' +
-							'</div>' +
-							'<hr>'
-						);
-						
-						if($('#u_uid').val() && $('#u_uid').val() == item.u_uid) {
-							$('#modify_delete'+index).html(
-								item.preply_reg_date + ' | <a href="">수정</a> | <a href="">삭제</a> | <a href="">신고</a>'	
-							);
-						}else {
-							$('#modify_delete'+index).html(
-								item.preply_reg_date + ' | <a href="">신고</a>'	
-							);
-						}*/
-						
 					});
 					
 					//paging button 처리
@@ -140,8 +114,9 @@ $(document).ready(function(){
 		}else {
 			var preply_nickname = "Guest";
 		}
-		alert("preply_nickname : " + $('#preply_nickname').val());
-		alert("pcafe_num:" + pcafe_num + ", preply_content:" + preply_content + ", preply_nickname:" + preply_nickname);
+		//alert("preply_nickname : " + $('#preply_nickname').val());
+		//alert("pcafe_num:" + pcafe_num + ", preply_content:" + preply_content + ", preply_nickname:" + preply_nickname);
+		
 		//댓글 등록 Ajax
 		$.ajax({
 			type:'post',
@@ -158,9 +133,6 @@ $(document).ready(function(){
 				if(data.result == 'success'){
 					//폼 초기화
 					initForm();
-					
-					//수정폼 초기화
-					//initModifyForm();
 					
 					//댓글 작성이 성공하면 새로 삽입한 글을 포함해서 첫번째 페이지의 게시글을 다시 호출
 							//1페이지,목록 글번호
@@ -182,136 +154,108 @@ $(document).ready(function(){
 	function initForm() {
 		$('#preply_content').val('');
 	}
-	
-	
-	// 댓글 수정 버튼 클릭시 수정폼 노출
-	// 미레이버튼? 조건에 따라 다른
-	/*$(document).on('click','.modify_button',function(){
-		// 버튼의 정보 읽어오기
-		var num = $(this).attr('data-num');
-		// 작성자 아이디
-		var id = $(this).attr('data-id');
-		//이전에 이미 수정하는 댓글이 있을 경우 수정버튼을
-		//클릭하면 숨긴 sub-item를 환원시키는 작업
-		$('.sub-item').show();
-		//현재 클릭해서 수정하고자 하는 데이터는 감추기
-		$('#i' + num + ' .sub-item').hide();
-		
-		//수정폼에 읽어온 데이터 셋팅
-		$('#mre_no').val(num);
-		$('#muserId').val(id);
-		$('#mre_content').val($('#i' + num + ' p').text());
-		
-		//입력한 글자수 셋팅
-		var inputLength = $('#mre_content').val().length;
-		var remain = 300 - inputLength;
-		remain += '/300';
-		
-		//문서 객체에 반영
-		$('#mre_first .letter-count').text(remain);
-		
-		//수정폼을 수정하고자하는 데이터가 있는 div에 노출
-		$('#i' + num).append($('#mre_form'));
-		
-	});
-	
-	//수정폼에서 취소 버튼 클릭시 수정폼 초기화
-	$('.re-reset').click(function(){
-		initModifyForm();
-	});
-	   
-	
-	// 댓글 수정 폼 초기화
-	function initModifyForm(){
-		$('.sub-item').show();
-		//폼의 원래위치로 복원
-		$('#modify_div').append($('#mre_form'));
-		$('#mre_no').val('');
-		$('#muserId').val('');
-		$('#mre_content').val('');
-		$('#mre_first .letter-count').text('300/300');
 
-	}
-
-	//댓글 수정
-	$('#mre_form').submit(function(event){
-		if($('#mre_content').val() == '') {
-			alert('내용을 입력하세요!');
-			$('#mre_content').focus();
-			return false;
-		}
-		
-		//폼에 입력한 데이터 반환
-		var data = $(this).serialize();
-		
-		//수정
-		$.ajax({
-			type:'post',
-			data:data,
-			url:'updateReplyAjax.do',
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(data){
-				if(data.result == 'logout') {
-					alert('로그인해야 수정할 수 있습니다.');
-				}else if(data.result == 'wrongAccess') {
-					alert('잘못된 접속입니다.')
-				}else if(data.result == 'success') {
-					$('#i' + $('#mre_no').val() + ' p').html($('#mre_content').val());
-					//수정폼 초기화
-					initModifyForm();
-				}else {
-					alert('수정시 오류 발생!');
-				}
-			},
-			error:function(){
-				alert('네트워크 오류 발생!');
-			}
-		});
-		//기본 이벤트 제거
-		event.preventDefault();
-	});*/
-	
 	//댓글 삭제
 	$(document).on('click','.delete_button',function(){
+		var answer = confirm("댓글을 정말로 삭제 하시겠습니까?");
+		
+		if(answer){
+
+			//댓글 번호
+			var preply_num = $(this).attr('data-num');
+			//댓글 작성자 아이디
+			var u_uid = $(this).attr('data-id');
+			
+			//삭제
+			$.ajax({
+				type:'post',
+				data:{
+					preply_num:preply_num,
+					u_uid:u_uid
+				},
+				url:'private_detailReplyDelete_ajax.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(data){
+					if(data.result == 'logout') {
+						alert('로그인해야 삭제할 수 있습니다.');
+					}else if(data.result == 'wrongAccess') {
+						alert('잘못된 접속입니다.');
+					}else if(data.result == 'success'){
+						alert('삭제 완료!');
+						
+						selectData(1,$('#pcafe_num').val());
+					}else {
+						alert('삭제시 오류 발생!');
+					}
+				},
+				error:function(){
+					alert('네트워크 오류 발생!');
+				}
+			});
+			
+		}
+	});
+	
+
+	//댓글 신고
+	$(document).on('click','.declear_button',function(){
+		
 		//댓글 번호
 		var preply_num = $(this).attr('data-num');
-		//작성자 아이디
+		//댓글 작성자 아이디
 		var u_uid = $(this).attr('data-id');
 		
-		//삭제
-		$.ajax({
-			type:'post',
-			data:{
-				preply_num:preply_num,
-				u_uid:u_uid
-			},
-			url:'private_detailReplyDelete_ajax.do',
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(data){
-				if(data.result == 'logout') {
-					alert('로그인해야 삭제할 수 있습니다.');
-				}else if(data.result == 'wrongAccess') {
-					alert('잘못된 접속입니다.');
-				}else if(data.result == 'success'){
-					alert('삭제 완료!');
-					//수정폼 초기화
-					//initModifyForm();
-					selectData(1,$('#pcafe_num').val());
-				}else {
-					alert('삭제시 오류 발생!');
+		if($('#u_uid').val() == u_uid) {
+			alert('본인을 신고할 수 없습니다');
+			$('#declear').hide();
+			location.reload();
+		}else {
+			//댓글 신고
+			$.ajax({
+				type:'post',
+				data:{
+					preply_num:preply_num,
+					u_uid:u_uid
+				},
+				url:'private_detailReplyDeclared_ajax.do',
+				dataType:'json',
+				cache:false,
+				timeout:30000,
+				success:function(data){
+					if(data.result == 'logout') {
+						alert('로그인해야 신고할 수 있습니다.');
+						$('#declear').hide();
+						location.reload();
+					}else if(data.result == 'success'){
+						//신고한 댓글의 시퀀스
+						var declaredReply = data.declaredReply;
+						//신고당한 사람의 u_uid와 닉네임
+						var declaredMember_u_uid = data.declaredMember_u_uid;
+						var declaredMember_u_name = data.declaredMember_u_name;
+						
+						//신고자/피신고자 정보 jsp에 바꿔주기
+						$('#d_target_id').val(declaredReply.preply_num);
+						$('#d_target_mem_id_name').val(declaredMember_u_name);
+						$('#d_target_mem_id_name').html("피신고자 ID : " + declaredMember_u_name);
+						$('#d_target_mem_id').val(declaredMember_u_uid);
+						
+						alert("신고댓글시퀀스 : " + declaredReply.preply_num + ", 신고당한 사람닉네임 :" + declaredMember_u_name + ", 신고당한사람 u_uid : " + declaredMember_u_uid);
+					
+					}else {
+						alert('신고시 오류 발생!');
+					}
+				},
+				error:function(){
+					alert('네트워크 오류 발생!');
 				}
-			},
-			error:function(){
-				alert('네트워크 오류 발생!');
-			}
-		});
+			});
+		}
 	});
 	
 	//초기 데이터(목록)호출
 	selectData(1,$('#pcafe_num').val());
+	
 	
 });

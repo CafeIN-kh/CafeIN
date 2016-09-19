@@ -1,5 +1,5 @@
 var PageContactForm = function () {
-//개인카페 등록/수정에서 사용중
+//개인카페 메뉴추가에서 사용중
     return {
         
         //Contact Form
@@ -48,8 +48,12 @@ var PageContactForm = function () {
 	                upload_menu:
 	                {
 	                	required: true
-	                }
+	                },
 	                /*개인카페 메뉴 등록 부분 END*/
+	                d_content:
+	                {
+	                	required: true
+	                } 
 	            },
 	                                
 	            // Messages for form validation
@@ -94,8 +98,12 @@ var PageContactForm = function () {
 	                {
 	                	required: 'Please enter your file upload',
 	                	remote: 'Correct File is required'
-	                }
+	                },
 	                /*개인카페 메뉴 등록 부분 END*/
+	                d_content:
+	                {
+	                	required: 'Please select your declear content'
+	                } 
 	            },
 	                                
 	            // Ajax form submition                  
@@ -107,11 +115,11 @@ var PageContactForm = function () {
 	                    {
 	                        $('#sky-form5 button[type="submit"]').attr('disabled', true);
 	                        $('.modal').hide();
-	                        alert("beforesend");
+	                        //alert("beforesend");
 	                    },
 	                    success: function()
 	                    {
-	                    	alert("success");
+	                    	//alert("success");
 	                        $("#sky-form5").addClass('submited');
 	                        location.reload();
 	                    }

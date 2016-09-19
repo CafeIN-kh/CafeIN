@@ -8,7 +8,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.BookmarkCommand;
+import kr.cafein.domain.DeclaredCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
@@ -60,11 +62,6 @@ public class PCafeServiceImpl implements PCafeService{
 	@Override
 	public void update(PCafeCommand pcafe) {
 		pcafeMapper.update(pcafe);
-	}
-
-	@Override
-	public void delete(Integer seq) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -160,6 +157,66 @@ public class PCafeServiceImpl implements PCafeService{
 	@Override
 	public void deleteReply(Integer preply_num) {
 		pcafeMapper.deleteReply(preply_num);
+	}
+
+	@Override
+	public void insertDeclaredReply(DeclaredCommand declared) {
+		pcafeMapper.insertDeclaredReply(declared);
+	}
+
+	@Override
+	public PCafeReplyCommand selectDeclaredReply(Integer preply_num) {
+		return pcafeMapper.selectDeclaredReply(preply_num);
+	}
+
+	@Override
+	public MemberCommand selectDeclaredMember(String u_uid) {
+		return pcafeMapper.selectDeclaredMember(u_uid);
+	}
+
+	@Override
+	public void deleteMenu(int pmenu_num) {
+		pcafeMapper.deleteMenu(pmenu_num);
+	}
+
+	@Override
+	public void deleteLikeByPCafeMenu(int pmenu_num) {
+		pcafeMapper.deleteLikeByPCafeMenu(pmenu_num);
+	}
+
+	@Override
+	public void deleteLikeByPCafe(int pcafe_num) {
+		pcafeMapper.deleteLikeByPCafe(pcafe_num);
+	}
+
+	@Override
+	public void deleteBookmarkByPCafe(int pcafe_num) {
+		pcafeMapper.deleteBookmarkByPCafe(pcafe_num);
+	}
+
+	@Override
+	public void deletePCafeReplyByPCafe(int pcafe_num) {
+		pcafeMapper.deletePCafeReplyByPCafe(pcafe_num);
+	}
+
+	@Override
+	public List<PCafeMenuCommand> selectPCafeMenuByPCafe(int pcafe_num) {
+		return pcafeMapper.selectPCafeMenuByPCafe(pcafe_num);
+	}
+
+	@Override
+	public void deletePCafeMenuLikekByPCafe(int pmenu_num) {
+		pcafeMapper.deletePCafeMenuLikekByPCafe(pmenu_num);
+	}
+
+	@Override
+	public void deleteMenuByPCafe(int pcafe_num) {
+		pcafeMapper.deleteMenuByPCafe(pcafe_num);
+	}
+
+	@Override
+	public void deletePCafe(Map<String,Object> deleteMap) {
+		pcafeMapper.deletePCafe(deleteMap);
 	}
 	
 }

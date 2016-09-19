@@ -1,5 +1,5 @@
 var Login = function () {
-//개인카페 메뉴추가에서 사용중
+//개인카페 등록/수정에서 사용중
     return {
         
         //Masking
@@ -58,7 +58,7 @@ var Login = function () {
 	                pcafe_hash_tag:
 	                {
 	                	required: true
-	                }      
+	                }     
 	                /*개인카페 등록 부분 END*/
 	            },
 	                                
@@ -125,12 +125,12 @@ var Login = function () {
 	                    {
 	                        $('#sky-form1 button[type="submit"]').attr('disabled', true);
 	                        $('.modal').hide();
-	                        alert("beforesend");
+	                       // alert("beforesend");
 	                        //alert("beforesend upload_modify : " + $('#upload_modify').val());
 	                    },
 	                    success: function(data)
 	                    {
-	                    	alert("success");
+	                    	//alert("success");
 	                        $("#sky-form1").addClass('submited');
 	                        location.reload();
 	                    }

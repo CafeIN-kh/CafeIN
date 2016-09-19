@@ -18,7 +18,7 @@ import kr.cafein.pcafe.service.PCafeService;
 @Controller
 public class PCafeDetailReplyDeleteController {
 
-private Logger log = Logger.getLogger(this.getClass());
+	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
 	private PCafeService pcafeService;
@@ -40,11 +40,16 @@ private Logger log = Logger.getLogger(this.getClass());
 			String u_uid = (String) session.getAttribute("u_uid");
 			
 			if(u_uid == null) {
+				
 				map.put("result", "logout");
+				
 			}else if(u_uid != null && u_uid.equals(u_id)) {
+				
 				pcafeService.deleteReply(preply_num);
 				map.put("result", "success");
+				
 			}else {
+				
 				map.put("result", "wrongAccess");
 			}
 			

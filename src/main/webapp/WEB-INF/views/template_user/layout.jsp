@@ -19,6 +19,7 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -44,6 +45,16 @@
 <c:forEach var="jsName" items="${jsList}">
 	<script src="<c:out value='${jsName}' />"></script>
 </c:forEach>
+
+<script type="text/javascript">
+	//타이머 함수는 모든일이 끝난후 실행된다. initCafeINMap이 googleapisView보다 후에 실행되야 하는데 script안에 있으면 jsp가 다 처리되기 전에 실행되버려서 써줌
+	setTimeout(function () { // 0초 후에 body에 script를 넣어줘라
+		/* 구글 map api 이용. key=구글의 api 키 값을 넣어 준것. initCafeINMap은 private_detail_map.js에서 부름 */
+		if(document.location.pathname=="/CafeIN/cafein_user/private/private_detail.do"){
+			$('body').append('<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyByaawrixh9HdCUSOSfjvGM4wGM9XCyRHo&callback=initCafeINMap\" async defer><\/script>');
+		}
+	}, 0);
+</script>
 
 <!-- <script type="text/javascript">
     jQuery(document).ready(function() {

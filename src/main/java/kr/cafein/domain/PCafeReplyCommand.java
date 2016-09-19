@@ -1,6 +1,6 @@
 package kr.cafein.domain;
 
-import kr.cafein.util.DurationFromNow;
+import java.sql.Date;
 
 public class PCafeReplyCommand {
 
@@ -9,7 +9,7 @@ public class PCafeReplyCommand {
 	private String u_uid;
 	private String preply_content;
 	private String preply_nickname;
-	private String preply_reg_date;
+	private Date preply_reg_date;
 	
 	public int getPreply_num() {
 		return preply_num;
@@ -42,17 +42,22 @@ public class PCafeReplyCommand {
 		this.preply_nickname = preply_nickname;
 	}
 	
-	public String getPreply_reg_date() {
+	public Date getPreply_reg_date() {
+		return preply_reg_date;
+	}
+	public void setPreply_reg_date(Date preply_reg_date) {
+		this.preply_reg_date = preply_reg_date;
+	}
+	/*public String getPreply_reg_date() {
 		return preply_reg_date;
 	}
 	public void setPreply_reg_date(String preply_reg_date) {
 		this.preply_reg_date = DurationFromNow.getTimeDiffLabel(preply_reg_date);
-	}
+	}*/
 	@Override
 	public String toString() {
 		return "PCafeReplyCommand [preply_num=" + preply_num + ", pcafe_num=" + pcafe_num + ", u_uid=" + u_uid
 				+ ", preply_content=" + preply_content + ", preply_nickname=" + preply_nickname + ", preply_reg_date="
 				+ preply_reg_date + "]";
 	}
-	
 }

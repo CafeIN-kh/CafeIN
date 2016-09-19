@@ -57,6 +57,7 @@ create table u_like(
    custom_num number,
    fmenu_num number,
    pmenu_num number,
+   like_reg_date date not null,
    constraint u_like_pk primary key (like_num)
 ); 
 
@@ -69,6 +70,7 @@ create table bookmark(
    franchise_num number,
    pcafe_num number,
    custom_num number,
+   bookmark_reg_date date not null,
    constraint bookmark_pk primary key (bookmark_num)
 );
 

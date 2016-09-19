@@ -1,11 +1,10 @@
 jQuery(document).ready(function() {
 	App.init();
-	ContactPage.initMap();
+	//ContactPage.initMap();
 	Login.initLogin();
 	//ContactForm.initContactForm();
 	PageContactForm.initPageContactForm();
 	Registration.initRegistration();
-	/* OwlRecentWorks.initOwlRecentWorksV1();   */   
 });
 
 $(function(){
@@ -48,15 +47,12 @@ $(document).ready(function(){
 	
 	//메뉴 페이징 번호 클릭 시 클릭여부를 가리기 위해 세션에 값 저장
 	$('.pageNum').click(function(){
-		//alert('pageNum Click');
 		sessionStorage.setItem("pagingClick", "pagingClick");
-		//$('#grid-container').focus();
 	});
 	
 	//메뉴 페이징 번호 체크값이 세션에 있으면 tabindex 속성 추가 후 세션 지우기
 	//tabindex=1 하면 div에서도 focus가 먹음
 	if(sessionStorage.getItem("pagingClick")) {
-		//alert("getItem");
 		$('#grid-container').attr("tabindex","1");
 		sessionStorage.removeItem("pagingClick");
 	}
@@ -246,5 +242,31 @@ function pcafeMenu_like() {
 		$('#pcafeMenu_like').html(
 			'<i class="fa fa-thumbs-o-up"></i> 좋아요!'
 		);
+	}
+}
+
+//개인카페 메뉴 삭제
+function pcafeMenuDelete(pmenu_num,pcafe_num) {
+	alert('pmenu_num : ' + pmenu_num + ', pcafe_num : ' + pcafe_num);
+	var answer = confirm("메뉴를 삭제 하시겠습니까?");
+	
+	if(answer){
+		var url='/CafeIN/cafein_user/private/private_detailMenuDelete.do?pmenu_num='+pmenu_num+'&pcafe_num='+pcafe_num;
+		$.ajax({
+			url: url,	      
+			type:'post',
+
+			success:function(data){	   
+				if(data.result == 'success') {
+					//새로고침(html만 지우면 그 공간만 비어버리고 스타일이 안먹기 때문에)
+					window.location.reload();
+				}else {
+					alert('메뉴삭제 호출 오류!');
+				}
+			},error : function(xhr, status, error) {
+				alert("네트워크 오류 발생!");
+				alert(error);
+			}
+		})
 	}
 }

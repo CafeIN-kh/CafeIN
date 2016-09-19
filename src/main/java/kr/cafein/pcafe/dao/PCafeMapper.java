@@ -10,7 +10,9 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.BookmarkCommand;
+import kr.cafein.domain.DeclaredCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
@@ -24,6 +26,23 @@ public interface PCafeMapper {
 	public int getRowCount(Map<String,Object> map);
 	@Insert("INSERT INTO private_cafe(pcafe_num,u_uid,pcafe_name,pcafe_address,pcafe_phone,pcafe_time,pcafe_url,pcafe_introduce,pcafe_hash_tag,pcafe_img,pcafe_visit,pcafe_reg_date) VALUES (private_cafe_seq.nextval,#{u_uid},#{pcafe_name},#{pcafe_address},#{pcafe_phone},#{pcafe_time},#{pcafe_url},#{pcafe_introduce},#{pcafe_hash_tag},#{pcafe_img,jdbcType=VARCHAR},#{pcafe_visit},sysdate)")
 	public void insert(PCafeCommand pcafe);
+	//private_cafe 정보 삭제 순서
+	@Delete("DELETE FROM u_like WHERE pcafe_num = #{pcafe_num}")
+	public void deleteLikeByPCafe(int pcafe_num);							//private_cafe에 눌려있는 좋아요 모두 삭제
+	@Delete("DELETE FROM bookmark WHERE pcafe_num = #{pcafe_num}")
+	public void deleteBookmarkByPCafe(int pcafe_num);						//private_cafe에 눌려있는 즐겨찾기 모두 삭제
+	@Delete("DELETE FROM private_cafe_reply WHERE pcafe_num = #{pcafe_num}")
+	public void deletePCafeReplyByPCafe(int pcafe_num);						//private_cafe에 달려있는 댓글 모두 삭제
+	@Select("SELECT * FROM private_cafe_menu WHERE pcafe_num = #{pcafe_num}")
+	public List<PCafeMenuCommand> selectPCafeMenuByPCafe(int pcafe_num);	//private_cafe안의 모든 메뉴 찾기
+	@Delete("DELETE FROM u_like WHERE pmenu_num = #{pmenu_num}")
+	public void deletePCafeMenuLikekByPCafe(int pmenu_num);					//private_cafe_menu에 눌려있는 좋아요 모두 삭제
+	@Delete("DELETE FROM private_cafe_menu WHERE pcafe_num = #{pcafe_num}")
+	public void deleteMenuByPCafe(int pcafe_num);							//private_cafe안의 해당 메뉴 모두 삭제
+	//@Select("SELECT * FROM private_cafe WHERE pcafe_num = #{pcafe_num}")
+	//public PCafeCommand selectPCafe(int pcafe_num);							//private_cafe 정보 찾기(업로드된 이미지 split 후 삭제를 위해)
+	@Delete("DELETE FROM private_cafe WHERE pcafe_num = #{pcafe_num} AND u_uid = #{u_uid}")
+	public void deletePCafe(Map<String,Object> deleteMap);					//해당 private_cafe 정보 삭제
 	
 	//private_detail에서 사용되는 부분
 	@Select("SELECT * FROM private_cafe WHERE pcafe_num = #{pcafe_num}")
@@ -40,7 +59,7 @@ public interface PCafeMapper {
 	//private_detail 즐겨찾기
 	@Select("SELECT count(*) FROM bookmark WHERE u_uid = #{u_uid} AND pcafe_num = #{pcafe_num}")
 	public int selectBookmarkCount(BookmarkCommand bookmark);
-	@Insert("INSERT INTO bookmark(bookmark_num,u_uid,franchise_num,pcafe_num,custom_num) VALUES (bookmark_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER})")
+	@Insert("INSERT INTO bookmark(bookmark_num,u_uid,franchise_num,pcafe_num,custom_num,bookmark_reg_date) VALUES (bookmark_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER},sysdate)")
 	public void insertBookmark(BookmarkCommand bookmark);
 	@Delete("DELETE FROM bookmark WHERE u_uid = #{u_uid} AND pcafe_num = #{pcafe_num}")
 	public void deleteBookmark(BookmarkCommand bookmark);
@@ -50,7 +69,7 @@ public interface PCafeMapper {
 	public int selectLikeCount(LikeCommand like);
 	@Select("SELECT count(*) FROM u_like WHERE pcafe_num = #{pcafe_num}")
 	public int selectTotalLikeCount(LikeCommand like);
-	@Insert("INSERT INTO u_like(like_num,u_uid,franchise_num,pcafe_num,custom_num,fmenu_num,pmenu_num) VALUES (u_like_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER},#{fmenu_num,jdbcType=INTEGER},#{pmenu_num,jdbcType=INTEGER})")
+	@Insert("INSERT INTO u_like(like_num,u_uid,franchise_num,pcafe_num,custom_num,fmenu_num,pmenu_num,like_reg_date) VALUES (u_like_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER},#{fmenu_num,jdbcType=INTEGER},#{pmenu_num,jdbcType=INTEGER},sysdate)")
 	public void insertLike(LikeCommand like);
 	@Delete("DELETE FROM u_like WHERE u_uid = #{u_uid} AND pcafe_num = #{pcafe_num}")
 	public void deleteLike(LikeCommand like);
@@ -63,13 +82,17 @@ public interface PCafeMapper {
 	public List<PCafeMenuCommand> menuList(Map<String,Object> map);
 	@Select("SELECT * from private_cafe_menu WHERE pmenu_num = #{pmenu_num}")
 	public PCafeMenuCommand selectMenuDetail(int pmenu_num);
+	@Delete("DELETE FROM private_cafe_menu WHERE pmenu_num = #{pmenu_num}")
+	public void deleteMenu(int pmenu_num);		//private_cafe_menu 해당 메뉴 지우기
+	@Delete("DELETE FROM u_like WHERE pmenu_num = #{pmenu_num}")
+	public void deleteLikeByPCafeMenu(int pmenu_num);	//private_cafe_menu에 눌려있는 좋아요 기록 지우기
 	
 	//private_detail_menu 좋아요
 	@Select("SELECT count(*) FROM u_like WHERE u_uid = #{u_uid} AND pmenu_num = #{pmenu_num}")
 	public int selectMenuLikeCount(LikeCommand like);
 	@Select("SELECT count(*) FROM u_like WHERE pmenu_num = #{pmenu_num}")
 	public int selectMenuTotalLikeCount(LikeCommand like);
-	@Insert("INSERT INTO u_like(like_num,u_uid,franchise_num,pcafe_num,custom_num,fmenu_num,pmenu_num) VALUES (u_like_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER},#{fmenu_num,jdbcType=INTEGER},#{pmenu_num,jdbcType=INTEGER})")
+	@Insert("INSERT INTO u_like(like_num,u_uid,franchise_num,pcafe_num,custom_num,fmenu_num,pmenu_num,like_reg_date) VALUES (u_like_seq.nextval,#{u_uid},#{franchise_num,jdbcType=INTEGER},#{pcafe_num,jdbcType=INTEGER},#{custom_num,jdbcType=INTEGER},#{fmenu_num,jdbcType=INTEGER},#{pmenu_num,jdbcType=INTEGER},sysdate)")
 	public void insertMenuLike(LikeCommand like);
 	@Delete("DELETE FROM u_like WHERE u_uid = #{u_uid} AND pmenu_num = #{pmenu_num}")
 	public void deleteMenuLike(LikeCommand like);
@@ -83,6 +106,12 @@ public interface PCafeMapper {
 	@Delete("DELETE FROM private_cafe_reply WHERE preply_num=#{preply_num}")
 	public void deleteReply(Integer preply_num);
 	
-	@Delete("DELETE FROM sboard WHERE seq = #{seq}")
-	public void delete(Integer seq);
+	//private_detail_reply_declared
+	@Select("SELECT * FROM private_cafe_reply WHERE preply_num = #{preply_num}")
+	public PCafeReplyCommand selectDeclaredReply(Integer preply_num);
+	@Select("SELECT * FROM u_user WHERE u_uid = #{u_uid}")
+	public MemberCommand selectDeclaredMember(String u_uid);
+	@Insert("INSERT INTO declared (d_seq,d_target_id,d_target_path,d_mem_id,d_target_mem_id,d_reg_date,d_content,d_state) VALUES (declared_seq.nextval,#{d_target_id},#{d_target_path},#{d_mem_id},#{d_target_mem_id},sysdate,#{d_content},#{d_state})")
+	public void insertDeclaredReply(DeclaredCommand declared);
+	
 }

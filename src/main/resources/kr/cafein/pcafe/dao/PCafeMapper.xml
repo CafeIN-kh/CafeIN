@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.cafein.pcafe.dao.PCafeMapper">  
 
+	<!-- private main 카페 정보 에이작스 페이징 처리를 위한 리스트 select -->
    <select id="list" parameterType="map" resultType="pcafeCommand">
 	  <!-- replace title에서 태그를 못쓰도록 <,>를 &lt,&gt로 대체함 -->  
 		SELECT 
@@ -24,39 +25,53 @@
 	                 					GROUP BY pcafe_num) pc_like
 	                		ON pcafe.pcafe_num = pc_like.pcafe_num
 	           		<!-- 최신순 정렬 -->
-	           		<if test="category == 1">
+	           		<if test="category == 1 and keyword ==''">
 	           			ORDER BY pcafe.pcafe_reg_date DESC)a)
 	           		</if>
 	           		<!-- 조회순 정렬 -->
-	           		<if test="category == 2">
+	           		<if test="category == 2 and keyword ==''">
 	           			ORDER BY pcafe.pcafe_visit DESC)a)
 	           		</if>
 	           		<!-- 좋아요순 정렬 -->
-	           		<if test="category == 3">
+	           		<if test="category == 3 and keyword ==''">
 	           			ORDER BY pc_like.pc_like_cnt DESC nulls last)a)
 	           		</if>
 	           		<!-- 사장권한 내글보기순 정렬 -->
-	           		<if test="category == 4">
-	           			<![CDATA[
+	           		<if test="category == 4 and keyword ==''">
 	           			WHERE pcafe.u_uid = #{u_uid}
-	           			]]>	
 	           			ORDER BY pcafe.pcafe_reg_date DESC)a)
 	           		</if>
+	           		<!-- 검색어가 있을 경우 카페이름과 태그에서 해당하는 것 모두 찾아서 최신순 정렬 -->
+	           		<if test="keyword !=''">
+	                    WHERE pcafe_name like '%' || #{keyword} || '%' or
+	             			  pcafe_hash_tag like '%' || #{keyword} || '%'
+	             		ORDER BY pcafe.pcafe_reg_date DESC)a)
+	                </if>
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>	
    </select>
    
-   <!-- 메인의  카테코리에 따른 카페 count -->
+   <!-- 메인의  카테코리에 따른 카페 count, 검색된 수에 대한 count -->
    <select id="getRowCount" parameterType="map" resultType="integer">
       SELECT count(*) FROM private_cafe
-	      <if test="category == 4">
-	         <![CDATA[
-				WHERE u_uid = #{u_uid}
-			 ]]>	
-	      </if>
+	      <where>
+	      	  <if test="category == 4 and keyword == ''">
+	             u_uid = #{u_uid}
+	          </if>
+	      	  <if test="category == 4 and keyword != ''">
+	             u_uid = #{u_uid} or
+	             pcafe_name like '%' || #{keyword} || '%' or
+	             pcafe_hash_tag like '%' || #{keyword} || '%'
+	          </if>
+		      <if test="category != 4 and keyword != ''">
+	             pcafe_name like '%' || #{keyword} || '%' or
+	             pcafe_hash_tag like '%' || #{keyword} || '%'
+	          </if>
+          </where>
    </select>
    
+   <!-- private_detail 메뉴의 페이징 처리를 위한 리스트 select  -->
    <select id="menuList" parameterType="map" resultType="pcafeMenuCommand">
 		SELECT *
 		FROM (SELECT 
@@ -70,29 +85,8 @@
 		]]>	
    </select>
    
-   <!-- 검색된 수에 대한 count -->
-   <!-- <select id="getRowCount" parameterType="map" resultType="integer">
-      SELECT count(*) FROM pcafe_num
-      <where>
-              <if test="keyword !='' and keyfield=='title'">
-                 title like '%' || #{keyword} || '%'
-              </if>
-              <if test="keyword !='' and keyfield=='writer'">
-                 id like '%' || #{keyword} || '%'
-              </if>
-              <if test="keyword !='' and keyfield=='content'">
-                 content like '%' || #{keyword} || '%'
-              </if>
-                 <if test="keyword !='' and keyfield=='all'">
-                 title like '%' || #{keyword} || '%' or
-                 id like '%' || #{keyword} || '%' or
-                 content like '%' || #{keyword} || '%'
-              </if>
-              
-           </where>   
-   </select> -->
-   
    <!-- 댓글처리 -->
+   <!-- to_char(preply_reg_date,'YYYY-MM-DD HH24:MI:SS') preply_reg_date -->
    <select id="replyList" parameterType="map" resultType="pcafeReplyCommand">
    		SELECT 
 			preply_num,
@@ -100,7 +94,7 @@
 			u_uid,
 			preply_content,
 			preply_nickname,
-			to_char(preply_reg_date,'YYYY-MM-DD HH24:MI:SS') preply_reg_date
+			preply_reg_date
 		FROM (SELECT
 				a.*,
 				rownum rnum

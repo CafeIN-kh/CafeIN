@@ -53,12 +53,16 @@ public class PCafeListController {
 	@RequestMapping("/cafein_user/private/private_main_ajax.do")
 	@ResponseBody
 	public Map<String,Object> PCafe_main_ajax(@RequestParam(value="pageNum", defaultValue="1") int currentPage,
-												@RequestParam(value="category", defaultValue="1") int category,
-												HttpSession session ) {
+											  @RequestParam(value="category", defaultValue="1") int category,
+											  @RequestParam(value="keyfield",defaultValue="") String keyfield,
+											  @RequestParam(value="keyword", defaultValue="") String keyword,
+											  HttpSession session ) {
 											//@RequestParam("u_uid") int u_uid 
 		if(log.isDebugEnabled()) {
 			log.debug("currentPage : " + currentPage);
 			log.debug("category : " + category);
+			log.debug("keyfield : " + keyfield + " [사용안함-pagingutil 형식 맞추기 위해 넣음]");
+			log.debug("keyword : " + keyword);
 		}
 		
 		HashMap<String,Object> map = new HashMap<String,Object>();
@@ -71,11 +75,13 @@ public class PCafeListController {
 		map.put("u_uid",u_uid);
 		//디비에서 최신순,조회순,좋아요순,내글보기순으로 정렬하기 위해서 필요
 		map.put("category",category);
+		//사용자가 검색한 키워드 값
+		map.put("keyword", keyword);
 				
 		//카페고리에 따른 총 글의 갯수
 		int count = pcafeService.getRowCount(map);
-
-		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_main_ajax.do");
+		
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_main_ajax.do");
 
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
@@ -95,6 +101,11 @@ public class PCafeListController {
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("list", list);
+		if(category == 4) {
+			//카테고리=4일경우 내글보기. 내글보기 누르면 작성자 삭제가능
+			mapJson.put("category_mywrite", "category_mywrite");
+			System.out.println("category_mywrite put");
+		}
 
 		return mapJson;
 	}

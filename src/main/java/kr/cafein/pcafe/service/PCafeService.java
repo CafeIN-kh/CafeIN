@@ -10,7 +10,9 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.domain.BookmarkCommand;
+import kr.cafein.domain.DeclaredCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
@@ -25,6 +27,14 @@ public interface PCafeService {
 	@Transactional(readOnly=true)
 	public int getRowCount(Map<String,Object> map);
 	public void insert(PCafeCommand pcafe);
+	//private_cafe 정보 삭제 순서
+	public void deleteLikeByPCafe(int pcafe_num);							//private_cafe에 눌려있는 좋아요 모두 삭제
+	public void deleteBookmarkByPCafe(int pcafe_num);						//private_cafe에 눌려있는 즐겨찾기 모두 삭제
+	public void deletePCafeReplyByPCafe(int pcafe_num);						//private_cafe에 달려있는 댓글 모두 삭제
+	public List<PCafeMenuCommand> selectPCafeMenuByPCafe(int pcafe_num);	//private_cafe안의 모든 메뉴 찾기
+	public void deletePCafeMenuLikekByPCafe(int pmenu_num);					//private_cafe_menu에 눌려있는 좋아요 모두 삭제
+	public void deleteMenuByPCafe(int pcafe_num);							//private_cafe안의 해당 메뉴 모두 삭제
+	public void deletePCafe(Map<String,Object> deleteMap);					//해당 private_cafe 정보 삭제
 	
 	//private_detail에서 사용되는 부분
 	@Transactional(readOnly=true)
@@ -50,6 +60,8 @@ public interface PCafeService {
 	public int getRowMenuCount(Map<String,Object> map);
 	public List<PCafeMenuCommand> menuList(Map<String,Object> map);
 	public PCafeMenuCommand selectMenuDetail(int pmenu_num);
+	public void deleteMenu(int pmenu_num);		//private_cafe_menu 해당 메뉴 지우기
+	public void deleteLikeByPCafeMenu(int pmenu_num);	//private_cafe_menu에 눌려있는 좋아요 기록 지우기
 	
 	//private_detail_menu 좋아요
 	public int selectMenuLikeCount(LikeCommand like);
@@ -63,6 +75,9 @@ public interface PCafeService {
 	public void insertReply(PCafeReplyCommand pcafeReply);
 	public void deleteReply(Integer preply_num);
 	
-	public void delete(Integer seq);
+	//private_detail_reply_declared
+	public PCafeReplyCommand selectDeclaredReply(Integer preply_num);
+	public MemberCommand selectDeclaredMember(String u_uid);
+	public void insertDeclaredReply(DeclaredCommand declared);
 
 }

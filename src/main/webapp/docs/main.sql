@@ -67,8 +67,7 @@ create table franchise_reply(
    freply_nickname varchar2(15) not null,
    freply_reg_date date not null,
    constraint franchise_reply_pk primary key (freply_num),
-   constraint franchise_reply_fk1 foreign key (franchise_num) references franchise(franchise_num),
-   constraint franchise_reply_fk2 foreign key (u_uid) references u_user(u_uid)
+   constraint franchise_reply_fk1 foreign key (franchise_num) references franchise(franchise_num)
 );
 
 drop sequence franchise_reply_seq;
@@ -125,8 +124,7 @@ create table private_cafe_reply(
    preply_nickname varchar2(15) not null, 
    preply_reg_date date not null,
    constraint private_cafe_reply_pk primary key (preply_num),
-   constraint private_cafe_reply_fk1 foreign key (pcafe_num) references private_cafe(pcafe_num),
-   constraint private_cafe_reply_fk2 foreign key (u_uid) references u_user(u_uid)
+   constraint private_cafe_reply_fk1 foreign key (pcafe_num) references private_cafe(pcafe_num)
 );
 
 drop sequence private_cafe_reply_seq;
@@ -178,6 +176,7 @@ create table u_like(
    custom_num number,
    fmenu_num number,
    pmenu_num number,
+   like_reg_date date not null,
    constraint u_like_pk primary key (like_num)
 ); 
 
@@ -194,6 +193,7 @@ create table bookmark(
    franchise_num number,
    pcafe_num number,
    custom_num number,
+   bookmark_reg_date date not null,
    constraint bookmark_pk primary key (bookmark_num),
    constraint bookmark_fk1 foreign key (u_uid) references u_user(u_uid), 
    constraint bookmark_fk2 foreign key (franchise_num) references franchise(franchise_num),
@@ -236,8 +236,7 @@ create table customizing_reply(
    creply_nickname varchar2(15) not null,
    creply_reg_date date not null,
    constraint customizing_reply_pk primary key (creply_num),
-   constraint customizing_reply_fk1 foreign key (custom_num) references customizing(custom_num),
-   constraint customizing_reply_fk2 foreign key (u_uid) references u_user(u_uid)
+   constraint customizing_reply_fk1 foreign key (custom_num) references customizing(custom_num)
 );
 
 drop sequence customizing_reply_seq;
@@ -290,25 +289,26 @@ create table P_log(
 drop sequence P_log_seq;
 create sequence P_log_seq;
 
-/* report 테이블 - 게시물 혹은 댓글 신고시 신고한 내역이 저장되는 테이블 
+/* declared 테이블 - 게시물 혹은 댓글 신고시 신고한 내역이 저장되는 테이블 
  * 
  * target_type : 1- 게시글 2- 프랜차이즈 3- 개인카페 댓글 */
-drop table report;
+drop table declared;
 
-create table declear(
+create table declared(
    d_seq number(20) not null,
    d_target_id number(20) not null,
    d_target_path number(20) not null,
-   mem_id varchar2(20) not null, 
-   d_mem_id varchar2(20),
+   d_mem_id varchar2(20) not null, 
+   d_target_mem_id varchar2(20),
    d_reg_date date not null,
    d_content varchar2(200),
-   d_state number(20) not null,
-   constraint report_pk primary key (d_seq)
+   d_state number(20) default(0),
+   constraint declared_pk primary key (d_seq)
 );
 
-drop sequence declear_seq;
-create sequence declear_seq;
+drop sequence declared_seq;
+create sequence declared_seq;
+
 
 /* mlog 테이블 - 회원관리 로그 테이블
  * 

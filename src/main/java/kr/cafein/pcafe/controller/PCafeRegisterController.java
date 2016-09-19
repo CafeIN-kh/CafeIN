@@ -44,10 +44,6 @@ public class PCafeRegisterController {
 		}
 		
 		String u_uid = (String)session.getAttribute("u_uid");
-		//null값이 들어가면 부적합할 열유형 뜸. 
-		//pcafeCommand.setU_uid(u_uid);
-		//일단 세션에 u_uid 없으니 값 박아놓기
-		//String u_uid = "00001";
 		pcafeCommand.setU_uid(u_uid);
 
 		//사업자

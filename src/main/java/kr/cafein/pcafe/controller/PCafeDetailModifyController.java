@@ -87,46 +87,4 @@ public class PCafeDetailModifyController {
 		return map;
 	}
 	
-/*	@RequestMapping(value="/cafein_user/private/pcafe/modify.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute
-							@Valid PCafeCommand pcafeCommand,
-							HttpSession session ) throws Exception{
-
-		if(log.isDebugEnabled()){
-			log.debug("pcafeCommand : " + pcafeCommand);
-		}
-		
-		//해당 카페의 정보 찾아오기(기존 파일 이름 얻어오기 위해서)
-		PCafeCommand pcafe_info = pcafeService.selectPCafe(pcafeCommand.getPcafe_num());
-
-		//사업자
-		String newName="";
-		if(!pcafeCommand.getUpload().isEmpty() ) {
-			System.out.println("첨부파일 있을 경우 파일이름 새로");
-			newName = FileUtil_Private.rename(pcafeCommand.getUpload().getOriginalFilename());
-			//기존에 *표시 붙어있는 대표이미지 이름뒤에 ,를 붙이고 새로운 파일 이름 저장(나중에 js에서 split 후 이미지 가져갈것임)
-			pcafeCommand.setPcafe_img(pcafe_info.getPcafe_img() + "," +newName);
-			System.out.println("첨부파일 있을 경우 파일 이름 저장 : " + pcafe_info.getPcafe_img() + "," + newName);
-		}else {
-			pcafeCommand.setPcafe_img(pcafe_info.getPcafe_img());
-			System.out.println("첨부파일 없을 경우 : " + pcafe_info.getPcafe_img());
-		}
-		
-		//영업시간 시작시간+마감시간 합쳐서 pcafe_time에 담기
-		pcafeCommand.setPcafe_time(pcafeCommand.getPcafe_time_start() + " ~ " + pcafeCommand.getPcafe_time_end());
-
-		//카페수정
-		pcafeService.update(pcafeCommand);
-		System.out.println("수정내용 : " + pcafeCommand.toString());
-		
-		//파일을 upload 폴더에 저장
-		if(!pcafeCommand.getUpload().isEmpty()) {
-			File file = new File (FileUtil_Private.UPLOAD_PATH + "/" +newName);
-			pcafeCommand.getUpload().transferTo(file);
-			FileUtil_Private.createThumbnail(newName, newName, 720, 455);
-		}
-		
-		return "redirect:/cafein_user/private/private_detail.do?pcafe_num=" + pcafeCommand.getPcafe_num();
-	}*/
-
 }

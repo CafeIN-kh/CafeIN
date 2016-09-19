@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
 	App.init();
 	//Login.initLogin();
-	Registration.initRegistration();
+	//Registration.initRegistration();
 	App.initScrollBar();        
 	//PageContactForm.initPageContactForm();
 });

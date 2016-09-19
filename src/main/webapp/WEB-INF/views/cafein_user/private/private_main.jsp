@@ -13,21 +13,25 @@
     </div><!--/breadcrumbs-->
     <!--=== End Breadcrumbs ===-->
     
-   <!--=== Search Block Version 2 ===-->
-    <!-- <div class="search-block-v2">
-        <div class="container">
-            <div class="col-md-6 col-md-offset-3">
-                <h2>Search</h2>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search words with regular expressions ...">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </div>
-        </div>    
-    </div> --><!--/container-->     
-    <!--=== End Search Block Version 2 ===-->
+   	<!--=== Search Block ===-->
+    <div class="search-block">
+		<div class="container">
+			<div class="col-md-6 col-md-offset-3">
+				<form id="pcafe_search">
+					<div class="input-group">
+						<input type="text" id="keyword" name="keyword" class="form-control korean-font" 
+								placeholder="Search words for a cafe name or a tag..." style="border:1px solid #ccc;">
+						<span class="input-group-btn">
+							<button class="btn-u btn-u-lg" type="submit" style="font-size:28px;">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <!--=== End Search Block ===-->
 
     <!--=== Content Part ===-->
     <div class="container content">		
@@ -212,72 +216,6 @@
 		        
 		        <div class="row margin-bottom-20 news-v1">
 		        
-		        	<!-- 내글보기 누르면 삭제버튼 나오도록 하기 -->
-		            <%-- <div class="col-md-4 col-sm-6 easy-block-v1">
-		            	<!-- 삭제버튼 관련 소스, 바로 아래 a태그와 바로 위 easy-bolck-v1 클래스 -->
-		            	<a href="#" class="easy-block-v1-badge rgba-red" style="left:22px;top:25px;text-decoration:none;">
-		            		<i class="fa fa-trash-o"></i> Delete
-		            	</a> 
-		            	  
-		            	<div class="thumbnails thumbnail-style thumbnail-kenburn news-v1-in">
-		                    <div class="thumbnail-img">
-		                        <div class="overflow-hidden">
-		                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg"/>
-		                        </div>
-		                        <a class="btn-more hover-effect" href="${pageContext.request.contextPath}/cafein_user/private/private_detail.do" style="text-decoration:none;">read more +</a>                   
-		                    </div>
-		                    <div class="caption">
-		                    	<h3 class="font-normal korean-font">Cafe O Clock</h3>
-	                        	<ul class="list-unstyled list-inline blog-info">
-		                            <li class='korean-font'>
-		                            	<p style="max-height:43px;min-height:43px;overflow:hidden;margin-bottom:0px;">
-		                            		<i class="fa fa-tags"></i> 
-		                            		사업자가 내글보기를 누르면 카페 삭제하는 버튼 나오도록 하기!
-		                            	</p>
-		                            </li>
-		                        </ul>
-		                    </div>
-		                    <ul class="list-inline news-v1-info no-margin-bottom" style="margin-top:15px;">
-	                            <li><i class="fa fa-clock-o"></i> 2016-08-17</li>
-	                            <li>|</li>
-	                            <li><i class="fa fa-comments-o"></i> 14</li>
-	                            <li>|</li>
-	                            <li><i class="fa fa-eye"></i> 10</li>
-	                            <li class="pull-right"><i class="fa fa-heart"></i> 239</li>
-	                        </ul>
-		                </div>
-		            </div>
-		            
-		            <div class="col-md-4 col-sm-6">
-		            	<div class="thumbnails thumbnail-style thumbnail-kenburn news-v1-in">
-		                    <div class="thumbnail-img">
-		                        <div class="overflow-hidden">
-		                            <img class="img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg"/>
-		                        </div>
-		                        <a class="btn-more hover-effect" href="${pageContext.request.contextPath}/cafein_user/private/private_detail.do" style="text-decoration:none;">read more +</a>                   
-		                    </div>
-		                    <div class="caption">
-		                    	<h3 class="font-normal korean-font">Cafe O Clock</h3>
-	                        	<ul class="list-unstyled list-inline blog-info">
-		                            <li class='korean-font'>
-		                            	<p style="max-height:43px;min-height:43px;overflow:hidden;margin-bottom:0px;">
-		                            		<i class="fa fa-tags"></i> 
-		                            		강서구, 우장산, 분위기짱, 스터디
-		                            	</p>
-		                            </li>
-		                        </ul>
-		                    </div>
-		                    <ul class="list-inline news-v1-info no-margin-bottom" style="margin-top:15px;">
-	                            <li><i class="fa fa-clock-o"></i> 2016-08-17</li>
-	                            <li>|</li>
-	                            <li><i class="fa fa-comments-o"></i> 14</li>
-	                            <li>|</li>
-	                            <li><i class="fa fa-eye"></i> 10</li>
-	                            <li class="pull-right"><i class="fa fa-heart"></i> 239</li>
-	                        </ul>
-		                </div>
-		            </div> --%>
-		            
 		            <!-- 목록 출력 -->
 					<div id="output" class="col-md-12 col-sm-6"></div>
 					<div class="paging_button" style="display:none;">
@@ -292,25 +230,6 @@
 		        </div>
 		        <!-- END Recent Works -->   
 
-                
-                <!--Pagination-->
-                <!-- <div class="text-center">
-                    <ul class="pagination">
-                        <li><a href="#">«</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>                                                            
-                </div> -->
-                <!-- <br><br>
-        		<button type="button" class="btn-u btn-block">Load More</button> -->
-                <!-- End Pagination -->
             </div>
             <!-- End Left Sidebar -->
 

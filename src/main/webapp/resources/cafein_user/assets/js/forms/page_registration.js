@@ -1,5 +1,5 @@
 var Registration = function () {
-//로그인에서 사용,개인카페 신고 모달에서 사용
+//회원등록에서 사용,개인카페 신고 모달에서 사용
     return {
         
         //Registration Form
@@ -43,18 +43,12 @@ var Registration = function () {
 	                {
 	                    required: true
 	                },
-	                mem_id:
-	                {
-	                	required: true
-	                },
-	                d_mem_id:
-	                {
-	                	required: true
-	                },
+	                /*신고모달*/
 	                d_content:
 	                {
 	                	required: true
 	                }          
+	                /*신고모달*/
 	            },
 	            
 	            // Messages for form validation
@@ -90,19 +84,13 @@ var Registration = function () {
 	                {
 	                    required: 'You must agree with Terms and Conditions'
 	                },
-	                mem_id:
-	                {
-	                	required: 'Please select your name'
-	                },
-	                d_mem_id:
-	                {
-	                	required: 'Please select your name'
-	                },
+	                /*신고모달*/
 	                d_content:
 	                {
 	                	required: 'Please select your declear content'
 	                } 
-	            },                  
+	                /*신고모달*/
+	            },  
 	            
 	            // Do not change code below
 	            errorPlacement: function(error, element)

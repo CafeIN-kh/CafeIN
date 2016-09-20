@@ -9,7 +9,7 @@
 						<div class="profile-pic">
 						   <img src="${pageContext.request.contextPath}/resources/cafein_admin/img/profile-pics/1.jpg" alt="">
 						</div>
-
+						
 						<div class="profile-info">
 							Malinda Hollaway <i class="md md-arrow-drop-down"></i>
 						</div>
@@ -24,47 +24,41 @@
 						<li><a href=""><i class="md md-history"></i> Logout</a></li>
 					</ul>
 				</div>
-				<ul class="main-menu">
-					<li class="active"><a href="index.html"><i
+				<ul class="main-menu">   
+					<li class="active"><a href="${pageContext.request.contextPath }/admin/main.do"><i
 							class="md md-home"></i> Home</a></li>
 					<li class="sub-menu"><a href=""><i
 							class="md md-perm-identity"></i> management</a>
 
 						<ul>
-							<li><a href='memberlist.do'>User Data Tables</a></li>
-							<li><a href='declaredlist.do'>report Board</a></li>
+						<!-- 같은경로  -->
+						
+							<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">User Data Tables</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/declaredlist.do">report Board</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href=""><i
 							class="md md-my-library-books"></i> Franchise Write & inquiry</a>
 
 						<ul>
-							<li><a href="fr-board_.html"> Franchise</a></li>
-							<li><a href="fr-board2_.html"> Franchise Menu</a></li>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do"> Franchise</a></li>
+							<li><a href=""> Franchise Menu</a></li>
 						</ul></li>
-					<!--  <li class="sub-menu">
-                               
-                              <a href=""><i class="md md-my-library-books"></i> Franchise Write & inquiry</a>
-                				<ul>
-                                    <li><a href="fr-board_.html">User Data Tables</a></li>
-                                    <li><a href="fr_board2.html">report Board</a></li>
-                                </ul>
-                               
-                            </li> -->
+					
 					<li class="sub-menu"><a href=""><i
 							class="md md-now-widgets"></i>Cafe Inquiry</a>
 
 						<ul>
-							<li><a href="private Cafe.html">Private Cafe</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
 							<li><a class="active" href="Customizing_.html">Customizing</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>
-							Notice Write & inquiry</a>
+							Notice & Event</a>
 						<ul>
-							<li><a href="notice2_.html">Notice</a></li>
-							<li><a class="active" href="notice-write_.html">Notice-Write</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/List.do">Notice</a></li>
+							<li><a class="active" href="${pageContext.request.contextPath}/cafein_admin/event/List.do">Event</a></li>
 						</ul></li>
 
-					<li class="active"><a href="qna2_.html"><i
+					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
 							class="md md-content-copy"></i> Q&A Pages</a></li>
 				</ul>
 			</div>

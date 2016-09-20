@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseMenuCommand;
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
 
-@Repository
+@Transactional
 public interface FranchiseService {
 	public List<FC_FranchiseCommand> list();
 	public int getRowCount(int franchise_num);

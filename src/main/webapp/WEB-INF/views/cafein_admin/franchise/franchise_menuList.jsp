@@ -38,12 +38,12 @@
 
 			<div class="pmo-stat">
 				<h2 class="m-0 c-white">${franchise.franchise_visit}</h2>
-				총 방문자 수
+				Total Visit
 			</div>
 		</div>
 
 		<div class="pmo-block pmo-contact hidden-xs">
-			<h2>브랜드 상세</h2>
+			<h2>Brand Info</h2>
 
 			<ul>
 				<li><i class="md md-phone"></i> ${franchise.franchise_num}</li>
@@ -61,8 +61,8 @@
 
 	<div class="pm-body clearfix">   
 		<ul class="tab-nav tn-justified">  
-			<li class="waves-effect"><a href="franchise_brandDetail.do?franchise_num=${franchise.franchise_num}">브랜드상세</a></li>
-			<li class="waves-effect"><a href="franchise_menuList.do?franchise_num=${franchise.franchise_num}">메뉴</a></li>
+			<li class="waves-effect"><a href="franchise_brandDetail.do?franchise_num=${franchise.franchise_num}">Brand Info Detail</a></li>
+			<li class="waves-effect"><a href="franchise_menuList.do?franchise_num=${franchise.franchise_num}">Menu</a></li>
 		</ul>
 
 		<div class="pmb-block">
@@ -91,8 +91,8 @@
 					</a>
 
 						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="franchise_menuWrite.do?franchise_num=${franchise.franchise_num}">메뉴 추가</a></li>
-							<li><a href="">Settings</a></li>
+							<li><a href="franchise_menuWrite.do?franchise_num=${franchise.franchise_num}">Insert Cafe Menu</a></li>
+							<li><a href="">Reload Settings</a></li>
 						</ul></li>
 				</ul>
 			</div>

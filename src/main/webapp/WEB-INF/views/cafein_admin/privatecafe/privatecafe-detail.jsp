@@ -7,7 +7,7 @@
 	<div class="container">
 
 		<div class="block-header">
-			<h2>
+			<!-- <h2>
 				개인카페 정보 조회 및 수정하기 <small>개인카페 정보를 조회하고 수정할 수 있는 메뉴입니다.</small>
 			</h2>
 
@@ -21,7 +21,7 @@
 						<li><a href="">Account Settings</a></li>
 						<li><a href="">Other Settings</a></li>
 					</ul></li>
-			</ul>
+			</ul> -->
 		</div>
 
 		<div class="card" id="profile-main">
@@ -47,14 +47,14 @@
 
 					<div class="pmo-stat">
 						<%-- <c:forEach items="${list1 }" var="list1"> --%>
-						<h6 class="m-0 c-white">${privateCommand.pcafe_visit}<br>조회수
+						<h6 class="m-0 c-white">${privateCommand.pcafe_visit}<br>Total Visit
 						</h6>
 
 						<%-- </c:forEach> --%>
 					</div>
 					<div class="m-t-10">
 						<button type="submit" class="btn btn-primary btn-sm">
-							save<i class="md md-insert-photo"></i>
+							Save<i class="md md-insert-photo"></i>
 						</button>
 
 						<!-- <a href="profile-connections.html">&nbsp;&nbsp;&nbsp;Cancel</a> -->
@@ -65,7 +65,7 @@
 				</div>
 
 				<div class="pmo-block pmo-contact hidden-xs">
-					<h5>카페정보</h5>
+					<h2>Private Cafe Info</h2>
 					<%-- <c:forEach items="${list1 }" var="list1"> --%>
 					<ul>
 						<li><i class="socicon socicon-twitter"></i>
@@ -96,7 +96,7 @@
 				</div>
 
 				<div class="pmo-block pmo-items hidden-xs">
-					<h5>좋아요를 눌른 아이디</h5>
+					<h5>Following User</h5>
 
 					<div class="pmob-body">
 						<div class="row">
@@ -119,16 +119,16 @@
 			<div class="pm-body clearfix">
 				<ul class="tab-nav tn-justified">
 					<li class="active waves-effect"><a
-						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">개인카페</a></li>
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
 					<li class="waves-effect"><a
-						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privateCommand.pcafe_num}">개인카페메뉴</a></li>
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privateCommand.pcafe_num}">Cafe Menu</a></li>
 				</ul>
 
 
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-equalizer m-r-5"></i> 개인카페명
+							<i class="md md-equalizer m-r-5"></i> Private Cafe Name
 						</h2>
 
 						<ul class="actions">
@@ -137,7 +137,7 @@
 							</a>
 
 								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a data-pmb-action="edit" href="">수정하기</a></li>
+									<li><a data-pmb-action="edit" href="">Modify</a></li>
 								</ul></li>
 						</ul>
 					</div>
@@ -160,7 +160,7 @@
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-person m-r-5"></i> 카페정보
+							<i class="md md-person m-r-5"></i> Cafe Foreign Info
 						</h2>
 
 						<ul class="actions">
@@ -169,22 +169,22 @@
 							</a>
 
 								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a data-pmb-action="edit" href="">수정하기</a></li>
+									<li><a data-pmb-action="edit" href="">Modify</a></li>
 								</ul></li>
 						</ul>
 					</div>
 					<div class="pmbb-body p-l-30">
 						<div class="pmbb-view">
 							<dl class="dl-horizontal">
-								<dt>카페 위치</dt>
+								<dt>Cafe Location</dt>
 								<dd>${privateCommand.pcafe_address}</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt>카페 전화번호</dt>
+								<dt>Cafe Phone-Number</dt>
 								<dd>${privateCommand.pcafe_phone}</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt>카페 영업시간</dt>
+								<dt>Cafe office hours</dt>
 								<dd>${privateCommand.pcafe_time}</dd>
 							</dl>
 							<!--  <dl class="dl-horizontal">
@@ -212,7 +212,7 @@
 
 						<div class="pmbb-edit">
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페 위치</dt>
+								<dt class="p-t-10">Cafe Location</dt>
 								<dd>
 									<div class="fg-line">
 										<input type="text" class="form-control"
@@ -223,7 +223,7 @@
 								</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페 전화번호</dt>
+								<dt class="p-t-10">Cafe Phone-Number</dt>
 								<dd>
 									<div class="fg-line">
 										<input type="text" class="form-control"
@@ -232,7 +232,7 @@
 									</div>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페영업시간</dt>
+								<dt class="p-t-10">Cafe office hours</dt>
 								<dd>
 									<div class="fg-line">
 										<input type="text" class="form-control"
@@ -267,7 +267,7 @@
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-phone m-r-5"></i> 카페내용
+							<i class="md md-phone m-r-5"></i> Cafe Info
 						</h2>
 
 						<ul class="actions">
@@ -276,23 +276,23 @@
 							</a>
 
 								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a data-pmb-action="edit" href="">수정하기</a></li>
+									<li><a data-pmb-action="edit" href="">Modify</a></li>
 								</ul></li>
 						</ul>
 					</div>
 					<div class="pmbb-body p-l-30">
 						<div class="pmbb-view">
 							<dl class="dl-horizontal">
-								<dt>카페소개글</dt>
+								<dt>Introduce Cafe</dt>
 								<dd>${privateCommand.pcafe_introduce}</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt>카페 URL</dt>
+								<dt>The Cafe URL</dt>
 								<dd>${privateCommand.pcafe_url}</dd>
 							</dl>
 
 							<dl class="dl-horizontal">
-								<dt>카페 해시태그</dt>
+								<dt>Hash_Tag With Cafe</dt>
 								<dd>
 									<div class="pmob-body">
 										<div class="row">
@@ -316,7 +316,7 @@
 
 						<div class="pmbb-edit">
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페소개글</dt>
+								<dt class="p-t-10">Introduce Cafe</dt>
 								<dd>
 									<div class="fg-line">
 										<input type="text" class="form-control"
@@ -326,7 +326,7 @@
 								</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페 URL</dt>
+								<dt class="p-t-10">The Cafe URL</dt>
 								<dd>
 									<div class="fg-line">
 										<input type="email" class="form-control"
@@ -337,7 +337,7 @@
 							</dl>
 
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">카페 해시태그</dt>
+								<dt class="p-t-10">Hash_Tag With Cafe</dt>
 								<dd>
 									<div class="fg-line">
 										<div class="pmob-body">

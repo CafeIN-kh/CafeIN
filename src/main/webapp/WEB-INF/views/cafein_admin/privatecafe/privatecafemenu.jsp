@@ -7,58 +7,12 @@
                 <div class="container">
                     
                     <div class="block-header">
-                        <h2>개인카페 정보 조회 및 수정하기 <small>개인카페 정보를 조회하고 수정할 수 있는 메뉴입니다.</small></h2>
-                        
-                        <ul class="actions m-t-20 hidden-xs">
-                            <li class="dropdown">
-                                <a href="" data-toggle="dropdown">
-                                    <i class="md md-more-vert"></i>
-                                </a>
-                    
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="">Privacy Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Account Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Other Settings</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                     
                     </div>
                     
                     <div class="card" id="profile-main">
                         <div class="pm-overview c-overflow">
-                          <%--   <div class="pmo-pic">
-                                <div class="p-relative">
-                                    <a href="">
-                                        <img src="${pageContext.request.contextPath}/upload/${privateCommandmenu.pcafe_img}" alt=""> 
-                                    </a> <div class="col-sm-1"> 
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <span class="btn btn-primary btn-file m-r-10">
-                                            <span class="fileinput-new"><i class="md md-insert-photo"></i></span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" name="...">
-                                        </span>
-                                        <span class="fileinput-filename"></span>
-                                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
-                                    </div>
-                                </div>
-                                    
-                              
-                                    
-
-                                </div>
-                            
-                                
-                                <div class="pmo-stat">
-                                    <h2 class="m-0 c-white"> ${privateCommandmenu.pcafe_visit}</h2>
-                                    	&nbsp;&nbsp;&nbsp; 좋아요
-                                </div>
-                            </div> --%>
+                        
                             <div class="pmo-pic">
                      
 							<div class="fileinput fileinput-new" data-provides="fileinput">
@@ -80,21 +34,18 @@
 
                      <div class="pmo-stat">
                      <%-- <c:forEach items="${list1 }" var="list1"> --%>
-                        <h6 class="m-0 c-white">${privateCommandmenu.pcafe_visit}<br>조회수</h6>
+                        <h6 class="m-0 c-white">${privateCommandmenu.pcafe_visit}<br>Total Visit</h6>
                    
                      <%-- </c:forEach> --%></div>
                      <div class="m-t-10">
 								<button type="submit" class="btn btn-primary btn-sm">save<i class="md md-insert-photo"></i></button>
 
-								<!-- <a href="profile-connections.html">&nbsp;&nbsp;&nbsp;Cancel</a> -->
-								<!-- <button data-pmb-action="reset" class="btn btn-link btn-sm"><a href="profile-connections.html">Cancel</a></button> 
-										 -->
-
+								
 							</div>
                   </div>
                             
                             <div class="pmo-block pmo-contact hidden-xs">
-                                <h2>Contact</h2>
+                                <h2>Private Cafe Info</h2>
                                 
                                 <ul>
                                     <li><i class="md md-phone"></i><h5> ${privateCommandmenu.pcafe_name}</h5></li>
@@ -113,9 +64,9 @@
                             </div>
                             
                             <div class="pmo-block pmo-items hidden-xs">
-                                <h2>Connections</h2>
+                               
                                 
-                                <h5>좋아요를 눌른 아이디</h5>
+                                <h5>Following User</h5>
                                 
                                 <div class="pmob-body">
                                     <div class="row">
@@ -137,15 +88,15 @@
                         
                         <div class="pm-body clearfix">
                             <ul class="tab-nav tn-justified">
-                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privateCommandmenu.pcafe_num}">개인카페</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privateCommandmenu.pcafe_num}">개인카페메뉴</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privateCommandmenu.pcafe_num}">Private Cafe</a></li>
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privateCommandmenu.pcafe_num}">Cafe Menu</a></li>
                             </ul>
                             
                             <div class="pmb-block">
                                 <div class="p-header">
                                     <ul class="p-menu">
                                         
-                                        <li><a href=""><i class="md md-people hidden-xs"></i> 카페메뉴 검색</a></li>
+                                        <li><a href=""><i class="md md-people hidden-xs"></i> Search Menu</a></li>
                                         <li class="pm-search">
                                             <div class="pms-inner">
                                                 <i class="md md-search"></i>
@@ -188,7 +139,7 @@
                                             </div>
                                             
                                             <div class="c-footer">
-                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${listmenu.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> 수정하기</button></a>
+                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${listmenu.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
                                             </div>
                                         </div>
                                     </div>

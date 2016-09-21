@@ -11,28 +11,13 @@
 			<div class="block-header">
 
 
-				<ul class="actions">
-					<li><a href=""> <i class="md md-trending-up"></i>
-					</a></li>
-					<li><a href=""> <i class="md md-done-all"></i>
-					</a></li>
-					<li class="dropdown"><a href="" data-toggle="dropdown"> <i
-							class="md md-more-vert"></i>
-					</a>
-
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="">Refresh</a></li>
-							<li><a href="">Manage Widgets</a></li>
-							<li><a href="">Widgets Settings</a></li>
-						</ul></li>
-				</ul>
 
 			</div>
 
 			<div class="card">
 				<div class="card-header">
 					<h2>
-						카페메뉴 수정하기 <small>개인카페 메뉴를 수정할 수 있습니다..</small>
+						Modify Private Cafe Menu <small><br>Do Modify Menu</small>
 					</h2>
 				</div>
 
@@ -94,21 +79,12 @@
 										data-dismiss="fileinput">Remove</a>
 								</div>
 							</div>
-							<div class="m-t-10">
-								<button type="submit" class="btn btn-primary btn-sm">Save</button>
-
-								<a href="profile-connections.html">&nbsp;&nbsp;&nbsp;Cancel</a>
-								<!-- <button data-pmb-action="reset" class="btn btn-link btn-sm"><a href="profile-connections.html">Cancel</a></button> 
-										 -->
-
+							<br>
+							<div>
+								<button type="submit" class="btn btn-primary btn-sm2" >Save</button>
+								&nbsp;&nbsp;<a href="profile-connections.html" class="btn btn-info2" style="margin-top:-9px; margin-right:250px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel</a>
+								
 							</div>
-
-
-
-
-							<br /> <br />
-
-
 						</div>
 
 						<div class="col-sm-4">

@@ -17,6 +17,9 @@
 	<context:component-scan base-package="kr.cafein.main.controller"/>
 	<context:component-scan base-package="kr.cafein.pcafe.controller"/>
 	<context:component-scan base-package="kr.cafein.franchise.controller"/>
+	<context:component-scan base-package="kr.cafein.qna.controller"/>
+	<context:component-scan base-package="kr.cafein.customizing.controller"/>
+	
 	<context:component-scan base-package="kr.cafein.admin.franchise.controller"/>
 	<context:component-scan base-package="kr.cafein.admin.qna.controller"/>
 	<context:component-scan base-package="kr.cafein.admin.notice.controller"/>

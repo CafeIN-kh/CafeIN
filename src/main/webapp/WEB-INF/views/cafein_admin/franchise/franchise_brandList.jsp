@@ -9,8 +9,8 @@
 	<div class="card">
 		<div class="card-header" style="padding-bottom: 0px;">
 			<h2>
-				관리자페이지 <small>프렌차이즈 소개 페이지입니다.</small>
-			    <a style="float: right" href="${pageContext.request.contextPath}/cafein_admin/notice/write.do"><i class="md md-border-color"></i></a>
+				FranchiseCafe <small>FranchiseCafe Controller Page</small>
+			    <a style="float: right" href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandWrite.do"><i class="md md-border-color"></i></a>
 			</h2>
 		</div>
 

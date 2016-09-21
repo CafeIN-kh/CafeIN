@@ -7,23 +7,8 @@
 	<section id="content">
 		<div class="container">
 			<div class="block-header">
-				<h2>Member management</h2>
+				
 
-				<ul class="actions">
-					<li><a href=""> <i class="md md-trending-up"></i>
-					</a></li>
-					<li><a href=""> <i class="md md-done-all"></i>
-					</a></li>
-					<li class="dropdown"><a href="" data-toggle="dropdown"> <i
-							class="md md-more-vert"></i>
-					</a>
-
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="">Refresh</a></li>
-							<li><a href="">Manage Widgets</a></li>
-							<li><a href="">Widgets Settings</a></li>
-						</ul></li>
-				</ul>
 			</div>
 
 
@@ -32,7 +17,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2>
-						회원 관리 <small>회원관리 페이지입니다.</small>
+						Member Management <small>Member Management Page</small><br><br>
 					</h2>
 				</div>
 				
@@ -44,11 +29,11 @@
 						<thead>
 							<tr>
 								<!-- data-type="numeric"  -->
-								<th data-column-id="id" data-identifier="true">이름</th>
-								<th data-column-id="sender">이메일</th>
-								<th data-column-id="received" data-order="desc">회원등록일</th>
+								<th data-column-id="id" data-identifier="true">User Name</th>
+								<th data-column-id="sender">Email</th>
+								<th data-column-id="received" data-order="desc">User Join Reg_Date</th>
 								<th data-column-id="commands" data-formatter="commands"
-									data-sortable="false">관리</th>
+									data-sortable="false">Modify & Delete</th>
 							</tr>
 						</thead>
 						<tbody>

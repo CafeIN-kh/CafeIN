@@ -55,6 +55,15 @@
 		}
 	}, 0);
 </script>
+<script type="text/javascript">
+	setTimeout(function () { // 0초 후에 body에 script를 넣어줘라
+		/* 구글 map api 이용. key=구글의 api 키 값을 넣어 준것. initCafeINMap은 private_detail_map.js에서 부름 */
+		if(document.location.pathname=="/CafeIN/cafein_user/qna/qna.do"){
+			$('body').append('<script async defer src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyBBAlmuTlr7ouP-hD79meE6RP7lJ8dW0Ks&signed_in=true&callback=initMap\"><\/script>');
+		}
+	}, 0);
+</script>
+
 
 <!-- <script type="text/javascript">
     jQuery(document).ready(function() {

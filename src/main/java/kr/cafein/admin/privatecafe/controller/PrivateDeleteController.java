@@ -17,14 +17,14 @@ public class PrivateDeleteController {
 	@Resource
 	private PrivateService privateService;
 	
-	@RequestMapping("/admin/delete.do")
-	public String submit(@RequestParam("seq") int seq)throws Exception{
+	@RequestMapping("/admin/privatecafe/delete.do")
+	public String submit(@RequestParam("pcafe_num") int pcafe_num)throws Exception{
 		
 		if(log.isDebugEnabled()){
-			log.debug("seq : "+seq);
+			log.debug("pcafe_num : "+pcafe_num);
 		}
 		
-		privateService.delete(seq);
+		privateService.delete(pcafe_num);
 		
 		return "redirect:/admin/adminPrivateCafe.do";
 		

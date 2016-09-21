@@ -13,13 +13,13 @@
 <div class="card">
 	<div class="card-header">
 		<h2>
-			글 작성 <small>프렌차이즈 카페를 등록합니다.</small>
+			FranchiseCafe Insert <small>FranchiseCafe Inset Page</small>
 		</h2>
 	</div>
 
 	<div class="card-body card-padding">
 
-		<p class="m-b-25 m-t-25 c-black f-500">프렌차이즈 카페 관리</p>
+		<p class="m-b-25 m-t-25 c-black f-500">FranchiseCafe Controller</p>
 	
 
 		<div class="form-group fg-float">

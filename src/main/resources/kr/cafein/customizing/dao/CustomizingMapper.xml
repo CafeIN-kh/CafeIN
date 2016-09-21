@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.cafein.customizing.dao.CustomizingMapper">  
+    	<!--검색된 글만 가져오기 페이징처리하고  -->
+      <select id="searchList" parameterType="map" resultType="customizingCommand">
+      select c.* ,franchise_name
+	  from(
+      SELECT *
+      FROM (SELECT 
+            a.*,
+            rownum rnum 
+           FROM (SELECT * FROM customizing 
+           <where>
+              <if test="keyword !='' and keyfield=='custom_name'">
+                 custom_name like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='custom_hash_tag'">
+                 custom_hash_tag like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='custom_recipe'">
+                 custom_recipe like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword =='' and keyfield =='' and u_uid !='' and custom_visit == 4">
+                 u_uid like '%' || #{u_uid} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='all' ">
+                 custom_name like '%' || #{keyword} || '%' or
+                 custom_hash_tag like '%' || #{keyword} || '%' or
+                 custom_recipe like '%' || #{keyword} || '%'
+              </if>
+           </where>
+                     ORDER BY custom_num DESC)a)
+                     ) c join franchise f
+					 on (c.franchise_num = f.franchise_num) 
+      <![CDATA[
+      WHERE rnum >= #{start} AND rnum <= #{end}
+      ]]>
+   </select>
+   
+   <!-- 검색된 수에 대한 count -->
+   <select id="getRowCount" parameterType="map" resultType="integer">
+      SELECT count(*) FROM customizing
+      <where>
+              <if test="keyword !='' and keyfield=='custom_name'">
+                 custom_name like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='custom_hash_tag'">
+                 custom_hash_tag like '%' || #{keyword} || '%'
+              </if>
+              <if test="keyword !='' and keyfield=='custom_recipe'">
+                 custom_recipe like '%' || #{keyword} || '%'
+              </if>
+                 <if test="keyword !='' and keyfield=='all'">
+                 custom_name like '%' || #{keyword} || '%' or
+                 custom_hash_tag like '%' || #{keyword} || '%' or
+                 custom_recipe like '%' || #{keyword} || '%'
+              </if>
+           </where>   
+   </select>
+   
+   <!-- 페이징된 글 가져오기 10개씩-->
+   <select id="pagingList" parameterType="map" resultType="customizingCommand">
+   		SELECT 
+			CUSTOM_NUM,
+			FRANCHISE_NUM,
+			U_UID,
+			CUSTOM_NAME,
+			CUSTOM_INTRODUCE,
+			CUSTOM_RECIPE,
+			CUSTOM_IMG,
+			CUSTOM_HASH_TAG,
+			CUSTOM_VISIT,
+			CUSTOM_REG_DATE
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT 
+			  			*
+			  		FROM customizing)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end} 
+		]]>
+			
+   </select>
+   
+      <select id="pagingVisitList" parameterType="map" resultType="customizingCommand">
+   		SELECT 
+			CUSTOM_NUM,
+			FRANCHISE_NUM,
+			U_UID,
+			CUSTOM_NAME,
+			CUSTOM_INTRODUCE,
+			CUSTOM_RECIPE,
+			CUSTOM_IMG,
+			CUSTOM_HASH_TAG,
+			CUSTOM_VISIT,
+			CUSTOM_REG_DATE
+		FROM (SELECT a.*,rownum rnum FROM (SELECT * FROM customizing order by custom_visit desc)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <select id="pagingLikeList" parameterType="map" resultType="customizingCommand">
+		select b.*, rownum rnum5 from
+		(select a.*,rownum rnum from
+		(SELECT 
+		cus.*,COALESCE(c,0) as myCount from customizing cus
+		left join (select custom_num,count(*)c from u_like
+		group by custom_num) e on cus.custom_num = e.custom_num)a)b
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+		order by MYCOUNT desc
+   </select>
+   
+      <select id="pagingSearchLikeList" parameterType="map" resultType="customizingCommand">
+				select c.* from 
+					(select b.*,rownum rnum from
+					(select a.* from
+					(SELECT cus.*,COALESCE(c,0) as myCount from customizing cus left join 
+					(select custom_num,count(*)c from u_like group by custom_num) e on cus.custom_num = e.custom_num)a)b	
+				<where>
+	              <if test="keyword !='' and keyfield=='custom_name'">
+	                 custom_name like '%' || #{keyword} || '%'
+	              </if>
+	              <if test="keyword !='' and keyfield=='custom_hash_tag'">
+	                 custom_hash_tag like '%' || #{keyword} || '%'
+	              </if>
+	              <if test="keyword !='' and keyfield=='custom_recipe'">
+	                 custom_recipe like '%' || #{keyword} || '%'
+	              </if>
+                 <if test="keyword !='' and keyfield=='all'">
+	                 custom_name like '%' || #{keyword} || '%' or
+	                 custom_hash_tag like '%' || #{keyword} || '%' or
+	                 custom_recipe like '%' || #{keyword} || '%'
+	             </if>
+	             <if test="custom_visit == 4">
+	             and u_uid like #{u_uid} order by custom_num desc)c
+	             </if>
+	           </where>
+	            <if test="custom_visit == 2">
+				order by custom_visit desc)c
+				</if>
+				<if test="custom_visit == 3">
+				order by MYCOUNT desc)c
+				</if>
+				  <![CDATA[
+			      WHERE rnum >= #{start} AND rnum <= #{end}
+		      ]]>
+   </select>
+   
+</mapper>

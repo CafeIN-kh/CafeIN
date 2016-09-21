@@ -36,13 +36,41 @@
 							<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">User Data Tables</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/declaredlist.do">report Board</a></li>
 						</ul></li>
-					<li class="sub-menu"><a href=""><i
-							class="md md-my-library-books"></i> Franchise Write & inquiry</a>
+						
+						
+						
+						
+						
+						<li class="sub-menu"><a href=""><i
+							class="md md-now-widgets"></i> Cafe Management</a>
 
 						<ul>
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do"> Franchise</a></li>
-							<li><a href=""> Franchise Menu</a></li>
+						<!-- 같은경로  -->
+						
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
+							<li><a href="">Customizing Cafe</a></li>
+							
+							
 						</ul></li>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+			<%-- 			
+						
+					<li class="active"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do"><i
+							class="md md-my-library-books"></i> Franchise Write & inquiry</a></li>
+
+						
 					
 					<li class="sub-menu"><a href=""><i
 							class="md md-now-widgets"></i>Cafe Inquiry</a>
@@ -50,16 +78,23 @@
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
 							<li><a class="active" href="Customizing_.html">Customizing</a></li>
-						</ul></li>
+						</ul></li> --%>
+						
+						
+						
+						
 					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>
-							Notice & Event</a>
+							Notice & QnA</a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/List.do">Notice</a></li>
 							<li><a class="active" href="${pageContext.request.contextPath}/cafein_admin/event/List.do">Event</a></li>
-						</ul></li>
-
+							<li><a class="active" href="${pageContext.request.contextPath}/cafein_admin/qna/List.do">Q&A Pages</a></li>
+						</ul>
+						
+						</li>
+<%-- 
 					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
-							class="md md-content-copy"></i> Q&A Pages</a></li>
+							class="md md-content-copy"></i> Q&A Pages</a></li> --%>
 				</ul>
 			</div>
 		</div>

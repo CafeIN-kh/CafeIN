@@ -59,7 +59,9 @@
 												   kr.cafein.admin.event.domain,
 												   kr.cafein.admin.notice.domain,
 												   kr.cafein.admin.qna.domain,
-												   kr.cafein.admin.privatecafe.domain"/>
+												   kr.cafein.admin.privatecafe.domain,
+												   kr.cafein.qna.domain,
+												   kr.cafein.customizing.domain"/>
 
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -72,7 +74,9 @@
 											kr.cafein.admin.event.dao,
 											kr.cafein.admin.notice.dao,
 											kr.cafein.admin.qna.dao,
-											kr.cafein.admin.privatecafe.dao"/>
+											kr.cafein.admin.privatecafe.dao,
+											kr.cafein.qna.dao,
+											kr.cafein.customizing.dao"/>
 
 										
 	</bean>

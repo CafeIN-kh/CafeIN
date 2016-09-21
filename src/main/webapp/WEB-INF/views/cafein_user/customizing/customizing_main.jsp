@@ -1,265 +1,233 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-		<!--=== Breadcrumbs ===-->
-		<div class="breadcrumbs">
-			<div class="container">
-				<h1 class="pull-left">Customizing</h1>
-				<ul class="pull-right breadcrumb">
-					<li><a href="${pageContext.request.contextPath}/cafein_user/main/main.do">Home</a></li>
-					<li class="active">Customizing</li>
+    
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+	<div class="container">
+		<h1 class="pull-left">Customizing</h1>
+		<ul class="pull-right breadcrumb">
+			<li><a href="${pageContext.request.contextPath}/cafein_user/main/main.do">Home</a></li>
+			<li class="active">Customizing</li>
+		</ul>
+	</div>
+</div>
+<!--/breadcrumbs-->
+
+<div class="search-block parallaxBg">
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
+			<form action="customizing_list.do" class="sky-form page-search-form">
+			<div class="input-group">
+			<div>
+			<select id="selectBox" name="keyfield" class="btn-u" style="float:left; padding:8; height:48px; width:80px;">
+						<option value="all">전체</option>
+						<option value="custom_name">커스텀 제목</option>
+						<option value="custom_recipe">레시피</option>
+						<option value="custom_hash_tag">해쉬태그</option>
+			</select>
+				<input type="text" class="form-control" name="keyword" id="keyword" 
+					placeholder="Search words with regular expressions ..." style= "width:379px;">
+			</div>			
+			<span class="input-group-btn">
+				<button id="btnOK" class="btn-u btn-u-lg" type="submit" style="float:left; padding:8; height:48px; width:80px;">
+					<i class="fa fa-search"></i>
+				</button>
+			</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--/container-->
+
+<div class="cube-portfolio container">
+
+		<div class="col-md-12">
+			<div class="btn-group" style="float: right; padding: 0 0 10px 10px;">
+		<button type="button" class="btn-u korean-font" data-toggle="modal"
+	           		data-target="#responsive" >
+			카페 등록 
+		</button>
+	</div>
+	<div class="btn-group" style="float: right;">
+				<button type="button" class="btn-u dropdown-toggle korean-font"
+					data-toggle="dropdown" aria-expanded="false"><div id="pcafe_category">
+					정렬하기 <span class="caret"></span></div>
+				</button>
+				<ul class="dropdown-menu">
+					<li class="korean-font"><a href="customizing_list.do?custom_visit=2&keyfield=${map.keyfield}&keyword=${map.keyword}">조회수</a></li>
+					<li class="korean-font"><a href="customizing_list.do?custom_visit=3&keyfield=${map.keyfield}&keyword=${map.keyword}" id="like">좋아요</a></li>
+					<li class="korean-font"><a href="customizing_list.do?custom_visit=4&keyfield=${map.keyfield}&keyword=${map.keyword}">내가 등록한 글 보기</a></li>
 				</ul>
 			</div>
 		</div>
-		<!--/breadcrumbs-->
+	
+</div>
+<!-- 카페등록 모달 시작 -->
+
+<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 class="modal-title korean-font" id="myModalLabel4">카페등록</h4>
+                          </div>
+                          <div class="modal-body">
+<form action="customizingInsert_ajax.do" method="post" 
+enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
+<fieldset>                  
+    <div class="row">
+        
+        <section class="col col-6">
+        	<label class="label">Custom_name</label>
+            <label class="input">
+                <input type="text" name="custom_name" id="custom_name">
+            </label>
+        </section>
+      
+        <!-- 승현이형꺼 -->
+        
+         <section class="col col-6">
+         <label class="label">Franchise Name</label>
+          <label class="select">
+           <select name="franchise_num">
+           <ul class="dropdown-menu">
+               <c:forEach var="article" items="${franchiseList}">
+                  <li class="korean-font"><option value="${article.franchise_num}">${article.franchise_name}</option></li>
+               </c:forEach>
+               </ul>
+          </select> <i></i>
+          </label>
+        </section>
+        
+        
+    </div>
+       <section>
+        <label class="label">custom Introduce</label>
+        <label class="textarea">
+            <textarea rows="4" name="custom_introduce" id="custom_introduce"></textarea>
+        </label>
+    </section>
+    <section>
+        <label class="label">custom_recipe</label>
+        <label class="input">
+            <input type="text" name="custom_recipe" id="custom_recipe">
+        </label>
+    </section>
+    <section>
+        <label class="label">Cafe Hash Tag</label>
+        <label class="input">
+            <input type="text" name="custom_hash_tag" id="custom_hash_tag" data-role="tagsinput" 
+            placeholder=",를 넣어서 입력하세요">
+        </label>
+    </section> 	
+<section style="margin-bottom:50px;">
+<label class="label">Cafe Image Upload</label>
+   <label for="pcafe_img" class="input input-file">
+         <input type="file" name="upload" id="upload" 
+         multiple onchange="this.parentNode.nextSibling.value = this.value" 
+         class="korean-font">
+   </label>
+</section>
+						<!-- <button type="submit" class="btn-u btn-u-primary" style="float:right;">Register</button>
+    <button type="button" class="btn-u btn-u-default" data-dismiss="modal" style="float:right;margin-right:5px;">Close</button> -->
+    <div class="modal-footer">
+          <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn-u btn-u-primary">Register</button>
+      </div>
+      </fieldset>
+</form>
+</div>
+        </div>
+    </div>
+</div>
+
+<!-- /카페등록 모달 -->
+
+
+<!--=== Cube-Portfdlio ===-->
+<div class="cube-portfolio container margin-bottom-60">
+	<div class="content-xs">
+		<div id="filters-container" class="cbp-l-filters-text content-xs">
+			<div data-filter="*" class="cbp-filter-item-active cbp-filter-item korean-font">
+				<a href = "customizing_list.do">All</a></div> 
+			|
+		<c:if test="${count == 0}">
+		<div class="align-center">등록된 게시물이 없습니다.</div>
+		</c:if>
+		<!--franchise_num + custom_num을 디테일에 넘겨줘야 함  -->
 		
-		<div class="search-block parallaxBg">
-			<div class="container">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Search words with regular expressions ...">
-						<span class="input-group-btn">
-							<button class="btn-u btn-u-lg" type="button">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-
-					<form action="" class="sky-form page-search-form">
-						<div class="inline-group">
-							<label class="checkbox korean-font"><input type="checkbox"
-								name="checkbox-inline" checked><i></i>전체</label> <label
-								class="checkbox"><input type="checkbox"
-								name="checkbox-inline"><i></i>해쉬</label> <label class="checkbox"><input
-								type="checkbox" name="checkbox-inline"><i></i>카페명</label> <label
-								class="checkbox"><input type="checkbox"
-								name="checkbox-inline"><i></i>제목</label>
-						</div>
-					</form>
-				</div>
-			</div>
+		<c:if test="${count > 0}">
+		<c:forEach var="franchiseList" items="${franchiseList}" varStatus="status">
+			<div data-filter=".${franchiseList.franchise_num }" class="cbp-filter-item korean-font">
+			<a href = "customizing_list.do?franchise_num=${franchiseList.franchise_num }"> ${franchiseList.franchise_name }</a></div>
+			|
+		</c:forEach>
+		</c:if>
 		</div>
-		<!--/container-->
-		<div class="cube-portfolio container">
-			<div class="col-md-12">
-				<div class="btn-group" style="float: right; padding: 0 0 10px 10px;">
-					<button type="button" class="btn-u korean-font">
-						카페 등록 
-					</button>
-				</div>
-				<div class="btn-group" style="float: right;">
-					<button type="button" class="btn-u dropdown-toggle korean-font"
-						data-toggle="dropdown" aria-expanded="false">
-						정렬하기 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li class="korean-font"><a href="#">최신순</a></li>
-						<li class="korean-font"><a href="#">조회순</a></li>
-						<li class="korean-font"><a href="#">좋아요순</a></li>
-						<li class="korean-font"><a href="#">내가 등록한 글 보기</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!--=== Cube-Portfdlio ===-->
-		<div class="cube-portfolio container margin-bottom-60">
-			<div class="content-xs">
-				<div id="filters-container" class="cbp-l-filters-text content-xs">
-					<div data-filter="*" class="cbp-filter-item-active cbp-filter-item korean-font">
-						Starbucks</div>
-					|
-					<div data-filter=".identity" class="cbp-filter-item korean-font">Ediya</div>
-					|
-					<div data-filter=".web-design" class="cbp-filter-item korean-font">Caffe
-						bene</div>
-					|
-					<div data-filter=".graphic" class="cbp-filter-item korean-font">DropTop</div>
-					|
-					<div data-filter=".logos" class="cbp-filter-item korean-font">
-						Angel-in-us</div>
-				</div>
-				<!--/end Filters Container-->
-			</div>
+		<!--/end Filters Container-->
+	</div>
 
-			<div id="grid-container" class="cbp-l-grid-agency">
-
-				<div class="cbp-item graphic">
+					<!--커스터마이징 하면 카드가 붙는 부분  -->
+<div id="grid-container" class="cbp-l-grid-agency">
+<c:if test="${count == 0}">
+		<div class="align-center">등록된 게시물이 없습니다.</div>
+</c:if>
+		
+		<c:if test="${count > 0}">
+		<c:forEach var="list" items="${list}" varStatus="status">
+		
+		<div class="cbp-item ${list.franchise_num } easy-block-v1" >
+			
+			<c:if test="${list.u_uid == map.u_uid}">
+			<a href="customizing_delete.do?custom_num=${list.custom_num }" class="easy-block-v1-badge rgba-red" style="text-decoration:none;position:initial;line-height:30px;cursor:pointer;">
+		            		<i class="fa fa-trash-o delete_button">Delete</i></a>
+      		</c:if>
+      		
+				<div class="cbp-caption margin-bottom-20">
+					<div class="cbp-caption-defaultWrap">
 					<a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do">
-						<div class="cbp-caption margin-bottom-20">
-							<div class="cbp-caption-defaultWrap">
-								<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img26.jpg" alt="">
-							</div>
-							<div class="cbp-caption-activeWrap">
-								<div class="cbp-l-caption-alignCenter"></div>
-							</div>
-						</div>
-						<div class="cbp-title-dark">
-							<div class="cbp-l-grid-agency-title korean-font">Starbucks</div>
-							<div class="cbp-l-grid-agency-desc korean-font">맛있는 커피</div>
-						</div>
+						<img src="${pageContext.request.contextPath}/upload/customizing/${list.custom_img}" alt="">
 					</div>
-				</a>
-				
-				<div class="cbp-item web-design logos">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 02</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
+					<div class="cbp-caption-activeWrap">
+						<div class="cbp-l-caption-alignCenter"></div>
 					</div>
 				</div>
-				<div class="cbp-item graphic logos">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img9.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 03</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
+				<div class="cbp-title-dark">
+					<div class="cbp-l-grid-agency-title korean-font" id="asd"}>${list.franchise_name}</div>
+					<div class="cbp-l-grid-agency-desc korean-font">${list.custom_name}</div>
 				</div>
-				<div class="cbp-item web-design graphic">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img10.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 04</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item identity web-design">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img11.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 05</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item identity web-design">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img12.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 06</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item web-design identity">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img19.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 07</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item identity logo">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img7.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 08</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item graphic">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img20.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 09</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item web-design logos">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img3.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 10</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item graphic logos">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img6.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 11</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-				<div class="cbp-item web-design graphic">
-					<div class="cbp-caption margin-bottom-20">
-						<div class="cbp-caption-defaultWrap">
-							<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img16.jpg" alt="">
-						</div>
-						<div class="cbp-caption-activeWrap">
-							<div class="cbp-l-caption-alignCenter"></div>
-						</div>
-					</div>
-					<div class="cbp-title-dark">
-						<div class="cbp-l-grid-agency-title korean-font">Design Object 12</div>
-						<div class="cbp-l-grid-agency-desc korean-font">Web Design</div>
-					</div>
-				</div>
-			</div>
-			<!--/end Grid Container-->
-			<br> <br>
-			<button type="button" class="btn-u btn-block">Load More</button>
-			<!-- End Pagination -->
+			</a>
 		</div>
-		<!--=== End Cube-Portfdlio ===-->
+		</c:forEach>
+		</c:if>
+
+
+
+
+	</div>
+<!--/end Grid Container-->
+<br> <br>
+<c:if test ="${count>8 }">
+<%-- <div class="align-center">${pagingHtml}</div> --%>
+<div class="text-center">
+	        		<ul class="pagination">
+	        			${pagingHtml}
+	        		</ul>  
+	        	</div>
+</c:if>
+<!-- End Pagination -->
+</div>
+<!--=== End Cube-Portfdlio ===-->
+
+<script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
+
+
+
+
+
+
 

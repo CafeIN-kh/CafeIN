@@ -73,7 +73,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="franchise_main"><a href="${pageContext.request.contextPath}/cafein_user/franchise/franchise_main.do">Franchise</a></li>
-                            <li class="customizing_main"><a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_main.do">Customizing</a></li>
+                            <%-- <li class="customizing_main"><a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_main.do">Customizing</a></li> --%>
+                            <li class="customizing_main"><a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_list.do">Customizing</a></li>
                         </ul>
                     </li>
                     <!-- Franchise -->

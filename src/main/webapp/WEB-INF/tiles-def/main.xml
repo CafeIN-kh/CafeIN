@@ -338,6 +338,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/cube-portfolio/cube-portfolio-4.js"/>
         	<!-- JS main jquery -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/board.reply.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/customizing_main.js"/>
         </put-list-attribute>
     </definition>

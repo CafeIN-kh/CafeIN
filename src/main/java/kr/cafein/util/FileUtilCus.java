@@ -9,11 +9,9 @@ import java.io.FileInputStream;
 
 import javax.imageio.ImageIO;
 
-public class FileUtil_PrivateMenu {
+public class FileUtilCus {
 
-	//자기 로컬의 주소 써주기
-	//public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/CafeIN/src/main/webapp/upload/private_menu";
-	public static String UPLOAD_PATH="C:/Users/Matthew/Desktop/KH/workspace/CafeIN/src/main/webapp/upload/private_menu";
+	public static String UPLOAD_PATH="C:/Users/Matthew/git/CafeIN/src/main/webapp/upload/customizing";
 	
 	public static String rename(String fileName)throws Exception{
 
@@ -58,12 +56,12 @@ public class FileUtil_PrivateMenu {
 		}
 	}
 
-	/*public static String createThumbnail(String uploadedFile,int thumbnailWidth, int thumbnailHeight){
+	public static String createThumbnail(String uploadedFile,int thumbnailWidth, int thumbnailHeight){
 		return createThumbnail(uploadedFile, null, thumbnailWidth, thumbnailHeight);
-	}*/
+	}
 	
 	public static String createThumbnail(String uploadedFile,String thumbnailFile,int thumbnailWidth, int thumbnailHeight){
-		/*if(thumbnailFile==null){
+		if(thumbnailFile==null){
 			int index = uploadedFile.lastIndexOf(".");
 			if(index !=-1){//썸네일의 확장자는 jpg로 변경
 				thumbnailFile = "s" + uploadedFile.substring(0,index) + ".jpg";
@@ -73,7 +71,7 @@ public class FileUtil_PrivateMenu {
 			if(index !=-1){//썸네일의 확장자는 jpg로 변경
 				thumbnailFile = thumbnailFile.substring(0,index) + ".jpg";
 			}
-		}*/
+		}
 		
 		FileInputStream fs = null; 
 		try { 

@@ -10,14 +10,14 @@ import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 @Repository
 public interface PrivateService {
 	public List<PrivateCommand> getPrivateList();
-	public PrivateCommand selectBoard(Integer seq);
-	public void delete(Integer seq);
+	public PrivateCommand selectBoard(Integer pcafe_num);
+	public void delete(Integer pcafe_num);
 	public void update(PrivateCommand privatecafe);
 	
-	public List<PrivateCommand> getPrivateDetailList(Integer seq);
-	public List<PrivateMenuCommand> getPrivateCafeMenuList(Integer seq);
+	public List<PrivateCommand> getPrivateDetailList(Integer pcafe_num);
+	public List<PrivateMenuCommand> getPrivateCafeMenuList(Integer pcafe_num);
 	
-	public PrivateMenuCommand selectMenu(Integer seq);
+	public PrivateMenuCommand selectMenu(Integer pmenu_num);
 	
 	public void update2(PrivateMenuCommand privateCafeMenu);
 

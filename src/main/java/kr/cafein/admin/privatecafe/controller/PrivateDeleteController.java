@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import kr.cafein.admin.privatecafe.service.PrivateService;
 
 @Controller
@@ -17,12 +18,15 @@ public class PrivateDeleteController {
 	@Resource
 	private PrivateService privateService;
 	
-	@RequestMapping("/admin/privatecafe/delete.do")
+	@RequestMapping("/admin/privatecafe/privatecafe-delete.do")
 	public String submit(@RequestParam("pcafe_num") int pcafe_num)throws Exception{
 		
 		if(log.isDebugEnabled()){
 			log.debug("pcafe_num : "+pcafe_num);
 		}
+		
+	/*	PrivateCommand privatecommand = privateService.selectBoard(pcafe_num);
+		*/
 		
 		privateService.delete(pcafe_num);
 		

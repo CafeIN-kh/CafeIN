@@ -43,7 +43,9 @@
                         	
                         	
                             return "<a href=\"privatecafe-detail.do?pcafe_num="+row.id+"\"><button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></button></a> " + 
-                                "<a href=\"delete.do\"><button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button></a>";
+                                "<a href=\"privatecafe-delete.do?pcafe_num="+row.id+"\"><button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button></a>";
+                      
+                        
                         }
                     }/*/admin/delete.do*/
                     

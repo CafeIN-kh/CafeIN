@@ -1,7 +1,7 @@
 package kr.cafein.admin.privatecafe.dao;
 
 import java.util.List;
-import java.util.Map;
+
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
@@ -9,11 +9,14 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 
 @Repository
 public interface PrivateMapper {
 	//public List<PrivateCommand> list(Map<String, Object> map);
+
+	
 
 	@Select("SELECT * FROM private_cafe WHERE pcafe_num = #{pcafe_num}")
 	public PrivateCommand selectBoard(Integer pcafe_num);
@@ -24,7 +27,7 @@ public interface PrivateMapper {
 	@Select ("UPDATE private_cafe SET pcafe_name=#{pcafe_name},pcafe_address=#{pcafe_address},pcafe_phone=#{pcafe_phone},pcafe_time=#{pcafe_time},pcafe_introduce=#{pcafe_introduce},pcafe_url=#{pcafe_url},pcafe_hash_tag=#{pcafe_hash_tag} WHERE pcafe_num=#{pcafe_num}")
 	public void update(PrivateCommand privatecafe);
 	
-	@Delete ("delete * from private_cafe where pcafe_num=#{pcafe_num}")
+	@Delete ("delete  from private_cafe where pcafe_num=#{pcafe_num}")
 	public void delete(Integer pcafe_num);
 	
 	@Select("SELECT * from private_cafe where pcafe_num=#{pcafe_num}")

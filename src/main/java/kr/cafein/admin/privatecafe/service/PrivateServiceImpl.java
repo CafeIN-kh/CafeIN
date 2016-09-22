@@ -6,8 +6,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.admin.privatecafe.dao.PrivateMapper;
+
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 
 @Service("privateService")
@@ -23,13 +24,13 @@ public class PrivateServiceImpl implements PrivateService{
 	}
 	
 	@Override
-	public PrivateCommand selectBoard(Integer seq) {
-		return privateMapper.selectBoard(seq);
+	public PrivateCommand selectBoard(Integer pcafe_num) {
+		return privateMapper.selectBoard(pcafe_num);
 	}
 
 	@Override
-	public void delete(Integer seq) {
-		privateMapper.delete(seq);
+	public void delete(Integer pcafe_num) {
+		privateMapper.delete(pcafe_num);
 	}
 
 	@Override
@@ -39,19 +40,19 @@ public class PrivateServiceImpl implements PrivateService{
 	}
 
 	@Override
-	public List<PrivateCommand> getPrivateDetailList(Integer seq) {
-		return privateMapper.getPrivateDetailList(seq);
+	public List<PrivateCommand> getPrivateDetailList(Integer pcafe_num) {
+		return privateMapper.getPrivateDetailList(pcafe_num);
 	}
 
 	@Override
-	public List<PrivateMenuCommand> getPrivateCafeMenuList(Integer seq) {
+	public List<PrivateMenuCommand> getPrivateCafeMenuList(Integer pcafe_num) {
 		
-		return privateMapper.getPrivateCafeMenuList(seq);
+		return privateMapper.getPrivateCafeMenuList(pcafe_num);
 	}
 
 	@Override
-	public PrivateMenuCommand selectMenu(Integer seq) {
-		return privateMapper.selectMenu(seq);
+	public PrivateMenuCommand selectMenu(Integer pmenu_num) {
+		return privateMapper.selectMenu(pmenu_num);
 	}
 
 	@Override

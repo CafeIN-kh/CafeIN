@@ -32,7 +32,6 @@ public class CustomizingDeleteController {
 		
 		System.out.println("customizingCommand안에다가 customizingService.selectBoard(custom_num)을 넣어주면 : " +customizingCommand.toString());
 		String u_uid = (String)session.getAttribute("u_uid");
-		u_uid="1";
 		
 		if(!u_uid.equals(customizingCommand.getU_uid())) {
 			throw new Exception("로그인한 아이디로 작성된 글이 아니기 때문에 삭제할 수 없습니다.");

@@ -120,7 +120,6 @@
         </div><!--/row-->
     </div><!--/container-->     
     <!--=== End Content Part ===-->
- <!-- <script async defer
+ <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBAlmuTlr7ouP-hD79meE6RP7lJ8dW0Ks&signed_in=true&callback=initMap">
- </script> -->
-
+ </script>

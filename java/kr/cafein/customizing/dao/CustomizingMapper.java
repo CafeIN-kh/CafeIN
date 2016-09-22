@@ -32,8 +32,7 @@ public interface CustomizingMapper {
 	public List<FranchiseCommand> selectBrand(); 
 	@Delete("DELETE FROM customizing WHERE custom_num=#{custom_num}")
 	public void deleteCboard(int custom_num);
-	@Select("select * from customizing where franchise_num=#{franchise_num}")
-	public List<CustomizingCommand> selectCafe(String franchise_num);
+	public List<CustomizingCommand> selectCafe(Map<String,Object> map);
 
 	
 	

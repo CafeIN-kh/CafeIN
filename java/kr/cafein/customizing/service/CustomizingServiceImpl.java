@@ -91,9 +91,9 @@ public class CustomizingServiceImpl implements CustomizingService {
 
 
 	@Override
-	public List<CustomizingCommand> selectCafe(String franchise_num) {
+	public List<CustomizingCommand> selectCafe(Map<String,Object> map) {
 		// TODO Auto-generated method stub
-		return customizingMapper.selectCafe(franchise_num);
+		return customizingMapper.selectCafe(map);
 	}
 
 

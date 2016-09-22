@@ -1,7 +1,7 @@
 var ContactPage = function () {
 
     return {
-        
+     
     	//Basic Map
         initMap: function () {
 			var map;
@@ -12,7 +12,6 @@ var ContactPage = function () {
 				lat: 37.498503,
 				lng: 127.032623
 			  });
-			  
 			  var marker = map.addMarker({
 				lat: 37.498503,
 				lng: 127.032623,
@@ -20,7 +19,6 @@ var ContactPage = function () {
 		       });
 			});
         },
-
         //Panorama Map
         initPanorama: function () {
 		    var panorama;

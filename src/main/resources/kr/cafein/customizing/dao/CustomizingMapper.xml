@@ -22,7 +22,7 @@
               <if test="keyword !='' and keyfield=='custom_recipe'">
                  custom_recipe like '%' || #{keyword} || '%'
               </if>
-              <if test="keyword =='' and keyfield =='' and u_uid !='' and custom_visit == 4">
+              <if test="keyword =='' and keyfield =='' and u_uid !='' and category == 4">
                  u_uid like '%' || #{u_uid} || '%'
               </if>
               <if test="keyword !='' and keyfield=='all' ">
@@ -52,12 +52,19 @@
               <if test="keyword !='' and keyfield=='custom_recipe'">
                  custom_recipe like '%' || #{keyword} || '%'
               </if>
-                 <if test="keyword !='' and keyfield=='all'">
-                 custom_name like '%' || #{keyword} || '%' or
-                 custom_hash_tag like '%' || #{keyword} || '%' or
-                 custom_recipe like '%' || #{keyword} || '%'
-              </if>
+              <if test="franchise_num > 0">
+	        	FRANCHISE_NUM=#{franchise_num}
+	          </if>
+			  <if test="category==4 and u_uid!='' and keyword =='' and keyfield==''">
+	        	u_uid =#{u_uid}
+	          </if>
+                <if test="keyword !='' and keyfield=='all'">
+                custom_name like '%' || #{keyword} || '%' or
+                custom_hash_tag like '%' || #{keyword} || '%' or
+                custom_recipe like '%' || #{keyword} || '%'
+           	 </if>
            </where>   
+           
    </select>
    
    <!-- 페이징된 글 가져오기 10개씩-->
@@ -137,19 +144,36 @@
 	                 custom_hash_tag like '%' || #{keyword} || '%' or
 	                 custom_recipe like '%' || #{keyword} || '%'
 	             </if>
-	             <if test="custom_visit == 4">
+	             <if test="category == 4">
 	             and u_uid like #{u_uid} order by custom_num desc)c
 	             </if>
 	           </where>
-	            <if test="custom_visit == 2">
+	            <if test="category == 2">
 				order by custom_visit desc)c
 				</if>
-				<if test="custom_visit == 3">
+				<if test="category == 3">
 				order by MYCOUNT desc)c
 				</if>
 				  <![CDATA[
 			      WHERE rnum >= #{start} AND rnum <= #{end}
 		      ]]>
    </select>
+   
+   <select id="selectCafe" parameterType="map" resultType="customizingCommand">
+		select * from (
+			select a.*, rownum rnum from 
+			(select * from customizing 
+			<where>
+			<if test="franchise_num > 0">
+	        	FRANCHISE_NUM=#{franchise_num}
+	        </if>
+			</where>
+            )a)
+			<![CDATA[
+			where rnum>=#{start} and rnum<=#{end}
+			]]>	
+   </select>
+   
+   
    
 </mapper>

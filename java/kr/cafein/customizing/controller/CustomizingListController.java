@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.customizing.service.CustomizingService;
 import kr.cafein.domain.FranchiseCommand;
+import kr.cafein.domain.MemberCommand;
 import kr.cafein.util.PagingUtilCus;
 
 
@@ -38,16 +40,18 @@ public class CustomizingListController {
 									@RequestParam(value="pageNum", defaultValue="1") int currentPage,
 									@RequestParam(value="keyword",defaultValue="") String keyword,
 									@RequestParam(value="keyfield",defaultValue="") String keyfield,
-									@RequestParam(value="custom_visit",defaultValue="1") int custom_visit,
+									@RequestParam(value="category",defaultValue="1") int category,
 									@RequestParam(value="franchise_name",defaultValue="") String franchise_name,
-									@RequestParam(value="franchise_num",defaultValue="") String franchise_num,
-									HttpSession session
+									@RequestParam(value="franchise_num",defaultValue="0") int franchise_num,
+									HttpSession session,Model model
 									) {
 			
 			String u_uid = (String)session.getAttribute("u_uid");
 			System.out.println("u_uid"+u_uid);
 			
-			
+			MemberCommand membercommand = new  MemberCommand();
+			membercommand.setU_uid(u_uid);
+			System.out.println("memberCommand.tostring : "+membercommand.toString());
 			
 			System.out.println("String franchise_num : " +franchise_num);
 			System.out.println("custom_num : " +custom_num);
@@ -60,12 +64,15 @@ public class CustomizingListController {
 			map.put("keyword", keyword);
 			map.put("keyfield", keyfield);
 			map.put("u_uid",u_uid);
+			map.put("franchise_num", franchise_num);
+			map.put("category", category);
 			//총 글의 갯수
+			
 			int count = customizingService.getRowCount(map);
 			PagingUtilCus page = new PagingUtilCus(currentPage,count,rowCount,pageCount,"customizing_list.do");
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
-			map.put("custom_visit", custom_visit);
+			
 			
 			List<CustomizingCommand> list = null;
 			
@@ -87,34 +94,33 @@ public class CustomizingListController {
 			
 			
 			
-			if(custom_visit==1 && !franchise_num.equals("")){
-				list = customizingService.selectCafe(franchise_num);
-			}
-			else if(custom_visit==1){
+			if(category==1 && franchise_num!=0){
+				System.out.println("페이지넘받으면 들어오는곳 ");
+				list = customizingService.selectCafe(map);
+			}else if(category==1){
 				if(count > 0) {
 				list = customizingService.searchList(map);
 				System.out.println("visit=1,searchList단순키워드검색");
 				}else {
 					list = Collections.emptyList();
 				}
-			}else if(custom_visit==2 && keyword.equals("")){
+			}else if(category==2 && keyword.equals("")){
 				System.out.println("조회수만");
 				list = customizingService.pagingVisitList(map);
-			}else if(custom_visit==2 && !keyword.equals("")){
+			}else if(category==2 && !keyword.equals("")){
 				System.out.println("조회수+키워드");
 				list = customizingService.pagingSearchLikeList(map);
-			}else if(custom_visit==3 && keyword.equals("")){
+			}else if(category==3 && keyword.equals("")){
 				System.out.println("두번째 : ");
 				list = customizingService.pagingLikeList(map);
-			}else if(custom_visit==3 && !keyword.equals("")){
+			}else if(category==3 && !keyword.equals("")){
 				System.out.println("3번째");
 				list = customizingService.pagingSearchLikeList(map);
-			}else if(custom_visit==4 && keyword.equals("")){
-				System.out.println("here is error");
+			}else if(category==4 && keyword.equals("")){
 				System.out.println("4번째-내가등록한글보기");
 				list = customizingService.searchList(map);
 				System.out.println("list.toString : "+list.toString());
-			}else if(custom_visit==4 && !keyword.equals("")){
+			}else if(category==4 && !keyword.equals("")){
 				map.put("u_uid", u_uid);
 				System.out.println("4번째-내가등록한글보기+키워드 : " +map.toString());
 				list = customizingService.pagingSearchLikeList(map);

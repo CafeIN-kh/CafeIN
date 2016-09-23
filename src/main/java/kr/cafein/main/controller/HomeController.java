@@ -37,11 +37,11 @@ public class HomeController {
 		return "franchise_detail";
 	}*/
 	
-	@RequestMapping(value="/cafein_user/customizing/customizing_main.do", method = RequestMethod.GET)
+/*	@RequestMapping(value="/cafein_user/customizing/customizing_main.do", method = RequestMethod.GET)
 	public String customizing_main() {
 		return "customizing_main";
 	}
-	
+	*/
 	@RequestMapping(value="/cafein_user/customizing/customizing_detail.do", method = RequestMethod.GET)
 	public String customizing_detail() {
 		return "customizing_detail";
@@ -52,10 +52,10 @@ public class HomeController {
 		return "notice";
 	}
 	
-	@RequestMapping(value="/cafein_user/qna/qna.do", method = RequestMethod.GET)
+/*	@RequestMapping(value="/cafein_user/qna/qna.do", method = RequestMethod.GET)
 	public String qna() {
 		return "qna";
-	}
+	}*/
 
 	
 	/*@RequestMapping(value="/cafein_user/mypage/mypage_like_menu.do", method = RequestMethod.GET)

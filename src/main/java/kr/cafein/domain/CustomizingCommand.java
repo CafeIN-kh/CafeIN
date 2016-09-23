@@ -2,6 +2,8 @@ package kr.cafein.domain;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CustomizingCommand {
 	
 	private int custom_num;
@@ -9,12 +11,29 @@ public class CustomizingCommand {
 	private String u_uid;
 	private String custom_name;
 	private String custom_introduce;
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
+	public String getFranchise_name() {
+		return franchise_name;
+	}
+	public void setFranchise_name(String franchise_name) {
+		this.franchise_name = franchise_name;
+	}
+
 	private String custom_recipe;
 	private String custom_img;
 	private String custom_hash_tag;
 	private int custom_visit;
 	private Date custom_reg_date;
 	private int cCount;
+	//경도 추가
+	private MultipartFile upload;
+	private String franchise_name;
+	
 	
 	public int getCustom_num() {
 		return custom_num;
@@ -82,14 +101,15 @@ public class CustomizingCommand {
 	public void setcCount(int cCount) {
 		this.cCount = cCount;
 	}
-	
 	@Override
 	public String toString() {
 		return "CustomizingCommand [custom_num=" + custom_num + ", franchise_num=" + franchise_num + ", u_uid=" + u_uid
 				+ ", custom_name=" + custom_name + ", custom_introduce=" + custom_introduce + ", custom_recipe="
 				+ custom_recipe + ", custom_img=" + custom_img + ", custom_hash_tag=" + custom_hash_tag
 				+ ", custom_visit=" + custom_visit + ", custom_reg_date=" + custom_reg_date + ", cCount=" + cCount
-				+ "]";
+				+ ", upload=" + upload + ", franchise_name=" + franchise_name + "]";
 	}
+	
+
 
 }

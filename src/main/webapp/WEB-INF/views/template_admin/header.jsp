@@ -11,7 +11,7 @@
                 </li>
             
                 <li class="logo hidden-xs">
-                    <a href="index.html">Material cafein_admin</a>
+                    <a href="${pageContext.request.contextPath }/admin/main.do">Material cafein_admin</a>
                 </li>
                 
                 <li class="pull-right">

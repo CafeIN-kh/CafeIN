@@ -18,6 +18,14 @@
 	<context:component-scan base-package="kr.cafein.pcafe.controller"/>
 	<context:component-scan base-package="kr.cafein.franchise.controller"/>
 	<context:component-scan base-package="kr.cafein.mypage.controller"/>
+	<context:component-scan base-package="kr.cafein.qna.controller"/>
+	<context:component-scan base-package="kr.cafein.customizing.controller"/>
+	
+	<context:component-scan base-package="kr.cafein.admin.franchise.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.qna.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.notice.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.event.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.privatecafe.controller"/>
 	
 	<!-- Spring3 Validator -->
 	<mvc:annotation-driven/>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.cafein.admin.franchise.dao.AdminFranchiseMapper">
+	<select id="list" parameterType="map" resultType="adminFranchiseCommand">
+		SELECT
+		*
+		FROM
+		franchise
+	</select>
+
+	<select id="menuList" parameterType="map" resultType="adminFranchiseMenuCommand">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM franchise_menu
+		where franchise_num = #{franchise_num}
+			<if test="keyword !=''">
+				and (fmenu_name like '%' || #{keyword} || '%' or
+				fmenu_price like '%' || #{keyword} || '%' or
+				fmenu_introduce like '%' || #{keyword} || '%')
+			</if>
+		ORDER BY fmenu_num ASC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+
+	</select>
+	
+	
+	<select id="listDetail" parameterType="map" resultType="adminFranchiseCommand">
+		SELECT
+		*
+		FROM
+		franchise WHERE franchise_num = #{frnchise_num}
+	</select>
+
+
+	<select id="getRowCount" parameterType="map" resultType="integer">
+		SELECT
+		count(*)
+		FROM franchise_menu
+		WHERE
+		franchise_num = #{franchise_num}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+

@@ -160,7 +160,7 @@ var ContactForm = function () {
 	                    {
 	                        $('#sky-form3 button[type="submit"]').attr('disabled', true);
 	                        $('.modal').hide();
-	                        alert("beforesend");
+	                        /*alert("beforesend");*/
 	                        //alert("beforesend upload_modify : " + $('#upload_modify').val());
 	                    },
 	                    success: function(data)

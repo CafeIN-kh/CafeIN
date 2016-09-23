@@ -13,7 +13,7 @@ public class FileUtil_PrivateMenu {
 
 	//자기 로컬의 주소 써주기
 	//public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/CafeIN/src/main/webapp/upload/private_menu";
-	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/private_menu";
+	public static String UPLOAD_PATH="C:/Users/Matthew/Desktop/KH/workspace/CafeIN/src/main/webapp/upload/private_menu";
 	
 	public static String rename(String fileName)throws Exception{
 

@@ -69,7 +69,7 @@
 								<c:if test="${status.index == 0}">
 								<div class="col-md-7 sm-margin-bottom-30">
 									<div class="news-v2-badge">
-										<img class="img-responsive" src="/CafeIN/upload/customizing/${cCommand.custom_img}" alt="">
+										<img class="img-responsive" src="/CafeIN/upload/customizing/${cCommand.custom_img}" style="max-height:430px;width:100%;">
 									</div>
 									<div class="news-v2-desc">
 										<h3 class="korean-font-bold2 likeRank1-custom-menuName">

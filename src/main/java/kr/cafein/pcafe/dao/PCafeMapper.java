@@ -10,19 +10,20 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.BookmarkCommand;
-import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
+import kr.cafein.domain.UserCountLogCommand;
+import kr.cafein.domain.UserDeclaredCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Repository
 public interface PCafeMapper {
 	
 	//private_main에서 사용되는 부분(페이징)
 	public List<PCafeCommand> list(Map<String,Object> map);
-	//@Select("SELECT count(*) FROM private_cafe")
 	public int getRowCount(Map<String,Object> map);
 	@Insert("INSERT INTO private_cafe(pcafe_num,u_uid,pcafe_name,pcafe_address,pcafe_phone,pcafe_time,pcafe_url,pcafe_introduce,pcafe_hash_tag,pcafe_img,pcafe_visit,pcafe_reg_date) VALUES (private_cafe_seq.nextval,#{u_uid},#{pcafe_name},#{pcafe_address},#{pcafe_phone},#{pcafe_time},#{pcafe_url},#{pcafe_introduce},#{pcafe_hash_tag},#{pcafe_img,jdbcType=VARCHAR},#{pcafe_visit},sysdate)")
 	public void insert(PCafeCommand pcafe);
@@ -39,8 +40,6 @@ public interface PCafeMapper {
 	public void deletePCafeMenuLikekByPCafe(int pmenu_num);					//private_cafe_menu에 눌려있는 좋아요 모두 삭제
 	@Delete("DELETE FROM private_cafe_menu WHERE pcafe_num = #{pcafe_num}")
 	public void deleteMenuByPCafe(int pcafe_num);							//private_cafe안의 해당 메뉴 모두 삭제
-	//@Select("SELECT * FROM private_cafe WHERE pcafe_num = #{pcafe_num}")
-	//public PCafeCommand selectPCafe(int pcafe_num);							//private_cafe 정보 찾기(업로드된 이미지 split 후 삭제를 위해)
 	@Delete("DELETE FROM private_cafe WHERE pcafe_num = #{pcafe_num} AND u_uid = #{u_uid}")
 	public void deletePCafe(Map<String,Object> deleteMap);					//해당 private_cafe 정보 삭제
 	
@@ -111,7 +110,25 @@ public interface PCafeMapper {
 	public PCafeReplyCommand selectDeclaredReply(Integer preply_num);
 	@Select("SELECT * FROM u_user WHERE u_uid = #{u_uid}")
 	public MemberCommand selectDeclaredMember(String u_uid);
-	@Insert("INSERT INTO declared (d_seq,d_target_id,d_target_path,d_mem_id,d_target_mem_id,d_reg_date,d_content,d_state) VALUES (declared_seq.nextval,#{d_target_id},#{d_target_path},#{d_mem_id},#{d_target_mem_id},sysdate,#{d_content},#{d_state})")
+	@Insert("INSERT INTO declared (d_seq,d_target_path,d_target_num,d_target_id,d_mem_id,d_target_mem_id,d_reg_date,d_content,d_state,d_comment) VALUES (declared_seq.nextval,#{d_target_path},#{d_target_num},#{d_target_id},#{d_mem_id},#{d_target_mem_id},sysdate,#{d_content},#{d_state},#{d_comment})")
 	public void insertDeclaredReply(UserDeclaredCommand declared);
+	
+	//개인카페 등록,삭제,수정,신고에 따른 로그 
+	@Insert("INSERT INTO user_menu_log (umenu_log_seq,umenu_log_reg_date,umenu_log_u_uid,umenu_name,umenu_log_state,umenu_log_message) VALUES (umenu_log_seq.nextval,sysdate,#{umenu_log_u_uid},#{umenu_name},#{umenu_log_state},#{umenu_log_message})")
+	public void insertUserLog(UserMenuLogCommand userMenuLog);
+	@Select("SELECT * FROM u_user WHERE u_uid = #{u_uid}")
+	public MemberCommand selectUserLogByMember(String u_uid);
+	
+	//개인카페 페이지뷰 로그, 오늘 날짜의 데이터가 없으면 insert, 있으면 update로 +1 카운트
+	//insert시 sysdate varchar2 형태로 가공. (사용자의 현재 날짜와 비교하기 위해서. sysdate 상태면 비교 힘듬)
+	//@Insert("INSERT INTO user_count_log (ucnt_log_seq,ucnt_log_reg_date,ucnt_total,ucnt_log_main,ucnt_log_franchise,ucnt_log_private,ucnt_log_custom,ucnt_log_qna,ucnt_log_notice) VALUES (user_count_log_seq.nextval,TO_CHAR(sysdate,'YYYY-MM-DD'),0,0,0,0,0,0,0)")
+	@Insert("INSERT INTO user_count_log (ucnt_log_seq,ucnt_log_reg_date,ucnt_total,ucnt_log_main,ucnt_log_franchise,ucnt_log_private,ucnt_log_custom,ucnt_log_qna,ucnt_log_notice) VALUES (user_count_log_seq.nextval,sysdate,0,0,0,0,0,0,0)")
+	public void insertPCafeUserCountLog();
+	//@Update("UPDATE user_count_log SET ucnt_total=ucnt_total+1,ucnt_log_private=ucnt_log_private+1 WHERE ucnt_log_reg_date = #{ucnt_log_reg_date}")
+	@Update("UPDATE user_count_log SET ucnt_total=ucnt_total+1,ucnt_log_private=ucnt_log_private+1 WHERE TO_CHAR(ucnt_log_reg_date,'YY-MM-DD') = TO_CHAR(sysdate,'YY-MM-DD')")
+	public void updatePCafeUserCountLog();
+	//@Select("SELECT TO_CHAR(ucnt_log_reg_date,'YYYY-MM-DD')ucnt_log_reg_date FROM user_count_log WHERE TO_CHAR(ucnt_log_reg_date,'YYYY-MM-DD') = TO_CHAR(#{today_reg_date},'YYYY-MM-DD')")
+	@Select("SELECT * FROM user_count_log WHERE TO_CHAR(ucnt_log_reg_date,'YY-MM-DD') = TO_CHAR(sysdate,'YY-MM-DD')")
+	public UserCountLogCommand selectPCafeUserCountLogByDate();
 	
 }

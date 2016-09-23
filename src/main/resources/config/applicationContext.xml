@@ -28,7 +28,7 @@
     <!-- 어노테이션 방식으로 처리할 때 반드시 명시함 
     transaction-manager="transactionManager" 생략가능
     -->  
-    <tx:annotation-driven transaction-manager="transactionManager"/>	  
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>	  
       
     <context:property-placeholder 
                         location="classpath:config/jdbc.properties"/>
@@ -61,6 +61,7 @@
 		<property name="basePackage" value="kr.cafein.member.dao,
 											kr.cafein.pcafe.dao,
 											kr.cafein.franchise.dao,
+											kr.cafein.mypage.dao,
 											kr.cafein.main.dao,
 											kr.cafein.admin.dao"/>
 

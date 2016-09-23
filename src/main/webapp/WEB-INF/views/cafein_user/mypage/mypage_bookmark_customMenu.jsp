@@ -125,164 +125,59 @@
 	                    
 				</div><!--/end result category-->
 
+				<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+				
+                <!-- 마이페이지 프렌차이즈 카페 즐겨찾기 정보 페이징 하는 부분 -->
+				<c:if test="${count == 0}">
+					<div class="korean-font" style="text-align:center;font-size: xx-large;color:#72c02c;margin:200px 0 400px 0;">등록된 즐겨찾기가 없습니다.</div>
+				</c:if>
+				<c:if test="${count > 0}">
+	                <div class="filter-results">
+	                	<c:forEach var="bookmarkMypage" items="${bookmarkMypage}" varStatus="status">
+		                    <div class="list-product-description product-description-brd margin-bottom-30">
+		                        <div class="row">
+		                        
+		                            <div class="col-sm-4">
+		                                <a href="shop-ui-inner.html">
+		                                	<img class="img-responsive sm-margin-bottom-20" src="/CafeIN/upload/customizing/${bookmarkMypage.custom_img}" style="min-height:200px;">
+		                                </a>
+		                            </div> 
+		                            <div class="col-sm-8 product-description" style="padding:15px;">
+		                                <div class="overflow-h margin-bottom-5">
+		                                    <ul class="list-inline overflow-h">
+		                                        <li><h4 class="title-price korean-font">${bookmarkMypage.custom_name}</h4></li>
+		                                        <li class="pull-right">
+		                                        </li>
+		                                    </ul>    
+		                                    <h6 style="margin:0;">&nbsp;</h6>
+		                                    <p class="margin-bottom-20 korean-font">
+		                                    	${bookmarkMypage.custom_introduce}
+		                                    </p>
+		                                    <!-- 아직 커스텀 매핑 주소를 몰라서 프렌차이즈 매핑주소로 기입해놓음 후에 바꾸기 -->
+		                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${bookmarkMypage.custom_fnum}'">
+		                                    	Detail Page
+		                                    </button>
+		                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_bookmark_custom_deleteBookmark.do?custom_num=${bookmarkMypage.custom_num}'">
+		                                    	즐겨찾기 취소
+		                                    </button>
+		                                </div>    
+		                            </div>
+		                        </div>
+		                    </div>
+	                    </c:forEach>
+	                    
+	                    
+	
+	                </div><!--/end filter resilts-->
+	                
+	                <div class="text-center" style="margin-bottom:20%;">
+		        		<ul class="pagination">
+		        			${pagingHtml}
+		        		</ul>  
+		        	</div>
+	        	
+                </c:if>
 
-                <div class="filter-results">
-                
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li class="pull-right">
-                                        </li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Bookmark Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Bookmark Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>    
-
-					<div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-										
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Bookmark Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Bookmark Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Bookmark Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                </div><!--/end filter resilts-->
-
-                <div class="text-center">
-                    <ul class="pagination pagination-v2">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>                                                            
-                </div><!--/end pagination-->
             </div>
         </div><!--/end row-->
     </div><!--/end container-->    

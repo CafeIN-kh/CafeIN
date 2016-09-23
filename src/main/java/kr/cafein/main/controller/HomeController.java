@@ -58,29 +58,29 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping(value="/cafein_user/mypage/mypage_like_menu.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/mypage/mypage_like_menu.do", method = RequestMethod.GET)
 	public String mypage_like_menu() {
 		return "mypage_like_menu";
-	}
+	}*/
 	
-	@RequestMapping(value="/cafein_user/mypage/mypage_like_cafe.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/mypage/mypage_like_cafe.do", method = RequestMethod.GET)
 	public String mypage_like_cafe() {
 		return "mypage_like_cafe";
-	}
+	}*/
 	
-	@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_franchise.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_franchise.do", method = RequestMethod.GET)
 	public String mypage_bookmark_franchise() {
 		return "mypage_bookmark_franchise";
-	}
+	}*/
 	
-	@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_private.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_private.do", method = RequestMethod.GET)
 	public String mypage_bookmark_private() {
 		return "mypage_bookmark_private";
-	}
+	}*/
 	
-	@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_customMenu.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/mypage/mypage_bookmark_customMenu.do", method = RequestMethod.GET)
 	public String mypage_bookmark_customMenu() {
 		return "mypage_bookmark_customMenu";
-	}
+	}*/
 	
 }

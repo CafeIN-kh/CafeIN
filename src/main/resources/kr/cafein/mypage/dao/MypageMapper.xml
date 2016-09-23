@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.cafein.mypage.dao.MypageMapper">  
+
+   <!-- 마이페이지 개인카페 즐겨찾기 페이징 처리를 위한 리스트 select -->
+   <select id="selectPCafeByBookmarkMypage" parameterType="map" resultType="bookmarkAndMypageCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * 
+		       		 FROM bookmark bmark
+		       		 LEFT JOIN (SELECT pcafe_num,pcafe_name,pcafe_img
+		          				FROM private_cafe 
+		          				<![CDATA[
+		          				WHERE u_uid = #{u_uid})pcafe
+		          				]]>	
+		      ON bmark.pcafe_num = pcafe.pcafe_num
+		      <![CDATA[
+		      WHERE bmark.u_uid = #{u_uid} AND bmark.pcafe_num != 0 AND bmark.pcafe_num is not null
+		      ORDER BY bmark.bookmark_num DESC)a)
+		      ]]>	
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 마이페이지 프렌차이즈 즐겨찾기 페이징 처리를 위한 리스트 select -->
+   <select id="selectFCafeByBookmarkMypage" parameterType="map" resultType="bookmarkAndMypageCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * 
+		       		 FROM bookmark bmark
+		       		 LEFT JOIN (SELECT franchise_num,franchise_name,franchise_img
+		          				FROM franchise)fcafe
+		      ON bmark.franchise_num = fcafe.franchise_num
+		      <![CDATA[
+		      WHERE bmark.u_uid = #{u_uid} AND bmark.franchise_num != 0 AND bmark.franchise_num is not null
+		      ORDER BY bmark.bookmark_num DESC)a)
+		      ]]>	
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 마이페이지 커스텀 즐겨찾기 페이징 처리를 위한 리스트 select -->
+   <select id="selectCustomByBookmarkMypage" parameterType="map" resultType="bookmarkAndMypageCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * 
+		       		 FROM bookmark bmark
+		       		 LEFT JOIN (SELECT custom_num,franchise_num custom_fnum,custom_name,custom_introduce,custom_img
+		          				FROM customizing)custom
+		      ON bmark.custom_num = custom.custom_num
+		      <![CDATA[
+		      WHERE bmark.u_uid = #{u_uid} AND bmark.custom_num != 0 AND bmark.custom_num is not null
+		      ORDER BY bmark.bookmark_num DESC)a)
+		      ]]>	
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 마이페이지 카페 좋아요 페이징 처리를 위한 리스트 select -->
+   <select id="selectCafeByLikeMypage" parameterType="map" resultType="likeAndMypageCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * 
+		       		 FROM u_like ulike
+		      <if test="category == 1">
+		       		 LEFT JOIN (SELECT franchise_num,franchise_name,franchise_img
+		          				FROM franchise)fcafe
+		      ON ulike.franchise_num = fcafe.franchise_num
+		      WHERE ulike.u_uid = #{u_uid} AND ulike.franchise_num != 0 AND ulike.franchise_num is not null
+		      ORDER BY ulike.like_num DESC)a)
+		      </if>
+		      <if test="category == 2">
+		       		 LEFT JOIN (SELECT pcafe_num,pcafe_name,pcafe_img
+		          				FROM private_cafe)pcafe
+		      ON ulike.pcafe_num = pcafe.pcafe_num
+		      WHERE ulike.u_uid = #{u_uid} AND ulike.pcafe_num != 0 AND ulike.pcafe_num is not null
+		      ORDER BY ulike.like_num DESC)a)
+		      </if>
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 마이페이지 카페 좋아요  카테고리에 따른 카페 count -->
+   <select id="getRowCafeLikeCount" parameterType="map" resultType="integer">
+		SELECT count(*) 
+		FROM u_like 
+		<if test="category == 1">
+		WHERE u_uid = #{u_uid} AND franchise_num != 0 AND franchise_num is not null
+		</if>
+		<if test="category == 2">
+		WHERE u_uid = #{u_uid} AND pcafe_num != 0 AND pcafe_num is not null
+		</if>
+   </select>
+   
+   <!-- 마이페이지 카페 좋아요  카테고리에 따른 삭제 -->
+   <delete id="deleteCafeLikeMypage" parameterType="map">
+		DELETE FROM u_like 
+		<if test="category == 1">
+		WHERE u_uid = #{u_uid} AND franchise_num = #{franchise_num}
+		</if>
+		<if test="category == 2">
+		WHERE u_uid = #{u_uid} AND pcafe_num = #{pcafe_num}
+		</if>
+   </delete>
+   
+   
+   <!-- 마이페이지 메뉴 좋아요 페이징 처리를 위한 리스트 select -->
+   <select id="selectMenuByLikeMypage" parameterType="map" resultType="likeAndMypageCommand">
+		SELECT *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum 
+		       FROM (SELECT * 
+		       		 FROM u_like ulike
+		      <if test="category == 1">
+		       		 LEFT JOIN (SELECT fmenu_num,franchise_num fmenu_fnum,fmenu_name,fmenu_img,fmenu_introduce
+		          				FROM franchise_menu)fmenu
+		      ON ulike.fmenu_num = fmenu.fmenu_num
+		      WHERE ulike.u_uid = #{u_uid} AND ulike.fmenu_num != 0 AND ulike.fmenu_num is not null
+		      ORDER BY ulike.like_num DESC)a)
+		      </if>
+		      <if test="category == 2">
+		       		 LEFT JOIN (SELECT pmenu_num,pcafe_num pmenu_pnum,pmenu_name,pmenu_img,pmenu_introduce
+		          				FROM private_cafe_menu)pmenu
+		      ON ulike.pmenu_num = pmenu.pmenu_num
+		      WHERE ulike.u_uid = #{u_uid} AND ulike.pmenu_num != 0 AND ulike.pmenu_num is not null
+		      ORDER BY ulike.like_num DESC)a)
+		      </if>
+		      <if test="category == 3">
+		       		 LEFT JOIN (SELECT custom_num,franchise_num custom_fnum,custom_name,custom_img,custom_introduce
+		          				FROM customizing)custom
+		      ON ulike.custom_num = custom.custom_num
+		      WHERE ulike.u_uid = #{u_uid} AND ulike.custom_num != 0 AND ulike.custom_num is not null
+		      ORDER BY ulike.like_num DESC)a)
+		      </if>
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>	
+   </select>
+   
+   <!-- 마이페이지 메뉴 좋아요  카테고리에 따른 카페 count -->
+   <select id="getRowMenuLikeCount" parameterType="map" resultType="integer">
+		SELECT count(*) 
+		FROM u_like 
+		<if test="category == 1">
+		WHERE u_uid = #{u_uid} AND fmenu_num != 0 AND fmenu_num is not null
+		</if>
+		<if test="category == 2">
+		WHERE u_uid = #{u_uid} AND pmenu_num != 0 AND pmenu_num is not null
+		</if>
+		<if test="category == 3">
+		WHERE u_uid = #{u_uid} AND custom_num != 0 AND custom_num is not null
+		</if>
+   </select>
+   
+   <!-- 마이페이지 메뉴 좋아요  카테고리에 따른 삭제 -->
+   <delete id="deleteMenuLikeMypage" parameterType="map">
+		DELETE FROM u_like 
+		<if test="category == 1">
+		WHERE u_uid = #{u_uid} AND fmenu_num = #{fmenu_num}
+		</if>
+		<if test="category == 2">
+		WHERE u_uid = #{u_uid} AND pmenu_num = #{pmenu_num}
+		</if>
+		<if test="category == 3">
+		WHERE u_uid = #{u_uid} AND custom_num = #{custom_num}
+		</if>
+   </delete>
+   
+</mapper>

@@ -121,191 +121,50 @@
                 
                     <div class="col-sm-4 result-category">
                         <h2>Franchise</h2>
-                        <!-- <small class="shop-bg-red badge-results">45 Results</small> -->
                     </div>
                     
-                    <!-- <div class="col-sm-8">
-                        <ul class="list-inline clear-both">
-                            <li class="grid-list-icons">
-                                <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
-                                <a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
-                            </li>
-                            <li class="sort-list-btn">
-                                <h3>Sort By :</h3>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        Cafe Menu <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Franchise Menu</a></li>
-                                        <li><a href="#">Private Menu</a></li>
-                                        <li><a href="#">Customizing Menu</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>  -->   
                 </div><!--/end result category-->
+                
+				<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+				
+                <!-- 마이페이지 프렌차이즈 카페 즐겨찾기 정보 페이징 하는 부분 -->
+				<c:if test="${count == 0}">
+					<div class="korean-font" style="text-align:center;font-size: xx-large;color:#72c02c;margin:200px 0 400px 0;">등록된 즐겨찾기가 없습니다.</div>
+				</c:if>
+				<c:if test="${count > 0}">
+	                <div class="filter-results">
+	                    <div class="row illustration-v2 margin-bottom-30">
+	                    
+	                        <c:forEach var="bookmarkMypage" items="${bookmarkMypage}" varStatus="status">
+		                        <div class="col-md-4">
+		                            <div class="product-img product-img-brd">
+		                                <img class="full-width img-responsive" src="/CafeIN/upload/franchise/${bookmarkMypage.franchise_img}" >
+		                                <a class="product-review korean-font" href="/CafeIN/cafein_user/mypage/mypage_bookmark_franchise_deleteBookmark.do?franchise_num=${bookmarkMypage.franchise_num}" >즐겨찾기 취소</a>
+		                                <a class="add-to-cart" href="/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${bookmarkMypage.franchise_num}">
+		                                	<i class="glyphicon glyphicon-search"></i>Detail Page
+		                                </a>
+		                            </div> 
+		                            <div class="product-description product-description-brd margin-bottom-30">
+		                                <div class="overflow-h margin-bottom-5">
+		                                    <div style="text-align:center;">
+		                                        <h4 class="title-price korean-font">${bookmarkMypage.franchise_name}</h4>
+		                                    </div>    
+		                                </div>    
+		                            </div>
+		                        </div>
+	                        </c:forEach>
+	
+	                    </div>
+	                </div><!--/end filter resilts-->
+	                
+	                <div class="text-center" style="margin-bottom:20%;">
+		        		<ul class="pagination">
+		        			${pagingHtml}
+		        		</ul>  
+		        	</div>
+		        	
+	        	</c:if>
 
-                <div class="filter-results">
-                    <div class="row illustration-v2 margin-bottom-30">
-                    
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                                <!-- <div class="shop-rgba-dark-green rgba-banner">New</div> -->
-                                <!-- <div class="shop-rgba-red rgba-banner">Out of stock</div> -->
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price">Starbucks</h4>
-                                        <!-- <span class="gender text-uppercase">Men</span>
-                                        <span class="gender">Suits - Blazers</span> -->
-                                    </div>    
-                                    <!-- <div class="product-price">
-                                        <span class="title-price">$60.00</span>
-                                        <span class="title-price line-through">$95.00</span>
-                                    </div> -->
-                                </div>    
-                                <!-- <ul class="list-inline product-ratings">
-                                    <li><i class="rating-selected fa fa-star"></i></li>
-                                    <li><i class="rating-selected fa fa-star"></i></li>
-                                    <li><i class="rating-selected fa fa-star"></i></li>
-                                    <li><i class="rating fa fa-star"></i></li>
-                                    <li><i class="rating fa fa-star"></i></li>
-                                    <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
-                                </ul>   -->  
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">이디야</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">할리스</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">투썸</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">카페베네</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">탐앤탐스</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">뺵다방</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">엔젤리너스</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" alt=""></a>
-                                <a class="product-review korean-font" href="#" >즐겨찾기 취소</a>
-                                <a class="add-to-cart" href="#"><i class="glyphicon glyphicon-search"></i>Detail Page</a>
-                            </div> 
-                            <div class="product-description product-description-brd margin-bottom-30">
-                                <div class="overflow-h margin-bottom-5">
-                                    <div style="text-align:center;">
-                                        <h4 class="title-price korean-font">이디야</h4>
-                                    </div>    
-                                </div>    
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!--/end filter resilts-->
-
-                <div class="text-center">
-                    <ul class="pagination pagination-v2">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>                                                            
-                </div><!--/end pagination-->
             </div>
         </div><!--/end row-->
     </div><!--/end container-->    

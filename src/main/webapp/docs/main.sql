@@ -149,7 +149,7 @@ create sequence notice_seq;
 /* Q&A 테이블 - 고객문의, 건의사항 정보 
  * 
  * qa_f_option : 0:프랜차이즈카페문의,1:개인카페문의,2:커스터마이밍문의,3:이벤트문의,4:건의사항 */
-drop table QA;
+drop table QNA;
 
 create table QNA(
    qa_num number not null,
@@ -218,7 +218,7 @@ create table customizing(
    custom_visit number default 0,
    custom_reg_date date not null,
    constraint customizing_pk primary key (custom_num),
-   constraint customizing_fk1 foreign key (franchise_num) references franchise(franchise_num),
+   constraint customizing_fk1 foreign key (franchise_num) references franchis (franchise_num),
    constraint customizing_fk2 foreign key (u_uid) references u_user(u_uid)
 );
 
@@ -291,18 +291,20 @@ create sequence P_log_seq;
 
 /* declared 테이블 - 게시물 혹은 댓글 신고시 신고한 내역이 저장되는 테이블 
  * 
- * target_type : 1- 게시글 2- 프랜차이즈 3- 개인카페 댓글 */
+ * d_target_path : 0[프랜차이즈 댓글] 1[개인카페 댓글] 2[커스터마이징 댓글] */
 drop table declared;
 
 create table declared(
    d_seq number(20) not null,
-   d_target_id number(20) not null,
    d_target_path number(20) not null,
+   d_target_num number(20) not null,
+   d_target_id number(20) not null,
    d_mem_id varchar2(20) not null, 
    d_target_mem_id varchar2(20),
    d_reg_date date not null,
-   d_content varchar2(200),
+   d_content varchar2(4000),
    d_state number(20) default(0),
+   d_comment varchar2(2000),
    constraint declared_pk primary key (d_seq)
 );
 
@@ -342,6 +344,62 @@ create table nlog(
 
 drop sequence nlog_seq;
 create sequence nlog_seq;
+
+/*user_log - 회원 로그 테이블 */
+drop table user_log;
+
+create table user_log(
+	u_log_seq number not null,
+	u_uid varchar2(20) not null,
+	u_log_reg_date date not null,
+	u_log_change number not null,
+	u_log_message varchar2(200) not null,
+	constraint u_log_pk primary key (u_log_seq)
+);
+
+drop sequence user_log_seq;
+create sequence user_log_seq;
+
+/*user_count_log 메뉴에 따른 페이지뷰 카운트 로그 테이블*/
+
+drop table user_count_log;
+
+create table user_count_log(
+	ucnt_log_seq number not null,
+	ucnt_log_reg_date varchar2(30) not null,
+	ucnt_total number default(0),
+	ucnt_log_main number default(0),
+	ucnt_log_franchise number default(0),
+	ucnt_log_private number default(0),
+	ucnt_log_custom number default(0),
+	ucnt_log_qna number default(0),
+	ucnt_log_notice number default(0),
+	constraint ucnt_log_pk primary key (ucnt_log_seq)
+);
+
+drop sequence user_count_log_seq;
+create sequence user_count_log_seq;
+
+/*
+ * user_menu_log 메뉴의 상태 로그 테이블
+ * umenu_name : 0[개인카페] 1[커스텀메뉴] 2[프랜차이즈 댓글] 3[개인카페 댓글] 4[커스텀 댓글]
+ * umenu_log_state : 0[등록] 1[수정] 2[삭제] 3[신고]
+ * */
+drop table user_menu_log;
+
+create table user_menu_log(
+	umenu_log_seq number not null,
+	umenu_log_reg_date date not null,
+	umenu_log_u_uid varchar2(20) not null,
+	umenu_name number default(0),
+	umenu_log_state number default(0),
+	umenu_log_message varchar2(200) not null,
+	constraint umenu_log_pk primary key (umenu_log_seq)
+);
+
+drop sequence umenu_log_seq;
+create sequence umenu_log_seq;
+
 
 /*프랜차이즈*/
 INSERT INTO franchise VALUES(1,'스타벅스','star.jpg','프랜차이즈 브랜드의 대표적인 브랜드이다', '10');
@@ -406,6 +464,7 @@ INSERT INTO private_cafe_menu VALUES(1,1,'아메리카노','5800','항아리 잔에 나오는
 INSERT INTO private_cafe_menu VALUES(2,1,'카라멜초코 라떼','6300','라떼위에 카라멜 소스와 초콜릿 토핑을 올린 라떼','amormio.jpg');
 INSERT INTO private_cafe_menu VALUES(3,5,'자몽에이드','7000','자몽 토핑과 스파클링의 조화가 느껴지는 에이드','rkskekcoffee.jpg');
 INSERT INTO private_cafe_menu VALUES(4,3,'카라멜마끼아또','5500','바닐라 시럽과 카라멜 소스와 조화되는 라떼','21secondcoffee.jpg');
+
 /*프랜차이즈 메뉴*/
 select * from franchise_menu;
 INSERT INTO franchise_menu VALUES (1,5,'콜드브루','5500','twocold.jpg','원두가루를 냉침하여 우려낸 커피로 부드럽다');

@@ -287,7 +287,7 @@ function attach_pcafe_main(item,category_mywrite) {
 
 //해당 개인카페 정보 삭제하는 부분
 function pcafeDelete(pcafe_num,u_uid) {
-	alert('pcafe_num : ' + pcafe_num + ', u_uid : ' + u_uid);
+	//alert('pcafe_num : ' + pcafe_num + ', u_uid : ' + u_uid);
 	var answer = confirm("등록한 카페를 삭제 하시겠습니까?");
 	
 	if(answer){

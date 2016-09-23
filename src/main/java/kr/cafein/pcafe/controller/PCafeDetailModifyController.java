@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.domain.PCafeCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.pcafe.service.PCafeService;
 import kr.cafein.util.FileUtil_Private;
 
@@ -56,9 +57,7 @@ public class PCafeDetailModifyController {
 			//기존에 *표시 붙어있는 대표이미지 이름뒤에 ,를 붙이고 새로운 파일 이름 저장(나중에 js에서 split 후 이미지 가져갈것임)
 			pcafeCommand.setPcafe_img(pcafe_info.getPcafe_img() + "," +newName);
 			System.out.println("첨부파일 있을 경우 파일 이름 저장 : " + pcafe_info.getPcafe_img() + "," + newName);
-		}/*else if(pcafeCommand.getUpload() == null){
-			
-		}*/else {
+		}else {
 			pcafeCommand.setPcafe_img(pcafe_info.getPcafe_img());
 			System.out.println("첨부파일 없을 경우 : " + pcafe_info.getPcafe_img());
 		}
@@ -79,6 +78,20 @@ public class PCafeDetailModifyController {
 		}/*else if(pcafeCommand.getUpload() == null){
 			
 		}*/
+		
+		String u_uid = (String)session.getAttribute("u_uid"); 
+		//개인카페 수정 로그, umenu_name=0, umenu_log_state=1 고정
+		//umenu_name : 0[개인카페] 1[커스텀메뉴] 2[프랜차이즈 댓글] 3[개인카페 댓글] 4[커스텀 댓글]
+		//umenu_log_state : 0[등록] 1[수정] 2[삭제] 3[신고]
+		UserMenuLogCommand userMenuLogCommand = new UserMenuLogCommand();
+		userMenuLogCommand.setUmenu_log_u_uid(u_uid);
+		userMenuLogCommand.setUmenu_name(0);
+		userMenuLogCommand.setUmenu_log_state(1);
+		String u_email = pcafeService.selectUserLogByMember(u_uid).getU_email();
+		String logMessage = "[" + u_email + "] 사용자가 개인카페에서 카페수정을 하였습니다."; 
+		userMenuLogCommand.setUmenu_log_message(logMessage);
+		pcafeService.insertUserLog(userMenuLogCommand);
+		log.debug("[개인카페 로그] userMenuLogCommand : " + userMenuLogCommand);
 		
 		Map<String,String> map = new HashMap<String,String>();
 		

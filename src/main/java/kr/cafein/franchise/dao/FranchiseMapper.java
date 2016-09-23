@@ -35,7 +35,7 @@ public interface FranchiseMapper {
 	@Select("SELECT * FROM franchise_menu where fmenu_num = #{fmenu_num}")
 	public FC_FranchiseMenuCommand selectMenu(int fmenu_num);
 	//合付农 眠啊
-	@Insert("INSERT INTO bookmark(bookmark_num, u_uid, franchise_num) VALUES (bookmark_seq.nextval, #{u_uid}, #{franchise_num})")
+	@Insert("INSERT INTO bookmark(bookmark_num, u_uid, franchise_num, bookmark_reg_date) VALUES (bookmark_seq.nextval, #{u_uid}, #{franchise_num}, sysdate)")
 	public void insertBookmark(FC_FranchiseBookmarkCommand bookmark);
 	//合付农 眉农
 	@Select("SELECT count(*) FROM bookmark WHERE u_uid = #{u_uid} AND franchise_num = #{franchise_num}")

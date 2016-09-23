@@ -802,7 +802,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
 
-			<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/>
+			<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -816,13 +816,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/mypage_like_menu.js"/>
         </put-list-attribute>
@@ -847,7 +847,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
 
-			<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/>
+			<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -861,13 +861,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/mypage_like_cafe.js"/>
         </put-list-attribute>
@@ -892,7 +892,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
 
-			<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/>
+			<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -906,13 +906,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/mypage_bookmark_franchise.js"/>
         </put-list-attribute>
@@ -937,7 +937,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
 
-			<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/>
+			<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -951,13 +951,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/mypage_bookmark_private.js"/>
         </put-list-attribute>
@@ -982,7 +982,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
 
-			<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/>
+			<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.css"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -996,13 +996,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/noUiSlider/jquery.nouislider.full.min.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/mouse-wheel.js"/> -->
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/mypage_bookmark_customMenu.js"/>
         </put-list-attribute>

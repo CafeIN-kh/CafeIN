@@ -183,7 +183,7 @@ $(document).ready(function(){
 					}else if(data.result == 'wrongAccess') {
 						alert('잘못된 접속입니다.');
 					}else if(data.result == 'success'){
-						alert('삭제 완료!');
+						//alert('삭제 완료!');
 						
 						selectData(1,$('#pcafe_num').val());
 					}else {
@@ -238,10 +238,10 @@ $(document).ready(function(){
 						//신고자/피신고자 정보 jsp에 바꿔주기
 						$('#d_target_id').val(declaredReply.preply_num);
 						$('#d_target_mem_id_name').val(declaredMember_u_name);
-						$('#d_target_mem_id_name').html("피신고자 ID : " + declaredMember_u_name);
+						$('#d_target_mem_id_name').html("피신고자 닉네임 : " + declaredMember_u_name);
 						$('#d_target_mem_id').val(declaredMember_u_uid);
 						
-						alert("신고댓글시퀀스 : " + declaredReply.preply_num + ", 신고당한 사람닉네임 :" + declaredMember_u_name + ", 신고당한사람 u_uid : " + declaredMember_u_uid);
+						//alert("신고댓글시퀀스 : " + declaredReply.preply_num + ", 신고당한 사람닉네임 :" + declaredMember_u_name + ", 신고당한사람 u_uid : " + declaredMember_u_uid);
 					
 					}else {
 						alert('신고시 오류 발생!');

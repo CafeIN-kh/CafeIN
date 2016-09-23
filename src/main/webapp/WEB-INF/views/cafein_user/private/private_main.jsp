@@ -211,7 +211,7 @@
         		<!-- Recent Works -->
 		        <div class="text-center margin-bottom-50">
 	                <h2 class="title-v2 title-center">PRIVATE CAFE</h2>
-	                <p class="space-lg-hor korean-font">전국의 개인카페애 대한 정보가 들어있습니다. <span class="color-green">원하는 카드를 선택하여 들어가시면</span>, 더 많은 정보를 보실 수 있습니다.</p>
+	                <p class="space-lg-hor korean-font">전국의 개인카페애 대한 정보가 들어있습니다. <span class="color-green">원하는 카페를 선택하여 들어가시면</span>, 더 많은 정보를 보실 수 있습니다.</p>
 	            </div>
 		        
 		        <div class="row margin-bottom-20 news-v1">

@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.domain.UserDeclaredCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeReplyCommand;
 import kr.cafein.pcafe.service.PCafeService;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class PCafeDetailReplyDeclaredController {
@@ -95,9 +97,29 @@ public class PCafeDetailReplyDeclaredController {
 		//d_state[처리상태] = 0.처리 전, 1.처리 중,2.처리 완료, 3처리 보류, 4. 처리 취소
 		int d_state = 0;
 		declaredCommand.setD_state(d_state);
+		//신고 대상(댓글)의 상위 경로 시퀀스(개인카페 시퀀스)
+		declaredCommand.setD_target_num(pcafe_num);
+		//출력할 메시지
+		declaredCommand.setD_comment("개인카페 댓글에서 신고가 들어왔으며 처리 전 상태입니다.");
+		//신고내용 줄바꿈 처리
+		declaredCommand.setD_content(StringUtil.useBrNoHtml(declaredCommand.getD_content()));
 		
 		//댓글 신고
 		pcafeService.insertDeclaredReply(declaredCommand);
+		
+		String u_uid = (String)session.getAttribute("u_uid"); 
+		//개인카페 댓글신고 로그, umenu_name=3, umenu_log_state=3 고정
+		//umenu_name : 0[개인카페] 1[커스텀메뉴] 2[프랜차이즈 댓글] 3[개인카페 댓글] 4[커스텀 댓글]
+		//umenu_log_state : 0[등록] 1[수정] 2[삭제] 3[신고]
+		UserMenuLogCommand userMenuLogCommand = new UserMenuLogCommand();
+		userMenuLogCommand.setUmenu_log_u_uid(u_uid);
+		userMenuLogCommand.setUmenu_name(3);
+		userMenuLogCommand.setUmenu_log_state(3);
+		String u_email = pcafeService.selectUserLogByMember(u_uid).getU_email();
+		String logMessage = "[" + u_email + "] 사용자가 개인카페에서 댓글을 신고 하였습니다."; 
+		userMenuLogCommand.setUmenu_log_message(logMessage);
+		pcafeService.insertUserLog(userMenuLogCommand);
+		log.debug("[개인카페 로그] userMenuLogCommand : " + userMenuLogCommand);
 		
 		//login과 js를 같이 쓰고 있는데  login에서 page_registration.js 에이작스를 안쓰므로 신고도 map으로 return 시키지 않음
 		return "redirect:/cafein_user/private/private_detail.do?pcafe_num="+pcafe_num;

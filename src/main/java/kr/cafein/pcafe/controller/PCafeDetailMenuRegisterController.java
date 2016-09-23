@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.cafein.domain.PCafeMenuCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.pcafe.service.PCafeService;
 import kr.cafein.util.FileUtil_PrivateMenu;
 

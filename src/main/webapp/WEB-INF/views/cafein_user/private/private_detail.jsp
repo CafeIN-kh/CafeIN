@@ -511,16 +511,17 @@
                        	  <!-- d_target_path : 0[프랜차이즈 댓글] 1[개인카페 댓글] 2[커스터마이징 댓글] 개인카페 쪽이므로 1번으로 박아서 넘김 -->
                        	  <input type="hidden" id="d_target_path" name="d_target_path" value="1">
                        	  
+                       	  <!-- d_target_num : 신고 대상(댓글)의 상위 경로 시퀀스(개인카페 시퀀스) -->
                        	  <input type="hidden" name="pcafe_num" value="${pcafe_info.pcafe_num}" id="pcafe_num">
                        	  
                           <section>
                           	 <!-- 신고한 사람의 정보는 세션에서 가져오기 -->
-                             <label class="label" id="d_mem_id_name" name="d_mem_id_name" style="font-weight:bold;">신고자 ID : ${u_name}</label> 
+                             <label class="label" id="d_mem_id_name" name="d_mem_id_name" style="font-weight:bold;">신고자 닉네임 : ${u_name}</label> 
                              <input type="hidden" name="d_mem_id" id="d_mem_id" value="${u_uid}">
                           </section>
                           
                           <section>
-                             <label class="label" id="d_target_mem_id_name" name="d_target_mem_id_name" value="" style="font-weight:bold;">피신고자 ID : </label> 
+                             <label class="label" id="d_target_mem_id_name" name="d_target_mem_id_name" value="" style="font-weight:bold;">피신고자 닉네임 : </label> 
                              <input type="hidden" name="d_target_mem_id" id="d_target_mem_id" value="">
                           </section>
 

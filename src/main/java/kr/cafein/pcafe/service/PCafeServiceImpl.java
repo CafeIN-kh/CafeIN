@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.UserDeclaredCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.pcafe.dao.PCafeMapper;
 
 @Service("pcafeService")
@@ -217,6 +219,31 @@ public class PCafeServiceImpl implements PCafeService{
 	@Override
 	public void deletePCafe(Map<String,Object> deleteMap) {
 		pcafeMapper.deletePCafe(deleteMap);
+	}
+
+	@Override
+	public void insertUserLog(UserMenuLogCommand userMenuLog) {
+		pcafeMapper.insertUserLog(userMenuLog);
+	}
+
+	@Override
+	public MemberCommand selectUserLogByMember(String u_uid) {
+		return pcafeMapper.selectUserLogByMember(u_uid);
+	}
+
+	@Override
+	public void insertPCafeUserCountLog() {
+		pcafeMapper.insertPCafeUserCountLog();
+	}
+
+	@Override
+	public void updatePCafeUserCountLog() {
+		pcafeMapper.updatePCafeUserCountLog();
+	}
+
+	@Override
+	public UserCountLogCommand selectPCafeUserCountLogByDate() {
+		return pcafeMapper.selectPCafeUserCountLogByDate();
 	}
 	
 }

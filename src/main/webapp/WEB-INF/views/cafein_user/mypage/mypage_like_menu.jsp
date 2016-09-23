@@ -125,21 +125,18 @@
                     
                     <div class="col-sm-8">
                         <ul class="list-inline clear-both">
-                            <!-- <li class="grid-list-icons">
-                                <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
-                                <a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
-                            </li> -->
                             <li class="sort-list-btn">
                                 <h3>Sort By :</h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                        Cafe Menu <span class="caret"></span>
+                                	<!-- category:1 프렌차이즈메뉴, category:2 개인카페메뉴, category:3 커스텀메뉴 -->
+                                	<input type="hidden" id="category" value="${category}">
+                                    <button id="menu_category" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        Franchise Menu <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">All</a></li>
-                                        <li><a href="#">Franchise Menu</a></li>
-                                        <li><a href="#">Private Menu</a></li>
-                                        <li><a href="#">Customizing Menu</a></li>
+                                        <li><a href="/CafeIN/cafein_user/mypage/mypage_like_menu.do?category=1">Franchise Menu</a></li>
+                                        <li><a href="/CafeIN/cafein_user/mypage/mypage_like_menu.do?category=2">Private Menu</a></li>
+                                        <li><a href="/CafeIN/cafein_user/mypage/mypage_like_menu.do?category=3">Customizing Menu</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -148,188 +145,122 @@
 	                    
 				</div><!--/end result category-->
 
+				<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+				
+                <!-- 마이페이지 카페 좋아요 정보 페이징 하는 부분 -->
+				<c:if test="${count == 0}">
+					<div class="korean-font" style="text-align:center;font-size: xx-large;color:#72c02c;margin:200px 0 400px 0;">등록된 좋아요가 없습니다.</div>
+				</c:if>
+				<c:if test="${count > 0}">
+	                <div class="filter-results">
+	                
+	                	<c:forEach var="likeMypage" items="${likeMypage}" varStatus="status">
+	                	
+	                		<!-- category:1 프렌차이즈메뉴, category:2 개인카페메뉴, category:3 커스텀메뉴 -->
+	                		<c:if test="${category == 1}">
+			                    <div class="list-product-description product-description-brd margin-bottom-30">
+			                        <div class="row">
+			                        
+			                            <div class="col-sm-4">
+			                                <a href="shop-ui-inner.html">
+			                                	<img class="img-responsive sm-margin-bottom-20" src="/CafeIN/upload/franchise_menu/${likeMypage.fmenu_img}" style="min-height:200px;">
+			                                </a>
+			                            </div> 
+			                            <div class="col-sm-8 product-description" style="padding:15px;">
+			                                <div class="overflow-h margin-bottom-5">
+			                                    <ul class="list-inline overflow-h">
+			                                        <li><h4 class="title-price korean-font">${likeMypage.fmenu_name}</h4></li>
+			                                    </ul>    
+			                                    <h6 style="margin:0;">&nbsp;</h6>
+			                                    <p class="margin-bottom-20 korean-font">
+			                                    	${likeMypage.fmenu_introduce}
+			                                    </p>
+			                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${likeMypage.fmenu_fnum}'">
+			                                    	Detail Page
+			                                    </button>
+			                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_like_menu_deletelike.do?category=${category}&fmenu_num=${likeMypage.fmenu_num}'">
+			                                    	좋아요 취소
+			                                    </button>
+			                                </div>    
+			                            </div>
+			                        </div>
+			                    </div>   
+		                    </c:if>
+		                    
+		                    <c:if test="${category == 2}">
+			                    <div class="list-product-description product-description-brd margin-bottom-30">
+			                        <div class="row">
+			                        
+			                            <div class="col-sm-4">
+			                                <a href="shop-ui-inner.html">
+			                                	<img class="img-responsive sm-margin-bottom-20" src="/CafeIN/upload/private_menu/${likeMypage.pmenu_img}" style="min-height:200px;">
+			                                </a>
+			                            </div> 
+			                            <div class="col-sm-8 product-description" style="padding:15px;">
+			                                <div class="overflow-h margin-bottom-5">
+			                                    <ul class="list-inline overflow-h">
+			                                        <li><h4 class="title-price korean-font">${likeMypage.pmenu_name}</h4></li>
+			                                    </ul>    
+			                                    <h6 style="margin:0;">&nbsp;</h6>
+			                                    <p class="margin-bottom-20 korean-font">
+			                                    	${likeMypage.pmenu_introduce}
+			                                    </p>
+			                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/private/private_detail.do?pcafe_num=${likeMypage.pmenu_pnum}'">
+			                                    	Detail Page
+			                                    </button>
+			                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_like_menu_deletelike.do?category=${category}&pmenu_num=${likeMypage.pmenu_num}'">
+			                                    	좋아요 취소
+			                                    </button>
+			                                </div>    
+			                            </div>
+			                        </div>
+			                    </div>   
+		                    </c:if>
+		                    
+		                    <c:if test="${category == 3}">
+			                    <div class="list-product-description product-description-brd margin-bottom-30">
+			                        <div class="row">
+			                        
+			                            <div class="col-sm-4">
+			                                <a href="shop-ui-inner.html">
+			                                	<img class="img-responsive sm-margin-bottom-20" src="/CafeIN/upload/customizing/${likeMypage.custom_img}" style="min-height:200px;">
+			                                </a>
+			                            </div> 
+			                            <div class="col-sm-8 product-description" style="padding:15px;">
+			                                <div class="overflow-h margin-bottom-5">
+			                                    <ul class="list-inline overflow-h">
+			                                        <li><h4 class="title-price korean-font">${likeMypage.custom_name}</h4></li>
+			                                    </ul>    
+			                                    <h6 style="margin:0;">&nbsp;</h6>
+			                                    <p class="margin-bottom-20 korean-font">
+			                                    	${likeMypage.custom_introduce}
+			                                    </p>
+			                                    <!-- 나중에 커스텀 메뉴 url로 바꾸기 -->
+			                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${likeMypage.custom_fnum}'">
+			                                    	Detail Page
+			                                    </button>
+			                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_like_menu_deletelike.do?category=${category}&custom_num=${likeMypage.custom_num}'">
+			                                    	좋아요 취소
+			                                    </button>
+			                                </div>    
+			                            </div>
+			                        </div>
+			                    </div>   
+		                    </c:if>
+		                    
+	                    </c:forEach> 
+	                    
+	
+	                </div><!--/end filter resilts-->
+	                
+					<div class="text-center" style="margin-bottom:20%;">
+		        		<ul class="pagination">
+		        			${pagingHtml}
+		        		</ul>  
+		        	</div>
+        	
+		        </c:if>	                
 
-                <div class="filter-results">
-                
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li><span class="gender text-uppercase">5500원</span></li>
-                                        <li class="pull-right">
-                                            <!-- <ul class="list-inline product-ratings">
-                                                <li><i class="rating-selected fa fa-star"></i></li>
-                                                <li><i class="rating-selected fa fa-star"></i></li>
-                                                <li><i class="rating-selected fa fa-star"></i></li>
-                                                <li><i class="rating fa fa-star"></i></li>
-                                                <li><i class="rating fa fa-star"></i></li>
-                                            </ul> -->
-                                        </li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                   <!--  <div class="margin-bottom-10">
-                                        <span class="title-price margin-right-10 korean-font">&nbsp;5500원</span>
-                                    </div>   -->  
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <!-- <ul class="list-inline add-to-wishlist margin-bottom-20">
-                                        <li class="wishlist-in">
-                                            <i class="fa fa-heart"></i>
-                                            <a href="#">Add to Wishlist</a>
-                                        </li>
-                                        <li class="compare-in">
-                                            <i class="fa fa-exchange"></i>
-                                            <a href="#">Add to Compare</a>
-                                        </li>
-                                    </ul> -->
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Like Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li><span class="gender text-uppercase">5500원</span></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Like Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>    
-
-					<div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li><span class="gender text-uppercase">5500원</span></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Like Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li><span class="gender text-uppercase">5500원</span></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Like Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="list-product-description product-description-brd margin-bottom-30">
-                        <div class="row">
-                        
-                            <div class="col-sm-4">
-                                <a href="shop-ui-inner.html">
-                                	<img class="img-responsive sm-margin-bottom-20" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/main/img2.jpg" style="min-height:200px;">
-                                </a>
-                            </div> 
-                            <div class="col-sm-8 product-description" style="padding:15px;">
-                                <div class="overflow-h margin-bottom-5">
-                                    <ul class="list-inline overflow-h">
-                                        <li><h4 class="title-price korean-font">아메리카노</h4></li>
-                                        <li><span class="gender text-uppercase">5500원</span></li>
-                                    </ul>    
-                                    <h6 style="margin:0;">&nbsp;</h6>
-                                    <p class="margin-bottom-20 korean-font">
-                                    	다양한 토양과 기후에서 
-										
-										자란 커피 원두는 그 속에 각기 다른 맛과 향의 비밀을 숨기고 있습니다.
-										생두를 로스팅하여 에스프레소를 만드는 과정은 단순하고 평범해 보이지만, 사실은 로스팅과 추출법 등의 미묘하고 작은 차이가 커피 맛을 변화시킵니다. 
-										원두에 숨겨진 이러한 커피의 비밀을 하나 하나 밝혀가면서 많은 사람들이 커피와 함께 소중한 순간을 즐기도록 해주는 것이 바로 할리스커피가 추구하는 
-                                    </p>
-                                    <button type="button" class="btn-u">Detail Page</button>
-                                    <button type="button" class="btn-u btn-u-default">Like Cancel</button>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                </div><!--/end filter resilts-->
-
-                <div class="text-center">
-                    <ul class="pagination pagination-v2">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>                                                            
-                </div><!--/end pagination-->
             </div>
         </div><!--/end row-->
     </div><!--/end container-->    

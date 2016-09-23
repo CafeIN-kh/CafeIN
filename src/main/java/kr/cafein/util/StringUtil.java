@@ -7,6 +7,8 @@ public class StringUtil {
 		if(str == null) return null;
 		
 		//null이 아닐경우
+		//\r\n으로 구성되어있을 경우 <br>로 대체
+		//바꾼 데이터 중 \r이 있으면 다시 <br>로 대체
 		return str.replaceAll("<", "&lt;")
 				  .replaceAll(">", "&gt;")
 				  .replaceAll("\r\n", "<br>")

@@ -1,6 +1,8 @@
 package kr.cafein.pcafe.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,7 @@ import kr.cafein.domain.LikeCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.pcafe.service.PCafeService;
 import kr.cafein.util.PagingUtil;
 
@@ -45,8 +48,8 @@ public class PCafeDetailListController {
 		
 		System.out.println("private_detail.do 진입");
 		if(log.isDebugEnabled()) {
-			log.debug("pcafe_num : " + pcafe_num);
-			//log.debug("currentPage : " + currentPage);
+			log.debug("★★★pcafe_num : " + pcafe_num);
+			log.debug("★★★currentPage : " + currentPage);
 		}
 		
 		//u_level 일반회원:0, 사업자:1 뷰에 보여줄때 사업자의 경우만 메뉴추가 버튼 활성화 하기 위해.
@@ -58,15 +61,13 @@ public class PCafeDetailListController {
 		
 		//u_uid = null이면 guest 상태인것
 		String u_uid = (String)session.getAttribute("u_uid");
-		//int u_level = 1;
-		//String u_uid = "00001";
 		
 		//해당 카페의 조회수 증가
 		pcafeService.updateVisit(pcafe_num);
 		
 		//해당 카페의 정보 찾아오기
 		PCafeCommand pcafe_info = pcafeService.selectPCafe(pcafe_num);
-		System.out.println("pcafe_info : " + pcafe_info);
+		log.debug("★★★pcafe_info : " + pcafe_info);
 		//해당 카페의 댓글수,좋아요수 카운트
 		pcafe_info.setPc_reply_cnt(pcafeService.getCountReply(pcafe_num));
 		pcafe_info.setPc_like_cnt(pcafeService.getCountLike(pcafe_num));
@@ -79,7 +80,7 @@ public class PCafeDetailListController {
 			BookmarkCommand bookmarkCommand = new BookmarkCommand();
 			bookmarkCommand.setU_uid(u_uid);
 			bookmarkCommand.setPcafe_num(pcafe_num);
-			System.out.println("bookmarkCommand체크 : " + bookmarkCommand);
+			log.debug("★★★bookmarkCommand체크 : " + bookmarkCommand);
 			bookmarkCount = pcafeService.selectBookmarkCount(bookmarkCommand);
 			
 			//아이디에 따른 해당 카페 좋아요 여부 검사(jsp에서 좋아요/취소하기 버튼 구별하기 위해)
@@ -88,7 +89,7 @@ public class PCafeDetailListController {
 			likeCommand.setPcafe_num(pcafe_num);
 			likeCount = pcafeService.selectLikeCount(likeCommand);
 			
-			System.out.println("메인 bookmarkCount : " + bookmarkCount + ", likeCount : " + likeCount);
+			log.debug("★★★메인 bookmarkCount : " + bookmarkCount + ", likeCount : " + likeCount);
 		}
 		
 		//개인카페 메뉴 페이징 처리 하는 부분
@@ -103,18 +104,30 @@ public class PCafeDetailListController {
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,"/CafeIN/cafein_user/private/private_detail.do?pcafe_num="+pcafe_num);
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		System.out.println("currentPage: " + currentPage + ", count : " + count);
-		System.out.println("rowCount: " + rowCount + ", pageCount : " + pageCount);
-		System.out.println("pcafe_num : " + pcafe_num + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
+		log.debug("★★★currentPage: "  + currentPage + ", count : " + count + ", rowCount: " + rowCount);
+		log.debug("★★★pageCount : " + pageCount + ", pcafe_num : " + pcafe_num + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
 
 		List<PCafeMenuCommand> menuList = null;
 		
 		if(count > 0) {
 			menuList = pcafeService.menuList(map);
-			System.out.println("menuList : " +  menuList);
+			log.debug("★★★menuList : " +  menuList);
 		}else {
 			menuList = Collections.emptyList();
 		}
+		
+		
+		//페이지뷰 카운트, 오늘 날짜에 따라 페이지뷰 로우 생성(insert)과 업데이트(update)
+		UserCountLogCommand userCountLogCommand = new UserCountLogCommand();
+        userCountLogCommand = pcafeService.selectPCafeUserCountLogByDate();	//오늘 날짜와 db에 저장된 날짜가 일치하는 row 찾기 
+        if(userCountLogCommand == null) {
+        	log.debug("★★★오늘날짜 페이지뷰 로우 없으므로 insert");
+        	pcafeService.insertPCafeUserCountLog();
+        }else {
+        	log.debug("★★★오늘날자 페이지뷰 로우 있으므로 update, 전체카운트와 개인카페 카운트+1");
+        	pcafeService.updatePCafeUserCountLog();
+        }
+		
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("private_detail");
@@ -142,14 +155,11 @@ public class PCafeDetailListController {
 												HttpSession session ) {
 											//@RequestParam("u_uid") int u_uid 
 		if(log.isDebugEnabled()) {
-			log.debug("pcafe_num : " + pcafe_num);
+			log.debug("★★★pcafe_num : " + pcafe_num);
 		}
 		
-		//rowCount = 5;
-		//pageCount = 5;
-		
 		PCafeCommand pcafe_info_list = pcafeService.selectPCafe(pcafe_num);
-		System.out.println("pcafe_info_list : " +  pcafe_info_list);
+		log.debug("★★★pcafe_info_list : " +  pcafe_info_list);
 		
 		//json 형태로 ajax에 전달
 		Map<String,Object> mapJson = new HashMap<String,Object> ();
@@ -166,14 +176,14 @@ public class PCafeDetailListController {
 														  HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
-			log.debug("pmenu_num : " + pmenu_num);
+			log.debug("★★★pmenu_num : " + pmenu_num);
 		}
 		System.out.println("private_detailMenuDetail_ajax 진입");
 
 		PCafeMenuCommand pcafeMenuCommand = null;
 		
 		pcafeMenuCommand = pcafeService.selectMenuDetail(pmenu_num);
-		System.out.println("pcafeMenuCommand : " + pcafeMenuCommand);
+		log.debug("★★★pcafeMenuCommand : " + pcafeMenuCommand);
 		
 		//u_uid = null이면 guest 상태인것
 		String u_uid = (String)session.getAttribute("u_uid");
@@ -182,13 +192,13 @@ public class PCafeDetailListController {
 		int menuLikeCount = 0;
 		LikeCommand likeCommand = new LikeCommand();
 		likeCommand.setPmenu_num(pmenu_num);
-		System.out.println("pmenu_num : " + likeCommand.getPmenu_num());
+		log.debug("★★★pmenu_num : " + likeCommand.getPmenu_num());
 		if(u_uid != null) {
 			//아이디에 따른 해당 카페 좋아요 여부 검사(jsp에서 좋아요/취소하기 버튼 구별하기 위해)
 			likeCommand.setU_uid(u_uid);
 			menuLikeCount = pcafeService.selectMenuLikeCount(likeCommand);
 			
-			System.out.println("메뉴  menuLikeCount : " + menuLikeCount);
+			log.debug("★★★메뉴  menuLikeCount : " + menuLikeCount);
 		}
 		
 		//전체 사용자가 좋아요 누른 수
@@ -214,8 +224,8 @@ public class PCafeDetailListController {
 											  HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
-			log.debug("reply_currentPage : " + reply_currentPage);
-			log.debug("pcafe_num : " + pcafe_num);
+			log.debug("★★★reply_currentPage : " + reply_currentPage);
+			log.debug("★★★pcafe_num : " + pcafe_num);
 		}
 		
 		System.out.println("private_detailReply_ajax 진입");
@@ -234,17 +244,15 @@ public class PCafeDetailListController {
 
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		System.out.println("pcafe_num : " + pcafe_num + ", count : " + count + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
+		log.debug("★★★pcafe_num : " + pcafe_num + ", count : " + count + ", start: " + page.getStartCount() + ", end: " + page.getEndCount());
 
-		//System.out.println("count : " + count + ", reply_start: " + page.getStartCount() + ", end: " + page.getEndCount());
-		
 		List<PCafeReplyCommand> replyList = null;
 		
 		
 		if(count > 0) {
 			replyList = pcafeService.replyList(map);
 			//현재 페이지에 보여질 메뉴의 숫자 (한페이지에 보여지는 메뉴의 숫자는 최대 6개이다.) 그 숫자만큼 화면에 foreach로 돌려주기 위해.
-			System.out.println("replyList : " +  replyList); 
+			log.debug("★★★replyList : " +  replyList); 
 		}else {
 			replyList = Collections.emptyList();
 		}

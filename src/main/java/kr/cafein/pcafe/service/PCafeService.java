@@ -3,6 +3,8 @@ package kr.cafein.pcafe.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.domain.BookmarkCommand;
@@ -11,7 +13,9 @@ import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.domain.PCafeReplyCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.domain.UserDeclaredCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Transactional
 public interface PCafeService {
@@ -75,5 +79,14 @@ public interface PCafeService {
 	public PCafeReplyCommand selectDeclaredReply(Integer preply_num);
 	public MemberCommand selectDeclaredMember(String u_uid);
 	public void insertDeclaredReply(UserDeclaredCommand declared);
-
+	
+	//개인카페 등록,삭제,수정,신고에 따른 로그 
+	public void insertUserLog(UserMenuLogCommand userMenuLog);
+	public MemberCommand selectUserLogByMember(String u_uid);
+	
+	//개인카페 페이지뷰 로그, 오늘 날짜의 데이터가 없으면 insert, 있으면 update로 +1 카운트
+	public void insertPCafeUserCountLog();
+	public void updatePCafeUserCountLog();
+	public UserCountLogCommand selectPCafeUserCountLogByDate();
+	
 }

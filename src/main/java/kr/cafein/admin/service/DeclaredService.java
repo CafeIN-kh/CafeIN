@@ -13,9 +13,9 @@ import kr.cafein.admin.domain.DeclaredCommand;
 @Transactional
 public interface DeclaredService {
 	public List<DeclaredCommand> getDeclaredList(Map<String,Object> map);
-	@Select("SELECT count(*) FROM declared")
+	
 	public int getDeclaredCount();
 	
-	@Select("SELECT * FROM declared")
+	
 	public List<DeclaredCommand> getAllDeclaredList();
 }

@@ -46,7 +46,7 @@ public class PagingUtil_franchise {
 		}
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
-		pagingHtml.append("<ul class=" + "pagination" + ">");
+		pagingHtml.append("<ul class=" + "pagination paging_button" + ">");
 		if (currentPage > pageCount) {
 			if(keyword==null){//검색 미사용시
 				pagingHtml.append("<li><a href="+pageUrl+ "?franchise_num=" + franchise_num + "&pageNum="+ (startPage - 1) + addKey +">");
@@ -63,12 +63,12 @@ public class PagingUtil_franchise {
 				break;
 			}
 			if (i == currentPage) {
-				pagingHtml.append("<li class=" + "active" + "" + "><a href=" + "#" + "" + ">");
+				pagingHtml.append("<li class=" + "active" + "" + "><a class='pageNum' href=" + "#" + "" + ">");
 				pagingHtml.append(i);
 				pagingHtml.append("</li>");
 			} else {
 				if(keyword==null){//검색 미사용시
-					pagingHtml.append("<li><a href="+pageUrl+"?franchise_num=" + franchise_num + "&pageNum=");
+					pagingHtml.append("<li><a class='pageNum' href="+pageUrl+"?franchise_num=" + franchise_num + "&pageNum=");
 				}else{
 					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
 				}

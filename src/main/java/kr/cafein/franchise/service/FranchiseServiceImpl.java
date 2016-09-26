@@ -7,11 +7,16 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.franchise.dao.FranchiseMapper;
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;
 /*import kr.cafein.franchise.domain.FranchiseBookmarkCommand;*/
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
+import kr.cafein.franchise.domain.FC_FranchiseDeclaredCommand;
+import kr.cafein.franchise.domain.FC_FranchiseLikeCommand;
 import kr.cafein.franchise.domain.FC_FranchiseMenuCommand;
+import kr.cafein.franchise.domain.FC_FranchiseMenuLikeCommand;
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
 
 
@@ -88,5 +93,61 @@ public class FranchiseServiceImpl implements FranchiseService{
 	@Override
 	public void deleteReply(int freply_num) {
 		franchiseMapper.deleteReply(freply_num);
+	}
+	@Override
+	public void insertFranchiseLike(FC_FranchiseLikeCommand franchiseLikeCommand) {
+		franchiseMapper.insertFranchiseLike(franchiseLikeCommand);
+	}
+	@Override
+	public int selectFranchiseLike(FC_FranchiseLikeCommand franchiseLikeCommand) {
+		return franchiseMapper.selectFranchiseLike(franchiseLikeCommand);
+	}
+	@Override
+	public int totalFranchiseLike(int franchise_num) {
+		return franchiseMapper.totalFranchiseLike(franchise_num);
+	}
+	@Override
+	public void deleteFranchiseLike(FC_FranchiseLikeCommand franchiseLikeCommand) {
+		franchiseMapper.deleteFranchiseLike(franchiseLikeCommand);
+	}
+	@Override
+	public void insertMenuLike(FC_FranchiseMenuLikeCommand franchiseMenuLikeCommand) {
+		franchiseMapper.insertMenuLike(franchiseMenuLikeCommand);		
+	}
+	@Override
+	public void deleteMenuLike(FC_FranchiseMenuLikeCommand franchiseMenuLikeCommand) {
+		franchiseMapper.deleteMenuLike(franchiseMenuLikeCommand);
+	}
+	@Override
+	public int totalMenuLike(FC_FranchiseMenuLikeCommand franchiseMenuLikeCommand) {
+		return franchiseMapper.totalMenuLike(franchiseMenuLikeCommand);
+	}
+	@Override
+	public int selectMenuLike(FC_FranchiseMenuLikeCommand franchiseMenuLikeCommand) {
+		return franchiseMapper.selectMenuLike(franchiseMenuLikeCommand);
+	}
+	@Override
+	public FC_FranchiseReplyCommand selectReply(int freply_num) {
+		return franchiseMapper.selectReply(freply_num);
+	}
+	@Override
+	public MemberCommand selectDeclaredMember(String u_uid_declared) {
+		return franchiseMapper.selectDeclaredMember(u_uid_declared);
+	}
+	@Override
+	public void insertDeclared(FC_FranchiseDeclaredCommand declaredCommand) {
+		franchiseMapper.insertDeclared(declaredCommand);
+	}
+	@Override
+	public void insertFCafeUserCountLog() {
+		franchiseMapper.insertFCafeUserCountLog();
+	}
+	@Override
+	public void updateFCafeUserCountLog() {
+		franchiseMapper.updateFCafeUserCountLog();
+	}
+	@Override
+	public UserCountLogCommand selectFCafeUserCountLogByDate() {
+		return franchiseMapper.selectFCafeUserCountLogByDate();
 	}
 }

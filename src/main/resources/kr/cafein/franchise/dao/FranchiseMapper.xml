@@ -14,15 +14,7 @@
 		SELECT count(*) FROM franchise_menu 
 		WHERE franchise_num = #{franchise_num} 
 	</select>
-	
-	<!-- 댓글 -->
-	<!-- <select id="listReply" parameterType="map" resultType="franchiseReplyCommand">
-		SELECT
-		*
-		FROM
-		franchise_reply
-		WHERE franchise_num = #{franchise_num} order by freply_reg_date desc
-	</select> -->
+
 </mapper>
 
 

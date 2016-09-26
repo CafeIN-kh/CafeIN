@@ -62,10 +62,10 @@
                     timeout: 5000
                 })
                 .done(function(result) {
-                	
+             
                 	t.updateSinglePageInline(attach_FCafeMenuDetail(result));
-                	
-                	
+                
+                	      
                 	//원본 소스
                    // t.updateSinglePageInline(result);
 
@@ -78,52 +78,56 @@
     
     function attach_FCafeMenuDetail(result) {
     	var data = jQuery.parseJSON(result);
+    	if(data.menuLikeCount == 0){
+    		$('.cbp-popup-content').html(
+        			'<div class="cbp-l-inline" style="margin-bottom:0;padding-right:60px;">' +
+        		    '<div class="cbp-l-inline-left">' +
+        		    	'<img src="/CafeIN/resources/cafein_user/assets/img/franchise/menu/' + data.franchise_name + '/' + data.photo + '"' + ' class="cbp-l-project-img">' + 
+        		    '</div>' +
 
-    	/*$.ajax({
-			type : 'POST',
-			url : '/CafeIN/cafein_user/franchise/franchise_Ajax.do',
-			data : {fmenu_num:fmenu_num, franchise_name:franchise_name},
-			dataType:'json',
-			async:false,
-			cache:false,
-			timeout:30000,
-			success:function(data) {
-				
-				alert('success');
-				
-				
-			},
-			error : function() {
-				alert('응~ 오류');
-			}
-		});*/
-    	
-    	
-    	$('.cbp-popup-content').html(
-    			'<div class="cbp-l-inline" style="margin-bottom:0;padding-right:60px;">' +
-    		    '<div class="cbp-l-inline-left">' +
-    		    	'<img src="/CafeIN/resources/cafein_user/assets/img/franchise/menu/' + data.franchise_name + '/' + data.photo + '"' + ' class="cbp-l-project-img">' + 
-    		    '</div>' +
+        		    '<div class="cbp-l-inline-right">' +
+        		    	'<div class="pull-left">' +
+        		        	'<div class="cbp-l-inline-title korean-font">' + data.name + ' | ' + data.price + '원'+ '</div>' +
+        		        	'<input type="hidden" value="' + data.fmenu_num + '" id="fmenu_num">' + 
+        		        '</div>' +
+        		        '<ul class="list-unstyled list-inline pull-left" style="margin:5px 0 0 10px;">' +
+        		   			'<li id="fmenuLike_count" style="font-size:15px;"><i class="fa fa-heart color-green" style="font-size:15px;"></i> ' + data.totalMenuLikeCount + '</li>' +
+        		   		'</ul>' +
+        		    '</div>' +
+        		    '<div class="cbp-l-inline-right" style="padding-left: 40px;">' +
+    			   		'<p class="cbp-l-inline-desc korean-font">' + data.introduce + '</p>' +
+    			        '<a onclick="fcafeMenu_like();" id="fcafeMenu_like" class="cbp-l-inline-view btn-u btn-u-large korean-font" style="text-decoration:none;color:#ffffff;" id="fmenu_like">' +
+    						'<i class="fa fa-thumbs-o-up"></i> 좋아요!' +
+    					'</a>' +
+    				'</div>' +
+        		'</div>'
+    		);
+    	}else{
+    		$('.cbp-popup-content').html(
+        			'<div class="cbp-l-inline" style="margin-bottom:0;padding-right:60px;">' +
+        		    '<div class="cbp-l-inline-left">' +
+        		    	'<img src="/CafeIN/resources/cafein_user/assets/img/franchise/menu/' + data.franchise_name + '/' + data.photo + '"' + ' class="cbp-l-project-img">' + 
+        		    '</div>' +
 
-    		    '<div class="cbp-l-inline-right">' +
-    		    	'<div class="pull-left">' +
-    		        	'<div class="cbp-l-inline-title korean-font">' + data.name + ' | ' + data.price + '원'+ '</div>' +
-    		        
-    		        '</div>' +
-    		        '<ul class="list-unstyled list-inline pull-left" style="margin:5px 0 0 10px;">' +
-    		   			'<li style="font-size:15px;"><i class="fa fa-heart color-green" style="font-size:15px;"></i> 0</li>' +
-    		   		'</ul>' +
-    		    '</div>' +
-    		    '<div class="cbp-l-inline-right" style="padding-left: 40px;">' +
-			   		'<p class="cbp-l-inline-desc korean-font">' + data.introduce + '</p>' +
-			        '<a href="#" class="cbp-l-inline-view btn-u btn-u-large korean-font" style="text-decoration:none;color:#ffffff;">' +
-						'<i class="fa fa-thumbs-o-up"></i> 좋아요!' +
-					'</a>' +
-				'</div>' +
-    		'</div>'
-		);
-    	
-    	
+        		    '<div class="cbp-l-inline-right">' +
+        		    	'<div class="pull-left">' +
+        		        	'<div class="cbp-l-inline-title korean-font">' + data.name + ' | ' + data.price + '원'+ '</div>' +
+        		        	'<input type="hidden" value="' + data.fmenu_num + '" id="fmenu_num">' + 
+        		        '</div>' +
+        		        '<ul class="list-unstyled list-inline pull-left" style="margin:5px 0 0 10px;">' +
+        		   			'<li id="fmenuLike_count" style="font-size:15px;"><i class="fa fa-heart color-green" style="font-size:15px;"></i> ' + data.totalMenuLikeCount + '</li>' +
+        		   		'</ul>' +
+        		    '</div>' +
+        		    '<div class="cbp-l-inline-right" style="padding-left: 40px;">' +
+    			   		'<p class="cbp-l-inline-desc korean-font">' + data.introduce + '</p>' +
+    			        '<a onclick="fcafeMenu_like();" id="fcafeMenu_like" class="cbp-l-inline-view btn-u btn-u-large korean-font" style="text-decoration:none;color:#ffffff;" id="fmenu_like">' +
+    						'<i class="fa fa-thumbs-o-up"></i> 취소하기!' +
+    					'</a>' +
+    				'</div>' +
+        		'</div>'
+    		);
+    	}
+
     		/*'<div class="cbp-l-inline" style="margin-bottom:0;">' +
     		    '<div class="cbp-l-inline-left">' +
     		        '<img src="assets/img/portfolio/20.jpg" alt="Dashboard" class="cbp-l-project-img">' +

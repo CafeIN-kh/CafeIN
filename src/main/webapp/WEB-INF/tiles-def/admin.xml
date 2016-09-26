@@ -104,24 +104,22 @@
         
         <put-list-attribute name="cssList">
             
-               <!-- Vendor CSS -->
-            <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css"/>
-        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
-        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
-        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
-        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
-        	
+        <!-- Vendor CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/bootstrap.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+    	
    		    
         <!-- CSS -->
        
         <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
         <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
         
-         
-            <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
-            <add-attribute value="/CafeIN/resources/cafein_admin/css/bootstrap.min.css"/>
     
-            
         <!--  CSS YJ style    -->
       
         <add-attribute value="/CafeIN/resources/cafein_admin/css/bootstrap-select.min.css"/>
@@ -141,7 +139,7 @@
             
             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap-select.min.js"/>
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
-           <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
+           	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>

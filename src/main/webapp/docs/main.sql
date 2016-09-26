@@ -366,7 +366,7 @@ drop table user_count_log;
 
 create table user_count_log(
 	ucnt_log_seq number not null,
-	ucnt_log_reg_date varchar2(30) not null,
+	ucnt_log_reg_date date not null,
 	ucnt_total number default(0),
 	ucnt_log_main number default(0),
 	ucnt_log_franchise number default(0),

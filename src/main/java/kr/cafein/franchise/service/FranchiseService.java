@@ -3,7 +3,6 @@ package kr.cafein.franchise.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;

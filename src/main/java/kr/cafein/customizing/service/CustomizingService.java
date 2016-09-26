@@ -21,4 +21,4 @@ public interface CustomizingService {
 	public List<CustomizingCommand> pagingLikeList(Map<String,Object> map);
 	public List<CustomizingCommand> pagingSearchLikeList(Map<String,Object> map);
 	public void deleteCboard(int custom_num);
-	public List<CustomizingCommand> selectCafe(String franchise_num);}
+	public List<CustomizingCommand> selectCafe(Map<String,Object> map);}

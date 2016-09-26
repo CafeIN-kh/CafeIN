@@ -18,24 +18,25 @@
 <div class="search-block parallaxBg">
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">
-			<form action="customizing_list.do" class="sky-form page-search-form">
-			<div class="input-group">
-			<div>
-			<select id="selectBox" name="keyfield" class="btn-u" style="float:left; padding:8; height:48px; width:80px;">
-						<option value="all">전체</option>
-						<option value="custom_name">커스텀 제목</option>
-						<option value="custom_recipe">레시피</option>
-						<option value="custom_hash_tag">해쉬태그</option>
-			</select>
-				<input type="text" class="form-control" name="keyword" id="keyword" 
-					placeholder="Search words with regular expressions ..." style= "width:379px;">
-			</div>			
-			<span class="input-group-btn">
-				<button id="btnOK" class="btn-u btn-u-lg" type="submit" style="float:left; padding:8; height:48px; width:80px;">
-					<i class="fa fa-search"></i>
-				</button>
-			</span>
-				</div>
+			<form action="customizing_list.do" >
+				<div class="input-group">
+					
+						<span class="input-group-btn">
+							<select id="selectBox" name="keyfield" class="btn-u btn-u-lg" style="padding:8; height:48px; width:80px;">
+										<option value="all">전체</option>
+										<option value="custom_name">커스텀 제목</option>
+										<option value="custom_recipe">레시피</option>
+										<option value="custom_hash_tag">해쉬태그</option>
+							</select>
+						</span>
+							<input type="text" class="form-control" name="keyword" id="keyword" 
+								placeholder="Search words with regular expressions ..." style="border:1px solid #ccc;">
+						<span class="input-group-btn">
+							<button id="btnOK" class="btn-u btn-u-lg" type="submit" style="font-size:28px;"> 
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 			</form>
 		</div>
 	</div>
@@ -45,21 +46,25 @@
 <div class="cube-portfolio container">
 
 		<div class="col-md-12">
+			<c:if test="${map.u_uid!=null }"> 
 			<div class="btn-group" style="float: right; padding: 0 0 10px 10px;">
 		<button type="button" class="btn-u korean-font" data-toggle="modal"
 	           		data-target="#responsive" >
 			카페 등록 
 		</button>
 	</div>
+	</c:if>
 	<div class="btn-group" style="float: right;">
 				<button type="button" class="btn-u dropdown-toggle korean-font"
 					data-toggle="dropdown" aria-expanded="false"><div id="pcafe_category">
 					정렬하기 <span class="caret"></span></div>
 				</button>
 				<ul class="dropdown-menu">
-					<li class="korean-font"><a href="customizing_list.do?custom_visit=2&keyfield=${map.keyfield}&keyword=${map.keyword}">조회수</a></li>
-					<li class="korean-font"><a href="customizing_list.do?custom_visit=3&keyfield=${map.keyfield}&keyword=${map.keyword}" id="like">좋아요</a></li>
-					<li class="korean-font"><a href="customizing_list.do?custom_visit=4&keyfield=${map.keyfield}&keyword=${map.keyword}">내가 등록한 글 보기</a></li>
+					<li class="korean-font"><a href="customizing_list.do?category=2&keyfield=${map.keyfield}&keyword=${map.keyword}">조회수</a></li>
+					<li class="korean-font"><a href="customizing_list.do?category=3&keyfield=${map.keyfield}&keyword=${map.keyword}" >좋아요</a></li>
+					<c:if test="${map.u_uid!=null }">
+					<li class="korean-font"><a href="customizing_list.do?category=4&keyfield=${map.keyfield}&keyword=${map.keyword}">내가 등록한 글 보기</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
@@ -73,7 +78,10 @@
                           <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                               <h4 class="modal-title korean-font" id="myModalLabel4">카페등록</h4>
-                          </div>
+                          </div> 
+                          
+                           
+                           
                           <div class="modal-body">
 <form action="customizingInsert_ajax.do" method="post" 
 enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
@@ -155,13 +163,13 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
 				<a href = "customizing_list.do">All</a></div> 
 			|
 		<c:if test="${count == 0}">
-		<div class="align-center">등록된 게시물이 없습니다.</div>
+		<div class="align-center" style="margin-bottom:25%">등록된 게시물이 없습니다.</div>
 		</c:if>
 		<!--franchise_num + custom_num을 디테일에 넘겨줘야 함  -->
 		
 		<c:if test="${count > 0}">
 		<c:forEach var="franchiseList" items="${franchiseList}" varStatus="status">
-			<div data-filter=".${franchiseList.franchise_num }" class="cbp-filter-item korean-font">
+			<div class="cbp-filter-item korean-font">
 			<a href = "customizing_list.do?franchise_num=${franchiseList.franchise_num }"> ${franchiseList.franchise_name }</a></div>
 			|
 		</c:forEach>
@@ -179,9 +187,9 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
 		<c:if test="${count > 0}">
 		<c:forEach var="list" items="${list}" varStatus="status">
 		
-		<div class="cbp-item ${list.franchise_num } easy-block-v1" >
+		<div class="cbp-item easy-block-v1" >
 			
-			<c:if test="${list.u_uid == map.u_uid}">
+			<c:if test="${list.u_uid == map.u_uid && map.category == 4 }">
 			<a href="customizing_delete.do?custom_num=${list.custom_num }" class="easy-block-v1-badge rgba-red" style="text-decoration:none;position:initial;line-height:30px;cursor:pointer;">
 		            		<i class="fa fa-trash-o delete_button">Delete</i></a>
       		</c:if>

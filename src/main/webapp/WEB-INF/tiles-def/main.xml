@@ -528,7 +528,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-        	<add-attribute value="http://maps.google.com/maps/api/js?sensor=true"/>
+<!--         	<add-attribute value=""/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/gmap/gmap.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"/>

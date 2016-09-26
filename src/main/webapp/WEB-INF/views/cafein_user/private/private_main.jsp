@@ -217,7 +217,7 @@
 		        <div class="row margin-bottom-20 news-v1">
 		        
 		            <!-- 목록 출력 -->
-					<div id="output" class="col-md-12 col-sm-6"></div>
+					<div id="output" class="col-md-12 col-sm-12"></div>
 					<div class="paging_button" style="display:none;">
 						<br><br>
         				<button type="button" class="btn-u btn-block">Load More</button>

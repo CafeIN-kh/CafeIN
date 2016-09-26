@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class FileUtilCus {
 
-	public static String UPLOAD_PATH="C:/Users/Matthew/git/CafeIN/src/main/webapp/upload/customizing";
+	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/customizing";
 	
 	public static String rename(String fileName)throws Exception{
 

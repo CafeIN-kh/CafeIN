@@ -26,7 +26,7 @@
         <div class="row about-me">
             <div class="col-sm-4 shadow-wrapper md-margin-bottom-40">
                 <div class="box-shadow shadow-effect-2">
-                    <img class="img-responsive img-bordered full-width" src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/logo/${franchise.franchise_name}/${franchise.franchise_img}"  style="height:300px; width:300px;">
+                    <img class="img-responsive img-bordered full-width" src="/CafeIN/upload/franchise/${franchise.franchise_img}"  style="height:300px; width:300px;">
                     <input type="hidden" value="${franchise.franchise_name}" id="franchise_name">
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 	<a href="${pageContext.request.contextPath}/cafein_user/franchise/franchise_Ajax.do?franchise_name=${franchise.franchise_name}&fmenu_num=${franchiseMenu.fmenu_num}" class="cbp-caption cbp-singlePageInline"
                        data-title="World Clock Widget<br>by Paul Flavius Nechita">
                         <div class="cbp-caption-defaultWrap">
-                            <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/menu/${franchise.franchise_name}/${franchiseMenu.fmenu_img}" alt="">
+                            <img src="/CafeIN/upload/franchise_menu/${franchiseMenu.fmenu_img}" alt="">
                             <input type="hidden" value="${franchiseMenu.fmenu_img}" id="photo">
 							<input type="hidden" value="${franchiseMenu.fmenu_num}" id="fmenu_num">
                         </div>

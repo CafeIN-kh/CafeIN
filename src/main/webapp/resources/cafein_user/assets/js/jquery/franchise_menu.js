@@ -82,7 +82,7 @@
     		$('.cbp-popup-content').html(
         			'<div class="cbp-l-inline" style="margin-bottom:0;padding-right:60px;">' +
         		    '<div class="cbp-l-inline-left">' +
-        		    	'<img src="/CafeIN/resources/cafein_user/assets/img/franchise/menu/' + data.franchise_name + '/' + data.photo + '"' + ' class="cbp-l-project-img">' + 
+        		    	'<img src="/CafeIN/upload/franchise_menu/' + data.photo + '"' + ' class="cbp-l-project-img">' + 
         		    '</div>' +
 
         		    '<div class="cbp-l-inline-right">' +

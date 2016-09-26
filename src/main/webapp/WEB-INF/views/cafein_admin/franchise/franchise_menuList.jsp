@@ -12,7 +12,7 @@
 	<div class="pm-overview c-overflow">
 		<div class="pmo-pic">
 			<div class="p-relative">
-				<a href="franchise_menuUpdate.do"> <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/logo/${franchise.franchise_name}/${franchise.franchise_img}"" alt="">
+				<a href="franchise_menuUpdate.do"> <img src="${pageContext.request.contextPath}/upload/franchise/${franchise.franchise_name}/${franchise.franchise_img}"" alt="">
 				</a>
 
 				<div class="dropdown pmop-message">
@@ -107,8 +107,9 @@
 
 							<div class="c-item">
 
-								<a href="franchise_menuUpdate.do?franchise_num=${franchise.franchise_num }&fmenu_name=${article.fmenu_name}&fmenu_num=${article.fmenu_num}&franchise_name=${franchise.franchise_name }" class="ci-avatar"> <img class="franchise_menu"
-									src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/menu/${franchise.franchise_name}/${article.fmenu_img}"
+								<a href="franchise_menuUpdate.do?franchise_num=${franchise.franchise_num }&fmenu_name=${article.fmenu_name}&fmenu_num=${article.fmenu_num}&franchise_name=${franchise.franchise_name }" class="ci-avatar"> 
+								<img class="franchise_menu1"
+									src="${pageContext.request.contextPath}/upload/franchise_menu/${franchise.franchise_name}/${article.fmenu_img}"
 									alt="">
 								</a>
 								<div class="c-info">
@@ -119,7 +120,7 @@
 
 								      <div class="c-footer">
 								      
-                                         <button class="waves-effect" onclick="location.href='franchise_menuDelete.do?fmenu_num=${article.fmenu_num }'"><i class="md md-delete"></i> 삭제</button>
+                                         <button class="waves-effect" onclick="location.href='franchise_menuDelete.do?fmenu_num=${article.fmenu_num }&franchise_num=${franchise.franchise_num }&fmenu_name=${article.fmenu_name }'"><i class="md md-delete"></i> 삭제</button>
                                             </div>
 							</div>
 						</div>

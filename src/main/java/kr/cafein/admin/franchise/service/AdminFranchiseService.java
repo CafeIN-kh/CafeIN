@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
+import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 
 
@@ -18,6 +19,8 @@ public interface AdminFranchiseService {
 	public void updateFranchise(AdminFranchiseCommand adminFranchiseCommand);
 	
 	public List<AdminFranchiseCommand> list(String franchise_name);
+	
+	public List<AdminFranchiseLogCommand> logList();
 	
 	public List<AdminFranchiseCommand> listDetail(int franchise_num);
 	
@@ -47,6 +50,8 @@ public interface AdminFranchiseService {
 	public AdminFranchiseCommand selectFranchiseDetail(int franchise_num);
 
 	public AdminFranchiseMenuCommand selectFmenu(int fmenu_num);
+	
+	public void f_log_insert(AdminFranchiseLogCommand board);
 	
 }
    

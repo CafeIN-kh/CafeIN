@@ -7,46 +7,39 @@
 
 <section id="content">
 	<div class="container">
-<div class="block-header">
-	<h2>
-		QnA <small>Qna View</small>
-	</h2>
-</div>
-
 <div class="card" id="profile-main"	style="padding: 20px 20px 20px 20px;">
+<div class="card-header">
+        <h2>QnA <small>Detail</small></h2>
+      </div>
 
 
 	<div class="pmb-block">
 		<div class="pmbb-header">
 			<h2>
-				<i class="md md-equalizer m-r-5"></i>${qnaCommand.qa_title }</h2>
-		</div>
-		<div class="pmbb-body p-l-30">
-			<div class="pmbb-view">${qnaCommand.qa_content }</div>
-
-
-		</div>
-	</div>
-
-	<div class="pmb-block">
-		<div class="pmbb-header">
-			<h2>
-				<i class="md md-person m-r-5"></i> Information
+				<i class="md md-question-answer m-r-5"></i> Information
 			</h2>
 
 		</div>
 		<div class="pmbb-body p-l-30">
 			<div class="pmbb-view">
 				<dl class="dl-horizontal">
-					<dt>작성자 email</dt>
+					<dt>Email</dt>
 					<dd>${qnaCommand.qa_email }</dd>
 				</dl>
 				<dl class="dl-horizontal">
-					<dt>작성일</dt>
+					<dt>Registered</dt>
 					<dd>${qnaCommand.qa_reg_date }</dd>
 				</dl>
 				<dl class="dl-horizontal">
-					<dt>분류</dt>
+					<dt>Title</dt>
+					<dd>${qnaCommand.qa_title }</dd>
+				</dl>
+				<dl class="dl-horizontal">
+					<dt>Content</dt>
+					<dd>${qnaCommand.qa_content}</dd>
+				</dl>
+				<dl class="dl-horizontal">
+					<dt>Classification</dt>
 					<c:choose>
 						<c:when test="${qnaCommand.qa_f_option==0}">
 							<dd>프랜차이즈카페문의</dd>
@@ -68,7 +61,7 @@
 				<br>
 
 				<dl class="dl-horizontal">
-					<dt>답변여부</dt>
+					<dt>Answer</dt>
 
 					<c:if test="${qnaCommand.qa_answer==0}">
 						<dd>					
@@ -88,8 +81,8 @@
 									<div class="form-group fg-float">
 										<div class="fg-line">
 											<textarea name="q_em_content" id="q_em_content" cols="30" rows="10" class="input-lg form-control fg-input" >
-제목 : ${qnaCommand.qa_title } 
-내용 : ${qnaCommand.qa_content } 
+Title : ${qnaCommand.qa_title } 
+Content : ${qnaCommand.qa_content } 
 에 대한 답변입니다.
 ------------------------------------------------------------------
 												
@@ -99,7 +92,7 @@
 									</div>
 
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-sm-4" style="float: right; width: 174px;">
 											<button type="submit" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SEND</button>
 											<button style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='list.do'">CANCEL</button>
 										</div>
@@ -110,18 +103,21 @@
 					</dd>
 					</c:if>
 					<c:if test="${qnaCommand.qa_answer==1}">
-						<dd>답변완료</dd>
+						<dd>Answered</dd>	
 					</c:if>
 
 				</dl>
-
+					
 			</div>
-
-
-
 		</div>
 	</div>
 </div>
+<c:if test="${qnaCommand.qa_answer==1}">
+	<div class="col-sm-4" style="float: right; padding-top: 20px; width: 110px;">
+		<button style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='List.do'">MENU</button>
+	</div>
+</c:if>
+
 </div>
 </section>
 

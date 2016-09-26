@@ -14,7 +14,7 @@
 		<div class="pmo-pic">
 			<div class="p-relative">
 				<a href=""> <img class="img-responsive"
-					src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/logo/${franchise.franchise_name}/${franchise.franchise_img}"
+					src="${pageContext.request.contextPath}/upload/franchise/${franchise.franchise_name}/${franchise.franchise_img}"
 					alt="">
 				</a>
 

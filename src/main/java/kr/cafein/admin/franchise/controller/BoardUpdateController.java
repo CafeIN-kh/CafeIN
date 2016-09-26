@@ -20,7 +20,7 @@ import kr.cafein.admin.franchise.service.AdminFranchiseService;
 import kr.cafein.util.FileUtil;
 
 @Controller
-@SessionAttributes("noticeCommand")
+@SessionAttributes("adminFranchiseCommand")
 public class BoardUpdateController {
 	
 	private Logger log = Logger.getLogger(this.getClass());

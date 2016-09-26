@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<form:form action="privatecafemenu.do" id="file-check"
+	enctype="multipart/form-data" commandName="command">
+
     
     <section id="content">
                 <div class="container">
@@ -18,7 +23,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/${privateCommandmenu.pcafe_img}" alt=""> 
+									<img src="${pageContext.request.contextPath}/upload/private/${privatecafe.pcafe_img}" alt=""> 
 								</div>
 								<div style="display:none;">
 									<span class="btn btn-info btn-file"> <span
@@ -34,7 +39,7 @@
 
                      <div class="pmo-stat">
                      <%-- <c:forEach items="${list1 }" var="list1"> --%>
-                        <h6 class="m-0 c-white">${privateCommandmenu.pcafe_visit}<br>Total Visit</h6>
+                        <h6 class="m-0 c-white">${privatecafe.pcafe_visit}<br>Total Visit</h6>
                    
                      <%-- </c:forEach> --%></div>
                      <div class="m-t-10">
@@ -48,16 +53,16 @@
                                 <h2>Private Cafe Info</h2>
                                 
                                 <ul>
-                                    <li><i class="md md-phone"></i><h5> ${privateCommandmenu.pcafe_name}</h5></li>
-                                    <li><i class="md md-email"></i> ${privateCommandmenu.pcafe_address}</li>
-                                    <li><i class="socicon socicon-skype"></i> ${privateCommandmenu.pcafe_phone}</li>
-                                    <li><i class="socicon socicon-twitter"></i> ${privateCommandmenu.pcafe_time}</li>
+                                    <li><i class="md md-phone"></i><h5> ${privatecafe.pcafe_name}</h5></li>
+                                    <li><i class="md md-email"></i> ${privatecafe.pcafe_address}</li>
+                                    <li><i class="socicon socicon-skype"></i> ${privatecafe.pcafe_phone}</li>
+                                    <li><i class="socicon socicon-twitter"></i> ${privatecafe.pcafe_time}</li>
                                     <li>
                                         <i class="md md-location-on"></i>
                                         <address class="m-b-0">
-                                           		${privateCommandmenu.pcafe_hash_tag},${privateCommandmenu.pcafe_hash_tag} <br/>
-                                            	${privateCommandmenu.pcafe_hash_tag},${privateCommandmenu.pcafe_hash_tag} <br/>
-                                            	${privateCommandmenu.pcafe_hash_tag},${privateCommandmenu.pcafe_hash_tag}
+                                           		${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
+                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
+                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag}
                                         </address>
                                     </li>
                                 </ul>
@@ -88,8 +93,8 @@
                         
                         <div class="pm-body clearfix">
                             <ul class="tab-nav tn-justified">
-                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privateCommandmenu.pcafe_num}">Private Cafe</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privateCommandmenu.pcafe_num}">Cafe Menu</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privatecafe.pcafe_num}">Private Cafe</a></li>
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privatecafe.pcafe_num}">Cafe Menu</a></li>
                             </ul>
                             
                             <div class="pmb-block">
@@ -124,22 +129,22 @@
                                 </div>
                                 
                                   <div class="contacts clearfix row">
-                                <c:forEach items="${listmenu }" var="listmenu">
+                                <c:forEach items="${menuList }" var="menuList">
               
                                     <div class="col-md-3 col-sm-6 col-xs-6">
                                         <div class="c-item">
                                             <a href="" class="ci-avatar">
-                                                <img src="${pageContext.request.contextPath}/upload/${listmenu.pmenu_img}" alt="">
+                                                <img src="${pageContext.request.contextPath}/upload/private_menu/${menuList.pmenu_img}" alt="">
                                            
                                             </a>
                                             
                                             <div class="c-info">
-                                                <strong>${listmenu.pmenu_name}</strong>
-                                                <small>${listmenu.pmenu_price}원</small>
+                                                <strong>${menuList.pmenu_name}</strong>
+                                                <small>${menuList.pmenu_price}원</small>
                                             </div>
                                             
                                             <div class="c-footer">
-                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${listmenu.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
+                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -158,3 +163,4 @@
                     </div>
                 </div>
             </section>
+            </form:form>

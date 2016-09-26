@@ -2,6 +2,8 @@ package kr.cafein.admin.privatecafe.domain;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class PrivateCommand {
 	private int pcafe_num;
 	private String pcafe_name;
@@ -13,10 +15,23 @@ public class PrivateCommand {
 	private String pcafe_hash_tag;
 	private String pcafe_img;
 	private int pcafe_visit;
+	private MultipartFile upload;
 	private Date pcafe_reg_date;
 	public int getPcafe_num() {
 		return pcafe_num;
 	}
+	
+	
+	public MultipartFile getUpload() {
+		return upload;
+	}
+
+
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
+
+
 	public void setPcafe_num(int pcafe_num) {
 		this.pcafe_num = pcafe_num;
 	}

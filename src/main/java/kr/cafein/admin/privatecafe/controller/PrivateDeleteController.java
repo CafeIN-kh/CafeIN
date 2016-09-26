@@ -30,7 +30,7 @@ public class PrivateDeleteController {
 		
 		privateService.delete(pcafe_num);
 		
-		return "redirect:/admin/adminPrivateCafe.do";
+		return "redirect:/admin/privatecafe/privatecafe.do";
 		
 	}
 

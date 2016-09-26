@@ -1,6 +1,7 @@
 package kr.cafein.admin.privatecafe.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -59,6 +60,18 @@ public class PrivateServiceImpl implements PrivateService{
 	public void update2(PrivateMenuCommand privateCafeMenu) {
 		// TODO Auto-generated method stub
 		privateMapper.update2(privateCafeMenu);
+	}
+
+	@Override
+	public int getRowCount(int pcafe_num) {	
+		// TODO Auto-generated method stub
+		return privateMapper.getRowCount(pcafe_num);
+	}
+
+	@Override
+	public List<PrivateMenuCommand> menuList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return privateMapper.menuList(map);
 	}
 
 

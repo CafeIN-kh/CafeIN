@@ -19,7 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
-import kr.cafein.util.FileUtil;
+import kr.cafein.util.FileUtil_PrivateMenu;
 
 @Controller
 @SessionAttributes("command")
@@ -66,7 +66,7 @@ public class PrivateCafeMenuModifyController {
 		oldFileName = privateCafeMenu.getPmenu_img();
 		
 		if(!privateCafeMenuCommand.getUpload().isEmpty()){
-			privateCafeMenuCommand.setPmenu_img(FileUtil.rename(privateCafeMenuCommand.getUpload().getOriginalFilename()));
+			privateCafeMenuCommand.setPmenu_img(FileUtil_PrivateMenu.rename(privateCafeMenuCommand.getUpload().getOriginalFilename()));
 		}else{
 			privateCafeMenuCommand.setPmenu_img(oldFileName);
 		}
@@ -77,12 +77,12 @@ public class PrivateCafeMenuModifyController {
 		
 		if(!privateCafeMenuCommand.getUpload().isEmpty()){
 			//전송된 파일이 있을 경우
-			File file = new File(FileUtil.UPLOAD_PATH+"/"+privateCafeMenuCommand.getPmenu_img());
+			File file = new File(FileUtil_PrivateMenu.UPLOAD_PATH+"/"+privateCafeMenuCommand.getPmenu_img());
 			privateCafeMenuCommand.getUpload().transferTo(file);
 		
 			if(oldFileName!=null){
 				//이전 파일 삭제
-				FileUtil.removeFile(oldFileName);
+				FileUtil_PrivateMenu.removeFile(oldFileName);
 			}
 		
 		}

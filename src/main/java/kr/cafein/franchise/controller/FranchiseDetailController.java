@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseMenuCommand;
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
@@ -52,6 +53,8 @@ public class FranchiseDetailController {
 		
 		List<FC_FranchiseMenuCommand> franchiseMenu = franchiseService.menuList(map);
 		
+		int likeCount = franchiseService.totalFranchiseLike(franchise_num);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		String u_name = (String)session.getAttribute("u_name");
@@ -66,11 +69,21 @@ public class FranchiseDetailController {
 		mav.addObject("franchiseMenu", franchiseMenu);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		mav.addObject("u_name", u_name);
-		
+		mav.addObject("likeCount", likeCount);
+		UserCountLogCommand userCountLogCommand = new UserCountLogCommand();
+	    userCountLogCommand = franchiseService.selectFCafeUserCountLogByDate(); 
+		if(userCountLogCommand == null) {
+		       log.debug("★★★오늘날짜 페이지뷰 로우 없으므로 insert");
+		       franchiseService.insertFCafeUserCountLog();
+		    }else {
+		       log.debug("★★★오늘날자 페이지뷰 로우 있으므로 update, 전체카운트와 개인카페 카운트+1");
+		       franchiseService.updateFCafeUserCountLog();
+		    }
 		if(log.isDebugEnabled()){
 			log.debug("mav : " + mav);
 		}
 		
+		//System.out.println("likeCount : " + likeCount);
 		return mav; 
 	}
 	

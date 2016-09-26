@@ -40,7 +40,7 @@
                     </div>    
                    	<ul class="list-unstyled list-inline pull-left">
                			<li style="font-size:15px;margin-left:20px;"><i class="fa fa-eye color-green" style="font-size:18px;"></i> ${franchise.franchise_visit}</li>
-               			<li style="font-size:15px;"><i class="fa fa-heart color-green" style="font-size:15px;"></i> 0</li>
+               			<li style="font-size:15px;" id="like_count"><i class="fa fa-heart color-green" style="font-size:15px;"></i> ${likeCount}</li>
                		</ul>
                     <ul class="list-unstyled list-inline funny-boxes-rating pull-right" style="margin-top:-3px;">
                     	<!-- <li>
@@ -60,10 +60,10 @@
                 <input type="hidden" value="${franchise.franchise_num}" id="franchise_num">
      
                 <br>
-				<a href="#" class="btn-u btn-u-large korean-font" style="text-decoration:none;color:#ffffff;">
-					<i class="fa fa-thumbs-o-up"></i> 좋아요!
+                <a id="fcafe_like" class="btn-u btn-u-large korean-font" style="text-decoration:none;color:#ffffff;cursor:pointer;">
+					
 				</a>
-                
+
             </div>
         </div>
     </div>
@@ -191,7 +191,53 @@
         
         <!-- End Recent Comments -->
         </div><!--/media-->
+        
+		<div class="modal fade" id="declear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title korean-font" id="myModalLabel4">신고</h4>
+                 </div>
+                 <div class="modal-body">
+                    <form action="/CafeIN/cafein_user/franchise/franchise_detailReplyDeclaredRegister.do" novalidate="novalidate"
+                         id="sky-form4" class="sky-form" method="post" style="border: 0;">
+                       <fieldset>
+                       
+                            <!-- 현재 선택한 댓글의 시퀀스 -->
+                            <input type="hidden" id="d_target_id" name="d_target_id" value="${declaredReply.freply_num}">
+                            
+                            <!-- d_target_path : 0[프랜차이즈 댓글] 1[개인카페 댓글] 2[커스터마이징 댓글] 개인카페 쪽이므로 1번으로 박아서 넘김 -->
+                            <input type="hidden" id="d_target_path" name="d_target_path" value="0">
+                            
+                            <input type="hidden" name="franchise_num" value="${franchise.franchise_num}" id="franchise_num">
+                            
+                          <section>
+                              <!-- 신고한 사람의 정보는 세션에서 가져오기 -->
+                             <label class="label" id="d_mem_id_name" name="d_mem_id_name" style="font-weight:bold;">신고자 ID : ${u_name}</label> 
+                             <input type="hidden" name="d_mem_id" id="d_mem_id" value="${u_uid}">
+                          </section>
+                          
+                          <section>
+                             <label class="label" id="d_target_mem_id_name" name="d_target_mem_id_name" value="" style="font-weight:bold;">피신고자 ID : </label> 
+                             <input type="hidden" name="d_target_mem_id" id="d_target_mem_id" value="">
+                          </section>
 
+                          <section>
+                             <label class="label korean-font">신고 내용</label> <label class="textarea"> 
+                             <!-- <i class="icon-append fa fa-comment"></i> -->
+                                <textarea rows="4" name="d_content" id="d_content" class="korean-font"></textarea>
+                             </label>
+                          </section>
+
+                          <button type="submit" class="btn-u btn-u-primary" style="float: right;">Register</button>
+                          <button type="button" class="btn-u btn-u-default" data-dismiss="modal" style="float: right; margin-right: 5px;">Close</button>
+                       </fieldset>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
         <!-- Comment Form -->
         <!-- <div class="headline margin-bottom-30"><h3>Leave a Comment</h3></div> -->
         <div class="post-comment">

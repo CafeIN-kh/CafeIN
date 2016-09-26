@@ -131,6 +131,9 @@
         	<!-- CSS Header and Footer -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/headers/header-default.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/footers/footer-v1.css"/>
+        	<!-- 모달 스타일 -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css"/>
 			<!-- CSS Implementing Plugins -->        	
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/animate.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
@@ -154,14 +157,22 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/counter/waypoints.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/counter/jquery.counterup.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js"/>
+        	<!-- 모달 유효성 체크 -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
         	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/plugins/cube-portfolio/cube-portfolio-lightbox.js"/> -->
+        		<!-- 프렌차이즈카페 신고 유효성 sky-form4 -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/page_registration.js"/>
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/franchise_detail.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/franchise_menu.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/franchise_menu_like.js"/>
         </put-list-attribute>
     </definition>
     

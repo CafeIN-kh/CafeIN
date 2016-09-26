@@ -24,7 +24,7 @@ public class FranchiseBookmarkController {
 	
 	@RequestMapping(value="/cafein_user/franchise/bookmark.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> showBookmark(@ModelAttribute FC_FranchiseBookmarkCommand franchiseBookmarkCommand, 
+	public Map<String, String> bookmark(@ModelAttribute FC_FranchiseBookmarkCommand franchiseBookmarkCommand, 
 			BindingResult result, HttpSession session) throws Exception{
 		
 		int count = franchiseService.selectBookmarkID(franchiseBookmarkCommand);

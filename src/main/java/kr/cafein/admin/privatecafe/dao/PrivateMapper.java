@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
-
+import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 
 @Repository
@@ -47,5 +47,8 @@ public interface PrivateMapper {
 	
 	@Delete ("delete from private_cafe_menu where pmenu_num=#{pmenu_num}")
 	public void deletemenu(Integer pmenu_num);
+	
+	@Select("select u_uid from u_like where pcafe_num = #{pcafe_num}")
+	public List<LikeCommand> getLikeUser(Integer pcafe_num);
 
 }

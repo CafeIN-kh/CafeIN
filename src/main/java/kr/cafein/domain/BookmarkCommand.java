@@ -1,12 +1,23 @@
 package kr.cafein.domain;
 
+import java.sql.Date;
+
 public class BookmarkCommand {
 
 	private int bookmark_num;
 	private String u_uid;
 	private int franchise_num;
 	private int pcafe_num;
+	public Date getBoorkmark_reg_date() {
+		return boorkmark_reg_date;
+	}
+	public void setBoorkmark_reg_date(Date boorkmark_reg_date) {
+		this.boorkmark_reg_date = boorkmark_reg_date;
+	}
+
 	private int custom_num;
+	private Date boorkmark_reg_date;
+	
 	
 	public int getBookmark_num() {
 		return bookmark_num;

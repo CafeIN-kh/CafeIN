@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 
@@ -28,6 +29,8 @@ public interface PrivateService {
 	public void update2(PrivateMenuCommand privateCafeMenu);
 	
 	public void deletemenu(Integer pmenu_num);
+	
+	public List<LikeCommand> getLikeUser(Integer pcafe_num);
 	
 	@Transactional(readOnly=true)
 	public int getRowCount(int pcafe_num);

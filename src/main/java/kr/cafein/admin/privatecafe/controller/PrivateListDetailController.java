@@ -3,6 +3,7 @@ package kr.cafein.admin.privatecafe.controller;
 
 
 import java.io.File;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
+import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Private;
 
 @Controller
@@ -42,6 +44,17 @@ public class PrivateListDetailController {
 		
 		PrivateCommand commandMenu = privateService.selectBoard(pcafe_num);
 		ModelAndView mav = new ModelAndView("adminPrivateDetail");
+		
+	
+		
+		
+		
+		List<LikeCommand> getLikeUser=privateService.getLikeUser(pcafe_num);
+		
+		
+		
+		
+		
 		
 		//개인카페의 이미지들을 지우기 위해 개인카페 정보 찾기
         String pcafeImgName = commandMenu.getPcafe_img();
@@ -79,6 +92,7 @@ public class PrivateListDetailController {
 		/*mav.addObject("list1", list1);*/
 		mav.addObject("commandMenu", commandMenu);
 		mav.addObject("hashTagOriginal", hashTagOriginal);
+		mav.addObject("getLikeUser", getLikeUser);
 		/*System.out.println(list1);*/
 		return mav;
 

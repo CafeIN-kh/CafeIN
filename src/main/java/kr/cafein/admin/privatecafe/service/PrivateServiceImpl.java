@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
@@ -77,6 +78,12 @@ public class PrivateServiceImpl implements PrivateService{
 	public List<PrivateMenuCommand> menuList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return privateMapper.menuList(map);
+	}
+
+	@Override
+	public List<LikeCommand> getLikeUser(Integer pcafe_num) {
+		// TODO Auto-generated method stub
+		return privateMapper.getLikeUser(pcafe_num);
 	}
 
 

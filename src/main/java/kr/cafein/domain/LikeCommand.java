@@ -1,5 +1,7 @@
 package kr.cafein.domain;
 
+import java.sql.Date;
+
 public class LikeCommand {
 	
 	private int like_num;
@@ -9,7 +11,14 @@ public class LikeCommand {
 	private int custom_num;
 	private int fmenu_num;
 	private int pmenu_num;
+	private Date like_reg_date;
 	
+	public Date getLike_reg_date() {
+		return like_reg_date;
+	}
+	public void setLike_reg_date(Date like_reg_date) {
+		this.like_reg_date = like_reg_date;
+	}
 	public int getLike_num() {
 		return like_num;
 	}

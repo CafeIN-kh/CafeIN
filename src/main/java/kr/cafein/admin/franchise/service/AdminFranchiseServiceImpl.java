@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.franchise.dao.AdminFranchiseMapper;
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
+import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 
 @Service("adminFranchiseService")
@@ -63,7 +64,7 @@ public class AdminFranchiseServiceImpl implements AdminFranchiseService{
 	public int getRowCount(int franchise_num) {
 		return adminfranchiseMapper.getRowCount(franchise_num);
 	}
-
+	
 	@Override
 	public List<AdminFranchiseCommand> listDetail(int franchise_num) {
 		return adminfranchiseMapper.listDetail(franchise_num);
@@ -99,6 +100,13 @@ public class AdminFranchiseServiceImpl implements AdminFranchiseService{
 		return adminfranchiseMapper.getFranchise_num(franchise_num);
 	}
 
+	@Override
+	public void f_log_insert(AdminFranchiseLogCommand board) {
+		adminfranchiseMapper.f_log_insert(board);		
+	}
 
-
+	@Override
+	public List<AdminFranchiseLogCommand> logList() {
+		return adminfranchiseMapper.logList();
+	}
 }

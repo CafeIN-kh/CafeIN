@@ -136,7 +136,7 @@
 					
 						<div class="col-md-1">&nbsp;</div>
 						
-		                <div class="col-md-10" style="margin-top:5%;">
+		                <div class="col-md-10" style="margin-top:5%;margin-bottom: 40%;">
 		                    <form action="mypage_user_leave_check.do" id="sky-form4" class="log-reg-block sky-form col-md-12" novalidate="novalidate">
 		                        <h2 class="korean-font">정말로 탈퇴하시겠습니까?</h2>
 		                        

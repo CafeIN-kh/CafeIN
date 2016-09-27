@@ -18,7 +18,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/${privateCommandmenu.pcafe_img}" alt=""> 
+									<img src="/CafeIN/upload/private/${privateCommandmenu.pcafe_img}"> 
 								</div>
 								<div style="display:none;">
 									<span class="btn btn-info btn-file"> <span
@@ -129,7 +129,7 @@
                                     <div class="col-md-3 col-sm-6 col-xs-6">
                                         <div class="c-item">
                                             <a href="" class="ci-avatar">
-                                                <img src="${pageContext.request.contextPath}/upload/${listmenu.pmenu_img}" alt="">
+                                                <img src="/CafeIN/upload/private_menu/${listmenu.pmenu_img}" alt="">
                                            
                                             </a>
                                             

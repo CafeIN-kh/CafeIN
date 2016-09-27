@@ -7,7 +7,7 @@
 				<div class="profile-menu">
 					<a href="">
 						<div class="profile-pic">
-						   <img src="${pageContext.request.contextPath}/resources/cafein_admin/img/profile-pics/1.jpg" alt="">
+						   <img src="${pageContext.request.contextPath}/resources/cafein_admin/img/profile-pics/pro8.png" alt="">
 						</div>
 						
 						<div class="profile-info">
@@ -42,56 +42,48 @@
 						
 						
 						<li class="sub-menu"><a href=""><i
-							class="md md-now-widgets"></i> Cafe Management</a>
+							class="md md-now-widgets"></i>Customizing Cafe</a>
 
 						<ul>
-						<!-- 같은경로  -->
-						
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
 							<li><a href="">Customizing Cafe</a></li>
-							
-							
+							<li><a href="">Customizing LogList</a></li>
 						</ul></li>
 						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-			<%-- 			
-						
-					<li class="active"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do"><i
-							class="md md-my-library-books"></i> Franchise Write & inquiry</a></li>
-
-						
+					<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise_Cafe AdminPage</a>
+						<ul>
+							<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise_Cafe AdminPage</a>
+								<ul><li style="list-style: none; text-align: right; padding-right: 2px;"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
+						</ul>
+							</li>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandLogList.do">Franchise LogList</a></li>
+						</ul>
+					</li>
 					
-					<li class="sub-menu"><a href=""><i
-							class="md md-now-widgets"></i>Cafe Inquiry</a>
-
+					<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Private_Cafe AdminPage</a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
-							<li><a class="active" href="Customizing_.html">Customizing</a></li>
-						</ul></li> --%>
+							<li><a href="">Private LogList</a></li>
+						</ul>
+					</li>
+					
+					
 						
 						
-						
-						
-					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>
-							Notice & QnA</a>
+					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>Notice & QnA</a>
+					
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/List.do">Notice</a></li>
-							<li><a class="active" href="${pageContext.request.contextPath}/cafein_admin/event/List.do">Event</a></li>
-							<li><a class="active" href="${pageContext.request.contextPath}/cafein_admin/qna/List.do">Q&A Pages</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/event/List.do">Event</a></li>
+							<li><a  href="${pageContext.request.contextPath}/cafein_admin/qna/List.do">Q&A Pages</a></li>
 						</ul>
 						
 						</li>
+						
+						<li>
+                                <a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do"><i class="md md-announcement"></i> Admin Notice</a>
+                               
+                            </li>
 <%-- 
 					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
 							class="md md-content-copy"></i> Q&A Pages</a></li> --%>
@@ -99,7 +91,7 @@
 			</div>
 		</div>
             </aside>
-            
+            <%-- 
             <aside id="chat">
                 <ul class="tab-nav tn-justified" role="tablist">
                     <li role="presentation" class="active"><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab">Friends</a></li>
@@ -259,4 +251,4 @@
                         </div>
                     </div>
                 </div>
-            </aside>
+            </aside> --%>

@@ -11,7 +11,7 @@
 <div class="card">
 	<div class="card-header">
 		<h2>
-			글 작성 <small>Notice 글작성</small>
+			Notice <small>Write Post</small>
 		</h2>
 	</div>
 <form:form action="write.do" id="notice_modify_form" enctype="multipart/form-data" commandName="noticeCommand">
@@ -54,8 +54,8 @@
                         <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
                     </div>
                    	<div style="float: right; position:absolute; right:0px; margin-left: 15px;">
-						<button style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='list.do'">Menu</button>
-						<button style="margin-left: 10px;" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SAVE</button>
+						<button type="button"style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='List.do'">MENU</button>
+						<button type="submit" style="margin-left: 10px;" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SAVE</button>
 					</div>
 				</div>
 			</div>

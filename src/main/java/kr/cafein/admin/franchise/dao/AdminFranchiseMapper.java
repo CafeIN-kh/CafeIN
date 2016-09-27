@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
+import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 
 @Repository
@@ -23,6 +24,9 @@ public interface AdminFranchiseMapper {
 	
 	@Select("SELECT * FROM franchise_menu")
 	public List<AdminFranchiseMenuCommand> menuList2();
+	
+	@Select("SELECT * FROM f_log order by franchise_log_seq desc")
+	public List<AdminFranchiseLogCommand> logList();
 	
 	public int getRowCount(int franchise_num);
 	
@@ -61,5 +65,8 @@ public interface AdminFranchiseMapper {
 
 	@Select("SELECT * FROM franchise_menu WHERE fmenu_num = #{fmenu_num}")
 	public AdminFranchiseMenuCommand selectFmenu(int fmenu_num);
+	
+	@Insert("INSERT INTO f_log(franchise_log_seq,u_uid,franchise_num_log,franchise_reg_date_log,franchise_change_log,franchise_admin_log,franchise_message_log) VALUES(franchise_log_seq.nextval,#{u_uid},#{franchise_num_log},sysdate,#{franchise_change_log},#{franchise_admin_log},#{franchise_message_log})")
+	public void f_log_insert(AdminFranchiseLogCommand f_log_isert);
 
 }

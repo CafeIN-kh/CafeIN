@@ -13,9 +13,8 @@
 	<div class="pm-overview c-overflow">
 		<div class="pmo-pic">
 			<div class="p-relative">
-				<a href=""> <img class="img-responsive"
-					src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/franchise/logo/${franchise.franchise_name}/${franchise.franchise_img}"
-					alt="">
+				<a href=""> 
+					<img class="img-responsive"src="/CafeIN/upload/franchise/${franchise.franchise_img}">
 				</a>
 
 				<div class="dropdown pmop-message">
@@ -58,6 +57,23 @@
 						${franchise.franchise_introduce}</i>
 			</ul>
 		</div>
+		<%-- <div class="pmo-block pmo-contact hidden-xs">
+			<h2>Brand Info</h2>
+			<ul>
+				<li><i class="socicon socicon-twitter"></i>
+					<h5>${privateCommand.pcafe_name}</h5></li>
+				<li><i class="md md-email"></i>${franchise.franchise_num}</li>
+				<li><i class="md md-phone"></i> ${franchise.franchise_name}</li>
+				<li><i class="socicon socicon-skype"></i>
+					${privateCommand.pcafe_time}</li>
+				<li><i class="md md-location-on"></i>
+					<address class="m-b-0">
+						${privateCommand.pcafe_hash_tag} <br />
+						${privateCommand.pcafe_hash_tag} <br />
+						${privateCommand.pcafe_hash_tag}
+					</address></li>
+			</ul>
+		</div> --%>
 
 	</div>
 

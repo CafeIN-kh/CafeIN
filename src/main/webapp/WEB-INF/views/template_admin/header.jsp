@@ -11,10 +11,10 @@
                 </li>
             
                 <li class="logo hidden-xs">
-                    <a href="${pageContext.request.contextPath }/admin/main.do">Material cafein_admin</a>
+                    <a href="${pageContext.request.contextPath }/admin/main.do">Ccafein_admin</a>
                 </li>
                 
-                <li class="pull-right">
+                <%-- <li class="pull-right">
                 <ul class="top-menu">
                     <li id="toggle-width">
                         <div class="toggle-switch">
@@ -250,13 +250,13 @@
                     <li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
                         <a class="tm-chat" href=""></a>
                     </li>
-                    </ul>
-                </li>
+                    </ul> 
+                </li>--%>
             </ul>
             
             <!-- Top Search Content -->
-            <div id="top-search-wrap">
+           <!--  <div id="top-search-wrap">
                 <input type="text">
                 <i id="top-search-close">&times;</i>
-            </div>
+            </div> -->
         </header>

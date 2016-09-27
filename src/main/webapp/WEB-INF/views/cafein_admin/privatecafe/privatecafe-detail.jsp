@@ -30,9 +30,7 @@
 
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput">
-							<img
-								src="${pageContext.request.contextPath}/upload/${privateCommand.pcafe_img}"
-								alt="">
+							<img src="/CafeIN/upload/private/${privateCommand.pcafe_img}" >
 						</div>
 						<div style="display: none;">
 							<span class="btn btn-info btn-file"> <span

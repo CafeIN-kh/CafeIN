@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class FileUtil_adminEvent {
 
-	public static String UPLOAD_PATH="E:/Javawork/workspace_CafeInSpring/CafeIN/src/main/webapp/upload/event";
+	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/event";
 	
 	public static String rename(String fileName)throws Exception{
 

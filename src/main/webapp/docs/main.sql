@@ -146,6 +146,21 @@ create table notice(
 drop sequence notice_seq;
 create sequence notice_seq;
 
+/* event 테이블 - 이벤트 */
+drop table event;
+
+create table event(
+   event_num number not null primary key,
+   event_title varchar2(100) not null,
+   event_content varchar2(500) not null,
+   event_reg_date date not null,
+   event_hit number default(0),
+   event_img varchar2(2000)
+);
+
+drop sequence event_seq;
+create sequence event_seq;
+
 /* Q&A 테이블 - 고객문의, 건의사항 정보 
  * 
  * qa_f_option : 0:프랜차이즈카페문의,1:개인카페문의,2:커스터마이밍문의,3:이벤트문의,4:건의사항 */
@@ -248,16 +263,14 @@ create sequence customizing_reply_seq;
 drop table F_log;
 
 create table F_log(
-   F_log_seq number(20) not null,
-   Brand_code number(10) not null,
-   U_uid varchar2(20) not null,
-   F_log_reg_date date not null,
-   F_log_change number(20) default 0,
-   F_log_admin varchar2(40) not null, 
-   F_log_message varchar2(100) not null,
-   F_log_likecontroller varchar2(20) not null, 
-   F_log_Bookmarkcontroller varchar2(20) not null,
-   constraint F_log_pk primary key (F_log_seq),
+   franchise_log_seq number(20) not null,
+   franchise_num_log number(10) not null,
+   u_uid varchar2(20) not null,
+   franchise_reg_date_log date not null,
+   franchise_change_log number(20) default 0,
+   franchise_admin_log varchar2(40) not null, 
+   franchise_message_log varchar2(100) not null,
+   constraint F_log_pk primary key (franchise_log_seq),
    constraint F_log_fk1 foreign key (Brand_code) references franchise(franchise_num),
    constraint F_log_fk2 foreign key (U_uid) references u_user(u_uid)
 );
@@ -400,6 +413,21 @@ create table user_menu_log(
 drop sequence umenu_log_seq;
 create sequence umenu_log_seq;
 
+/* 관리자용 공지사항 테이블 */
+drop table admin_notice;
+
+create table admin_notice(
+	admin_notice_num number not null,
+	admin_notice_title varchar2(100) not null,
+	admin_notice_content varchar2(500) not null,
+	admin_notice_reg_date date not null,
+	admin_notice_hit number default(0),
+	admin_notice_img varchar2(2000) not null,
+	constraint admin_notice primary key (admin_notice_num)
+);
+
+drop sequence admin_notice_num_seq;
+create sequence admin_notice_num_seq;
 
 /*프랜차이즈*/
 INSERT INTO franchise VALUES(1,'스타벅스','star.jpg','프랜차이즈 브랜드의 대표적인 브랜드이다', '10');

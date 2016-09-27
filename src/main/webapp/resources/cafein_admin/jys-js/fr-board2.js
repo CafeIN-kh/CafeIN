@@ -34,13 +34,6 @@
                         iconDown: 'md-expand-more',
                         iconRefresh: 'md-refresh',
                         iconUp: 'md-expand-less'
-                    },
-                    formatters: {
-                        "commands": function(column, row) {
-
-                            return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></button> " + 
-                            "<a href=\"deletemenu.do?fmenu_num="+row.id+"\"><button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button></a> ";
-                        }
                     }
                 });
                 

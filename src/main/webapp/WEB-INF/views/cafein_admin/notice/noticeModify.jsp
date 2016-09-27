@@ -10,7 +10,7 @@
 <div class="card">
 	<div class="card-header">
 		<h2>
-			글 작성 <small>Notice 수정</small>
+			Notice <small>Modify</small>
 		</h2>
 	</div>
 <form:form action="update.do" id="notice_modify_form" enctype="multipart/form-data" commandName="noticeCommand">
@@ -38,7 +38,7 @@
 		<c:if test="${!empty noticeCommand.notice_img}">
 			<div class="form-group fg-float">
 				<div class="fg-line">
-					<span>${noticeCommand.notice_img } 가 이미 존재합니다.</span>
+					<span>${noticeCommand.notice_img } is already exists</span>
 				</div>
 			</div>
 		</c:if>
@@ -59,8 +59,8 @@
                         <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
                     </div>
                    	<div style="float: right; position:absolute; right:0px; margin-left: 15px;">
-						<button style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='list.do'">Menu</button>
-						<button style="margin-left: 10px;" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SAVE</button>
+						<button type="button" style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='list.do'">Menu</button>
+						<button type="submit" style="margin-left: 10px;" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SAVE</button>
 					</div>
 				</div>
 			</div>

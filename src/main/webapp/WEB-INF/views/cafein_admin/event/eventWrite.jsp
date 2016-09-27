@@ -10,7 +10,7 @@
 <div class="card">
 	<div class="card-header">
 		<h2>
-			글 작성 <small>Event 글작성</small>
+			Event <small>Write Post</small>
 		</h2>
 	</div>
 <form:form action="write.do" id="event_modify_form" enctype="multipart/form-data" commandName="eventCommand">

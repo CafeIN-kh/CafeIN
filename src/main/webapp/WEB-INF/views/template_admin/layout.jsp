@@ -32,7 +32,7 @@
 	</c:forEach>
         
     </head>
-    <body>
+    <body class="toggled sw-toggled">
     	<!-- 헤더 시작 -->
         <tiles:insertAttribute name="header"/>
         <!-- 헤더 끝 -->

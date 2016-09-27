@@ -10,7 +10,6 @@ import java.io.FileInputStream;
 import javax.imageio.ImageIO;
 
 public class FileUtil {
-
 	
 	
 	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise";
@@ -26,7 +25,7 @@ public class FileUtil {
 	
 	public static void makeFile(String filename){
 		 //파일 객체 생성
-		String path = "F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/logo/"+filename;
+		String path = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename;
 		
         File file = new File(path);
         //!표를 붙여주어 파일이 존재하지 않는 경우의 조건을 걸어줌
@@ -38,8 +37,8 @@ public class FileUtil {
 
 	public static String moveFile(String filename){
 
-		String beforeFilePath = "F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/logo/"+filename+".jpg";
-		String afterFilePath = "F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/logo/"+filename+"/"+filename+".jpg";
+		String beforeFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename+".jpg";
+		String afterFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename+"/"+filename+".jpg";
 		
 		try{
 			File file = new File(beforeFilePath);

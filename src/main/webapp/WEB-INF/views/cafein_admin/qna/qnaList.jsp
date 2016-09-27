@@ -8,18 +8,18 @@
    <div class="card">
       <div class="card-header">
         <h2>
-			게시판 관리 <small>QnA 게시판 관리 페이지입니다. </small>
+			QnA <small>List </small>
 		</h2>
       </div>
       
       <table id="data-table-command" class="table table-striped table-vmiddle">
          <thead>
             <tr>     
-               <th data-column-id="id" data-type="numeric">QnA_num</th>
-				<th data-column-id="sender">제목</th>
-				<th data-column-id="sortd" data-order="desc">분류</th>
-				<th data-column-id="writer" data-order="desc">작성자</th>
-				<th data-column-id="received" data-order="desc">게시일</th>			
+               <th data-column-id="id" data-type="numeric">Num</th>
+				<th data-column-id="sender">Title</th>
+				<th data-column-id="sortd" data-order="desc">Classification</th>
+				<th data-column-id="writer" data-order="desc">Writer</th>
+				<th data-column-id="received" data-order="desc">Registered</th>			
 				<th data-column-id="commands" data-formatter="commands"	data-sortable="false"></th>
             </tr>
          </thead>

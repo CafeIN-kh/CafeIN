@@ -9,7 +9,7 @@
 <div class="card">
 	<div class="card-header">
 		<h2>
-			글 작성 <small>Event 수정</small>
+			Event <small>Modify</small>
 		</h2>
 	</div>
 <form:form action="update.do" id="event_modify_form" enctype="multipart/form-data" commandName="eventCommand">
@@ -37,7 +37,7 @@
 		<c:if test="${!empty eventCommand.event_img}">
 			<div class="form-group fg-float">
 				<div class="fg-line">
-					<span>${eventCommand.event_img } 가 이미 존재합니다.</span>
+					<span>${eventCommand.event_img } is already exists. </span>
 				</div>
 			</div>
 		</c:if>

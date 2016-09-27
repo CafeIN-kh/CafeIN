@@ -8,20 +8,20 @@
 <div class="card">
 	<div class="card-header">
 		<h2 >
-			Event 게시판 관리 <small>Event 게시판 관리 페이지입니다.</small>
+			Event<small>List</small>
+			<a style="float: right" href="${pageContext.request.contextPath}/cafein_admin/event/write.do"><i class="md md-border-color"></i></a>
 		</h2>
-		<div style="float: right">
-			<a href="${pageContext.request.contextPath}/cafein_admin/event/write.do"><i class="md md-border-color"></i></a>
-		</div>
+		
+		
 	</div>
 
 
 	<table id="data-table-command"	class="table table-striped table-vmiddle" style="width: 100%;">
 		<thead>
 			<tr>
-				<th data-column-id="id" data-type="numeric">Event_num</th>
-				<th data-column-id="sender">제목</th>
-				<th data-column-id="received" data-order="desc">게시일</th>
+				<th data-column-id="id" data-type="numeric">Num</th>
+				<th data-column-id="sender">Title</th>
+				<th data-column-id="received" data-order="desc">Registered</th>
 				<th data-column-id="commands" data-formatter="commands"
 					data-sortable="false"></th>
 			</tr>

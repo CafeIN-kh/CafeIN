@@ -11,8 +11,6 @@ import javax.imageio.ImageIO;
 
 public class FileUtil_adminFranchisemenu {
 
-	
-	
 	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise_menu";
 	
 	//"F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/menu"
@@ -27,7 +25,7 @@ public class FileUtil_adminFranchisemenu {
 	
 	public static void makeFile(String filename){
 		 //파일 객체 생성
-		String path = "F:/Javawork/workspace_CafeInSpring/CafeIN/src/main/webapp/upload/franchise_menu/"+filename;
+		String path = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu/"+filename;
 		
         File file = new File(path);
         //!표를 붙여주어 파일이 존재하지 않는 경우의 조건을 걸어줌
@@ -39,8 +37,8 @@ public class FileUtil_adminFranchisemenu {
 
 	public static String moveFile(String filename, String foldername){
 
-		String beforeFilePath = "F:/Javawork/workspace_CafeInSpring/CafeIN/src/main/webapp/upload/franchise_menu/"+filename+".jpg";
-		String afterFilePath = "F:/Javawork/workspace_CafeInSpring/CafeIN/src/main/webapp/upload/franchise_menu/"+foldername+"/"+filename+".jpg";
+		String beforeFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu/"+filename+".jpg";
+		String afterFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu/"+foldername+"/"+filename+".jpg";
 		
 		try{
 			File file = new File(beforeFilePath);

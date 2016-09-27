@@ -68,7 +68,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/${command.pmenu_img}" alt=""> 
+									<img src="/CafeIN/upload/private_menu/${command.pmenu_img}"> 
 								</div>
 								<div>
 									<span class="btn btn-info btn-file"> <span

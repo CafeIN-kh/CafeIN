@@ -300,7 +300,7 @@
 										<div class="pmob-body">
 											<div class="row">
 												<input name="pcafe_hash_tag" id="pcafe_hash_tag" type="text" class="hash-code" placeholder="해쉬태그입력!"
-													value="${commandMenu.pcafe_hash_tag}"> <%-- <input name="pcafe_hash_tag" id="pcafe_hash_tag" 
+													value="${hashTagOriginal}"> <%-- <input name="pcafe_hash_tag" id="pcafe_hash_tag" 
 													type="text" class="hash-code" placeholder="해쉬태그입력!"
 													value="${commandMenu.pcafe_hash_tag}"> <input name="pcafe_hash_tag" id="pcafe_hash_tag" 
 													type="text" class="hash-code" placeholder="해쉬태그입력!"

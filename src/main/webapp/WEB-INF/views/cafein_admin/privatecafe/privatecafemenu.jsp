@@ -4,8 +4,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<form:form action="privatecafemenu.do" id="file-check"
-	enctype="multipart/form-data" commandName="command">
 
     
     <section id="content">
@@ -60,9 +58,9 @@
                                     <li>
                                         <i class="md md-location-on"></i>
                                         <address class="m-b-0">
-                                           		${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
+                                           		${privatecafe.pcafe_hash_tag}<%-- ,${privatecafe.pcafe_hash_tag} <br/>
                                             	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
-                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag}
+                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} --%>
                                         </address>
                                     </li>
                                 </ul>
@@ -99,16 +97,19 @@
                             
                             <div class="pmb-block">
                                 <div class="p-header">
+                                <form action="privatecafemenu.do" id="search_form" method="get">
                                     <ul class="p-menu">
                                         
                                         <li><a href=""><i class="md md-people hidden-xs"></i> Search Menu</a></li>
                                         <li class="pm-search">
                                             <div class="pms-inner">
                                                 <i class="md md-search"></i>
-                                                <input type="text" placeholder="Search...">
+                                                <input type="hidden" name="pcafe_num" value="${privatecafe.pcafe_num}"> 
+                                                <input type="text" name="keyword" placeholder="Search...">
                                             </div>
                                         </li>
                                     </ul>
+                                   </form> 
                                     
                                     <ul class="actions m-t-20 hidden-xs">
                                         <li class="dropdown">
@@ -145,6 +146,7 @@
                                             
                                             <div class="c-footer">
                                                 <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
+                                                <a href="privatecafemenu-delete.do?pmenu_num=${menuList.pmenu_num}&pcafe_num=${menuList.pcafe_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -156,11 +158,12 @@
                                    </div>
                                 
                                 <div class="load-more">
-                                    <a href=""><i class="md md-refresh"></i> Load More...</a>
+                                   <!--  <a href=""><i class="md md-refresh"></i> Load More...</a> -->
+                                   ${pagingHtml}
                                 </div>	
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            </form:form>
+           

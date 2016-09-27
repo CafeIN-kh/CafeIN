@@ -25,6 +25,11 @@ public class PrivateServiceImpl implements PrivateService{
 	}
 	
 	@Override
+	public void deletemenu(Integer pmenu_num) {
+		privateMapper.deletemenu(pmenu_num);
+	}
+	
+	@Override
 	public PrivateCommand selectBoard(Integer pcafe_num) {
 		return privateMapper.selectBoard(pcafe_num);
 	}

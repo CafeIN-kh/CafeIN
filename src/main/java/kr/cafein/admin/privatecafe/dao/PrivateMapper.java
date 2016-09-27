@@ -44,4 +44,8 @@ public interface PrivateMapper {
 	
 	@Update("UPDATE private_cafe_menu SET pmenu_name=#{pmenu_name},pmenu_price=#{pmenu_price},pmenu_introduce=#{pmenu_introduce},pmenu_img=#{pmenu_img,jdbcType=VARCHAR} WHERE pmenu_num=#{pmenu_num}")
 	public void update2(PrivateMenuCommand privateCafeMenu);
+	
+	@Delete ("delete from private_cafe_menu where pmenu_num=#{pmenu_num}")
+	public void deletemenu(Integer pmenu_num);
+
 }

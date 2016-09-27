@@ -42,8 +42,43 @@ public class PrivateListDetailController {
 		
 		PrivateCommand commandMenu = privateService.selectBoard(pcafe_num);
 		ModelAndView mav = new ModelAndView("adminPrivateDetail");
+		
+		//개인카페의 이미지들을 지우기 위해 개인카페 정보 찾기
+        String pcafeImgName = commandMenu.getPcafe_img();
+         String[] pcafeImgNameArray;
+         
+         //문자열에 ,가 있다면 쪼개서 배열에 담기
+         pcafeImgNameArray = pcafeImgName.split(",");
+         for (int i = 0; i < pcafeImgNameArray.length; i++) {
+           //pcafeImgNameArray 인덱스 안에 * 값이 없으면 -1 반환
+           if(pcafeImgNameArray[i].indexOf("*") != -1){
+              //*이 있다는 것이므로 *표를 빈값으로 대체
+              //대표이미지 찾아서 *표시 없애주기
+              pcafeImgNameArray[i] = pcafeImgNameArray[i].replace("*","");
+              commandMenu.setPcafe_img(pcafeImgNameArray[i]);
+           }
+        }
+         
+         //해쉬태그
+         String hashTag = commandMenu.getPcafe_hash_tag();
+         //원래 , 적용된 해쉬태그 뷰에 반환
+         String hashTagOriginal = commandMenu.getPcafe_hash_tag();
+         //초기화
+         commandMenu.setPcafe_hash_tag("");
+         String[] hashTagArray = hashTag.split(",");
+         for (int i = 0; i < hashTagArray.length; i++) {
+           //인덱스 안에 , 값이 없으면 -1 반환
+           if(hashTagArray[i].indexOf(",") != -1){
+              //*이 있다는 것이므로 *표를 빈값으로 대체
+              //,표시 없애주기
+        	  hashTagArray[i] = hashTagArray[i].replace(",","");
+           }
+           commandMenu.setPcafe_hash_tag(commandMenu.getPcafe_hash_tag() + "#"+hashTagArray[i] + " ");
+        }
+         
 		/*mav.addObject("list1", list1);*/
 		mav.addObject("commandMenu", commandMenu);
+		mav.addObject("hashTagOriginal", hashTagOriginal);
 		/*System.out.println(list1);*/
 		return mav;
 
@@ -60,7 +95,6 @@ public class PrivateListDetailController {
 		if(result.hasErrors()){
 			return "adminPrivateDetail";
 		}
-		
 		
 		PrivateCommand pcommand = null;
 		String oldFileName = "";

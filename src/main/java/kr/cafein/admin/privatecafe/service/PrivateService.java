@@ -27,6 +27,8 @@ public interface PrivateService {
 	
 	public void update2(PrivateMenuCommand privateCafeMenu);
 	
+	public void deletemenu(Integer pmenu_num);
+	
 	@Transactional(readOnly=true)
 	public int getRowCount(int pcafe_num);
 

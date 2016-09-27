@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.cafein.admin.customizingcafe.dao.adminCustomizingMapper">
+<!-- 	<select id="list" parameterType="map" resultType="PrivateCommand">
+		SELECT
+		*
+		FROM
+		private_cafe
+	</select> -->
+
+	<select id="menuList" parameterType="map" resultType="PrivateMenuCommand">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM private_cafe_menu
+		where pcafe_num = #{pcafe_num}
+			<if test="keyword !=''">
+				and (pmenu_name like '%' || #{keyword} || '%' or
+				pmenu_price like '%' || #{keyword} || '%' or
+				pmenu_introduce like '%' || #{keyword} || '%')
+			</if>
+		ORDER BY pmenu_num ASC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+
+	</select>
+	
+	
+<!-- 	<select id="listDetail" parameterType="map" resultType="PrivateCommand">
+		SELECT
+		*
+		FROM
+		pcafe_num WHERE pcafe_num = #{pcafe_num}
+	</select> -->
+
+
+	<select id="getRowCount" parameterType="map" resultType="integer">
+		SELECT
+		count(*)
+		FROM private_cafe_menu
+		WHERE
+		pcafe_num = #{pcafe_num}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+

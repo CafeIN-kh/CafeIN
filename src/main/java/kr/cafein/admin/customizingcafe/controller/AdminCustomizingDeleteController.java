@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 
 @Controller
-public class adminCustomizingDeleteController {
+public class AdminCustomizingDeleteController {
 	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
-	private PrivateService privateService;
+	private AdminCustomizingService admincustomizingService;
 	
-	@RequestMapping("/admin/privatecafe/privatecafe-delete.do")
+	@RequestMapping("/admin/customizing/customizing-delete.do")
 	public String submit(@RequestParam("pcafe_num") int pcafe_num)throws Exception{
 		
 		if(log.isDebugEnabled()){
@@ -28,9 +28,9 @@ public class adminCustomizingDeleteController {
 	/*	PrivateCommand privatecommand = privateService.selectBoard(pcafe_num);
 		*/
 		
-		privateService.delete(pcafe_num);
+		admincustomizingService.delete(pcafe_num);
 		
-		return "redirect:/admin/privatecafe/privatecafe.do";
+		return "redirect:/admin/customizing/customizing.do";
 		
 	}
 

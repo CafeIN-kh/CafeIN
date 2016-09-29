@@ -77,10 +77,17 @@
 											kr.cafein.admin.notice.dao,
 											kr.cafein.admin.qna.dao,
 											kr.cafein.admin.privatecafe.dao,
-											kr.cafein.admin.customizingcafe.dao,
+											kr.cafein.admin.customizingcafe.dao, 
 											kr.cafein.qna.dao,
 											kr.cafein.customizing.dao"/>
 
 										
 	</bean>
 </beans>
+
+
+ 
+
+
+ 
+											

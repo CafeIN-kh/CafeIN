@@ -11,18 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 
 @Controller
-public class adminCustomizingCafeMenuDeleteController {
+public class AdminCustomizingMenuDeleteController {
 
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
-	private PrivateService adminprivateService;
+	private AdminCustomizingService admincustomizingService;
 	
-	@RequestMapping("/admin/privatecafe/privatecafemenu-delete.do")
+	@RequestMapping("/admin/customizing/customizingmenu-delete.do")
 	public String submit(@RequestParam("pmenu_num") int pmenu_num, @ModelAttribute PrivateMenuCommand privateCafeMenuCommand)throws Exception{
 		
 		if(log.isDebugEnabled()){
@@ -30,12 +31,12 @@ public class adminCustomizingCafeMenuDeleteController {
 			log.debug("privateCafeMenuCommand : " +  privateCafeMenuCommand);
 		}
 		
-		adminprivateService.deletemenu(pmenu_num);
+		admincustomizingService.deletemenu(pmenu_num);
 		
 		
 		
 		
 		
-		return "redirect:/admin/privatecafe/privatecafemenu.do?pcafe_num="+privateCafeMenuCommand.getPcafe_num();
+		return "redirect:/admin/customizing/customizingmenu.do?pcafe_num="+privateCafeMenuCommand.getPcafe_num();
 	}
 }

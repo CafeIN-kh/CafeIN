@@ -1,0 +1,32 @@
+package kr.cafein.admin.customizingcafe.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.domain.BookmarkCommand;
+import kr.cafein.domain.LikeCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
+import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
+import kr.cafein.admin.privatecafe.domain.PrivateCommand;
+
+@Repository
+public interface AdminCustomizingService {
+	
+	public AdminCustomizingCommand selectCustomizing(Integer custom_num);
+	public List<AdminCustomizingCommand> searchList(Map<String, Object> map);
+	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num);
+	public void update(AdminCustomizingCommand customizing);
+	public void delete(Integer custom_num);
+	public List<AdminCustomizingCommand> getCustomizingCafeDetailList(Integer custom_num);
+	public List<AdminCustomizingCommand> getCustomizingCafeMenuList(Integer u_uid);
+	public List<LikeCommand> getLikeUser(Integer custom_num);
+	public int selectBookmarkCount(BookmarkCommand bookmark);
+
+
+
+}

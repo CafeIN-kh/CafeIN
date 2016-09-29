@@ -17,32 +17,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 import kr.cafein.util.FileUtil_PrivateMenu;
 
 @Controller
 @SessionAttributes("command")
-public class adminCustomizingCafeMenuModifyController {
+public class AdminCustomizingMenuModifyController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	@Resource(name="privateService")
-	private PrivateService privateService;
+	@Resource(name="admincustomizingService")
+	private AdminCustomizingService admincustomizingService;
 	
-	@RequestMapping(value="/admin/privatecafe/privatecafemenu-modify.do",method=RequestMethod.GET)
+	@RequestMapping(value="/admin/customizing/customizingmenu-modify.do",method=RequestMethod.GET)
 	public String form(@RequestParam("pmenu_num") int pmenu_num, Model model){
 		
 		System.out.println(pmenu_num);
 		
-		PrivateMenuCommand privateCafeMenuCommand = privateService.selectMenu(pmenu_num);
+		PrivateMenuCommand privateCafeMenuCommand = admincustomizingService.selectMenu(pmenu_num);
 		System.out.println(privateCafeMenuCommand);
 		model.addAttribute("command",privateCafeMenuCommand);
 		
-		return "adminPrivateCafeMenuModify";
+		return "adminCustomizingMenuModify";
 	}
 	
 
-	@RequestMapping(value="/admin/privatecafe/privatecafemenu-modify.do",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/customizing/customizingmenu-modify.do",method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command")@Valid PrivateMenuCommand privateCafeMenuCommand, BindingResult result, SessionStatus status,HttpSession session)throws Exception{
 		
 		if(log.isDebugEnabled()){
@@ -52,14 +53,14 @@ public class adminCustomizingCafeMenuModifyController {
 		System.out.println("error미진입");
 		if(result.hasErrors()){
 			System.out.println("error진입");
-			return "adminPrivateCafeMenuModify";
+			return "adminCustomizingMenuModify";
 		}
 		
 		
 		PrivateMenuCommand privateCafeMenu = null;
 		String oldFileName = "";
 		
-		privateCafeMenu = privateService.selectMenu(privateCafeMenuCommand.getPmenu_num());
+		privateCafeMenu = admincustomizingService.selectMenu(privateCafeMenuCommand.getPmenu_num());
 		
 		System.out.println(privateCafeMenuCommand.getPmenu_num());
 		
@@ -72,7 +73,7 @@ public class adminCustomizingCafeMenuModifyController {
 		}
 		
 		//글수정
-		privateService.update2(privateCafeMenuCommand);
+		admincustomizingService.update2(privateCafeMenuCommand);
 		status.setComplete();
 		
 		if(!privateCafeMenuCommand.getUpload().isEmpty()){
@@ -86,7 +87,7 @@ public class adminCustomizingCafeMenuModifyController {
 			}
 		
 		}
-		return "redirect:/admin/privatecafe/privatecafemenu.do?pcafe_num="+privateCafeMenuCommand.getPcafe_num();
+		return "redirect:/admin/customizing/customizingmenu.do?pcafe_num="+privateCafeMenuCommand.getPcafe_num();
 	}
 	
 }

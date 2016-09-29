@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 import kr.cafein.domain.LikeCommand;
@@ -25,14 +26,14 @@ import kr.cafein.util.FileUtil_Private;
 
 @Controller
 @SessionAttributes("commandMenu")
-public class adminCustomizingListDetailController {
+public class AdminCustomizingListDetailController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	@Resource(name="privateService")
-	private PrivateService privateService;
+	@Resource(name="admincustomizingService")
+	private AdminCustomizingService admincustomizingService;
 	
 	
-	@RequestMapping(value="/admin/privatecafe/privatecafe-detail.do",method=RequestMethod.GET)
+	@RequestMapping(value="/admin/customizing/customizing-detail.do",method=RequestMethod.GET)
 	public ModelAndView process(@RequestParam("pcafe_num") int pcafe_num)throws Exception{
 		
 		System.out.println("==============");
@@ -42,14 +43,14 @@ public class adminCustomizingListDetailController {
 			log.debug("pcafe_num : "+pcafe_num);
 		}
 		
-		PrivateCommand commandMenu = privateService.selectBoard(pcafe_num);
-		ModelAndView mav = new ModelAndView("adminPrivateDetail");
+		PrivateCommand commandMenu = admincustomizingService.selectBoard(pcafe_num);
+		ModelAndView mav = new ModelAndView("adminCustomizingDetail");
 		
 	
 		
 		
 		
-		List<LikeCommand> getLikeUser=privateService.getLikeUser(pcafe_num);
+		List<LikeCommand> getLikeUser=admincustomizingService.getLikeUser(pcafe_num);
 		
 		
 		
@@ -99,7 +100,7 @@ public class adminCustomizingListDetailController {
 		
 	}
 	
-	@RequestMapping(value="/admin/privatecafe/privatecafe-detail.do",method=RequestMethod.POST)
+	@RequestMapping(value="/admin/customizing/customizing-detail.do",method=RequestMethod.POST)
 	public String submit(@ModelAttribute("commandMenu") @Valid PrivateCommand commandMenu, BindingResult result )throws Exception{
 	
 		if(log.isDebugEnabled()){
@@ -107,13 +108,13 @@ public class adminCustomizingListDetailController {
 		}
 		
 		if(result.hasErrors()){
-			return "adminPrivateDetail";
+			return "adminCustomizingDetail";
 		}
 		
 		PrivateCommand pcommand = null;
 		String oldFileName = "";
 		
-		pcommand = privateService.selectBoard(commandMenu.getPcafe_num());
+		pcommand = admincustomizingService.selectBoard(commandMenu.getPcafe_num());
 		
 		oldFileName = pcommand.getPcafe_img();
 		
@@ -128,7 +129,7 @@ public class adminCustomizingListDetailController {
 			
 		}
 		
-		 privateService.update(commandMenu);
+		admincustomizingService.update(commandMenu);
 		 
 		 if(!commandMenu.getUpload().isEmpty()){
 			 //전송된 파일이 있을 경우
@@ -143,7 +144,7 @@ public class adminCustomizingListDetailController {
 			 
 		 }
 				
-		return "redirect:/admin/privatecafe/privatecafe-detail.do?pcafe_num=" + commandMenu.getPcafe_num();
+		return "redirect:/admin/customizing/customizing-detail.do?pcafe_num=" + commandMenu.getPcafe_num();
 	}
 	
 	

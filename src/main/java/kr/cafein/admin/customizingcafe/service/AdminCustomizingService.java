@@ -3,6 +3,7 @@ package kr.cafein.admin.customizingcafe.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,8 @@ import kr.cafein.admin.privatecafe.domain.PrivateCommand;
 @Repository
 public interface AdminCustomizingService {
 	
+	public int getRowCount(int custom_num);
+	public List<AdminCustomizingCommand> selectCustomizing();
 	public AdminCustomizingCommand selectCustomizing(Integer custom_num);
 	public List<AdminCustomizingCommand> searchList(Map<String, Object> map);
 	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num);
@@ -26,7 +29,7 @@ public interface AdminCustomizingService {
 	public List<AdminCustomizingCommand> getCustomizingCafeMenuList(Integer u_uid);
 	public List<LikeCommand> getLikeUser(Integer custom_num);
 	public int selectBookmarkCount(BookmarkCommand bookmark);
-
+	
 
 
 }

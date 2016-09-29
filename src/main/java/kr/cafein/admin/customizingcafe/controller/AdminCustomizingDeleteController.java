@@ -19,16 +19,16 @@ public class AdminCustomizingDeleteController {
 	private AdminCustomizingService admincustomizingService;
 	
 	@RequestMapping("/admin/customizing/customizing-delete.do")
-	public String submit(@RequestParam("pcafe_num") int pcafe_num)throws Exception{
+	public String submit(@RequestParam("custom_num") int custom_num)throws Exception{
 		
 		if(log.isDebugEnabled()){
-			log.debug("pcafe_num : "+pcafe_num);
+			log.debug("custom_num : "+custom_num);
 		}
 		
 	/*	PrivateCommand privatecommand = privateService.selectBoard(pcafe_num);
 		*/
 		
-		admincustomizingService.delete(pcafe_num);
+		admincustomizingService.delete(custom_num);
 		
 		return "redirect:/admin/customizing/customizing.do";
 		

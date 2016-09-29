@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-import kr.cafein.admin.privatecafe.domain.PrivateCommand;
-import kr.cafein.admin.privatecafe.service.PrivateService;
-import kr.cafein.util.PagingUtil_adminPrivate;
+import kr.cafein.util.PagingUtil_adminCustomizing;
 
 @Controller
 public class AdminCustomizingMenuListController {
@@ -31,7 +29,7 @@ public class AdminCustomizingMenuListController {
    
    
    @RequestMapping("/admin/customizing/customizingmenu.do")
-   public ModelAndView process(@RequestParam(value="pcafe_num",defaultValue="") int pcafe_num,
+   public ModelAndView process(@RequestParam(value="custom_num",defaultValue="") int custom_num,
                         @RequestParam(value="pageNum",defaultValue="1") int currentPage,
                         @RequestParam(value="keyword",defaultValue="") String keyword)throws Exception{
       
@@ -41,26 +39,26 @@ public class AdminCustomizingMenuListController {
       
       
       //ÃÑ ±ÛÀÇ °¹¼ö ¶Ç´Â °Ë»öµÈ ±ÛÀÇ °¹¼ö
-      int count = admincustomizingService.getRowCount(pcafe_num);
+      int count = admincustomizingService.getRowCount(custom_num);
       
-      PagingUtil_adminPrivate page = new PagingUtil_adminPrivate(keyword,currentPage,count,rowCount,pageCount,pcafe_num,"privatecafemenu.do");
+      PagingUtil_adminCustomizing page = new PagingUtil_adminCustomizing(keyword,currentPage,count,rowCount,pageCount,custom_num,"customizingmenu.do");
       
       map.put("start", page.getStartCount());
       map.put("end", page.getEndCount());
-      map.put("pcafe_num", pcafe_num);
+      map.put("custom_num", custom_num);
       
       System.out.println("==============");
       
       
-      PrivateCommand privatecafe = admincustomizingService.selectBoard(pcafe_num);
+      AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.selectCustomizing(custom_num);
       
      
       
       /*List<PrivateMenuCommand> menuList = privateService.menuList(map);*/
-      List<PrivateMenuCommand> searchList = null;
+      List<AdminCustomizingCommand> searchList = null;
      
       if(log.isDebugEnabled()){
-         log.debug("pcafe_num : "+pcafe_num);
+         log.debug("pcafe_num : "+custom_num);
       }
       
       
@@ -76,9 +74,9 @@ public class AdminCustomizingMenuListController {
       
       
       ModelAndView mav = new ModelAndView("adminCustomizingMenu");
-      mav.addObject("privatecafe", privatecafe);
+      mav.addObject("adminCustomizingCommand", adminCustomizingCommand);
       mav.addObject("searchList", searchList);
-      mav.addObject("pcafe_num", pcafe_num);
+      mav.addObject("custom_num", custom_num);
       mav.addObject("count", count);
       mav.addObject("pagingHtml",page.getPagingHtml());
    

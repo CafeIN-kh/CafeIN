@@ -14,12 +14,12 @@ public class PagingUtil_adminCustomizing {
 	 * addKey : 부가적인 key 없을 때는 null 처리 (&num=23형식으로 전달할 것)
 	 * */
 	public PagingUtil_adminCustomizing(String keyword, int currentPage, int totalCount, int rowCount,
-			int pageCount, int pcafe_num,String pageUrl) {
-		this(keyword,currentPage,totalCount,rowCount,pageCount,pageUrl,null,pcafe_num);
+			int pageCount, int custom_num,String pageUrl) {
+		this(keyword,currentPage,totalCount,rowCount,pageCount,pageUrl,null,custom_num);
 	}
 
 	public PagingUtil_adminCustomizing(String keyword, int currentPage, int totalCount, int rowCount,
-			int pageCount,String pageUrl,String addKey,int pcafe_num) {
+			int pageCount,String pageUrl,String addKey,int custom_num) {
 
 if(addKey == null) addKey = ""; //부가키가 null 일때 ""처리
 		
@@ -46,9 +46,9 @@ if(addKey == null) addKey = ""; //부가키가 null 일때 ""처리
 		pagingHtml = new StringBuffer();
 		if (currentPage > pageCount) {
 			if(keyword==null){//검색 미사용시
-				pagingHtml.append("<a href="+pageUrl+"?pcafe_num="+pcafe_num+"&pageNum="+ (startPage - 1) + addKey +">");
+				pagingHtml.append("<a href="+pageUrl+"?custom_num="+custom_num+"&pageNum="+ (startPage - 1) + addKey +">");
 			}else{
-				pagingHtml.append("<a href="+pageUrl+"?pcafe_num="+pcafe_num+"&keyword="+keyword+"&pageNum="+ (startPage - 1) + addKey +">");
+				pagingHtml.append("<a href="+pageUrl+"?custom_num="+custom_num+"&keyword="+keyword+"&pageNum="+ (startPage - 1) + addKey +">");
 			}
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
@@ -65,9 +65,9 @@ if(addKey == null) addKey = ""; //부가키가 null 일때 ""처리
 				pagingHtml.append("</font></b>");
 			} else {
 				if(keyword==null){//검색 미사용시
-					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?pcafe_num="+pcafe_num+"&pageNum=");
+					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?custom_num="+custom_num+"&pageNum=");
 				}else{
-					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?pcafe_num="+pcafe_num+"&keyword="+keyword+"&pageNum=");
+					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?custom_num="+custom_num+"&keyword="+keyword+"&pageNum=");
 				}
 				pagingHtml.append(i);
 				pagingHtml.append(addKey+"'>");
@@ -80,9 +80,9 @@ if(addKey == null) addKey = ""; //부가키가 null 일때 ""처리
 		// 다음 block 페이지
 		if (totalPage - startPage >= pageCount) {
 			if(keyword==null){//검색 미사용시
-				pagingHtml.append("<a href="+pageUrl+"?pcafe_num="+pcafe_num+"&pageNum="+ (endPage + 1) + addKey +">");
+				pagingHtml.append("<a href="+pageUrl+"?custom_num="+custom_num+"&pageNum="+ (endPage + 1) + addKey +">");
 			}else{
-				pagingHtml.append("<a href="+pageUrl+"?pcafe_num="+pcafe_num+"&keyword="+keyword+"&pageNum="+ (endPage + 1) + addKey +">");
+				pagingHtml.append("<a href="+pageUrl+"?custom_num="+custom_num+"&keyword="+keyword+"&pageNum="+ (endPage + 1) + addKey +">");
 			}
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");

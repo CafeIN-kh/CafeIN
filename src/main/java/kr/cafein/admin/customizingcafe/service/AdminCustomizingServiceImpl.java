@@ -77,6 +77,18 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 		return adminCustomizingMapper.selectBookmarkCount(bookmark);
 	}
 
+	@Override
+	public List<AdminCustomizingCommand> selectCustomizing() {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectCustomizing();
+	}
+
+	@Override
+	public int getRowCount(int custom_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.getRowCount(custom_num);
+	}
+
 	
 	
 

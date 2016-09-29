@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-import kr.cafein.admin.privatecafe.domain.PrivateCommand;
-import kr.cafein.admin.privatecafe.service.PrivateService;
+
 
 @Controller
 public class AdminCustomizingListController {
@@ -26,7 +26,7 @@ public class AdminCustomizingListController {
 		
 		System.out.println("==============");
 		
-		List<PrivateCommand> list = admincustomizingService.getPrivateList();
+		List<AdminCustomizingCommand> list = admincustomizingService.selectCustomizing();
 		if(log.isDebugEnabled()){
 			log.debug("list : "+list);
 		}

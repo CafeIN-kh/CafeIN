@@ -134,7 +134,7 @@
 					
 						<div class="col-md-1">&nbsp;</div>
 						
-		                <div class="col-md-10" style="margin-top:5%;margin-bottom:40%;">
+		                <div class="col-md-10" style="margin-top:5%;margin-bottom:50%;">
 		                    <form:form action="mypage_user_modify_check.do" commandName="command"  id="modify_form" class="log-reg-block sky-form col-md-12">
 		                        	<form:errors element="div" class="error-color"/>
 		                        	

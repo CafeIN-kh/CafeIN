@@ -170,7 +170,7 @@
 	
 	                </div><!--/end filter resilts-->
 	                
-	                <div class="text-center" style="margin-bottom:20%;">
+	                <div class="text-center" style="margin-bottom:30%;">
 		        		<ul class="pagination">
 		        			${pagingHtml}
 		        		</ul>  

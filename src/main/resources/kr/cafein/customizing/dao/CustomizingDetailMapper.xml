@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.cafein.customizing.dao.CustomizingDetailMapper">
+
+
+	<select id="list" parameterType="map" resultType="customizingDetailCommand">
+      SELECT 
+      		*
+      FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT 
+			  			cus.*,u.u_name
+			  		FROM customizing cus,
+			  		u_user u
+			  		WHERE cus.u_uid=#{u_uid} and cus.franchise_num=#{franchise_num} and cus.custom_num != #{custom_num} and cus.u_uid = u.u_uid)a)
+		<![CDATA[
+		WHERE rnum <= #{start}
+		]]>	
+   </select>
+   
+   	<select id="customReplyList" parameterType="map" resultType="customizingDetailReplyCommand">
+      SELECT
+      		*
+      FROM (SELECT
+      			a.*,
+      			rownum rnum
+      		FROM (SELECT
+      				*
+      				FROM customizing_reply
+      				WHERE custom_num=#{custom_num} order by creply_reg_date desc)a)
+      <![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end}
+		]]>	
+   </select>
+   
+
+
+</mapper>

@@ -42,10 +42,10 @@ public class HomeController {
 		return "customizing_main";
 	}
 	*/
-	@RequestMapping(value="/cafein_user/customizing/customizing_detail.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/cafein_user/customizing/customizing_detail.do", method = RequestMethod.GET)
 	public String customizing_detail() {
 		return "customizing_detail";
-	}
+	}*/
 	
 	@RequestMapping(value="/cafein_user/notice/notice.do", method = RequestMethod.GET)
 	public String notice() {

@@ -87,7 +87,7 @@ public class CustomizingListController {
 			
 			List<FranchiseCommand> franchiseList = customizingService.selectBrand();
 			
-			System.out.println("franchiseList : " +franchiseList.toString());
+			//System.out.println("franchiseList : " +franchiseList.toString());
 			
 			System.out.println("count : " +count);
 			
@@ -127,7 +127,7 @@ public class CustomizingListController {
 			}
 			
 			
-			System.out.println("마지막 리스트 점검 list : " +list.toString());
+			//System.out.println("마지막 리스트 점검 list : " +list.toString());
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("customizing_main");

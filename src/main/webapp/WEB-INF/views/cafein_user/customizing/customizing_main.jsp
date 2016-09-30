@@ -197,7 +197,7 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
             
             <div class="cbp-caption margin-bottom-20">
                <div class="cbp-caption-defaultWrap">
-               <a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do">
+               <a href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do?custom_num=${list.custom_num}&franchise_num=${list.franchise_num}&u_uid=${list.u_uid}">
                   <img src="${pageContext.request.contextPath}/upload/customizing/${list.custom_img}" alt="">
                </div>
                <div class="cbp-caption-activeWrap">

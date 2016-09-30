@@ -1,5 +1,5 @@
 var ContactForm = function () {
-//커스텀마이징 수정폼 사용
+//커스텀마이징 수정 폼에서 사용
     return {
         
         //Contact Form
@@ -9,148 +9,67 @@ var ContactForm = function () {
 	            // Rules for form validation
 	            rules:
 	            {
-	                name:
+	            	custom_name:
 	                {
 	                    required: true
 	                },
-	                title:
+	                custom_introduce:
                 	{
 	                	required: true
                 	},
-	                email:
+                	custom_recipe:
 	                {
-	                    required: true,
-	                    email: true
+	                    required: true
 	                },
-	                password:
+	                custom_hash_tag:
 	                {
-	                    required: true,
-	                    minlength: 3,
-	                    maxlength: 20
+	                    required: true
 	                },
-	                message:
+	                franchise_num:
 	                {
-	                    required: true,
-	                    minlength: 10
-	                },
-	                captcha:
+	                	required: true
+	                }
+/*	                captcha:
 	                {
 	                    required: true,
 	                    remote: '/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/captcha/process.php'
-	                },
-	                /*개인카페 등록 부분*/
-	                upload:
-	                {
-	                	//카페 등록 부분 파일첨부 null 불허
-	                	required: true
-	                },
-	                /*upload_modify:
-	                {
-	                	//카페 수정 부분은 파일첨부 null 허용
-	                	required: false
 	                },*/
-	                pcafe_name:
+	                /*pcafe_img:
 	                {
-	                	required: true
-	                },
-	                pcafe_phone:
-	                {
-	                	required: true
-	                },
-	                pcafe_address:
-	                {
-	                	required: true
-	                },
-	                pcafe_url:
-	                {
-	                	required: true
-	                },
-	                pcafe_time:
-	                {
-	                	required: true
-	                },
-	                pcafe_introduce:
-	                {
-	                	required: true
-	                },
-	                pcafe_hash_tag:
-	                {
-	                	required: true
-	                }      
-	                /*개인카페 등록 부분 END*/
+	                	required: true,
+	                    remote: '/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/captcha/process.php'
+	                },*/             
 	            },
 	                                
 	            // Messages for form validation
 	            messages:
 	            {
-	                name:
+	            	custom_name:
 	                {
-	                    required: 'Please enter your name',
+	                    required: 'Please enter your custom_menu_name',
 	                },
-	                title:
+	                custom_introduce:
 	                {
-	                	reauired: 'Please enter yout title',
+	                	required: 'Please enter your custom_introduce',
 	                },
-	                email:
+	                custom_recipe:
 	                {
-	                    required: 'Please enter your email address',
-	                    email: 'Please enter a VALID email address'
+	                    required: 'Please enter your custom_recipe',
 	                },
-	                password:
+	                franchise_num:
 	                {
-	                    required: 'Please enter your password'
+	                    required: 'Please enter your custom_recipe',
 	                },
-	                message:
+	                custom_hash_tag:
 	                {
-	                    required: 'Please enter your message'
-	                },
-	                captcha:
+	                    required: 'Please enter your custom_tag',
+	                }
+/*	                captcha:
 	                {
 	                    required: 'Please enter characters',
 	                    remote: 'Correct captcha is required'
-	                },
-	                /*개인카페 등록 부분*/
-	                upload:
-	                {
-	                	required: 'Please enter FileUpload',
-	                    remote: 'Correct File is required'
-	                },
-	                /*upload_modify:
-	                {
-	                	required: 'Please enter FileUploadModify',
-	                    remote: 'Correct File is required'
 	                },*/
-	                pcafe_name:
-	                {
-	                	required: 'Please enter your name',
-	                },
-	                pcafe_phone:
-	                {
-	                	required: 'Please enter your phone number',
-	                },
-	                pcafe_address:
-	                {
-	                	required: 'Please enter your address',
-	                },
-	                pcafe_url:
-	                {
-	                	required: 'Please enter your url',
-	                },
-	                pcafe_time:
-	                {
-	                	required: 'Please enter your time',
-	                },
-	                pcafe_introduce:
-	                {
-	                	required: 'Please enter your introduce',
-	                },
-	                pcafe_hash_tag:
-	                {
-	                	required: 'Please enter your tag',
-	                }
-	                /*개인카페 등록 부분 END*/
 	            },
-	                                
 	            // Ajax form submition                  
 	            submitHandler: function(form)
 	            {
@@ -160,14 +79,16 @@ var ContactForm = function () {
 	                    {
 	                        $('#sky-form3 button[type="submit"]').attr('disabled', true);
 	                        $('.modal').hide();
-	                        /*alert("beforesend");*/
-	                        //alert("beforesend upload_modify : " + $('#upload_modify').val());
 	                    },
-	                    success: function(data)
+	                    success: function()
 	                    {
-	                    	alert("success");
+	                    	var custom_num = $('#custom_num').val();
+	                    	var u_uid = $('#u_uid').val();
+	                    	var franchise_num = $('#franchise_num').val();
+	                    	
 	                        $("#sky-form3").addClass('submited');
-	                        location.reload();
+	                        alert("메뉴 글 수정 완료");
+	                        location.replace("/CafeIN/cafein_user/customizing/customizing_detail.do?custom_num="+custom_num+"&franchise_num="+franchise_num+"&u_uid="+u_uid);
 	                    }
 	                });
 	            },
@@ -175,7 +96,6 @@ var ContactForm = function () {
 	            // Do not change code below
 	            errorPlacement: function(error, element)
 	            {
-	            	//alert("error:" + error);
 	                error.insertAfter(element.parent());
 	            }
 	        });

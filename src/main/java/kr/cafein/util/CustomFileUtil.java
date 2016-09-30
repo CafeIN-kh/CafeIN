@@ -9,9 +9,11 @@ import java.io.FileInputStream;
 
 import javax.imageio.ImageIO;
 
-public class FileUtilCus {
+public class CustomFileUtil {
 
+	//public static String UPLOAD_PATH="D:/app/workspace_reply/CafeIN/src/main/webapp/upload/customizing";
 	public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/customizing";
+	//public static String UPLOAD_PATH="D:/workspace/CafeIN/src/main/webapp/upload/customizing";
 	
 	public static String rename(String fileName)throws Exception{
 
@@ -27,7 +29,7 @@ public class FileUtilCus {
 
 		File file = new File(UPLOAD_PATH,fileName);
 
-		//ÆÄÀÏ¸íÀ» ¿øÇÏ´Â Çü½ÄÀ¸·Î º¯°æÇÏ±â
+		//ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¦ï§ëš¯ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¦ï¿½ë™‹ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¦æºë¿ì‚•
 		int idx = fileName.lastIndexOf(".");
 
 		String extention = "";
@@ -36,16 +38,16 @@ public class FileUtilCus {
 		if(idx !=-1){
 			extention = fileName.substring(idx);
 		}
-		//newName Àü´Ş½Ã È®ÀåÀÚ¸¦ Á¦¿ÜÇØ¾ß ÇÏÁö¸¸ È®ÀåÀÚ¸¦ Æ÷ÇÔÇÒ °æ¿ì´Â Á¦°ÅÇÔ
+		//newName ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™£ï¿½ë£ï¿½ì‚• ï¿½ì†—ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™“ï§ëš¯ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™ï¿½ë¼²ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ì†—ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™“ï§ëš¯ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•
 		int newIdx = newName.lastIndexOf(".");
 		if(newIdx !=-1){
 			newName = newName.substring(0,newIdx);
 		}
-		//È®ÀåÀÚ Æ÷ÇÔ »õ·Î¿î ÆÄÀÏ¸í
+		//ï¿½ì†—ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¥ï¿½ìŠ±ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¦ï§ëš¯ì‚•
 		newFileName = newName + extention.toLowerCase();
 
 		File fs = new File(UPLOAD_PATH,newFileName);
-		file.renameTo(fs); //ÆÄÀÏ¸íÀ» º¯°æ
+		file.renameTo(fs); //ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–¦ï§ëš¯ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•
 
 		return newFileName;
 	}
@@ -56,22 +58,22 @@ public class FileUtilCus {
 		}
 	}
 
-	public static String createThumbnail(String uploadedFile,int thumbnailWidth, int thumbnailHeight){
+	/*public static String createThumbnail(String uploadedFile,int thumbnailWidth, int thumbnailHeight){
 		return createThumbnail(uploadedFile, null, thumbnailWidth, thumbnailHeight);
-	}
+	}*/
 	
 	public static String createThumbnail(String uploadedFile,String thumbnailFile,int thumbnailWidth, int thumbnailHeight){
-		if(thumbnailFile==null){
+		/*if(thumbnailFile==null){
 			int index = uploadedFile.lastIndexOf(".");
-			if(index !=-1){//½æ³×ÀÏÀÇ È®ÀåÀÚ´Â jpg·Î º¯°æ
+			if(index !=-1){//ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœå ï¿½ ï¿½ì†—ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™“ï¿½ë™‹ï¿½ì‚• jpgï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•
 				thumbnailFile = "s" + uploadedFile.substring(0,index) + ".jpg";
 			}
 		}else{
 			int index = thumbnailFile.lastIndexOf(".");
-			if(index !=-1){//½æ³×ÀÏÀÇ È®ÀåÀÚ´Â jpg·Î º¯°æ
+			if(index !=-1){//ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœå ï¿½ ï¿½ì†—ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë™“ï¿½ë™‹ï¿½ì‚• jpgï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•
 				thumbnailFile = thumbnailFile.substring(0,index) + ".jpg";
 			}
-		}
+		}*/
 		
 		FileInputStream fs = null; 
 		try { 
@@ -81,9 +83,9 @@ public class FileUtilCus {
 			int width;
 			int height;
 
-			if(thumbnailHeight == 0){//³ôÀÌ¸¦ 0À¸·Î ÁöÁ¤ÇßÀ» °æ¿ì ³ĞÀÌ¸¦ 
+			if(thumbnailHeight == 0){//ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–›ï§ëš¯ì‚• 0ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœå ï¿½ ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë–›ï§ëš¯ì‚• 
 
-				int radio = im.getWidth() / thumbnailWidth;//Ãà¼ÒÇÒ ºñÀ²À» ±¸ÇÔ
+				int radio = im.getWidth() / thumbnailWidth;//ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœå ï¿½ ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚• ï¿½ëœï¿½ë£ï¿½ì‚•ï¿½ëœï¿½ë£ï¿½ì‚•
 
 				width = thumbnailWidth;
 				height = im.getHeight() / radio;

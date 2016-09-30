@@ -68,7 +68,7 @@ public class CustomizingInsertAjaxController {
 			FileUtilCus.createThumbnail(newName, newName, 720, 455);
 		}
 		
-		System.out.println("command : "+customizingCommand.toString());
+		//System.out.println("command : "+customizingCommand.toString());
 		
 		
 		Map<String,String> mapJson = new HashMap<String,String> ();

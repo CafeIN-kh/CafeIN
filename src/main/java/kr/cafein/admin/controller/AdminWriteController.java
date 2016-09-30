@@ -35,7 +35,7 @@ public class AdminWriteController {
 		if (log.isDebugEnabled()) {
 			log.debug("AdminWriteController가 받은 값 memberCommand : " + memberCommand);
 		}
-
+	
 		Map<String, String> map = new HashMap<String, String>();
 
 		try {
@@ -49,8 +49,8 @@ public class AdminWriteController {
 			memberService.insert(memberCommand);
 
 			map.put("result", "success");
-
 		} catch (Exception e) {
+
 			log.error(e);
 			map.put("result", "failure");
 		}

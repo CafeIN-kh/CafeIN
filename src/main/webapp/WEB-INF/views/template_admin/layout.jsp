@@ -13,20 +13,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><tiles:getAsString name="title"/></title>
 
-
-
-
-        <!-- Vendor CSS -->
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/vendors/animate-css/animate.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/vendors/socicon/socicon.min.css" rel="stylesheet">
-            
-        <!-- CSS -->
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/css/app.min.1.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/cafein_admin/css/app.min.2.css" rel="stylesheet">
-        
         <c:forEach var="cssName" items="${cssList}">
 	<link rel="stylesheet" href="<c:out value='${cssName}' />"/>
 	</c:forEach>
@@ -87,31 +73,7 @@
         <![endif]-->
         
         <!-- Javascript Libraries -->
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/jquery-2.1.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/bootstrap.min.js"></script>
         
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/flot/jquery.flot.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/easypiechart/jquery.easypiechart.min.js"></script>
-        
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/fullcalendar/lib/moment.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/fullcalendar/fullcalendar.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/simpleWeather/jquery.simpleWeather.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/waves/waves.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"></script>
-        
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/flot-charts/curved-line-chart.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/flot-charts/line-chart.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/charts.js"></script>
-        
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/charts.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/functions.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/cafein_admin/js/demo.js"></script>
 		<c:forEach var="jsName" items="${jsList}">
 			<script src="<c:out value='${jsName}' />"></script>
 		</c:forEach>

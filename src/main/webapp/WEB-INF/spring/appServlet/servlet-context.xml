@@ -17,6 +17,10 @@
 	<context:component-scan base-package="kr.cafein.main.controller"/>
 	<context:component-scan base-package="kr.cafein.pcafe.controller"/>
 	<context:component-scan base-package="kr.cafein.franchise.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.main.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.franchise.chart.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.pcafe.chart.controller"/>
+	<context:component-scan base-package="kr.cafein.admin.custom.chart.controller"/>
 	
 	<!-- Spring3 Validator -->
 	<mvc:annotation-driven/>
@@ -26,7 +30,7 @@
 	<!-- 사용자 메인 페이지 설정 -->
 	<!-- <mvc:view-controller path="/tiles/main/main.do" view-name="main"/> -->
 	<!-- 관리자 메인 페이지 설정 -->
-	<mvc:view-controller path="/admin/main.do" view-name="adminMain"/>
+	<!-- <mvc:view-controller path="/admin/main.do" view-name="adminMain"/> -->
 	
 	<!-- messageSource 지정 -->
 	<beans:bean id="messageSource"

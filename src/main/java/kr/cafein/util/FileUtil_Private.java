@@ -13,7 +13,9 @@ public class FileUtil_Private {
 	
 	//자기 로컬의 주소 써주기
 	//public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/CafeIN/src/main/webapp/upload/private";
-	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/private";
+	//public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/private";
+	//승현 학원PC
+	public static String UPLOAD_PATH="E:/javaWork/workspace/CafeIN/src/main/webapp/upload/private";
 	
 	public static String rename(String fileName)throws Exception{
 

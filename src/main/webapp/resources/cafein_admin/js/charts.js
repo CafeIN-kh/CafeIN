@@ -42,7 +42,7 @@ $(document).ready(function () {
     
     /* Mini Chart - Bar Chart 1 */
     if ($('.stats-bar')[0]) {
-        sparklineBar('stats-bar', [6,4,8,6,5,6,7,8,3,5,9,5,8,4,3,6,8], '45px', 3, '#fff', 2);
+        sparklineBar('stats-bar', [1,2,3,4,5,6,7,8,3,5,9,5,8,4,3,6,8], '45px', 3, '#fff', 2);
     }
     
     /* Mini Chart - Bar Chart 2 */
@@ -67,9 +67,12 @@ $(document).ready(function () {
     
     /* Dash Widget Line Chart */
     if ($('.dash-widget-visits')[0]) {
-        sparklineLine('dash-widget-visits', [9,4,6,5,6,4,5,7,9,3,6,5], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
+        sparklineLine('dash-widget-visits', [92,43,64,51,16,24,35,47,59,37,64,25], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
     }
     
+    if ($('.dash-widget-visits1')[0]) {
+        sparklineLine('dash-widget-visits1', [92,43,64,51,16,24,35,47,59,37,64,25], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
+    }
     
     
     /*

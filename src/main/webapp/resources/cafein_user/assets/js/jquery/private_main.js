@@ -69,7 +69,7 @@ $(document).ready(function(){
 					if(list != 0) {
 						
 						$(list).each(function(index,item){
-							attach_pcafe_main(item,category_mywrite);
+							attach_pcafe_main(item,index.category_mywrite);
 						});
 						
 					}else {

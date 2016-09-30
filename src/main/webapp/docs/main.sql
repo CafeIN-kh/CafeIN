@@ -308,17 +308,16 @@ create sequence P_log_seq;
 drop table declared;
 
 create table declared(
-   d_seq number(20) not null,
-   d_target_path number(20) not null,
-   d_target_num number(20) not null,
-   d_target_id number(20) not null,
-   d_mem_id varchar2(20) not null, 
-   d_target_mem_id varchar2(20),
-   d_reg_date date not null,
-   d_content varchar2(4000),
-   d_state number(20) default(0),
-   d_comment varchar2(2000),
-   constraint declared_pk primary key (d_seq)
+ d_seq number(20) not null PRIMARY KEY,
+ d_target_path number(20) not null,
+ d_target_num number(20) not null,
+ d_target_id number(20) not null,
+ d_mem_id varchar2(20) not null,
+ d_target_mem_id varchar2(20) not null,
+ d_reg_date date not null,
+ d_content varchar2(4000),
+ d_state number(20) default(0),
+ d_comment varchar2(2000)
 );
 
 drop sequence declared_seq;
@@ -428,6 +427,59 @@ create table admin_notice(
 
 drop sequence admin_notice_num_seq;
 create sequence admin_notice_num_seq;
+
+/*user_log - 회원 로그 테이블 */
+drop table user_log;
+
+create table user_log(
+	u_log_seq number not null,
+	u_uid varchar2(20) not null,
+	u_log_reg_date date not null,
+	u_log_change number not null,
+	u_log_message varchar2(200) not null,
+	constraint u_log_pk primary key (u_log_seq)
+);
+
+drop sequence user_log_seq;
+create sequence user_log_seq;
+
+/*user_count_log 메뉴에 따른 페이지뷰 카운트 로그 테이블*/
+
+drop table user_count_log;
+
+create table user_count_log(
+	ucnt_log_seq number not null,
+	ucnt_log_reg_date date not null,
+	ucnt_total number default(0),
+	ucnt_log_main number default(0),
+	ucnt_log_franchise number default(0),
+	ucnt_log_private number default(0),
+	ucnt_log_custom number default(0),
+	ucnt_log_qna number default(0),
+	ucnt_log_notice number default(0),
+	ucnt_log_message varchar2(200) not null,
+	constraint ucnt_log_pk primary key (ucnt_log_seq)
+);
+
+drop sequence user_count_log_seq;
+create sequence user_count_log_seq;
+
+/*user_menu_log 메뉴의 상태 로그 테이블*/
+drop table user_menu_log;
+
+create table user_menu_log(
+	umenu_log_seq number not null,
+	umenu_log_reg_date date not null,
+	umenu_log_u_uid varchar2(20) not null,
+	umenu_name number default(0),
+	umenu_log_state number default(0),
+	umenu_log_message varchar2(200) not null,
+	constraint umenu_log_pk primary key (umenu_log_seq)
+);
+
+drop sequence umenu_log_seq;
+create sequence umenu_log_seq;
+
 
 /*프랜차이즈*/
 INSERT INTO franchise VALUES(1,'스타벅스','star.jpg','프랜차이즈 브랜드의 대표적인 브랜드이다', '10');

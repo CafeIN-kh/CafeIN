@@ -7,7 +7,6 @@
 <tiles-definitions>
 
 
-
      <definition name="admin_login" template="/WEB-INF/views/cafein_admin/member/admin_login.jsp" >
     	
     	<put-list-attribute name="cssList">
@@ -17,15 +16,13 @@
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
         	
-        	
-        <!-- CSS -->
-        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
-        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
-        	
-       	<!--  CSS login style    -->
-		<add-attribute value="/CafeIN/resources/cafein_user/assets/css/userLogin.css"/>
+	        <!-- CSS -->
+	        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+	        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+	        	
+	       	<!--  CSS login style    -->
+			<add-attribute value="/CafeIN/resources/cafein_user/assets/css/userLogin.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
-        	
         	
         </put-list-attribute>
         <put-list-attribute name="jsList">
@@ -49,50 +46,47 @@
     	<put-attribute name="title" value="wedding 관리자"/>
     	<put-attribute name="header" value="/WEB-INF/views/template_admin/header.jsp"/>
     	<put-attribute name="menu" value="/WEB-INF/views/template_admin/menu.jsp"/>
-    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/home.jsp"/>
-    	
-    	
+    	<put-attribute name="body" value="/WEB-INF/views/admin/home.jsp"/>
     	<put-list-attribute name="cssList">
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
-             
-             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
-       </put-list-attribute>
-       
-       <put-list-attribute name="jsList">
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
-             
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/easypiechart/jquery.easypiechart.min.js"/>
-             
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/lib/moment.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/simpleWeather/jquery.simpleWeather.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>     
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
-             
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/charts.js"/>
-             
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/charts.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
-             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
-       </put-list-attribute>
     	
+        <!-- Vendor CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+            
+        <!-- CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+    	</put-list-attribute>
     	
+    	<put-list-attribute name="jsList">
+    	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/easypiechart/jquery.easypiechart.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/lib/moment.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/simpleWeather/jquery.simpleWeather.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/charts.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+        
+    	</put-list-attribute>
     </definition>
     
     
@@ -129,11 +123,6 @@
     	<add-attribute value="/CafeIN/resources/cafein_admin/js/admin_memberManagement.js"/>
     	
     	</put-list-attribute>
-        
-        
-        
-        
-        
         
     </definition>
     
@@ -816,6 +805,173 @@
     </definition>
     
     
+    <definition name="franchisechart" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/admin/franchise_charts.jsp"/>
+    	
+    	<put-list-attribute name="cssList">
+    		
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
+
+
+ 		<!-- Vendor CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+            
+ 
+        <!-- CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+
+        </put-list-attribute>
+        <put-list-attribute name="jsList">
+     
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.orderBar.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.pie.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.tooltip.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"/>
+		<!-- 추가 -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+        
+        
+        
+	
+	
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/bar-chart.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/pie-chart.js"/>
+        
+        
+		<add-attribute value="/CafeIN/resources/cafein_admin/js/franchisechart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+        	
+        </put-list-attribute>
+    </definition>
+    
+    <definition name="privatechart" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/admin/private_charts.jsp"/>
+    	
+    	<put-list-attribute name="cssList">
+    		
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
+
+
+ 		<!-- Vendor CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+            
+ 
+        <!-- CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+
+        </put-list-attribute>
+        <put-list-attribute name="jsList">
+     
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.orderBar.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.pie.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.tooltip.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"/>
+		<!-- 추가 -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+        
+        
+        
+	
+	
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/bar-chart.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/pie-chart.js"/>
+        
+        
+		<add-attribute value="/CafeIN/resources/cafein_admin/js/privatechart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+        	
+        </put-list-attribute>
+    </definition>
+    
+    <definition name="customchart" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/admin/custom_charts.jsp"/>
+    	
+    	<put-list-attribute name="cssList">
+    		
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
+
+
+ 		<!-- Vendor CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+            
+ 
+        <!-- CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+
+        </put-list-attribute>
+        <put-list-attribute name="jsList">
+     
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.orderBar.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.pie.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.tooltip.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/plugins/curvedLines.js"/>
+		<!-- 추가 -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+        
+        
+        
+	
+	
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/bar-chart.js"/>
+        
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/pie-chart.js"/>
+        
+        
+		<add-attribute value="/CafeIN/resources/cafein_admin/js/customchart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+        	
+        </put-list-attribute>
+    </definition>
 </tiles-definitions>
 
 

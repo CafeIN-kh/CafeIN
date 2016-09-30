@@ -143,9 +143,7 @@ $(document).ready(function(){
 		
 		
 		//var formData = $("#admin_registerform").serialize();
-		
-		
-		
+
 		$.ajax({
 			url:'adminRegister.do',
 			type:'post',
@@ -160,6 +158,7 @@ $(document).ready(function(){
 			success:function(data){
 				$('#loading').hide(); // 로딩이미지 감추기
 				
+			//	alert(data.result);
 				if(data.result == 'success'){
 					$('#message_1').css('color','red').text('가입되었습니다.');
 					

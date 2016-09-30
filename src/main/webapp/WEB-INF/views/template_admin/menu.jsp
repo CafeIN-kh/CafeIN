@@ -24,18 +24,16 @@
 						<li><a href=""><i class="md md-history"></i> Logout</a></li>
 					</ul>
 				</div>
-				<ul class="main-menu">   
-					<li class="active"><a href="${pageContext.request.contextPath }/admin/main.do"><i
-							class="md md-home"></i> Home</a></li>
-					<li class="sub-menu"><a href=""><i
-							class="md md-perm-identity"></i> management</a>
-
+				
+				<ul class="main-menu">
+					<li class="active"><a href="main.do"><i class="md md-home"></i> Home</a></li>
+					<li class="sub-menu"><a href=""><i class="md md-perm-identity"></i> management</a>
 						<ul>
 						<!-- 같은경로  -->
-						
 							<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">User Data Tables</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/declaredlist.do">report Board</a></li>
-						</ul></li>
+						</ul>
+					</li>
 						
 						
 						
@@ -81,12 +79,39 @@
 						</li>
 						
 						<li>
-                                <a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do"><i class="md md-announcement"></i> Admin Notice</a>
+                            <a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do"><i class="md md-announcement"></i> Admin Notice</a>
+                               
+                            <a href=""><i class="md md-my-library-books"></i> Franchise Write & inquiry</a>
+                				<ul>
+                                    <li><a href="fr-board_.html">User Data Tables</a></li>
+                                    <li><a href="fr_board2.html">report Board</a></li>
+                                </ul>
                                
                             </li>
-<%-- 
-					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
-							class="md md-content-copy"></i> Q&A Pages</a></li> --%>
+					<li class="sub-menu"><a href=""><i
+							class="md md-now-widgets"></i>Cafe Inquiry</a>
+
+						<ul>
+							<li><a href="private Cafe.html">Private Cafe</a></li>
+							<li><a class="active" href="Customizing_.html">Customizing</a></li>
+						</ul></li>
+					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>
+							Notice Write & inquiry</a>
+						<ul>
+							<li><a href="notice2_.html">Notice</a></li>
+							<li><a class="active" href="notice-write_.html">Notice-Write</a></li>
+						</ul></li>
+
+					<li class="active"><a href="qna2_.html"><i
+							class="md md-content-copy"></i> Q&A Pages</a></li>
+					<li class="sub-menu">
+                       <a href=""><i class="md md-trending-up"></i>Charts</a>
+                       <ul>
+                          <li><a href="franchise_charts.do">Franchise</a></li>
+                          <li><a href="private_charts.do">Private</a></li>
+                          <li><a href="custom_charts.do">Custom</a></li>
+                       </ul>
+                   </li>
 				</ul>
 			</div>
 		</div>

@@ -48,7 +48,7 @@
 					
 					<input type="hidden" name="custom_num" id="custom_num" value="${customCommand.custom_num}"> 
 					<input type="hidden" name="u_uid" id="u_uid" value="${customCommand.u_uid}">
-					<input type="hidden" name="franchise_num" id="franchise_num" value="${customCommand.franchise_num}">
+					<!--<input type="hidden" name="franchise_num" id="franchise_num" value="${customCommand.franchise_num}">-->
 					<%-- <input type="hidden" name="custom_num" id="custom_num" value="1"> 
 					<input type="hidden" name="u_uid" id="u_uid" value="${u_uid}">
 					<input type="hidden" name="franchise_num" id="franchise_num" value="1"> --%>

@@ -403,6 +403,7 @@ $(document).ready(function(){
 	      var franchise_num = $('#franchise_num').val();
 	      var custom_num = $('#custom_num').val();
 	      
+	      
 	      //alert("creply_num : " + creply_num + ", u_uid : " + u_uid + ", franchise_num : " + franchise_num + ", custom_num : " + custom_num);
 	      //alert("session_u_uid : " + $('#session_u_uid').val());
 	      

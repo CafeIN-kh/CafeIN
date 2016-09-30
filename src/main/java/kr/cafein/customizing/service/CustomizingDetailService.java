@@ -12,6 +12,7 @@ import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.domain.CustomizingDetailReplyCommand;
 import kr.cafein.customizing.domain.CustomizingDetailULikeCommand;
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.UserMenuLogCommand;
 
@@ -66,4 +67,8 @@ public interface CustomizingDetailService {
 	//커스텀 등록,삭제,수정,신고에 따른 로그 
 	public void insertCustomUserLog(UserMenuLogCommand userMenuLog);
 	
+	
+	public void insertCustomUserCountLog();
+	public void updateCustomUserCountLog();
+	public UserCountLogCommand selectCustomUserCountLogByDate();
 }

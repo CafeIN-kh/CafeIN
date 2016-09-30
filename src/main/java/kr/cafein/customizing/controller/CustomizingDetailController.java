@@ -20,6 +20,7 @@ import kr.cafein.customizing.domain.CustomizingDetailCafeNameCommand;
 import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.domain.CustomizingDetailReplyCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.util.PagingUtil;
 
 @Controller
@@ -48,6 +49,18 @@ public class CustomizingDetailController {
 		
 		customizingDetailService.updateHit(custom_num);
 		
+		//페이지뷰 카운트, 오늘 날짜에 따라 페이지뷰 로우 생성(insert)과 업데이트(update)
+		UserCountLogCommand userCountLogCommand = new UserCountLogCommand();
+        userCountLogCommand = customizingDetailService.selectCustomUserCountLogByDate();	//오늘 날짜와 db에 저장된 날짜가 일치하는 row 찾기 
+        if(userCountLogCommand == null) {
+        	log.debug("★★★오늘날짜 페이지뷰 로우 없으므로 insert");
+        	customizingDetailService.insertCustomUserCountLog();
+        }else {
+        	log.debug("★★★오늘날자 페이지뷰 로우 있으므로 update, 전체카운트와 개인카페 카운트+1");
+        	customizingDetailService.updateCustomUserCountLog();
+        }
+        
+		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("custom_num", custom_num);
 		map.put("u_uid", uid);
@@ -55,7 +68,16 @@ public class CustomizingDetailController {
 		
 		System.out.println("custom_num : " + custom_num + ", uid : " + uid + ", franchise_num : " + franchise_num);
 		
-		CustomizingDetailCommand customCommand = customizingDetailService.selectCustomMenu(map);
+		
+		
+		CustomizingDetailCommand customCommand = null;
+		
+		
+		customCommand = customizingDetailService.selectCustomMenu(map);
+		
+		customCommand.setCustom_introduce(customCommand.getCustom_introduce().replace("<br>", "\n"));
+		
+		customCommand.setCustom_recipe(customCommand.getCustom_recipe().replace("<br>","\n"));
 		
 		String cafeName = customizingDetailService.selectCafeName(custom_num);
 		

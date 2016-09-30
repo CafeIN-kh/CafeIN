@@ -14,6 +14,7 @@ import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.domain.CustomizingDetailReplyCommand;
 import kr.cafein.customizing.domain.CustomizingDetailULikeCommand;
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.domain.UserDeclaredCommand;
 import kr.cafein.domain.UserMenuLogCommand;
 
@@ -160,6 +161,21 @@ public class CustomizingDetailServiceImpl implements CustomizingDetailService{
 	@Override
 	public void insertCustomUserLog(UserMenuLogCommand userMenuLog) {
 		customMapper.insertCustomUserLog(userMenuLog);
+	}
+	@Override
+	public void insertCustomUserCountLog() {
+		// TODO Auto-generated method stub
+		customMapper.insertCustomUserCountLog();
+	}
+	@Override
+	public void updateCustomUserCountLog() {
+		// TODO Auto-generated method stub
+		customMapper.updateCustomUserCountLog();
+	}
+	@Override
+	public UserCountLogCommand selectCustomUserCountLogByDate() {
+		// TODO Auto-generated method stub
+		return customMapper.selectCustomUserCountLogByDate();
 	}
 
 	

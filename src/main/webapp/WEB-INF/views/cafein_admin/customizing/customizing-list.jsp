@@ -15,26 +15,29 @@
                   
                   <div class="card">
                         <div class="card-header">
-                            <h2>View Private Cafe List <small>Inquiry into PrivateCafe Info</small></h2>
+                            <h2>View Customizing List <small>Inquiry into Customizing Info</small></h2>
                         </div>
                         
                         <table id="data-table-command" class="table table-striped table-vmiddle">
                             <thead>
                                 <tr>
-                                    <th data-column-id="id" data-type="numeric">Pcafe_num</th>
-                                    <th data-column-id="sender">Pcafe_name</th>
+                                    <th data-column-id="id" data-type="numeric">Custom_num</th>
+                                    <th data-column-id="sender">franchise_name</th>
+                                    <th data-column-id="receivedy" data-order="desc">Custom_name</th>
                                     <th data-column-id="receiveds" data-order="desc">Reg_date</th>
-                                    <th data-column-id="received" data-order="desc">Address</th>
+                                    <th data-column-id="received" data-order="desc">Visit</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Modify & Delete Cafe</th>
                                 </tr>
                             </thead>
                             <tbody>
 								<c:forEach items="${list }" var="list">
 									<tr>
-										<td>${list.pcafe_num}</td>
-										<td>${list.pcafe_name}</td>
-										<td>${list.pcafe_reg_date}</td>
-										<td>${list.pcafe_address}</td>
+										<td>${list.custom_num}</td>
+										<td>${list.custom_num}</td>
+										<%-- <td>${list.franchise_name}</td> --%>
+										<td>${list.custom_name}</td>
+										<td>${list.custom_reg_date}</td>
+										<td>${list.custom_visit}</td>
 										
 						</tr>
 					</c:forEach>

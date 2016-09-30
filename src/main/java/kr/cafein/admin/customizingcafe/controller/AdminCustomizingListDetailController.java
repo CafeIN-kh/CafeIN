@@ -20,8 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-import kr.cafein.admin.privatecafe.domain.PrivateCommand;
-import kr.cafein.admin.privatecafe.service.PrivateService;
+
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Private;
 
@@ -44,7 +43,7 @@ public class AdminCustomizingListDetailController {
 			log.debug("custom_num : "+custom_num);
 		}
 		
-		AdminCustomizingCommand admincustomizing = admincustomizingService.selectCustomizing(custom_num);
+		AdminCustomizingCommand admincustomizing = admincustomizingService.getCustomizing(custom_num);
 		ModelAndView mav = new ModelAndView("adminCustomizingDetail");
 		
 	
@@ -92,7 +91,7 @@ public class AdminCustomizingListDetailController {
         }
          
 		/*mav.addObject("list1", list1);*/
-		mav.addObject("commandMenu", admincustomizing);
+		mav.addObject("admincustomizing", admincustomizing);
 		mav.addObject("hashTagOriginal", hashTagOriginal);
 		mav.addObject("getLikeUser", getLikeUser);
 		/*System.out.println(list1);*/
@@ -102,10 +101,10 @@ public class AdminCustomizingListDetailController {
 	}
 	
 	@RequestMapping(value="/admin/customizing/customizing-detail.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("commandMenu") @Valid AdminCustomizingCommand commandMenu, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("commandMenu") @Valid AdminCustomizingCommand admincustomizing, BindingResult result )throws Exception{
 	
 		if(log.isDebugEnabled()){
-			log.debug("commandMenu : "+commandMenu);
+			log.debug("admincustomizing : "+admincustomizing);
 		}
 		
 		if(result.hasErrors()){
@@ -115,27 +114,27 @@ public class AdminCustomizingListDetailController {
 		AdminCustomizingCommand ccommand = null;
 		String oldFileName = "";
 		
-		ccommand = admincustomizingService.selectCustomizing(commandMenu.getCustom_num());
+		ccommand = admincustomizingService.getCustomizing(admincustomizing.getCustom_num());
 		
 		oldFileName = ccommand.getCustom_img();
 		
-		if(!commandMenu.getUpload().isEmpty()){
+		if(!admincustomizing.getUpload().isEmpty()){
 			//전송될 파일이 있는 경우
-			commandMenu.setCustom_img(FileUtil_Private.rename(commandMenu.getUpload().getOriginalFilename()));
+			admincustomizing.setCustom_img(FileUtil_Private.rename(admincustomizing.getUpload().getOriginalFilename()));
 			
 		}else{
 			//전송된 파일이 있는 경우
-			commandMenu.setCustom_img(oldFileName);
+			admincustomizing.setCustom_img(oldFileName);
 			
 			
 		}
 		
-		admincustomizingService.update(commandMenu);
+		admincustomizingService.update(admincustomizing);
 		 
-		 if(!commandMenu.getUpload().isEmpty()){
+		 if(!admincustomizing.getUpload().isEmpty()){
 			 //전송된 파일이 있을 경우
-			 File file = new File(FileUtil_Private.UPLOAD_PATH+"/"+commandMenu.getCustom_img());
-			 commandMenu.getUpload().transferTo(file);
+			 File file = new File(FileUtil_Private.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());
+			 admincustomizing.getUpload().transferTo(file);
 			 
 			 if(oldFileName != null){
 				 //이전 파일 삭제
@@ -145,7 +144,7 @@ public class AdminCustomizingListDetailController {
 			 
 		 }
 				
-		return "redirect:/admin/customizing/customizing-detail.do?custom_num=" + commandMenu.getCustom_num();
+		return "redirect:/admin/customizing/customizing-detail.do?custom_num=" + admincustomizing.getCustom_num();
 	}
 	
 	

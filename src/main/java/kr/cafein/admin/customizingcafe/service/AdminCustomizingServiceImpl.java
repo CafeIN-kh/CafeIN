@@ -24,8 +24,8 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 	private AdminCustomizingMapper adminCustomizingMapper;
 
 	@Override
-	public AdminCustomizingCommand selectCustomizing(Integer custom_num) {
-		return adminCustomizingMapper.selectCustomizing(custom_num);
+	public AdminCustomizingCommand getCustomizing(Integer custom_num) {
+		return adminCustomizingMapper.getCustomizing(custom_num);
 	}
 
 	@Override

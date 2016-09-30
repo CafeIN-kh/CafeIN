@@ -50,7 +50,7 @@ public class AdminCustomizingMenuListController {
       System.out.println("==============");
       
       
-      AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.selectCustomizing(custom_num);
+      AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.getCustomizing(custom_num);
       
      
       

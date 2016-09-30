@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
-import kr.cafein.admin.privatecafe.service.PrivateService;
-import kr.cafein.util.FileUtil_PrivateMenu;
+
+import kr.cafein.util.FileUtil_Customizing;
 
 @Controller
-@SessionAttributes("command")
+@SessionAttributes("customcommand")
 public class AdminCustomizingMenuModifyController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
@@ -31,23 +31,23 @@ public class AdminCustomizingMenuModifyController {
 	private AdminCustomizingService admincustomizingService;
 	
 	@RequestMapping(value="/admin/customizing/customizingmenu-modify.do",method=RequestMethod.GET)
-	public String form(@RequestParam("pmenu_num") int pmenu_num, Model model){
+	public String form(@RequestParam("custom_num") int custom_num, Model model){
 		
-		System.out.println(pmenu_num);
+		System.out.println(custom_num);
 		
-		PrivateMenuCommand privateCafeMenuCommand = admincustomizingService.selectMenu(pmenu_num);
-		System.out.println(privateCafeMenuCommand);
-		model.addAttribute("command",privateCafeMenuCommand);
+		AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.getCustomizing(custom_num);
+		System.out.println(adminCustomizingCommand);
+		model.addAttribute("customcommand",adminCustomizingCommand);
 		
 		return "adminCustomizingMenuModify";
 	}
 	
 
 	@RequestMapping(value="/admin/customizing/customizingmenu-modify.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command")@Valid PrivateMenuCommand privateCafeMenuCommand, BindingResult result, SessionStatus status,HttpSession session)throws Exception{
+	public String submit(@ModelAttribute("customcommand")@Valid AdminCustomizingCommand adminCustomizingCommand, BindingResult result, SessionStatus status,HttpSession session)throws Exception{
 		
 		if(log.isDebugEnabled()){
-			log.debug("privateCafeMenuCommand : "  + privateCafeMenuCommand);
+			log.debug("adminCustomizingCommand : "  + adminCustomizingCommand);
 		}
 		
 		System.out.println("error미진입");
@@ -57,37 +57,37 @@ public class AdminCustomizingMenuModifyController {
 		}
 		
 		
-		PrivateMenuCommand privateCafeMenu = null;
+		AdminCustomizingCommand customMenu = null;
 		String oldFileName = "";
 		
-		privateCafeMenu = admincustomizingService.selectMenu(privateCafeMenuCommand.getPmenu_num());
+		customMenu = admincustomizingService.getCustomizing(adminCustomizingCommand.getCustom_num());
 		
-		System.out.println(privateCafeMenuCommand.getPmenu_num());
 		
-		oldFileName = privateCafeMenu.getPmenu_img();
 		
-		if(!privateCafeMenuCommand.getUpload().isEmpty()){
-			privateCafeMenuCommand.setPmenu_img(FileUtil_PrivateMenu.rename(privateCafeMenuCommand.getUpload().getOriginalFilename()));
+		oldFileName = customMenu.getCustom_img();
+		
+		if(!adminCustomizingCommand.getUpload().isEmpty()){
+			adminCustomizingCommand.setCustom_img(FileUtil_Customizing.rename(adminCustomizingCommand.getUpload().getOriginalFilename()));
 		}else{
-			privateCafeMenuCommand.setPmenu_img(oldFileName);
+			adminCustomizingCommand.setCustom_img(oldFileName);
 		}
 		
 		//글수정
-		admincustomizingService.update2(privateCafeMenuCommand);
+		admincustomizingService.update(adminCustomizingCommand);
 		status.setComplete();
 		
-		if(!privateCafeMenuCommand.getUpload().isEmpty()){
+		if(!adminCustomizingCommand.getUpload().isEmpty()){
 			//전송된 파일이 있을 경우
-			File file = new File(FileUtil_PrivateMenu.UPLOAD_PATH+"/"+privateCafeMenuCommand.getPmenu_img());
-			privateCafeMenuCommand.getUpload().transferTo(file);
+			File file = new File(FileUtil_Customizing.UPLOAD_PATH+"/"+adminCustomizingCommand.getCustom_img());
+			adminCustomizingCommand.getUpload().transferTo(file);
 		
 			if(oldFileName!=null){
 				//이전 파일 삭제
-				FileUtil_PrivateMenu.removeFile(oldFileName);
+				FileUtil_Customizing.removeFile(oldFileName);
 			}
 		
 		}
-		return "redirect:/admin/customizing/customizingmenu.do?pcafe_num="+privateCafeMenuCommand.getPcafe_num();
+		return "redirect:/admin/customizing/customizingmenu.do?custom_num="+adminCustomizingCommand.getCustom_num();
 	}
 	
 }

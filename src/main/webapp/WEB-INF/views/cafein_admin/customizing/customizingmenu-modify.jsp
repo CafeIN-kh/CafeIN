@@ -4,8 +4,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<form:form action="privatecafemenu-modify.do" id="file-check"
-	enctype="multipart/form-data" commandName="command">
+<form:form action="customizingmenu-modify.do" id="file-check"
+	enctype="multipart/form-data" commandName="customcommand">
 	<section id="content">
 		<div class="container">
 			<div class="block-header">
@@ -17,7 +17,7 @@
 			<div class="card">
 				<div class="card-header">
 					<h2>
-						Modify Private Cafe Menu <small><br>Do Modify Menu</small>
+						Modify Customizing Menu <small><br>Do Modify Menu</small>
 					</h2>
 				</div>
 
@@ -33,7 +33,7 @@
 									class="md md-local-cafe"></i></span>
 								<div class="fg-line">
 									<input type="text" class="form-control"
-										name="pmenu_name" value="${command.pmenu_name}"
+										name="custom_name" value="${customcommand.custom_name}"
 										placeholder="메뉴이름을 써주세요.">
 										
 								</div>
@@ -48,8 +48,8 @@
 									class="md  md-assignment"></i></span>
 								<div class="fg-line">
 									<input type="text" class="form-control"
-										name="pmenu_price" value="${command.pmenu_price}"
-										placeholder="메뉴가격을 써주세요.">
+										name="custom_introduce" value="${customcommand.custom_introduce}"
+										placeholder="메뉴소개를 써주세요.">
 								</div>
 							</div>
 							<br>
@@ -57,8 +57,8 @@
 								<span class="input-group-addon"><i class="md  md-subject"></i></span>
 								<div class="fg-line">
 									<input type="text" class="form-control"
-										name="pmenu_introduce" value="${command.pmenu_introduce}"
-										placeholder="메뉴소개를 써주세요.">
+										name="custom_recipe" value="${customcommand.custom_recipe}"
+										placeholder="메뉴 레시피를 써주세요.">
 								</div>
 							</div>
 							<br> <br>
@@ -68,7 +68,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/${command.pmenu_img}" alt=""> 
+									<img src="${pageContext.request.contextPath}/upload/${customcommand.custom_img}" alt=""> 
 								</div>
 								<div>
 									<span class="btn btn-info btn-file"> <span

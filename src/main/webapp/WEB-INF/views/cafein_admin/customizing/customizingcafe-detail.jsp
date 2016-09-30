@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<form:form action="privatecafe-detail.do" id="file-check" enctype="multipart/form-data" commandName="commandMenu"> 
+<form:form action="customizing-detail.do" id="file-check" enctype="multipart/form-data" commandName="admincustomizing"> 
 
 <section id="content">
 	<div class="container">
@@ -21,7 +21,7 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput">
 							<img
-								src="${pageContext.request.contextPath}/upload/private/${commandMenu.pcafe_img}"
+								src="${pageContext.request.contextPath}/upload/customizing/${admincustomizing.custom_img}"
 								alt="">
 						</div>
 						<div style="display: none;">
@@ -37,7 +37,7 @@
 
 					<div class="pmo-stat">
 						
-						<h6 class="m-0 c-white">${commandMenu.pcafe_visit}<br>Total Visit
+						<h6 class="m-0 c-white">${admincustomizing.custom_visit}<br>Total Visit
 						</h6>
 
 						<%-- </c:forEach> --%>
@@ -53,18 +53,18 @@
 				</div>
 
 				<div class="pmo-block pmo-contact hidden-xs">
-					<h2>Private Cafe Info</h2>
+					<h2>Customizing Info</h2>
 				
 					<ul>
 						<li><i class="socicon socicon-twitter"></i>
-							<h5>${commandMenu.pcafe_name}</h5></li>
-						<li><i class="md md-email"></i>${commandMenu.pcafe_address}</li>
-						<li><i class="md md-phone"></i> ${commandMenu.pcafe_phone}</li>
+							<h5>${admincustomizing.custom_name}</h5></li>
+						<li><i class="md md-email"></i>${admincustomizing.custom_introduce}</li>
+						<li><i class="md md-phone"></i> ${admincustomizing.custom_recipe}</li>
 						<li><i class="socicon socicon-skype"></i>
-							${commandMenu.pcafe_time}</li>
+							${admincustomizing.custom_reg_date}</li>
 						<li><i class="md md-location-on"></i>
 							<address class="m-b-0">
-								${commandMenu.pcafe_hash_tag} <br />
+								${admincustomizing.custom_hash_tag} <br />
 							<%-- 	${commandMenu.pcafe_hash_tag} <br />
 								${commandMenu.pcafe_hash_tag} --%>
 							</address></li>
@@ -90,16 +90,16 @@
 			<div class="pm-body clearfix">
 				<ul class="tab-nav tn-justified">
 					<li class="active waves-effect"><a
-						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
+						href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing Cafe</a></li>
 					<li class="waves-effect"><a
-						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Menu</a></li>
+						href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${admincustomizing.custom_num}">Cafe Menu</a></li>
 				</ul>
 
 
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-equalizer m-r-5"></i> Private Cafe Name
+							<i class="md md-equalizer m-r-5"></i> Customizing Name
 						</h2>
 
 						<ul class="actions">
@@ -113,14 +113,14 @@
 						</ul>
 					</div>
 					<div class="pmbb-body p-l-30">
-						<div class="pmbb-view">${commandMenu.pcafe_name}</div>
+						<div class="pmbb-view">${admincustomizing.custom_name}</div>
 						
 						
 						<!-- 수정  -->
 						<div class="pmbb-edit">
 							<div class="fg-line">
 								<textarea name="pcafe_name" id="pcafe_name" class="form-control" rows="2"
-									placeholder="수정할 카페명을 입력해주세요."> ${commandMenu.pcafe_name}</textarea>
+									placeholder="수정할 메뉴명을 입력해주세요."> ${admincustomizing.custom_name}</textarea>
 							</div>
 							<div class="m-t-10">
 								<button type="submit" class="btn btn-primary btn-sm1">Save</button>
@@ -136,7 +136,7 @@
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-person m-r-5"></i> Cafe Foreign Info
+							<i class="md md-person m-r-5"></i> Customizing Content Info
 						</h2>
 
 						<ul class="actions">
@@ -152,16 +152,16 @@
 					<div class="pmbb-body p-l-30">
 						<div class="pmbb-view">
 							<dl class="dl-horizontal">
-								<dt>Cafe Location</dt>
-								<dd>${commandMenu.pcafe_address}</dd>
+								<dt>Franchise Name</dt>
+								<dd>${admincustomizing.franchise_name}</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt>Cafe Phone-Number</dt>
-								<dd>${commandMenu.pcafe_phone}</dd>
+								<dt>Introduce</dt>
+								<dd>${admincustomizing.custom_introduce}</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt>Cafe office hours</dt>
-								<dd>${commandMenu.pcafe_time}</dd>
+								<dt>Recipe</dt>
+								<dd>${admincustomizing.custom_recipe}</dd>
 							</dl>
 							<!--  <dl class="dl-horizontal">
                                             <dt>Martial Status</dt>
@@ -173,31 +173,31 @@
 						<!-- 수정시작 -->
 						<div class="pmbb-edit">
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">Cafe Location</dt>
+								<dt class="p-t-10">Franchise Name</dt>
 								<dd>
 									<div class="fg-line">
-										<input name="pcafe_address" id="pcafe_address" type="text" class="form-control"
-											value="${commandMenu.pcafe_address}"
+										<input name="franchise_name" id="franchise_name" type="text" class="form-control"
+											value="${admincustomizing.franchise_name}"
 											placeholder="카페위치를 입력해주세요">
 									</div>
 
 								</dd>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">Cafe Phone-Number</dt>
+								<dt class="p-t-10">Introduce</dt>
 								<dd>
 									<div class="fg-line">
-										<input name="pcafe_phone" id="pcafe_phone" type="text" class="form-control"
-											value="${commandMenu.pcafe_phone}"
+										<input name="custom_introduce" id="custom_introduce" type="text" class="form-control"
+											value="${admincustomizing.custom_introduce}"
 											placeholder="카페 전화번호를 적어주세요">
 									</div>
 							</dl>
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">Cafe office hours</dt>
+								<dt class="p-t-10">Recipe</dt>
 								<dd>
 									<div class="fg-line">
-										<input name="pcafe_time" id="pcafe_time" type="text" class="form-control"
-											value="${commandMenu.pcafe_time}">
+										<input name="custom_recipe" id="custom_recipe" type="text" class="form-control"
+											value="${admincustomizing.custom_recipe}">
 
 									</div>
 								</dd>
@@ -217,7 +217,7 @@
 				<div class="pmb-block">
 					<div class="pmbb-header">
 						<h2>
-							<i class="md md-phone m-r-5"></i> Cafe Info
+							<i class="md md-phone m-r-5"></i> Customizing Forign Info
 						</h2>
 
 						<ul class="actions">
@@ -233,20 +233,17 @@
 					<div class="pmbb-body p-l-30">
 						<div class="pmbb-view">
 							<dl class="dl-horizontal">
-								<dt>Introduce Cafe</dt>
-								<dd>${commandMenu.pcafe_introduce}</dd>
+								<dt>Reg_date</dt>
+								<dd>${admincustomizing.custom_reg_date}</dd>
 							</dl>
-							<dl class="dl-horizontal">
-								<dt>The Cafe URL</dt>
-								<dd>${commandMenu.pcafe_url}</dd>
-							</dl>
+						
 
 							<dl class="dl-horizontal">
-								<dt>Hash_Tag With Cafe</dt>
+								<dt>Hash_Tag With Customizing</dt>
 								<dd>
 									<div class="pmob-body">
 										<div class="row">
-											<code>${commandMenu.pcafe_hash_tag}</code>
+											<code>${admincustomizing.custom_hash_tag}</code>
 											<%-- <code>#${commandMenu.pcafe_hash_tag}</code>
 											<code>#${commandMenu.pcafe_hash_tag}</code>
 											<code>#${commandMenu.pcafe_hash_tag}</code>
@@ -267,33 +264,24 @@
 						
 						<div class="pmbb-edit">
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">Introduce Cafe</dt>
+								<dt class="p-t-10">Reg_date</dt>
 								<dd>
 									<div class="fg-line">
-										<input name="pcafe_introduce" id="pcafe_introduce" type="text" class="form-control"
-											value="${commandMenu.pcafe_introduce}"
+										<input name="custom_reg_date" id="custom_reg_date" type="text" class="form-control"
+											value="${admincustomizing.custom_reg_date}"
 											placeholder="카페소개글을 적어주세요.">
 									</div>
 								</dd>
 							</dl>
-							<dl class="dl-horizontal">
-								<dt class="p-t-10">The Cafe URL</dt>
-								<dd>
-									<div class="fg-line">
-										<input name="pcafe_url" id="pcafe_url" type="text" class="form-control"
-											value="${commandMenu.pcafe_url}"
-											placeholder="HTTP:// 형태로 시작합니다.">
-									</div>
-								</dd>
-							</dl>
+		
 
 							<dl class="dl-horizontal">
-								<dt class="p-t-10">Hash_Tag With Cafe</dt>
+								<dt class="p-t-10">Hash_Tag With Customizing</dt>
 								<dd>
 									<div class="fg-line">
 										<div class="pmob-body">
 											<div class="row">
-												<input name="pcafe_hash_tag" id="pcafe_hash_tag" type="text" class="hash-code" placeholder="해쉬태그입력!"
+												<input name="custom_hash_tag" id="custom_hash_tag" type="text" class="hash-code" placeholder="해쉬태그입력!"
 													value="${hashTagOriginal}"> <%-- <input name="pcafe_hash_tag" id="pcafe_hash_tag" 
 													type="text" class="hash-code" placeholder="해쉬태그입력!"
 													value="${commandMenu.pcafe_hash_tag}"> <input name="pcafe_hash_tag" id="pcafe_hash_tag" 

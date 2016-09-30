@@ -20,7 +20,7 @@ public interface AdminCustomizingService {
 	
 	public int getRowCount(int custom_num);
 	public List<AdminCustomizingCommand> selectCustomizing();
-	public AdminCustomizingCommand selectCustomizing(Integer custom_num);
+	public AdminCustomizingCommand getCustomizing(Integer custom_num);
 	public List<AdminCustomizingCommand> searchList(Map<String, Object> map);
 	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num);
 	public void update(AdminCustomizingCommand customizing);

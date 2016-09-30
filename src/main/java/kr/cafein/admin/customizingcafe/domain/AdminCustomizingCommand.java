@@ -6,23 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class AdminCustomizingCommand {
 	private int custom_num;
-	private int u_uid;
-	public int getU_uid() {
-		return u_uid;
-	}
-	public void setU_uid(int u_uid) {
-		this.u_uid = u_uid;
-	}
-	
+	private String u_uid;
 	private int franchise_num;
-	
-	public int getFranchise_num() {
-		return franchise_num;
-	}
-	public void setFranchise_num(int franchise_num) {
-		this.franchise_num = franchise_num;
-	}
-
 	private String custom_name;
 	private String custom_introduce;
 	private String custom_recipe;
@@ -31,6 +16,23 @@ public class AdminCustomizingCommand {
 	private int custom_visit;
 	private MultipartFile upload;
 	private Date custom_reg_date;
+	
+	
+	
+	public String getU_uid() {
+		return u_uid;
+	}
+	public void setU_uid(String u_uid) {
+		this.u_uid = u_uid;
+	}
+	public int getFranchise_num() {
+		return franchise_num;
+	}
+	public void setFranchise_num(int franchise_num) {
+		this.franchise_num = franchise_num;
+	}
+
+	
 	public int getCustom_num() {
 		return custom_num;
 	}

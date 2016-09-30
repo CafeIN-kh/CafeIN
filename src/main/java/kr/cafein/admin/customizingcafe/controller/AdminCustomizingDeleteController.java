@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-import kr.cafein.admin.privatecafe.service.PrivateService;
 
 @Controller
 public class AdminCustomizingDeleteController {

@@ -30,7 +30,7 @@ public class PrivateListController {
 			log.debug("list : "+list);
 		}
 		ModelAndView mav = new ModelAndView("adminPrivateCafe");
-		mav.addObject("list", list);
+		mav.addObject("list", list); 
 		
 		System.out.println(list);
 		return mav;

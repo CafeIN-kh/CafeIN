@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <section id="content">
 	<div class="container">
@@ -54,7 +57,7 @@
 					</thead>
 					<tbody>
 
-						<!--<c:if test="${count > 0}">   -->
+
 
 						<c:forEach var="member" items="${list}" varStatus="status">
 							<tr>
@@ -86,45 +89,89 @@
 							</tr>
 
 
-
-
-
-							<div class="modal fade" id="layerpop">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- header -->
-										<div class="modal-header">
-											<!-- 닫기(x) 버튼 -->
-											<button type="button" class="close" data-dismiss="modal">×</button>
-											<!-- header title -->
-											<h4 class="modal-title">Header</h4>
-										</div>
-										<!-- body -->
-										<div class="modal-body">Body</div>
-										<!-- Footer -->
-										<div class="modal-footer">
-											Footer
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">닫기</button>
-										</div>
-									</div>
-								</div>
-							</div>
-
 						</c:forEach>
 
-						<!-- </c:if> -->
 					</tbody>
 
 				</table>
-
 			</div>
-
-
-
-
 		</div>
-	</div>
+
+
+
+
+
+   <!-- 회원정보 모달 -->
+            <div class="modal fade" id=admin_memberModify tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title korean-font" id="myModalLabel4">회원정보</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="admin_memberModify.do" method="post"
+                                      id="sky-form1" class="sky-form" novalidate="novalidate" style="border:0;">
+                                 
+                                <fieldset>                  
+                                    <div class="row">
+                                        <section class="col col-6">
+                                         
+                                            <label class="label">Cafe Name</label>
+                                            <label class="input">
+                                                <input type="text" class="korean-font" name="pcafe_name" id="pcafe_name">
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label class="label">Cafe Phone Number</label>
+                                            <label class="input">
+                                                <!-- <i class="icon-append fa fa-envelope-o"></i> -->
+                                                <input type="text" class="korean-font" name="pcafe_phone" id="pcafe_phone">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    
+                                    <section>
+                                        <label class="label">Cafe Address</label>
+                                        <label class="input">
+                                            <!-- <i class="icon-append fa fa-tag"></i> -->
+                                            <input type="text" class="korean-font" name="pcafe_address" id="pcafe_address">
+                                        </label>
+                                    </section>
+                                    
+                                    
+                                    
+                                    <section>
+                                        <label class="label">Cafe Introduce</label>
+                                        <label class="textarea">
+                                            <!-- <i class="icon-append fa fa-comment"></i> -->
+                                            <textarea rows="4" class="korean-font" name="pcafe_introduce" id="pcafe_introduce"></textarea>
+                                        </label>
+                                    </section>
+                                 
+                                </fieldset>
+                                
+                                <div class="modal-footer">
+                                      <button type="button" class="btn-u btn-u-default" data-dismiss="modal">닫기</button>
+									  <button type="submit" class="btn-u btn-u-primary">수정</button>
+                                  </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 카페등록 모달 END -->
+
+
+
+
+
+
+
+
+
+
+
+	</div><!--  End container -->
 </section>
 
 

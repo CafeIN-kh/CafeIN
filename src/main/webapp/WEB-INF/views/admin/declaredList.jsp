@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <section id="content">
 	<div class="container">
@@ -38,6 +39,35 @@
 				</h2>
 			</div>
 
+
+<form action="declaredlist.do" id="search_form" method="get">
+		<ul class="search">
+			<li>
+				<select name="keyfield" class="D_select">
+					<option value="d_state">처리상태</option>
+				</select>&nbsp;&nbsp;&nbsp;
+			</li>
+			<li>
+				<select id="keyword" name="keyword"  class="D_select">
+   					<option value="0">처리 전</option>
+  					<option value="1">처리 중</option>
+  					<option value="2">처리 완료</option>
+   					<option value="3">처리 보류</option>
+   					<option value="4">처리 취소</option>
+				</select>
+				<!-- <input type="text" name="keyword"> -->
+				&nbsp;
+			</li>
+			<li>
+				<input type="submit" id="d_ssubmit" value="찾기">
+			</li>
+		</ul>
+	</form>
+
+
+<br><br>
+
+
 			<div class="table-responsive">
 
 				<table class="table table-hover recruit">
@@ -54,8 +84,15 @@
 
 						</tr>
 					</thead>
-					<tbody>
-
+					
+<c:if test="${count==0}">
+<tbody>
+	<tr><td>등록된 게시물이 없습니다.</td></tr>
+	</tbody>
+	</c:if>
+	<c:if test="${count>0}">
+	<div class="align-right">${pagingHtml}</div>
+	<tbody>
 						<c:forEach var="declared" items="${list}" varStatus="status">
 							<tr class="title">
 								<%--  <td>${status.count}</td> --%>
@@ -110,19 +147,20 @@
 
 											<h5>※ 신고 내역 ※</h5>
 											<hr style="border-top: 1px solid #8c8b8b;">
-
-											${declared.d_content}
+											
+											<textarea class="form-control declared_content" rows="9" readonly>${declared.d_content}</textarea>
 										</div>
 										<br> <br>
 
 										<div class="div_inner2">
 											<select class="selectpicker">
-												<option>처리 전</option>
-												<option>처리 중</option>
-												<option>처리 완료</option>
-												<option>처리 보류</option>
-												<option>처리 취소</option>
+												<option value="0" name="처리 전">처리 전</option>
+												<option value="1" name="처리 중">처리 중</option>
+												<option value="2" name="처리 완료">처리 완료</option>
+												<option value="3" name="처리 보류">처리 보류</option>
+												<option value="4" name="처리 취소">처리 취소</option>
 											</select>
+											
 										</div>
 									</div> <br>
 
@@ -132,52 +170,29 @@
 											<div class="panel panel-default widget col-xs-11 col-md-11">
 												<div class="panel-heading">
 													<span class="glyphicon glyphicon-comment"></span>
-													<h3 class="panel-title">Reply</h3>
+													<h3 class="panel-title">Comment</h3>
 
 												</div>
-												<div class="panel-body">
-													<ul class="list-group">
-														<li class="list-group-item">
-															<div class="row">
-																<!-- <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div> -->
-																<div class="col-xs-10 col-md-11">
-																	<div>
-																		<a href="#"> Congratulations</a>
-																		<div class="mic-info">
-																			By: <a href="#">Check My Athletics</a> on 12 Jun 2014
-																		</div>
-																	</div>
-																	<div class="comment-text">We would like to
-																		congratulate John on his achievement...</div>
-
-
-																</div>
-															</div>
-														</li>
-
-
-													</ul>
-
-												</div>
+											
+											<br>
 												<div class="col">
 
 
 													<div class="panel-body">
-														<form role="form">
+														<form action="#" method="post" class="d_commentForm">
 															<fieldset>
 																<div class="form-group">
-																	<textarea class="form-control" rows="3"
-																		placeholder=" Write in your wall"></textarea>
-
+																	<textarea class="form-control d_commentText" rows="3" 
+																		placeholder=" 처리에 대한 코멘트를 작성해 주세요">${declared.d_comment}</textarea>
 
 																</div>
-
-
-																<button type="submit" class="[ btn btn-success ]"
-																	data-loading-text="Loading...">Post reply</button>
+										
 															</fieldset>
-														</form>
+														
+															<a class="btn btn-success d_commentBtn">작성</a>&nbsp;&nbsp;	<span class="yes1"></span>
+															  
+														</form><br>
+													
 													</div>
 												</div>
 
@@ -193,8 +208,13 @@
 
 
 					</tbody>
+					
+						
+					</c:if>
 				</table>
+				
 			</div>
+			
 		</div>
 
 

@@ -12,7 +12,8 @@ $(document).ready(function() {
 										},
 										formatters : {
 											"commands" : function(column, row) {
-												return "<button type=\"button\" id=\"admin_memberModify\" class=\"btn btn-icon command-edit\" data-row-id=\""
+												
+												return "<button type=\"button\"  class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#admin_memberModify\" data-row-id=\""
 														+ row.id
 														+ "\"><span class=\"md md-edit\"></span></button> "
 														+ "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\""
@@ -23,15 +24,11 @@ $(document).ready(function() {
 
 										selection : true,
 										multiSelect : true,
-										rowSelect : true,
+										/*rowSelect : true,*/
 										keepSelection : true
 
 									});
+					
+					
 				});
 
-
-$(function(){
-    $("#admin_memberModify").click(function(){
-        $('div.modal').modal();
-    })
-})

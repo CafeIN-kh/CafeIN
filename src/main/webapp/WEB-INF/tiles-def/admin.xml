@@ -50,6 +50,69 @@
     	<put-attribute name="header" value="/WEB-INF/views/template_admin/header.jsp"/>
     	<put-attribute name="menu" value="/WEB-INF/views/template_admin/menu.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/home.jsp"/>
+    	
+    	
+    	
+    	
+    	<put-list-attribute name="cssList">
+    		 <!-- Vendor CSS -->
+    		<add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.css"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+        	
+        	
+        <!-- CSS -->
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+        	
+       	
+        	
+        </put-list-attribute>
+        <put-list-attribute name="jsList">
+        	
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+        	
+        	
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery.validate.min.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/confirmId.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/admin_register.js"/>
+        	
+        	
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/flot/jquery.flot.resize.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors//flot/plugins/curvedLines.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sparklines/jquery.sparkline.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/easypiechart/jquery.easypiechart.min.js"/>
+        	  	
+        	  	
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/lib/moment.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/fullcalendar/fullcalendar.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/simpleWeather/jquery.simpleWeather.min.js"/>
+        	  	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
+        	
+        	
+        	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+            <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+            <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+            <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+        	
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/charts.js"/>
+        	
+        	
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/charts.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+        	
+        		
+        	
+        	
+        </put-list-attribute>
+    	
     </definition>
     
     
@@ -77,6 +140,8 @@
        	<!--  CSS YJ style    -->
 		<add-attribute value="/CafeIN/resources/cafein_user/assets/css/userLogin.css"/>
 		<add-attribute value="/CafeIN/resources/cafein_admin/css/adminYJ.css"/>
+	
+		<add-attribute value="/CafeIN/resources/cafein_admin/css/jquery-ui.min.css"/>
 		
         	
         </put-list-attribute>
@@ -89,10 +154,12 @@
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
         	
-        	<!-- 메뉴바 에러남 
+        	
         	<add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/> -->
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/> 
       		<add-attribute value="/CafeIN/resources/cafein_admin/js/admin_memberManagement.js"/>
+      		<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-ui.min.js"/>
+      		
         	
         </put-list-attribute>
     </definition>
@@ -144,6 +211,9 @@
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
             
+            
+            <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/> 
             <add-attribute value="/CafeIN/resources/cafein_admin/js/admin_declared.js"/>
             <!-- <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/> -->
             

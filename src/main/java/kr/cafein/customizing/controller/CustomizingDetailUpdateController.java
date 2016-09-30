@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
 import kr.cafein.util.CustomFileUtil;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class CustomizingDetailUpdateController {
@@ -64,7 +65,8 @@ public class CustomizingDetailUpdateController {
 		if(log.isDebugEnabled()){
 			log.debug("CustomizingDetailCommand : " + customizingDetailCommand);
 		}
-		
+		customizingDetailCommand.setCustom_introduce(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_introduce()));
+		customizingDetailCommand.setCustom_recipe(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_recipe()));
 		
 		customizingDetailService.updateCustomMenu(customizingDetailCommand);
 		

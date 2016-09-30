@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.cafein.customizing.domain.CustomizingDetailReplyCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class CustomizingDetailReplyWriteController {
@@ -66,6 +67,8 @@ public class CustomizingDetailReplyWriteController {
 		if(log.isDebugEnabled()){
 			log.debug("CustomizingDetailReplyCommand : " + customizingDetailReplyCommand);
 		}
+		
+		customizingDetailReplyCommand.setCreply_content(StringUtil.useBrNoHtml(customizingDetailReplyCommand.getCreply_content()));
 		
 		customizingDetailService.insertReply(customizingDetailReplyCommand);
 		

@@ -14026,7 +14026,7 @@ input:focus {
 }
 
 .table-hover > tbody > tr:hover {
-  background-color: #ECF9FF !important;
+  background-color: #ECF9FF;
 }
 
 .table-bordered {

@@ -1,6 +1,7 @@
 package kr.cafein.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,25 +22,43 @@ public class DeclaredServiceImpl implements  DeclaredService{
 	@Resource
 	private DeclaredMapper declaredMapper;
 	
+
+	
 	@Override
-	public int getDeclaredCount() {
-		// TODO Auto-generated method stub
-		return declaredMapper.getDeclaredCount();
-	}
-	
-	
-	/*@Override
 	public List<DeclaredCommand> getDeclaredList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return declaredMapper.getDeclaredList(map);
-	}*/
+	}
 
 
 
 	@Override
-	public List<DeclaredCommand> getAllDeclaredList() {
+	public void updateState(Map<String,Object> map) {
+		
+		 declaredMapper.updateState(map);
+	}
+
+
+	@Override
+	public void updateComment(Map<String,Object> map) {
+		
+		declaredMapper.updateComment(map);
+		
+	}
+
+
+	@Override
+	public int getDeclaredRowCount(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return declaredMapper.getAllDeclaredList();
+		return declaredMapper.getDeclaredRowCount(map);
+	}
+
+
+
+	@Override
+	public String getMemberId(String u_uid) {
+		// TODO Auto-generated method stub
+		return declaredMapper.getMemberId(u_uid);
 	}
 
 }

@@ -89,8 +89,7 @@ create table private_cafe(
    pcafe_img varchar2(2000) not null, 
    pcafe_visit number default 0,
    pcafe_reg_date date not null,
-   constraint private_cafe_pk primary key (pcafe_num),
-   constraint private_cafe_fk foreign key (u_uid) references u_user(u_uid)
+   constraint private_cafe_pk primary key (pcafe_num)
 );
 
 drop sequence private_cafe_seq;
@@ -233,8 +232,7 @@ create table customizing(
    custom_visit number default 0,
    custom_reg_date date not null,
    constraint customizing_pk primary key (custom_num),
-   constraint customizing_fk1 foreign key (franchise_num) references franchis (franchise_num),
-   constraint customizing_fk2 foreign key (u_uid) references u_user(u_uid)
+   constraint customizing_fk1 foreign key (franchise_num) references franchis (franchise_num)
 );
 
 drop sequence customizing_seq;
@@ -271,8 +269,7 @@ create table F_log(
    franchise_admin_log varchar2(40) not null, 
    franchise_message_log varchar2(100) not null,
    constraint F_log_pk primary key (franchise_log_seq),
-   constraint F_log_fk1 foreign key (Brand_code) references franchise(franchise_num),
-   constraint F_log_fk2 foreign key (U_uid) references u_user(u_uid)
+   constraint F_log_fk1 foreign key (Brand_code) references franchise(franchise_num)
 );
 
 drop sequence F_log_seq;
@@ -295,8 +292,7 @@ create table P_log(
    P_log_likecontroller varchar2(20) not null,
    P_log_Bookmarkcontroller varchar2(20) not null,
    constraint P_log_pk primary key (P_log_seq),
-   constraint P_log_fk1 foreign key (Pcafe_num) references private_cafe(pcafe_num),
-   constraint P_log_fk2 foreign key (U_uid) references u_user(u_uid)
+   constraint P_log_fk1 foreign key (Pcafe_num) references private_cafe(pcafe_num)
 );
 
 drop sequence P_log_seq;
@@ -335,8 +331,7 @@ create table mlog(
    mlog_processInfo varchar2(20) not null,
    mlog_content varchar2(200) not null,
    target_id varchar2(20) not null,
-   constraint mlog_pk primary key (mlog_seq),
-   constraint mlog_fk foreign key (target_id) references u_user(u_uid)
+   constraint mlog_pk primary key (mlog_seq)
 );
 
 drop sequence mlog_seq;
@@ -412,6 +407,7 @@ create table user_menu_log(
 drop sequence umenu_log_seq;
 create sequence umenu_log_seq;
 
+
 /* 관리자용 공지사항 테이블 */
 drop table admin_notice;
 
@@ -463,22 +459,6 @@ create table user_count_log(
 
 drop sequence user_count_log_seq;
 create sequence user_count_log_seq;
-
-/*user_menu_log 메뉴의 상태 로그 테이블*/
-drop table user_menu_log;
-
-create table user_menu_log(
-	umenu_log_seq number not null,
-	umenu_log_reg_date date not null,
-	umenu_log_u_uid varchar2(20) not null,
-	umenu_name number default(0),
-	umenu_log_state number default(0),
-	umenu_log_message varchar2(200) not null,
-	constraint umenu_log_pk primary key (umenu_log_seq)
-);
-
-drop sequence umenu_log_seq;
-create sequence umenu_log_seq;
 
 
 /*프랜차이즈*/

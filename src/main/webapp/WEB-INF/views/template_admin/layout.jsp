@@ -13,8 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><tiles:getAsString name="title"/></title>
 
-    <c:forEach var="cssName" items="${cssList}">
-		<link rel="stylesheet" href="<c:out value='${cssName}' />"/>
+
+        <c:forEach var="cssName" items="${cssList}">
+	<link rel="stylesheet" href="<c:out value='${cssName}' />"/>
+
 	</c:forEach>
         
     </head>
@@ -34,6 +36,7 @@
       
         
         <!-- Javascript Libraries -->
+
 		<c:forEach var="jsName" items="${jsList}">
 			<script src="<c:out value='${jsName}' />"></script>
 		</c:forEach>

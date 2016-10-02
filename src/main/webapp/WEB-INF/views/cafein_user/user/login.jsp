@@ -27,7 +27,7 @@
                       
 				<div class="page-main-style">
 					
-					<form:form action="login.do" commandName="command" id="sky-form4" class="log-reg-block sky-form" novalidate="novalidate">
+					<form:form action="login.do" commandName="command"  class="log-reg-block sky-form" novalidate="novalidate">
 						
 						
                         <h2 style="margin-bottom:50px;">Log in to your account</h2>

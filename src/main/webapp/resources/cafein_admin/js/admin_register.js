@@ -3,7 +3,6 @@ $(document).ready(function(){
 	var checkIdDuplicated =0;
 	
 	
-	// 아이디 중복 체크
 	$('#admin_RegisterBtn').click(function(){
 	
 	

@@ -1,8 +1,10 @@
 package kr.cafein.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.admin.domain.DeclaredCommand;
@@ -11,10 +13,17 @@ import kr.cafein.admin.domain.DeclaredCommand;
 
 @Transactional
 public interface DeclaredService {
-	//public List<DeclaredCommand> getDeclaredList(Map<String,Object> map);
-	//@Select("SELECT count(*) FROM declared")
-	public int getDeclaredCount();
+
+	public String getMemberId(String u_uid);
+	// 신고테이블 전체 리스트
+	public List<DeclaredCommand> getDeclaredList(Map<String, Object> map);
 	
-	//@Select("SELECT * FROM declared")
-	public List<DeclaredCommand> getAllDeclaredList();
+	// 신고테이블 행 
+	public int getDeclaredRowCount(Map<String,Object> map);
+	
+	// 신고테이블 중 처리 상태 업데이트
+	public void updateState(Map<String,Object> map);
+	// 처리 코맨트 업데이트
+	public void updateComment(Map<String,Object> map);
+
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.cafein.admin.dao.DeclaredMapper">  
+
+	<select id="getDeclaredList" parameterType="map" resultType="DeclaredCommand">
+
+		SELECT d_seq,
+			   d_target_path,
+			   d_target_num,
+			   d_target_id,
+			   d_mem_id,
+			   d_target_mem_id,
+			   d_reg_date,
+			   d_content,
+			   d_state,
+			   d_comment
+			   
+		FROM (SELECT 
+				a.*,
+				rownum rnum 
+			  FROM (SELECT * FROM declared 
+			  <where>
+			  	<if test="keyword !='' and keyfield=='d_state'">
+			  		d_state like '%' || #{keyword} || '%'
+			  	</if>
+			  </where>
+						   ORDER BY d_seq DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	
+	
+	
+	<select id="getDeclaredRowCount" parameterType="map" resultType="integer">
+		SELECT count(*) FROM declared
+		<where>
+			  	<if test="keyword !='' and keyfield=='d_state'">
+			  		d_state like '%' || #{keyword} || '%'
+			  	</if>
+			  	
+			  </where>	
+	</select>
+	
+	
+</mapper>
+	

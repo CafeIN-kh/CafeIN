@@ -1,11 +1,8 @@
-$(document)
-		.ready(
-				function() {
 
+$(document).ready(function() {
 					// Command Buttons
 					$("#data-table-command")
-							.bootgrid(
-									{
+							.bootgrid({
 										css : {
 											icon : 'md icon',
 											iconColumns : 'md-view-module',
@@ -15,7 +12,8 @@ $(document)
 										},
 										formatters : {
 											"commands" : function(column, row) {
-												return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\""
+												
+												return "<button type=\"button\"  class=\"btn btn-icon command-edit\" data-toggle=\"modal\" data-target=\"#admin_memberModify\" data-row-id=\""
 														+ row.id
 														+ "\"><span class=\"md md-edit\"></span></button> "
 														+ "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\""
@@ -26,8 +24,11 @@ $(document)
 
 										selection : true,
 										multiSelect : true,
-										rowSelect : true,
+										/*rowSelect : true,*/
 										keepSelection : true
 
 									});
+					
+					
 				});
+

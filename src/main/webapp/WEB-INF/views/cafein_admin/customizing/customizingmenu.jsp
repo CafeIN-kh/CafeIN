@@ -71,21 +71,16 @@
                                 
                                 <h5>Following User</h5>
                                 
-                                <div class="pmob-body">
-                                    <div class="row">
-                                 	    <code>.m-b-0</code>
-                                 	      <code>.m-b-0</code>
-                                 	        <code>.m-b-0</code>
-                                 	          <code>.m-b-0</code>
-                                 	            <code>.m-b-0</code>
-                                 	              <code>.m-b-0</code>
-                                 	                <code>.m-b-0</code>
-                                 	                  <code>.m-b-0</code>
-                                 	                    <code>.m-b-0</code>
-                                 	                      <code>.m-b-0</code>
-                                       
-                                    </div>
-                                </div>
+                               
+						<div class="pmob-body">
+							<c:forEach items="${getLikeUser1 }" var="getLikeUser1">
+								<div class="row">
+									<code>${getLikeUser1.u_uid}</code>
+
+
+								</div>
+							</c:forEach>
+						</div>
                             </div>
                         </div>
                         
@@ -130,7 +125,7 @@
                                 </div>
                                 
                                   <div class="contacts clearfix row">
-                                <c:forEach items="${searchList }" var="menuList">
+                                <c:forEach items="${searchList }" var="searchList">
               
                                     <div class="col-md-3 col-sm-6 col-xs-6">
                                         <div class="c-item">

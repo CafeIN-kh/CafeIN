@@ -70,22 +70,15 @@
                                
                                 
                                 <h5>Following User</h5>
-                                
-                                <div class="pmob-body">
-                                    <div class="row">
-                                 	    <code>.m-b-0</code>
-                                 	      <code>.m-b-0</code>
-                                 	        <code>.m-b-0</code>
-                                 	          <code>.m-b-0</code>
-                                 	            <code>.m-b-0</code>
-                                 	              <code>.m-b-0</code>
-                                 	                <code>.m-b-0</code>
-                                 	                  <code>.m-b-0</code>
-                                 	                    <code>.m-b-0</code>
-                                 	                      <code>.m-b-0</code>
-                                       
-                                    </div>
-                                </div>
+                              	<div class="pmob-body">
+					<c:forEach items="${getLikeUser }" var="getLikeUser">
+						<div class="row">
+							<code>${getLikeUser.u_uid}</code>
+							
+
+						</div>
+						</c:forEach>
+					</div>
                             </div>
                         </div>
                         

@@ -30,7 +30,7 @@ public interface AdminCustomizingMapper {
 	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num);
 	
 	//ÀÌ¶ר
-	@Update ("UPDATE customizing SET custom_name=#{custom_name},custom_img=#{custom_img},custom_recipe=#{custom_recipe},custom_hash_tag=#{custom_hash_tag},custom_introduce=#{custom_introduce} WHERE custom_num=#{custom_num}")
+	@Update ("UPDATE customizing SET custom_name=#{custom_name},custom_img=#{custom_img},custom_reg_date=#{custom_reg_date},custom_recipe=#{custom_recipe},custom_hash_tag=#{custom_hash_tag},custom_introduce=#{custom_introduce} WHERE custom_num=#{custom_num}")
 	public void update(AdminCustomizingCommand customizing);
 	
 	@Delete ("Delete  from customizing where custom_num=#{custom_num}")

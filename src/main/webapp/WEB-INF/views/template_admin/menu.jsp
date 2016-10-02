@@ -49,7 +49,7 @@
 						
 							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
-							<li><a href="">Customizing Cafe</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing Cafe</a></li>
 							
 							
 						</ul></li>

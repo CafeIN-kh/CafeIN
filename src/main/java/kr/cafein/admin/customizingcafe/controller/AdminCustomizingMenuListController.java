@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
+import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.PagingUtil_adminCustomizing;
 
 @Controller
@@ -70,11 +71,33 @@ public class AdminCustomizingMenuListController {
       }else{
     	  searchList = Collections.emptyList();
       }
-
       
+      
+    //해쉬태그
+      String hashTag = adminCustomizingCommand.getCustom_hash_tag();
+      //원래 , 적용된 해쉬태그 뷰에 반환
+      String hashTagOriginal1 = adminCustomizingCommand.getCustom_hash_tag();
+      //초기화
+      adminCustomizingCommand.setCustom_hash_tag("");
+      String[] hashTagArray = hashTag.split(",");
+      for (int i = 0; i < hashTagArray.length; i++) {
+        //인덱스 안에 , 값이 없으면 -1 반환
+        if(hashTagArray[i].indexOf(",") != -1){
+           //*이 있다는 것이므로 *표를 빈값으로 대체
+           //,표시 없애주기
+     	  hashTagArray[i] = hashTagArray[i].replace(",","");
+        }
+        adminCustomizingCommand.setCustom_hash_tag(adminCustomizingCommand.getCustom_hash_tag() + "#"+hashTagArray[i] + " ");
+     }
+
+		List<LikeCommand> getLikeUser1= admincustomizingService.getLikeUser(custom_num);
+
       
       ModelAndView mav = new ModelAndView("adminCustomizingMenu");
       mav.addObject("adminCustomizingCommand", adminCustomizingCommand);
+      mav.addObject("hashTagOriginal1", hashTagOriginal1);
+      mav.addObject("getLikeUser1", getLikeUser1);
+
       mav.addObject("searchList", searchList);
       mav.addObject("custom_num", custom_num);
       mav.addObject("count", count);

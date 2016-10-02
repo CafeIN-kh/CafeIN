@@ -20,7 +20,7 @@
 			<if test="keyword !=''">
 				and (custom_name like '%' || #{keyword} || '%' or
 				custom_recipe like '%' || #{keyword} || '%' or
-				franchise_name like '%' || #{keyword} || '%')
+				franchise_num like '%' || #{keyword} || '%')
 			</if>
 		ORDER BY custom_num ASC)a)
 		<![CDATA[

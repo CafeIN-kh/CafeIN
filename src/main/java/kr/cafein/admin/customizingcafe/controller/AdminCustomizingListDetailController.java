@@ -22,7 +22,7 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 
 import kr.cafein.domain.LikeCommand;
-import kr.cafein.util.FileUtil_Private;
+import kr.cafein.util.FileUtil_Customizing;
 
 @Controller
 @SessionAttributes("admincustomizing")
@@ -50,13 +50,13 @@ public class AdminCustomizingListDetailController {
 		
 		
 		
-		List<LikeCommand> getLikeUser=admincustomizingService.getLikeUser(custom_num);
+		List<LikeCommand> getLikeUser1= admincustomizingService.getLikeUser(custom_num);
 		
 		
 		
 		
 		
-		
+		/*
 		//개인카페의 이미지들을 지우기 위해 개인카페 정보 찾기
         String customImgName = admincustomizing.getCustom_img();
          String[] customImgNameArray;
@@ -71,12 +71,13 @@ public class AdminCustomizingListDetailController {
         	   customImgNameArray[i] = customImgNameArray[i].replace("*","");
         	   admincustomizing.setCustom_img(customImgNameArray[i]);
            }
-        }
+        }*/
          
+		
          //해쉬태그
          String hashTag = admincustomizing.getCustom_hash_tag();
          //원래 , 적용된 해쉬태그 뷰에 반환
-         String hashTagOriginal = admincustomizing.getCustom_hash_tag();
+         String hashTagOriginal1 = admincustomizing.getCustom_hash_tag();
          //초기화
          admincustomizing.setCustom_hash_tag("");
          String[] hashTagArray = hashTag.split(",");
@@ -92,8 +93,8 @@ public class AdminCustomizingListDetailController {
          
 		/*mav.addObject("list1", list1);*/
 		mav.addObject("admincustomizing", admincustomizing);
-		mav.addObject("hashTagOriginal", hashTagOriginal);
-		mav.addObject("getLikeUser", getLikeUser);
+		mav.addObject("hashTagOriginal1", hashTagOriginal1);
+		mav.addObject("getLikeUser1", getLikeUser1);
 		/*System.out.println(list1);*/
 		return mav;
 
@@ -101,7 +102,7 @@ public class AdminCustomizingListDetailController {
 	}
 	
 	@RequestMapping(value="/admin/customizing/customizing-detail.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("commandMenu") @Valid AdminCustomizingCommand admincustomizing, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("admincustomizing") @Valid AdminCustomizingCommand admincustomizing, BindingResult result )throws Exception{
 	
 		if(log.isDebugEnabled()){
 			log.debug("admincustomizing : "+admincustomizing);
@@ -120,7 +121,7 @@ public class AdminCustomizingListDetailController {
 		
 		if(!admincustomizing.getUpload().isEmpty()){
 			//전송될 파일이 있는 경우
-			admincustomizing.setCustom_img(FileUtil_Private.rename(admincustomizing.getUpload().getOriginalFilename()));
+			admincustomizing.setCustom_img(FileUtil_Customizing.rename(admincustomizing.getUpload().getOriginalFilename()));
 			
 		}else{
 			//전송된 파일이 있는 경우
@@ -133,12 +134,12 @@ public class AdminCustomizingListDetailController {
 		 
 		 if(!admincustomizing.getUpload().isEmpty()){
 			 //전송된 파일이 있을 경우
-			 File file = new File(FileUtil_Private.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());
+			 File file = new File(FileUtil_Customizing.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());
 			 admincustomizing.getUpload().transferTo(file);
 			 
 			 if(oldFileName != null){
 				 //이전 파일 삭제
-				 FileUtil_Private.removeFile(oldFileName);
+				 FileUtil_Customizing.removeFile(oldFileName);
 			 }
 			 
 			 

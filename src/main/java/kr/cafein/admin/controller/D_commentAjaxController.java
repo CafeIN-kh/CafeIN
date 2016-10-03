@@ -21,7 +21,7 @@ private Logger log = Logger.getLogger(this.getClass());
 	private DeclaredService declaredService;
 	
 	
-	@RequestMapping("/admin/d_commentAjax.do")
+	@RequestMapping("/cafein_admin/member/d_commentAjax.do")
 	@ResponseBody
 	public Map<String,String> process(@RequestParam("d_seq") int d_seq,
 										@RequestParam("d_comment") String d_comment) throws Exception {

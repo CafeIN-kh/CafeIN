@@ -28,7 +28,7 @@ public class AdminDeclaredListController {
 	@Resource(name = "declaredService")
 	private DeclaredService declaredService;
 
-	@RequestMapping("/admin/declaredlist.do")
+	@RequestMapping("/cafein_admin/member/declaredlist.do")
 	public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword) throws Exception {

@@ -28,12 +28,12 @@ private Logger log = Logger.getLogger(this.getClass());
 		return new MemberCommand();
 	}
 	
-	@RequestMapping(value="/admin/adminLogin.do",method=RequestMethod.GET)
+	@RequestMapping(value="/cafein_admin/member/adminLogin.do",method=RequestMethod.GET)
 	public String form() {
 		return "admin_login";
 	}
 	
-	@RequestMapping(value="/admin/adminLogin.do",method=RequestMethod.POST)
+	@RequestMapping(value="/cafein_admin/member/adminLogin.do",method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, HttpSession session) {
 		
 		if(log.isDebugEnabled()) {

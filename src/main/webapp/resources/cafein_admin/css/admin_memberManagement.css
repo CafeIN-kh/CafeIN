@@ -1,0 +1,20 @@
+body {padding-right:0 !important;}
+.inline-group .adminMemberChk{
+	float: left;
+	clear: none;
+	}
+
+label{
+	float: left;
+  clear: none;
+  display: block;
+   padding: 2px 1em 0 0;
+  }
+  
+  
+  input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 15px 3px 0 2px;
+}

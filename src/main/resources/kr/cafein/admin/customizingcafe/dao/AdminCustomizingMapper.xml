@@ -7,7 +7,29 @@
 	
 	
 <!-- 검색조건에 프렌차이즈 네임받기 -->
-	<select id="searchList" parameterType="map" resultType="AdminCustomizingCommand">
+
+
+	<select id="searchList" parameterType="map" resultType="AdminCustomizingDetailCommand">
+		SELECT 
+		c.*,u.u_name,f.franchise_name 
+		FROM customizing c, u_user u, franchise f 
+		WHERE c.custom_num =#{custom_num}  and f.franchise_num=#{franchise_num} and u.u_uid=#{u_uid} and c.franchise_num = f.franchise_num
+			<if test="keyword !=''">
+				and (custom_name like '%' || #{keyword} || '%' or
+				custom_recipe like '%' || #{keyword} || '%' or
+				franchise_num like '%' || #{keyword} || '%')
+			</if>
+		ORDER BY custom_num ASC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+
+	</select> 
+
+<!-- 
+
+
+ 	<select id="searchList" parameterType="map" resultType="AdminCustomizingCommand">
 		SELECT
 		*
 		FROM (SELECT
@@ -27,7 +49,9 @@
 		WHERE rnum >= #{start} AND rnum <= #{end}
 		]]>
 
-	</select>
+	</select>  -->
+	
+	
 	
 
 

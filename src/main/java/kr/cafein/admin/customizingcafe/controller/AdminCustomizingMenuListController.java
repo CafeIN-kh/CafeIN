@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.PagingUtil_adminCustomizing;
@@ -53,10 +54,8 @@ public class AdminCustomizingMenuListController {
       
       AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.getCustomizing(custom_num);
       
-     
-      
       /*List<PrivateMenuCommand> menuList = privateService.menuList(map);*/
-      List<AdminCustomizingCommand> searchList = null;
+      List<AdminCustomizingDetailCommand> searchList = null;
      
       if(log.isDebugEnabled()){
          log.debug("pcafe_num : "+custom_num);

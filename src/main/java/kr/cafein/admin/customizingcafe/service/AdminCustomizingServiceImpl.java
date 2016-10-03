@@ -12,6 +12,8 @@ import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.customizingcafe.dao.AdminCustomizingMapper;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 
@@ -29,7 +31,7 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 	}
 
 	@Override
-	public List<AdminCustomizingCommand> searchList(Map<String, Object> map) {
+	public List<AdminCustomizingDetailCommand> searchList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return adminCustomizingMapper.searchList(map);
 	}
@@ -87,6 +89,12 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 	public int getRowCount(int custom_num) {
 		// TODO Auto-generated method stub
 		return adminCustomizingMapper.getRowCount(custom_num);
+	}
+
+	@Override
+	public List<AdminCustomizingDetailCafeNameCommand> selectCafeMenu_Admin() {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectCafeMenu_Admin();
 	}
 
 	

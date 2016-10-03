@@ -11,6 +11,8 @@ import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
@@ -21,7 +23,7 @@ public interface AdminCustomizingService {
 	public int getRowCount(int custom_num);
 	public List<AdminCustomizingCommand> selectCustomizing();
 	public AdminCustomizingCommand getCustomizing(Integer custom_num);
-	public List<AdminCustomizingCommand> searchList(Map<String, Object> map);
+	public List<AdminCustomizingDetailCommand> searchList(Map<String, Object> map);
 	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num);
 	public void update(AdminCustomizingCommand customizing);
 	public void delete(Integer custom_num);
@@ -29,6 +31,7 @@ public interface AdminCustomizingService {
 	public List<AdminCustomizingCommand> getCustomizingCafeMenuList(Integer u_uid);
 	public List<LikeCommand> getLikeUser(Integer custom_num);
 	public int selectBookmarkCount(BookmarkCommand bookmark);
+	public List<AdminCustomizingDetailCafeNameCommand> selectCafeMenu_Admin();
 	
 
 

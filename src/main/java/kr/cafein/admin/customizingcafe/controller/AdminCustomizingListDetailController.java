@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
-
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Customizing;
 
@@ -51,6 +51,12 @@ public class AdminCustomizingListDetailController {
 		
 		
 		List<LikeCommand> getLikeUser1= admincustomizingService.getLikeUser(custom_num);
+		
+List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = null;
+		
+		customizingDetailCafeNameCommand = admincustomizingService.selectCafeMenu_Admin();
+		
+		
 		
 		
 		
@@ -95,6 +101,8 @@ public class AdminCustomizingListDetailController {
 		mav.addObject("admincustomizing", admincustomizing);
 		mav.addObject("hashTagOriginal1", hashTagOriginal1);
 		mav.addObject("getLikeUser1", getLikeUser1);
+		mav.addObject("customizingDetailCafeNameCommand", customizingDetailCafeNameCommand);
+
 		/*System.out.println(list1);*/
 		return mav;
 

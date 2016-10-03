@@ -68,7 +68,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/${customcommand.custom_img}" alt=""> 
+									<img src="${pageContext.request.contextPath}/upload/customizing/${customcommand.custom_img}" alt=""> 
 								</div>
 								<div>
 									<span class="btn btn-info btn-file"> <span

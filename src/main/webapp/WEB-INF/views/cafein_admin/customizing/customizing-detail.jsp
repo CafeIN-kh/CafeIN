@@ -156,7 +156,9 @@
 							<div class="pmbb-view">
 								<dl class="dl-horizontal">
 									<dt>Franchise Name</dt>
-									<dd>${admincustomizing.franchise_num}</dd>
+									<dd><c:forEach var="text" items="${customizingDetailCafeNameCommand}" varStatus="status">
+												${status.index +1}: ${text.franchise_name}
+												</c:forEach></dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>Introduce</dt>
@@ -179,7 +181,24 @@
 									<dt class="p-t-10">Franchise Name</dt>
 									<dd>
 										<div class="fg-line">
-											<input name="franchise_name" id="franchise_name" type="text"
+											<select name="franchise_num" id="franchise_num" class="form-control">
+												<c:forEach var="article" items="${customizingDetailCafeNameCommand}">
+												<option value="${article.franchise_num}">${article.franchise_name}</option>
+												</c:forEach>
+												</select>
+											
+										</div>
+
+									</dd>
+								</dl>
+								
+								
+								
+<%-- 								<dl class="dl-horizontal">
+									<dt class="p-t-10">Franchise Name</dt>
+									<dd>
+										<div class="fg-line">
+											<input name="franchise_num" id="franchise_num" type="text"
 												class="form-control"
 												value="${admincustomizing.franchise_num}"
 												placeholder="카페위치를 입력해주세요">
@@ -187,6 +206,9 @@
 
 									</dd>
 								</dl>
+								 --%>
+								 
+								 
 								<dl class="dl-horizontal">
 									<dt class="p-t-10">Introduce</dt>
 									<dd>

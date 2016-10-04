@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<form:form action="customizing-detail.do" id="file-check"
+<form:form action="customizing-reply.do" id="file-check"
 	enctype="multipart/form-data" commandName="admincustomizingreply">
 
 	<section id="content">
@@ -105,7 +105,7 @@
 					
 					
 					<div class="pmb-block">
-					<c:forEach items="${admincustomizingre }" var="admincustomizingre">
+					<c:forEach items="${admincustomizingre}" var="admincustomizingre">
 					
 						<div class="pmbb-header">
 							
@@ -114,7 +114,7 @@
 							
 							
 							<h2>
-								<i class="md md-equalizer m-r-5"></i> ${admincustomizingre.creply_nickname}
+								<i class="md md-perm-identity">&nbsp;</i>닉네임 : ${admincustomizingre.creply_nickname}
 							</h2>
 
 							<ul class="actions">
@@ -128,13 +128,15 @@
 							</ul>
 						</div>
 						<div class="pmbb-body p-l-30">
-							<div class="pmbb-view">${admincustomizingre.creply_content}</div>
+							<div class="pmbb-view"><h5>댓글내용 : ${admincustomizingre.creply_content}<h5></div>
 
 
 							
 
 
 						</div>
+						<br><br>
+						
 						</c:forEach>
 					</div>
 

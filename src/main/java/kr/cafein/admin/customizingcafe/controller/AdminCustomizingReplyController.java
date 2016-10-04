@@ -42,15 +42,16 @@ public class AdminCustomizingReplyController {
 			log.debug("custom_num : "+custom_num);
 		}
 		
-		List<AdminCustomizingReplyCommand> admincustomizingre = admincustomizingService.selectReply(custom_num);
+		
 		
 		AdminCustomizingCommand admincustomizingreply = admincustomizingService.getCustomizing(custom_num);
 		ModelAndView mav = new ModelAndView("adminCustomizingReply");
 		//adminCustomizingDetail
 		List<LikeCommand> getLikeUser1= admincustomizingService.getLikeUser(custom_num);
-List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = null;
-		
+List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = null;	
 		customizingDetailCafeNameCommand = admincustomizingService.selectCafeMenu_Admin();
+		List<AdminCustomizingReplyCommand> admincustomizingre = null;
+		admincustomizingre = admincustomizingService.selectReplyc(custom_num);	
 	
          //해쉬태그
          String hashTag = admincustomizingreply.getCustom_hash_tag();

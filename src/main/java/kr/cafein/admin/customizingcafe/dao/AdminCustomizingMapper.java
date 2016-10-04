@@ -23,8 +23,8 @@ public interface AdminCustomizingMapper {
 
 	public int getRowCount(int custom_num);
 	
-	@Select("SELECT * FROM customizing_reply WHERE custom_num = #{custom_num}")
-	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num);
+	@Select("SELECT creply_nickname, creply_content FROM customizing_reply WHERE custom_num = #{custom_num}")
+	public List<AdminCustomizingReplyCommand> selectReplyc(int custom_num);
 
 	
 	

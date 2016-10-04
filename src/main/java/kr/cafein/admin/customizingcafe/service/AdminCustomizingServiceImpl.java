@@ -121,12 +121,13 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 	}
 
 	@Override
-	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num) {
+	public List<AdminCustomizingReplyCommand> selectReplyc(int custom_num) {
 		// TODO Auto-generated method stub
-		return adminCustomizingMapper.selectReply(custom_num);
-
+		return adminCustomizingMapper.selectReplyc(custom_num);
 	}
-	
+
+
 
 
 }
+;

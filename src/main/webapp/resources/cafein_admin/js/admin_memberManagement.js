@@ -21,10 +21,10 @@ $(document).ready(function() {
 											}
 										},
 
-										selection : true,
-										multiSelect : true,
-										/*rowSelect : true,*/
-										keepSelection : true
+										selection : false,
+										multiSelect : false,
+										rowSelect : false,
+										keepSelection : false
 
 									});
 
@@ -40,7 +40,6 @@ $(document).ready(function() {
 						
 						//var right = $('input[name=adminMemberRight]:checked', '#adminMembermodify_form').val();
 						
-						alert(data);
 						
 						
 						$.ajax({

@@ -24,7 +24,7 @@ public interface MemberMapper {
 	public void update(MemberCommand member);
 	
 	
-	@Update("UPDATE u_user SET u_level=4 WHERE u_uid = #{u_uid}")
+	@Update("UPDATE u_user SET u_level=3 WHERE u_uid = #{u_uid}")
 	public void deleteLevel(String u_uid);
 	
 	@Delete("DELETE FROM u_user WHERE u_uid = #{u_uid}")

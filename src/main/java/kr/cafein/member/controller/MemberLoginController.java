@@ -83,6 +83,11 @@ public class MemberLoginController {
 					return form();
 			}
 			
+			if(member.getU_level() ==3){
+				result.rejectValue("u_email", "messageCode", "정지된 계정입니다.");
+					return form();
+			}
+			
 			if(check) {
 				//인증성공, 로그인 처리 세션에 u_uid(seq)값과 레벨 저장
 				session.setAttribute("u_uid", member.getU_uid());

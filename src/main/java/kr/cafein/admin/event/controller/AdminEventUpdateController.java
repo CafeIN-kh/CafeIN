@@ -3,6 +3,7 @@ package kr.cafein.admin.event.controller;
 import java.io.File;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.cafein.admin.event.domain.AdminEventCommand;
+import kr.cafein.admin.event.domain.AdminEventLogCommand;
 import kr.cafein.admin.event.service.AdminEventService;
 import kr.cafein.util.FileUtil_adminEvent;
 
@@ -39,7 +41,7 @@ public class AdminEventUpdateController {
 	}
 	
 	@RequestMapping(value="/cafein_admin/event/update.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("eventCommand") @Valid AdminEventCommand eventCommand, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("eventCommand") @Valid AdminEventCommand eventCommand, BindingResult result, HttpSession session )throws Exception{
 		
 		if(log.isDebugEnabled()){
 			log.debug("eventCommand : "+eventCommand);
@@ -75,6 +77,19 @@ public class AdminEventUpdateController {
 				FileUtil_adminEvent.removeFile(oldFileName);
 			}
 		}
+		//=======================log남기기==================================
+				AdminEventLogCommand adminEventLogCommand = new AdminEventLogCommand();
+				
+				String u_uid = (String)session.getAttribute("u_uid");
+				
+				adminEventLogCommand.setE_log_uid(u_uid);
+				adminEventLogCommand.setE_log_change(2);
+				adminEventLogCommand.setE_log_message("["+u_uid+"] 사용자가 Event 게시판에 "+eventCommand.getEvent_title()+"글 을 수정했습니다.");
+				System.out.println("로그 : "+adminEventLogCommand);
+				
+				adminEventService.insertAdminEvent_Log(adminEventLogCommand);
+		//===============================================================		
+		
 		
 		return "redirect:/cafein_admin/event/List.do";
 		

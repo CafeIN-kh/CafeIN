@@ -9,52 +9,21 @@ import java.io.FileInputStream;
 
 import javax.imageio.ImageIO;
 
-public class FileUtil {
+public class FileUtil_admin_adminNotice {
+
+	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/adminNotice";*/
 	
+	//송지오컴퓨터용 지연언니컴퓨터로 합칠때는 위에꺼 주석풀면됨
+	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/admin_notice";
 	
-	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise";*/
-	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise";
 	public static String rename(String fileName)throws Exception{
 
 		if(fileName==null) return null;
 
-		String newName = "";
+		String newName = Long.toString(System.currentTimeMillis())+(int)(Math.random()*50);
 
 		return rename(fileName,newName);
 	}
-	
-	public static void makeFile(String filename){
-		 //파일 객체 생성
-		String path = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename;
-		
-        File file = new File(path);
-        //!표를 붙여주어 파일이 존재하지 않는 경우의 조건을 걸어줌
-        if(!file.exists()){
-            //디렉토리 생성 메서드
-            file.mkdirs();
-        } 
-	}
-
-	public static String moveFile(String filename){
-
-		String beforeFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename+".jpg";
-		String afterFilePath = "E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise/"+filename+"/"+filename+".jpg";
-		
-		try{
-			File file = new File(beforeFilePath);
-			
-			if(file.renameTo(new File(afterFilePath))){
-				return afterFilePath;
-			}else{
-				return null;
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	
 	public static String rename(String fileName,String newName)
 			throws Exception{
 		if(fileName == null) return null;

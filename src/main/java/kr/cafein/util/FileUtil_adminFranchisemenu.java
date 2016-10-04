@@ -11,8 +11,8 @@ import javax.imageio.ImageIO;
 
 public class FileUtil_adminFranchisemenu {
 
-	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise_menu";
-	
+	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise_menu";*/
+	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu";
 	//"F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/menu"
 	public static String rename(String fileName)throws Exception{
 

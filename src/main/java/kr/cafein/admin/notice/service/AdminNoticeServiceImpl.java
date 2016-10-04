@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.notice.dao.AdminNoticeMapper;
 import kr.cafein.admin.notice.domain.AdminNoticeCommand;
+import kr.cafein.admin.notice.domain.AdminNoticeLogCommand;
 
 @Service("adminNoticeService")
 public class AdminNoticeServiceImpl implements AdminNoticeService{
@@ -39,6 +40,17 @@ public class AdminNoticeServiceImpl implements AdminNoticeService{
 	@Override
 	public void insertNotice(AdminNoticeCommand noticeCommand) {
 		adminNoticeMapper.insertNotice(noticeCommand);
+		
+	}
+
+	@Override
+	public List<AdminNoticeLogCommand> getAdminNotice_LogList() {
+		return adminNoticeMapper.getAdminNotice_LogList();
+	}
+
+	@Override
+	public void insertAdminNotice_Log(AdminNoticeLogCommand adminNoticeLogCommand) {
+		adminNoticeMapper.insertAdminNotice_Log(adminNoticeLogCommand);
 		
 	}
 

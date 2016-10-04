@@ -15,7 +15,14 @@ public class AdminNoticeCommand {
 	private int notice_hit;
 	private String notice_img;
 	private MultipartFile upload;
+	private String notice_uid;
 	
+	public String getNotice_uid() {
+		return notice_uid;
+	}
+	public void setNotice_uid(String notice_uid) {
+		this.notice_uid = notice_uid;
+	}
 	public MultipartFile getUpload() {
 		return upload;
 	}

@@ -8,6 +8,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.cafein.admin.notice.domain.AdminNoticeLogCommand;
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
 import kr.cafein.admin.qna.domain.AdminQnaEmailCommand;
+import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
 import kr.cafein.admin.qna.service.AdminQnaService;
 
 @Controller
@@ -49,12 +52,14 @@ public class AdminQnaDetailController {
 	}
 	
 	@RequestMapping(value="/cafein_admin/qna/detail.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("emailCommand") @Valid AdminQnaEmailCommand email, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("emailCommand") @Valid AdminQnaEmailCommand email, BindingResult result, HttpSession session2 )throws Exception{
 		
 		if(log.isDebugEnabled()){
 			log.debug("QnaEmailCommand : " + email);
 		}
+		
 		int seq=email.getQ_em_num();
+		
 		 // 메일 관련 정보
         String host = "smtp.gmail.com";
         String username = "cafein.secret@gmail.com";
@@ -85,6 +90,26 @@ public class AdminQnaDetailController {
         transport.close();     	
         
         adminQnaService.updateQnaAnswer(seq);
+        
+		//=======================log남기기==================================		
+		AdminQnaLogCommand adminQnaLogCommand = new AdminQnaLogCommand();
+		
+		String u_uid = (String)session2.getAttribute("u_uid");
+		System.out.println("u_uid"+u_uid);
+		String qa_email = email.getQ_em_email();
+		int qa_num = email.getQ_em_num();
+		
+		
+		adminQnaLogCommand.setQa_log_uid(u_uid);
+		adminQnaLogCommand.setQa_log_change(0);
+		adminQnaLogCommand.setQa_email(qa_email);
+		adminQnaLogCommand.setQa_num(qa_num);
+		adminQnaLogCommand.setQa_log_message("["+u_uid+"] 사용자가 Qna 게시판에 "+qa_email+"가 작성한"+qa_num+"글 에 답장했습니다..");
+		
+		System.out.println("로그 : "+adminQnaLogCommand);
+		
+		adminQnaService.insertAdminQna_Log(adminQnaLogCommand);
+		//===============================================================
         
 		
 		return "redirect:/cafein_admin/qna/List.do";

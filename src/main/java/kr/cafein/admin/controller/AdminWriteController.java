@@ -28,7 +28,7 @@ public class AdminWriteController {
 	@Resource
 	private MemberService memberService;
 
-	@RequestMapping(value = "/admin/adminRegister.do", method = RequestMethod.POST)
+	@RequestMapping(value="/cafein_admin/member/adminRegister.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> process(@ModelAttribute @Valid MemberCommand memberCommand, BindingResult result) throws Exception {
 		

@@ -46,7 +46,7 @@
     	<put-attribute name="title" value="wedding 관리자"/>
     	<put-attribute name="header" value="/WEB-INF/views/template_admin/header.jsp"/>
     	<put-attribute name="menu" value="/WEB-INF/views/template_admin/menu.jsp"/>
-    	<put-attribute name="body" value="/WEB-INF/views/admin/home.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/home.jsp"/>
 
 
 
@@ -108,13 +108,13 @@
     
 <!--  관리자 회원관리 페이지 -->
     <definition name="memberManagement" extends="adminMain">
-    	<put-attribute name="body" value="/WEB-INF/views/admin/memberManagement.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/member/memberManagement.jsp"/>
     	
         
     	<put-list-attribute name="cssList">
     		
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
-        	
+        	    <add-attribute value="/CafeIN/resources/cafein_admin/css/bootstrap.min.css"/>
         <!-- Vendor CSS -->
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
@@ -132,6 +132,7 @@
 		<add-attribute value="/CafeIN/resources/cafein_admin/css/adminYJ.css"/>
 	
 		<add-attribute value="/CafeIN/resources/cafein_admin/css/jquery-ui.min.css"/>
+		<add-attribute value="/CafeIN/resources/cafein_admin/css/admin_memberManagement.css"/>
 
         	
         </put-list-attribute>
@@ -158,7 +159,7 @@
     
     
      <definition name="declared" extends="adminMain">
-    	<put-attribute name="body" value="/WEB-INF/views/admin/declaredList.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/member/declaredList.jsp"/>
     	
     	
         
@@ -855,7 +856,7 @@
     
     
     <definition name="franchisechart" extends="adminMain">
-    	<put-attribute name="body" value="/WEB-INF/views/admin/franchise_charts.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/franchise_charts.jsp"/>
 
     	
     	<put-list-attribute name="cssList">
@@ -918,7 +919,7 @@
     </definition>
     
     <definition name="privatechart" extends="adminMain">
-    	<put-attribute name="body" value="/WEB-INF/views/admin/private_charts.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/private_charts.jsp"/>
     	
     	<put-list-attribute name="cssList">
     		
@@ -974,7 +975,7 @@
     </definition>
     
     <definition name="customchart" extends="adminMain">
-    	<put-attribute name="body" value="/WEB-INF/views/admin/custom_charts.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/custom_charts.jsp"/>
     	
     	<put-list-attribute name="cssList">
     		

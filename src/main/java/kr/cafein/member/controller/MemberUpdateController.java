@@ -27,7 +27,7 @@ public class MemberUpdateController {
 	@Resource
 	private MemberService memberService;
 	
-	@RequestMapping(value={"/cafein_user/mypage/mypage_user_modify.do","/admin/admin_memberModify.do"},method=RequestMethod.GET)
+	@RequestMapping(value="/cafein_user/mypage/mypage_user_modify.do",method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
 		// Model -  뷰에 전달할 객체 정보를 담고 있는 Model을 리턴한다. 이때 뷰 이름은 요청 URL로부터 결정된다.
 		

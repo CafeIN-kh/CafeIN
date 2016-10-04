@@ -30,7 +30,7 @@ public class D_selectPickerAjaxController {
 또한 @ResponseBody가 적용된 컨트롤러는 context에 설정된 resolver를 무시한다.
 	 * */
 	
-	@RequestMapping("/admin/d_selectPickerAjax.do")
+	@RequestMapping("/cafein_admin/member/d_selectPickerAjax.do")
 	@ResponseBody
 	public Map<String,String> process(@RequestParam("d_seq") int d_seq,
 										@RequestParam("d_state") int d_state) throws Exception {

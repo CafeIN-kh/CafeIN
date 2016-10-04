@@ -30,7 +30,7 @@ public class AdminConfirmIdAjaxController {
 또한 @ResponseBody가 적용된 컨트롤러는 context에 설정된 resolver를 무시한다.
 	 * */
 	
-	@RequestMapping("/admin/confirmId.do")
+	@RequestMapping("/cafein_admin/member/confirmId.do")
 	@ResponseBody
 	public Map<String,String> process(@RequestParam("u_email") String u_email){
 		

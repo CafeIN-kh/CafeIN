@@ -100,8 +100,9 @@
                                         <li class="pm-search">
                                             <div class="pms-inner">
                                                 <i class="md md-search"></i>
-                                                <input type="hidden" name="custom_num" value="${adminCustomizingCommand.custom_num}"> 
-                                                <input type="text" name="keyword" placeholder="Search...">
+                                                <input type="hidden" id="custom_num" name="custom_num" value="${adminCustomizingCommand.custom_num}"> 
+                                                <input type="text" id="keyword"  name="keyword" placeholder="Search...">
+                                            	<input type="hidden" id="franchise_num" name="franchise_num" value="${adminCustomizingCommand.franchise_num}">
                                             </div>
                                         </li>
                                     </ul>

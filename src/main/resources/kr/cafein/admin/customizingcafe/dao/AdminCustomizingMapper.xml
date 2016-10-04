@@ -24,7 +24,7 @@
 					and (custom_name like '%' || #{keyword} || '%' or
 					custom_introduce like '%' || #{keyword} || '%' or
 					custom_recipe like '%' || #{keyword} || '%' or
-					u_uid like '%' || #{keyword} || '%')
+					cus.u_uid like '%' || #{keyword} || '%')
 				</if> 
 		ORDER BY custom_num ASC)a)
 			<![CDATA[

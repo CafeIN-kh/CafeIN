@@ -14,6 +14,7 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 
 
 @Repository
@@ -22,6 +23,13 @@ public interface AdminCustomizingMapper {
 
 	public int getRowCount(int custom_num);
 	
+	@Select("SELECT * FROM customizing_reply WHERE custom_num = #{custom_num}")
+	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num);
+
+	
+	
+	@Select("select u_uid from customizing where custom_num = #{custom_num}")
+	public String selectUid(Integer custom_num);
 	
 	@Select("SELECT custom_num, franchise_name,custom_name,custom_reg_date, custom_visit from customizing inner join franchise on customizing.franchise_num = franchise.franchise_num order by custom_reg_date desc")
 	public List<AdminCustomizingListCommand> selectCafeJoin();

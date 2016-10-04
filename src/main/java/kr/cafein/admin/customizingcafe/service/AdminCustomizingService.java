@@ -37,6 +37,9 @@ public interface AdminCustomizingService {
 	public String selectCafeName_Admin(Integer franchise_num);
 	public int selectFranchise_num(Integer custom_num);
 	public List<AdminCustomizingListCommand> selectCafeJoin();
+	public String selectUid(Integer custom_num);
+	
+	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num);
 
 
 }

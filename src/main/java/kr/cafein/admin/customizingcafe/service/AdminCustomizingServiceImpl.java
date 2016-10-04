@@ -7,18 +7,14 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
-import kr.cafein.domain.BookmarkCommand;
-import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.customizingcafe.dao.AdminCustomizingMapper;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
-import kr.cafein.admin.privatecafe.dao.PrivateMapper;
-
-import kr.cafein.admin.privatecafe.domain.PrivateCommand;
+import kr.cafein.domain.BookmarkCommand;
+import kr.cafein.domain.LikeCommand;
 
 @Service("admincustomizingService")
 public class AdminCustomizingServiceImpl implements AdminCustomizingService{
@@ -118,6 +114,18 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 		return adminCustomizingMapper.selectCafeJoin();
 	}
 
+	@Override
+	public String selectUid(Integer custom_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectUid(custom_num);
+	}
+
+	@Override
+	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectReply(custom_num);
+
+	}
 	
 
 

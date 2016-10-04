@@ -38,7 +38,9 @@ public class AdminCustomizingMenuListController {
                         @RequestParam(value="franchise_num",defaultValue="") int franchise_num,
                         HttpSession session)throws Exception{
       
+	   
 	   System.out.println("keyword :" + keyword);
+	   System.out.println("custom_num : " + custom_num);
 	   
 	   
       HashMap<String, Object> map = new HashMap<String, Object>();
@@ -49,8 +51,10 @@ public class AdminCustomizingMenuListController {
       //ÃÑ ±ÛÀÇ °¹¼ö ¶Ç´Â °Ë»öµÈ ±ÛÀÇ °¹¼ö
       int count = admincustomizingService.getRowCount(custom_num);
       
-      String u_uid = (String)session.getAttribute("u_uid");
+    /*  String u_uid = (String)session.getAttribute("u_uid");*/
       
+      String u_uid = admincustomizingService.selectUid(custom_num);
+      System.out.println("u_uid : " + u_uid);
       PagingUtil_adminCustomizing page = new PagingUtil_adminCustomizing(keyword,currentPage,count,rowCount,pageCount,custom_num,"customizingmenu.do");
       
       map.put("start", page.getStartCount());
@@ -88,7 +92,7 @@ public class AdminCustomizingMenuListController {
       System.out.println("count:" + count);
       System.out.println("franchise_num:" + franchise_num);
       System.out.println("u_uid:" + u_uid);
-
+      System.out.println("keyword: " + keyword);
       System.out.println("custom_num:" + custom_num);
       
 
@@ -117,7 +121,6 @@ public class AdminCustomizingMenuListController {
       mav.addObject("adminCustomizingCommand", adminCustomizingCommand);
       mav.addObject("hashTagOriginal1", hashTagOriginal1);
       mav.addObject("getLikeUser1", getLikeUser1);
-
       mav.addObject("searchList", searchList);
       mav.addObject("custom_num", custom_num);
       mav.addObject("count", count);

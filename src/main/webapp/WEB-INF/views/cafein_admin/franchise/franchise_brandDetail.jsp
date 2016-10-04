@@ -17,7 +17,7 @@
 					<img class="img-responsive"src="/CafeIN/upload/franchise/${franchise.franchise_img}">
 				</a>
 
-				<div class="dropdown pmop-message">
+				<!-- <div class="dropdown pmop-message">
 					<a data-toggle="dropdown" href=""
 						class="btn bgm-white btn-float z-depth-1"> <i
 						class="md md-message"></i>
@@ -30,11 +30,11 @@
 							<i class="md md-send"></i>
 						</button>
 					</div>
-				</div>
+				</div> -->
 
-				<a href="" class="pmop-edit"> <i class="md md-camera-alt"></i> <span
+				<!-- <a href="" class="pmop-edit"> <i class="md md-camera-alt"></i> <span
 					class="hidden-xs">Update Profile Picture</span>
-				</a>
+				</a> -->
 			</div>
 
 
@@ -44,19 +44,19 @@
 			</div>
 		</div>
 
-		<div class="pmo-block pmo-contact hidden-xs">
+		<%-- <div class="pmo-block pmo-contact hidden-xs">
 			<h2>Brand Info</h2>
 
 			<ul>
 				<li><i class="md md-phone"></i> ${franchise.franchise_num}</li>
 				<li><i class="md md-email"></i> ${franchise.franchise_name}</li>
-				<!-- 				<li><i class="socicon socicon-skype"></i> malinda.hollaway</li>
+				<!--	<li><i class="socicon socicon-skype"></i> malinda.hollaway</li>
 				<li><i class="socicon socicon-twitter"></i> @malinda
 					(twitter.com/malinda)</li>   -->
 				<li><i class="md md-location-on">
 						${franchise.franchise_introduce}</i>
 			</ul>
-		</div>
+		</div> --%>
 		<%-- <div class="pmo-block pmo-contact hidden-xs">
 			<h2>Brand Info</h2>
 			<ul>
@@ -89,12 +89,12 @@
 		<div class="pmb-block">
 			<div class="pmbb-header">
 				<h2>
-					<i class="md md-phone m-r-5"></i> Contact Information
+					<i class="md md-view-list"></i> Contact Information
 				</h2>
 
 				<ul class="actions">
 					<li class="dropdown"><a href="" data-toggle="dropdown"> <i
-							class="md md-more-vert"></i>
+							class="md md-border-color"></i>
 					</a>
 
 						<ul class="dropdown-menu dropdown-menu-right">

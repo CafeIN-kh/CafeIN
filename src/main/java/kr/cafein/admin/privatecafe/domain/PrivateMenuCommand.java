@@ -1,6 +1,5 @@
 package kr.cafein.admin.privatecafe.domain;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;

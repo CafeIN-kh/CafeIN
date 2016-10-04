@@ -49,6 +49,7 @@
     	<property name="maxWait" value="5"/>
     </bean>
 	<!-- mybatis 설정 -->
+	
 	<bean id="sqlSessionFactory" 
 	             class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -56,6 +57,7 @@
 												   kr.cafein.franchise.domain,
 												   kr.cafein.admin.domain,
 												   kr.cafein.admin.franchise.domain,
+												   kr.cafein.admin.customizingcafe.domain,
 												   kr.cafein.admin.event.domain,
 												   kr.cafein.admin.notice.domain,
 												   kr.cafein.admin.qna.domain,
@@ -81,6 +83,7 @@
 											kr.cafein.admin.notice.dao,
 											kr.cafein.admin.qna.dao,
 											kr.cafein.admin.privatecafe.dao,
+											kr.cafein.admin.customizingcafe.dao, 
 											kr.cafein.qna.dao,
 											kr.cafein.customizing.dao,
 											kr.cafein.admin.admin_notice.dao,
@@ -92,3 +95,10 @@
 										
 	</bean>
 </beans>
+
+
+ 
+
+
+ 
+											

@@ -15,7 +15,7 @@
 				<a href="franchise_menuUpdate.do"> <img src="/CafeIN/upload/franchise/${franchise.franchise_img}">
 				</a>
 
-				<div class="dropdown pmop-message">
+				<!-- <div class="dropdown pmop-message">
 					<a data-toggle="dropdown" href=""
 						class="btn bgm-white btn-float z-depth-1"> <i
 						class="md md-message"></i>
@@ -32,7 +32,7 @@
 
 				<a href="" class="pmop-edit"> <i class="md md-camera-alt"></i> <span
 					class="hidden-xs">Update Profile Picture</span>
-				</a>
+				</a> -->
 			</div>
 
 
@@ -42,19 +42,19 @@
 			</div>
 		</div>
 
-		<div class="pmo-block pmo-contact hidden-xs">
+		<%-- <div class="pmo-block pmo-contact hidden-xs">
 			<h2>Brand Info</h2>
 
 			<ul>
 				<li><i class="md md-phone"></i> ${franchise.franchise_num}</li>
 				<li><i class="md md-email"></i> ${franchise.franchise_name}</li>
-				<!-- 				<li><i class="socicon socicon-skype"></i> malinda.hollaway</li>
+								<li><i class="socicon socicon-skype"></i> malinda.hollaway</li>
 				<li><i class="socicon socicon-twitter"></i> @malinda
-					(twitter.com/malinda)</li>   -->
+					(twitter.com/malinda)</li>  
 				<li class="korean-font"><i class="md md-location-on">
 						${franchise.franchise_introduce}</i>
 			</ul>
-		</div>
+		</div> --%>
 
 
 	</div>
@@ -69,10 +69,10 @@
 			<div class="p-header">
 				<form action="franchise_menuList.do" id="search_form" method="get">
 					<ul class="p-menu">
-						<li class="active"><a href=""><i
+						<!-- <li class="active"><a href=""><i
 								class="md md-person-add hidden-xs"></i> Recommanded</a></li>
 						<li><a href=""><i class="md md-people hidden-xs"></i>
-								Connected</a></li>
+								Connected</a></li> -->
 						<li class="pm-search">
 							<div class="pms-inner">
 								<i class="md md-search"></i> 

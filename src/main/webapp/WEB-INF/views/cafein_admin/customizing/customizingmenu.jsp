@@ -21,7 +21,7 @@
 							<div class="fileinput fileinput-new" data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/private/${privatecafe.pcafe_img}" alt=""> 
+									<img src="${pageContext.request.contextPath}/upload/customizing/${adminCustomizingCommand.custom_img}" alt=""> 
 								</div>
 								<div style="display:none;">
 									<span class="btn btn-info btn-file"> <span
@@ -37,7 +37,7 @@
 
                      <div class="pmo-stat">
                      <%-- <c:forEach items="${list1 }" var="list1"> --%>
-                        <h6 class="m-0 c-white">${privatecafe.pcafe_visit}<br>Total Visit</h6>
+                        <h6 class="m-0 c-white">${adminCustomizingCommand.custom_visit}<br>Total Visit</h6>
                    
                      <%-- </c:forEach> --%></div>
                      <div class="m-t-10">
@@ -48,17 +48,17 @@
                   </div>
                             
                             <div class="pmo-block pmo-contact hidden-xs">
-                                <h2>Private Cafe Info</h2>
+                                <h2>Customizing Info</h2>
                                 
                                 <ul>
-                                    <li><i class="md md-phone"></i><h5> ${privatecafe.pcafe_name}</h5></li>
-                                    <li><i class="md md-email"></i> ${privatecafe.pcafe_address}</li>
-                                    <li><i class="socicon socicon-skype"></i> ${privatecafe.pcafe_phone}</li>
-                                    <li><i class="socicon socicon-twitter"></i> ${privatecafe.pcafe_time}</li>
+                                    <li><i class="md md-phone"></i><h5> ${adminCustomizingCommand.custom_name}</h5></li>
+                                    <li><i class="md md-email"></i> ${adminCustomizingCommand.custom_introduce}</li>
+                                    <li><i class="socicon socicon-skype"></i> ${adminCustomizingCommand.custom_recipe}</li>
+                                    <li><i class="socicon socicon-twitter"></i> ${adminCustomizingCommand.custom_reg_date}</li>
                                     <li>
                                         <i class="md md-location-on"></i>
                                         <address class="m-b-0">
-                                           		${privatecafe.pcafe_hash_tag}<%-- ,${privatecafe.pcafe_hash_tag} <br/>
+                                           		${adminCustomizingCommand.custom_hash_tag}<%-- ,${privatecafe.pcafe_hash_tag} <br/>
                                             	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
                                             	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} --%>
                                         </address>
@@ -70,35 +70,39 @@
                                
                                 
                                 <h5>Following User</h5>
-                              	<div class="pmob-body">
-					<c:forEach items="${getLikeUser }" var="getLikeUser">
-						<div class="row">
-							<code>${getLikeUser.u_uid}</code>
-							
+                                
+                               
+						<div class="pmob-body">
+							<c:forEach items="${getLikeUser1 }" var="getLikeUser1">
+								<div class="row">
+									<code>${getLikeUser1.u_uid}</code>
 
+
+								</div>
+							</c:forEach>
 						</div>
-						</c:forEach>
-					</div>
                             </div>
                         </div>
                         
                         <div class="pm-body clearfix">
                             <ul class="tab-nav tn-justified">
-                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privatecafe.pcafe_num}">Private Cafe</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privatecafe.pcafe_num}">Cafe Menu</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizing-detail.do?custom_num=${adminCustomizingCommand.custom_num}">Customizing</a></li>
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${adminCustomizingCommand.custom_num}&franchise_num=${adminCustomizingCommand.franchise_num}">Cafe Menu</a></li>
+                                <li class="active waves-effect"><a href="#">Customizing	Reply</a></li>
                             </ul>
                             
                             <div class="pmb-block">
                                 <div class="p-header">
-                                <form action="privatecafemenu.do" id="search_form" method="get">
+                                <form action="customizingmenu.do" id="search_form" method="get">
                                     <ul class="p-menu">
                                         
                                         <li><a href=""><i class="md md-people hidden-xs"></i> Search Menu</a></li>
                                         <li class="pm-search">
                                             <div class="pms-inner">
                                                 <i class="md md-search"></i>
-                                                <input type="hidden" name="pcafe_num" value="${privatecafe.pcafe_num}"> 
-                                                <input type="text" name="keyword" placeholder="Search...">
+                                                <input type="hidden" id="custom_num" name="custom_num" value="${adminCustomizingCommand.custom_num}"> 
+                                                <input type="text" id="keyword"  name="keyword" placeholder="Search...">
+                                            	<input type="hidden" id="franchise_num" name="franchise_num" value="${adminCustomizingCommand.franchise_num}">
                                             </div>
                                         </li>
                                     </ul>
@@ -123,22 +127,23 @@
                                 </div>
                                 
                                   <div class="contacts clearfix row">
-                                <c:forEach items="${menuList }" var="menuList">
+                                <c:forEach items="${searchList }" var="searchList">
               
                                     <div class="col-md-3 col-sm-6 col-xs-6">
                                         <div class="c-item">
                                             <a href="" class="ci-avatar">
-                                                <img src="${pageContext.request.contextPath}/upload/private_menu/${menuList.pmenu_img}" alt="">
+                                                <img src="${pageContext.request.contextPath}/upload/customizing/${searchList.custom_img}" alt="">
+                                           
                                             </a>
                                             
                                             <div class="c-info">
-                                                <strong>${menuList.pmenu_name}</strong>
-                                                <small>${menuList.pmenu_price}원</small>
+                                                <strong>${searchList.custom_name}</strong>
+                                                <small>${searchList.custom_visit}view</small>
                                             </div>
                                             
                                             <div class="c-footer">
-                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
-                                                <a href="privatecafemenu-delete.do?pmenu_num=${menuList.pmenu_num}&pcafe_num=${menuList.pcafe_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a>
+                                                <a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu-modify.do?custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
+                                                <a href="customizingmenu-delete.do?custom_num=${searchList.custom_num}&custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a>
                                             </div>
                                         </div>
                                     </div>

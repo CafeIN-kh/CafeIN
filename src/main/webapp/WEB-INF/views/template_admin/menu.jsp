@@ -16,59 +16,59 @@
 					</a>
 
 					<ul class="main-menu">
-						<li><a href="profile-about.html"><i class="md md-person"></i>
+						<!-- <li><a href="profile-about.html"><i class="md md-person"></i>
 								View Profile</a></li>
 						<li><a href=""><i class="md md-settings-input-antenna"></i>
 								Privacy Settings</a></li>
-						<li><a href=""><i class="md md-settings"></i> Settings</a></li>
+						<li><a href=""><i class="md md-settings"></i> Settings</a></li> -->
 						<li><a href=""><i class="md md-history"></i> Logout</a></li>
 					</ul>
 				</div>
 				
 				<ul class="main-menu">
 					<li class="active"><a href="${pageContext.request.contextPath}/admin/main.do"><i class="md md-home"></i> Home</a></li>
-					<li class="sub-menu"><a href=""><i class="md md-perm-identity"></i> management</a>
+					<li class="sub-menu"><a href=""><i class="md md-perm-identity"></i> User Management</a>
 						<ul>
 						<!-- 같은경로  -->
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/memberlist.do">User Data Tables</a></li>
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/declaredlist.do">report Board</a></li>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/memberlist.do">User Management</a></li>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/declaredlist.do">User Report</a></li>
 						</ul>
 					</li>
 						
 						
-						
-						
-						
-						<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Customizing Cafe</a>
-
+					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>Franchise Cafe</a>
 						<ul>
-							<li><a href="">Customizing Cafe</a></li>
-							<li><a href="">Customizing LogList</a></li>
-						</ul>
-						</li>
-						
-					<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise_Cafe AdminPage</a>
-						<ul>
-							<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise_Cafe AdminPage</a>
-								<ul><li style="list-style: none; text-align: right; padding-right: 2px;"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
-						</ul>
-							</li>
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Write & inquiry</a></li>
-							<li><a href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandLogList.do">Franchise LogList</a></li>
+							<%-- <li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise Cafe</a>
+								<ul>
+									<li style="list-style: none; text-align: right; padding-right: 2px;">
+										<a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Cafe</a>
+									</li>
+								</ul>
+							</li> --%>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandList.do">Franchise Cafe</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandLogList.do">Franchise Log</a></li>
 						</ul>
 					</li>
 					
-					<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Private_Cafe AdminPage</a>
+					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>Private Cafe </a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
-							<li><a href="">Private LogList</a></li>
+							<li><a href="">Private Log</a></li>
 						</ul>
 					</li>
 					
-					
+					<li class="sub-menu">
+						<a href="">
+							<i class="md md-view-list"></i>Customizing Cafe
+						</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing Cafe</a></li>
+							<li><a href="">Customizing Log</a></li>
+						</ul>
+					</li>
 						
-						
-					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>Notice & QnA</a>
+					<li class="sub-menu">
+						<a href=""><i class="md md-view-list"></i>Notice & QnA</a>
 					
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/List.do">Notice</a></li>
@@ -78,8 +78,7 @@
 							<li><a  href="${pageContext.request.contextPath}/cafein_admin/qna/List.do">Q&A Pages</a></li>
 							<li><a  href="${pageContext.request.contextPath}/cafein_admin/qna/AdminLogList.do">Q&A Log</a></li>
 						</ul>
-						
-						</li>
+					</li>
 						
 						<%-- 
 						<li>
@@ -118,11 +117,11 @@
                    </li>
                             </li> --%>
                             
-                        <li class="sub-menu"><a href=""><i class="md md-announcement"></i>Admin Notice</a>
+                        <li class="sub-menu"><a href=""><i class="md md-view-list"></i>Admin Notice</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">Admin Notice List</a></li>
 								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/write.do">Admin Notice Write</a></li>
-								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/LogList.do">Admin Notice Log List</a></li>
+								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/LogList.do">Admin Notice Log</a></li>
 							</ul>
 						</li>
 						

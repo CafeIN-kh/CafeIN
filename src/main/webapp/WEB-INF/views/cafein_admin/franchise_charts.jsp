@@ -11,23 +11,6 @@
 					library for jQuery, with a focus on simple usage, attractive looks
 					and interactive features.</small>
 			</h2>
-
-			<ul class="actions">
-				<li><a href=""> <i class="md md-trending-up"></i>
-				</a></li>
-				<li><a href=""> <i class="md md-done-all"></i>
-				</a></li>
-				<li class="dropdown"><a href="" data-toggle="dropdown"> <i
-						class="md md-more-vert"></i>
-				</a>
-
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="">Refresh</a></li>
-						<li><a href="">Manage Widgets</a></li>
-						<li><a href="">Widgets Settings</a></li>
-					</ul></li>
-			</ul>
-
 		</div>
 		<div class="col-md-12">
 			<div class="dash-widgets">

@@ -962,7 +962,7 @@
 	
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
-        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/bar-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/private-bar-chart.js"/>
         
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/pie-chart.js"/>
         
@@ -1018,7 +1018,7 @@
 	
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/curved-line-chart.js"/>
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/line-chart.js"/>
-        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/bar-chart.js"/>
+        <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/custom-bar-chart.js"/>
         
         <add-attribute value="/CafeIN/resources/cafein_admin/js/flot-charts/pie-chart.js"/>
         

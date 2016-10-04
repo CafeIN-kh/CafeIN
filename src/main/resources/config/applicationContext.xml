@@ -64,7 +64,9 @@
 												   kr.cafein.customizing.domain,
 												   kr.cafein.admin.admin_notice.domain,
 												   kr.cafein.admin.main.domain,
-												   kr.cafein.admin.franchise.chart.domain"/>
+												   kr.cafein.admin.franchise.chart.domain
+												   kr.cafein.admin.pcafe.chart.domain
+												   kr.cafein.admin.custom.chart.domain"/>
 
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -83,7 +85,9 @@
 											kr.cafein.customizing.dao,
 											kr.cafein.admin.admin_notice.dao,
 											kr.cafein.admin.main.dao,
-											kr.cafein.admin.franchise.chart.dao"/>
+											kr.cafein.admin.franchise.chart.dao
+											kr.cafein.admin.pcafe.chart.dao
+											kr.cafein.admin.custom.chart.dao"/>
 
 										
 	</bean>

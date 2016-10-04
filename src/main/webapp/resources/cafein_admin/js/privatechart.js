@@ -52,49 +52,50 @@ $(document).ready(function () {
 
 	$.ajax({
 		type:'post',
-		url:'franchise_pageCount.do',
+		url:'pcafe_Count.do',
 		dataType:'json',
 		cache:false,
 		timeout:30000,
 		success:function(data) {
-			var franchisePageCount = new Array();
-			var fDeClaredCount = new Array();
+			var pCafePageCount = new Array();
+			var pDeClaredCount = new Array();
 
-			$(data.franchisePV).each(function(index,item){
-				franchisePageCount[index] = item.ucnt_log_franchise;
+			$(data.pCafePV).each(function(index,item){
+				pCafePageCount[index] = item.ucnt_log_private;
+				
 			});
 			
-			$(data.fDeclaredCount).each(function(index,item){
-				fDeClaredCount[index] = item.count;
+			$(data.pDeClaredCount).each(function(index,item){
+				pDeClaredCount[index] = item.count;
 				
 			});
 			if ($('.dash-widget-visits')[0]) {
 
 				for(i=0;i<7;i++){
-					if(franchisePageCount[i] == null){
-						franchisePageCount[i] = 0;
+					if(pCafePageCount[i] == null){
+						pCafePageCount[i] = 0;
 					}
 				}
-				sparklineLine('dash-widget-visits', [franchisePageCount[0],franchisePageCount[1],franchisePageCount[2],franchisePageCount[3],franchisePageCount[4],franchisePageCount[5],franchisePageCount[6]], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
+				sparklineLine('dash-widget-visits', [pCafePageCount[0],pCafePageCount[1],pCafePageCount[2],pCafePageCount[3],pCafePageCount[4],pCafePageCount[5],pCafePageCount[6]], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
 			}
 			
 
 			if ($('.dash-widget-visits1')[0]) {
 				for(i=0;i<7;i++){
-					if(fDeClaredCount[i] == null){
-						fDeClaredCount[i] =0;
+					if(pDeClaredCount[i] == null){
+						pDeClaredCount[i] =0;
 					}
 				}
-				sparklineLine('dash-widget-visits1', [fDeClaredCount[0],fDeClaredCount[1],fDeClaredCount[2],fDeClaredCount[3],fDeClaredCount[4],fDeClaredCount[5],fDeClaredCount[6]], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
+				sparklineLine('dash-widget-visits1', [pDeClaredCount[0],pDeClaredCount[1],pDeClaredCount[2],pDeClaredCount[3],pDeClaredCount[4],pDeClaredCount[5],pDeClaredCount[6]], '100%', '95px', 'rgba(255,255,255,0.7)', 'rgba(0,0,0,0)', 2, 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 'rgba(255,255,255,0.4)', 5, 'rgba(255,255,255,0.4)', '#fff');
 			}
 
 
-			var fpvCount = parseInt(data.fpvCount);
+			var ppvCount = parseInt(data.ppvCount);
 
-			$("#fpvCount").text(commify(fpvCount));
+			$("#ppvCount").text(commify(ppvCount));
 			
-			var fdcCount = parseInt(data.fDeClaredTotal);
-			$("#fdcCount").text(commify(fdcCount));
+			var pdcCount = parseInt(data.pDeClaredTotal);
+			$("#pdcCount").text(commify(pdcCount));
 
 		},error:function() {
 			alert('네트워크 오류 발생!');

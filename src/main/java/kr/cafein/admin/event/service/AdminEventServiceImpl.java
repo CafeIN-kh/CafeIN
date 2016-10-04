@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.event.dao.AdminEventMapper;
 import kr.cafein.admin.event.domain.AdminEventCommand;
+import kr.cafein.admin.event.domain.AdminEventLogCommand;
 
 @Service("adminEventService")
 public class AdminEventServiceImpl implements AdminEventService {
@@ -40,6 +41,17 @@ public class AdminEventServiceImpl implements AdminEventService {
 	@Override
 	public void insertEvent(AdminEventCommand eventCommand) {
 		adminEventMapper.insertEvent(eventCommand);
+	}
+
+	@Override
+	public List<AdminEventLogCommand> getAdminEvent_LogList() {
+		return adminEventMapper.getAdminEvent_LogList();
+	}
+
+	@Override
+	public void insertAdminEvent_Log(AdminEventLogCommand adminevnetLogCommand) {
+		adminEventMapper.insertAdminEvent_Log(adminevnetLogCommand);
+		
 	}
 
 }

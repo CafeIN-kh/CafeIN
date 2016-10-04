@@ -12,7 +12,14 @@ public class AdminEventCommand {
 	private int event_hit;
 	private String event_img;
 	private MultipartFile upload;
+	private String event_uid;
 	
+	public String getEvent_uid() {
+		return event_uid;
+	}
+	public void setEvent_uid(String event_uid) {
+		this.event_uid = event_uid;
+	}
 	public MultipartFile getUpload() {
 		return upload;
 	}

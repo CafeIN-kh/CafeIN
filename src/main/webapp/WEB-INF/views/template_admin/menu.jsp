@@ -41,13 +41,13 @@
 						
 						
 						
-						<li class="sub-menu"><a href=""><i
-							class="md md-now-widgets"></i>Customizing Cafe</a>
+						<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Customizing Cafe</a>
 
 						<ul>
 							<li><a href="">Customizing Cafe</a></li>
 							<li><a href="">Customizing LogList</a></li>
-						</ul></li>
+						</ul>
+						</li>
 						
 					<li class="sub-menu"><a href=""><i class="md md-now-widgets"></i>Franchise_Cafe AdminPage</a>
 						<ul>
@@ -74,16 +74,28 @@
 					
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/List.do">Notice</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/notice/AdminLogList.do">Notice Log</a></li>
 							<li><a href="${pageContext.request.contextPath}/cafein_admin/event/List.do">Event</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/event/AdminLogList.do">Event Log</a></li>
 							<li><a  href="${pageContext.request.contextPath}/cafein_admin/qna/List.do">Q&A Pages</a></li>
+							<li><a  href="${pageContext.request.contextPath}/cafein_admin/qna/AdminLogList.do">Q&A Log</a></li>
 						</ul>
 						
 						</li>
-						
+						<%-- 
 						<li>
                                 <a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do"><i class="md md-announcement"></i> Admin Notice</a>
                                
-                            </li>
+                            </li> --%>
+                            
+                            <li class="sub-menu"><a href=""><i class="md md-announcement"></i>Admin Notice</a>
+
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">Admin Notice List</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/write.do">Admin Notice Write</a></li>
+							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/LogList.do">Admin Notice Log List</a></li>
+						</ul>
+						</li>
 <%-- 
 					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
 							class="md md-content-copy"></i> Q&A Pages</a></li> --%>

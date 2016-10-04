@@ -50,7 +50,7 @@ create table franchise_menu(
    fmenu_img varchar2(100) not null,
    fmenu_introduce varchar(4000),
    constraint franchise_menu_pk primary key (fmenu_num),
-   constraint franchise_menu_fk foreign key (franchise_num) references franchise(franchise_num)
+   constraint franchise_menu_fk foreign key (franchise_num) references franchise(franchise_num) on delete cascade
 );
 
 drop sequence franchise_menu_seq;

@@ -617,6 +617,24 @@
     	 </put-list-attribute>
     </definition>
     
+    <definition name="qnaLogList" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/qna/qnaLogList.jsp"/>
+    	 <put-list-attribute name="jsList">
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/qna/qna_table.js"/>
+    	 	 
+    	 </put-list-attribute>
+    </definition>
+    
     <definition name="qnaDetail" extends="adminMain">
     	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/qna/qnaView.jsp"/>
     </definition>
@@ -715,6 +733,23 @@
           </put-list-attribute>
     </definition>
     
+      <definition name="noticeLogList" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/notice/noticeLogList.jsp"/>
+    	 <put-list-attribute name="jsList">
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/notice/notice_table.js"/>
+    	 	 
+    	 </put-list-attribute>
+    </definition>
+    
      <!--============================================= event ==================================================================-->
     
     <definition name="eventList" extends="adminMain">
@@ -811,8 +846,101 @@
           </put-list-attribute>
     </definition>
     
+    <definition name="eventLogList" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/event/eventLogList.jsp"/>
+    	 <put-list-attribute name="jsList">
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+    	 	 <add-attribute value="/CafeIN/resources/cafein_admin/js/event/event_table.js"/>
+    	 	 
+    	 </put-list-attribute>
+    </definition>
+    
+    <!--================================= AdminNotice============================================= -->
     <definition name="admin_noticeList" extends="adminMain">
     	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/admin_notice/admin_noticeList.jsp"/>
+    </definition>
+    
+     <definition name="admin_noticeWrite" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/admin_notice/admin_noticeWrite.jsp"/>
+    	<put-list-attribute name="cssList">
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.css"/>
+              <add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+          </put-list-attribute>   
+          
+          <put-list-attribute name="jsList">
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/moment/moment.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-select/bootstrap-select.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/chosen/chosen.jquery.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.all.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/input-mask/input-mask.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fileinput/fileinput.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+          </put-list-attribute>
+    </definition>
+     <definition name="admin_noticeModify" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/admin_notice/admin_noticeModify.jsp"/>
+    	<put-list-attribute name="cssList">
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.css"/>
+              <add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+          </put-list-attribute>   
+          
+          <put-list-attribute name="jsList">
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/moment/moment.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-select/bootstrap-select.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/chosen/chosen.jquery.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.all.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/input-mask/input-mask.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/fileinput/fileinput.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+             <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+          </put-list-attribute>
+    </definition>
+    
+     <definition name="admin_notice_logList" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/admin_notice/admin_notice_LogList.jsp"/>
     </definition>
     
     

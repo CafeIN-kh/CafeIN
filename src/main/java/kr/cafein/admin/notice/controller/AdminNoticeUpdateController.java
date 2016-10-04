@@ -3,6 +3,7 @@ package kr.cafein.admin.notice.controller;
 import java.io.File;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.cafein.admin.notice.domain.AdminNoticeCommand;
+import kr.cafein.admin.notice.domain.AdminNoticeLogCommand;
 import kr.cafein.admin.notice.service.AdminNoticeService;
 import kr.cafein.util.FileUtil_adminNotice;
 
@@ -39,7 +41,7 @@ public class AdminNoticeUpdateController {
 	}
 	
 	@RequestMapping(value="/cafein_admin/notice/update.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("noticeCommand") @Valid AdminNoticeCommand noticeCommand, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("noticeCommand") @Valid AdminNoticeCommand noticeCommand, BindingResult result, HttpSession session)throws Exception{
 		
 		if(log.isDebugEnabled()){
 			log.debug("noticeCommand : "+noticeCommand);
@@ -76,6 +78,19 @@ public class AdminNoticeUpdateController {
 			}
 		}
 		
+		//=======================log남기기==================================
+		AdminNoticeLogCommand adminNoticeLogCommand = new AdminNoticeLogCommand();
+		
+		String u_uid = (String)session.getAttribute("u_uid");
+		
+		adminNoticeLogCommand.setN_log_uid(u_uid);
+		adminNoticeLogCommand.setN_log_change(2);
+		adminNoticeLogCommand.setN_log_message("["+u_uid+"] 사용자가 Notice 게시판에 "+noticeCommand.getNotice_title()+"글 을 수정했습니다.");
+		System.out.println("로그 : "+adminNoticeLogCommand);
+		
+		adminNoticeService.insertAdminNotice_Log(adminNoticeLogCommand);
+		//===============================================================
+	
 		return "redirect:/cafein_admin/notice/List.do";
 		
 	}

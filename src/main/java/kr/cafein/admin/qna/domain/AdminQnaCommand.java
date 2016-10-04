@@ -10,7 +10,7 @@ public class AdminQnaCommand {
 	private String qa_password;
 	private Date qa_reg_date;
 	private int qa_f_option;
-
+	private int qa_answer;
 	
 	public int getQa_answer() {
 		return qa_answer;
@@ -18,9 +18,6 @@ public class AdminQnaCommand {
 	public void setQa_answer(int qa_answer) {
 		this.qa_answer = qa_answer;
 	}
-
-	private int qa_answer;
-	
 	public int getQa_num() {
 		return qa_num;
 	}

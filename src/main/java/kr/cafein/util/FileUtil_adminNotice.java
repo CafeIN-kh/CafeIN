@@ -11,7 +11,10 @@ import javax.imageio.ImageIO;
 
 public class FileUtil_adminNotice {
 
-	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/notice";
+	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/notice";*/
+	
+	//송지오컴퓨터용 지연언니컴퓨터로 합칠때는 위에꺼 주석풀면됨
+	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/notice";
 	
 	public static String rename(String fileName)throws Exception{
 

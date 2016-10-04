@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.qna.dao.AdminQnaMapper;
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
+import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
 
 @Service("adminQnaService")
 public class AdminQnaServiceImpl implements AdminQnaService{
@@ -34,6 +35,17 @@ public class AdminQnaServiceImpl implements AdminQnaService{
 	@Override
 	public void updateQnaAnswer(Integer seq) {
 		adminQnaMapper.updateQnaAnswer(seq);
+		
+	}
+
+	@Override
+	public List<AdminQnaLogCommand> getAdminQna_LogList() {
+		return adminQnaMapper.getAdminQna_LogList();
+	}
+
+	@Override
+	public void insertAdminQna_Log(AdminQnaLogCommand adminQnaLogCommand) {
+		adminQnaMapper.insertAdminQna_Log(adminQnaLogCommand);
 		
 	}
 

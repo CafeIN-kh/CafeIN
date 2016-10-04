@@ -11,23 +11,6 @@
 					library for jQuery, with a focus on simple usage, attractive looks
 					and interactive features.</small>
 			</h2>
-
-			<ul class="actions">
-				<li><a href=""> <i class="md md-trending-up"></i>
-				</a></li>
-				<li><a href=""> <i class="md md-done-all"></i>
-				</a></li>
-				<li class="dropdown"><a href="" data-toggle="dropdown"> <i
-						class="md md-more-vert"></i>
-				</a>
-
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="">Refresh</a></li>
-						<li><a href="">Manage Widgets</a></li>
-						<li><a href="">Widgets Settings</a></li>
-					</ul></li>
-			</ul>
-
 		</div>
 		<div class="col-md-12">
 			<div class="dash-widgets">
@@ -57,7 +40,7 @@
 							<div class="p-20">
 
 								<small>Page Views</small>
-								<h3 class="m-0 f-400" id="fpvCount"></h3>
+								<h3 class="m-0 f-400" id="ppvCount"></h3>
 
 							
 							</div>
@@ -88,7 +71,7 @@
 							<div class="p-20">
 
 								<small>Page Views</small>
-								<h3 class="m-0 f-400" id="fdcCount">47,896,536</h3>
+								<h3 class="m-0 f-400" id="pdcCount">47,896,536</h3>
 
 								
 							</div>
@@ -101,7 +84,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-						<h2>Franchise Like Day Chart</h2>
+						<h2>Private Like Day Chart</h2>
 
 						<ul class="actions">
 							<li class="dropdown action-show"><a href=""
@@ -123,7 +106,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-						<h2>Franchise Like Month Chart</h2>
+						<h2>Private Like Month Chart</h2>
 
 						<ul class="actions">
 							<li class="dropdown action-show"><a href=""
@@ -145,7 +128,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-						<h2>Franchise BookMark Day Chart</h2>
+						<h2>Private BookMark Day Chart</h2>
 
 						<ul class="actions">
 							<li class="dropdown action-show"><a href=""
@@ -167,7 +150,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-						<h2>Franchise BookMark Month Chart</h2>
+						<h2>Private BookMark Month Chart</h2>
 
 						<ul class="actions">
 							<li class="dropdown action-show"><a href=""

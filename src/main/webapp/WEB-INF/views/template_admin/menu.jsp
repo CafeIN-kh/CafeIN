@@ -128,9 +128,9 @@
 						<li class="sub-menu">
 	                        <a href=""><i class="md md-trending-up"></i>Charts</a>
 	                        <ul>
-	                           <li><a href="franchise_charts.do">Franchise</a></li>
-	                           <li><a href="private_charts.do">Private</a></li>
-	                           <li><a href="custom_charts.do">Custom</a></li>
+	                           <li><a href="/CafeIN/admin/franchise_charts.do">Franchise</a></li>
+	                           <li><a href="/CafeIN/admin/private_charts.do">Private</a></li>
+	                           <li><a href="/CafeIN/admin/custom_charts.do">Custom</a></li>
 	                        </ul>
 	                    </li>
 <%-- 

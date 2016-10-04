@@ -87,7 +87,8 @@
                         <div class="pm-body clearfix">
                             <ul class="tab-nav tn-justified">
                                 <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizing-detail.do?custom_num=${adminCustomizingCommand.custom_num}">Customizing</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${adminCustomizingCommand.custom_num}">Cafe Menu</a></li>
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${adminCustomizingCommand.custom_num}&franchise_num=${adminCustomizingCommand.franchise_num}">Cafe Menu</a></li>
+                                <li class="active waves-effect"><a href="#">Customizing	Reply</a></li>
                             </ul>
                             
                             <div class="pmb-block">

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Customizing;
@@ -61,6 +62,11 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		
 		
 		
+	
+/*		AdminCustomizingDetailCommand  selectid =  admincustomizingService.selectCafeName_Admin();*/
+		
+		
+		
 		
 		/*
 		//개인카페의 이미지들을 지우기 위해 개인카페 정보 찾기
@@ -96,12 +102,18 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
            }
            admincustomizing.setCustom_hash_tag(admincustomizing.getCustom_hash_tag() + "#"+hashTagArray[i] + " ");
         }
+        
+        Integer franchise_num = admincustomizingService.selectFranchise_num(custom_num);
+        
+        String franchise_name = admincustomizingService.selectCafeName_Admin(franchise_num);
          
 		/*mav.addObject("list1", list1);*/
 		mav.addObject("admincustomizing", admincustomizing);
 		mav.addObject("hashTagOriginal1", hashTagOriginal1);
 		mav.addObject("getLikeUser1", getLikeUser1);
+//		mav.addObject("selectid", selectid);
 		mav.addObject("customizingDetailCafeNameCommand", customizingDetailCafeNameCommand);
+		mav.addObject("franchise_name", franchise_name);
 
 		/*System.out.println(list1);*/
 		return mav;
@@ -119,6 +131,10 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		if(result.hasErrors()){
 			return "adminCustomizingDetail";
 		}
+		
+		
+		
+		
 		
 		AdminCustomizingCommand ccommand = null;
 		String oldFileName = "";

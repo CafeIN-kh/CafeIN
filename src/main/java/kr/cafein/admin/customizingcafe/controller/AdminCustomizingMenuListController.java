@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -31,35 +32,47 @@ public class AdminCustomizingMenuListController {
    
    
    @RequestMapping("/admin/customizing/customizingmenu.do")
-   public ModelAndView process(@RequestParam(value="custom_num",defaultValue="") int custom_num,
+   public ModelAndView process(@RequestParam(value="custom_num") int custom_num,
                         @RequestParam(value="pageNum",defaultValue="1") int currentPage,
-                        @RequestParam(value="keyword",defaultValue="") String keyword)throws Exception{
+                        @RequestParam(value="keyword",defaultValue="") String keyword,
+                        @RequestParam(value="franchise_num",defaultValue="") int franchise_num,
+                        HttpSession session)throws Exception{
       
-   
+	   System.out.println("keyword :" + keyword);
+	   
+	   
       HashMap<String, Object> map = new HashMap<String, Object>();
+    
       map.put("keyword", keyword);
       
       
       //총 글의 갯수 또는 검색된 글의 갯수
       int count = admincustomizingService.getRowCount(custom_num);
       
+      String u_uid = (String)session.getAttribute("u_uid");
+      
       PagingUtil_adminCustomizing page = new PagingUtil_adminCustomizing(keyword,currentPage,count,rowCount,pageCount,custom_num,"customizingmenu.do");
       
       map.put("start", page.getStartCount());
       map.put("end", page.getEndCount());
       map.put("custom_num", custom_num);
+      map.put("u_uid", u_uid);
+      map.put("franchise_num", franchise_num);
       
+      log.debug("franchise_num : " + franchise_num);
       System.out.println("==============");
       
       
       AdminCustomizingCommand adminCustomizingCommand = admincustomizingService.getCustomizing(custom_num);
       
-      /*List<PrivateMenuCommand> menuList = privateService.menuList(map);*/
+      
+     /*List<PrivateMenuCommand> menuList = privateService.menuList(map);*/
       List<AdminCustomizingDetailCommand> searchList = null;
      
       if(log.isDebugEnabled()){
          log.debug("pcafe_num : "+custom_num);
       }
+      
       
       
       
@@ -71,6 +84,14 @@ public class AdminCustomizingMenuListController {
     	  searchList = Collections.emptyList();
       }
       
+      System.out.println("searchList:" + searchList);
+      System.out.println("count:" + count);
+      System.out.println("franchise_num:" + franchise_num);
+      System.out.println("u_uid:" + u_uid);
+
+      System.out.println("custom_num:" + custom_num);
+      
+
       
     //해쉬태그
       String hashTag = adminCustomizingCommand.getCustom_hash_tag();

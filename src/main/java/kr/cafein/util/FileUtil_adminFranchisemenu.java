@@ -13,7 +13,7 @@ public class FileUtil_adminFranchisemenu {
 
 	
 	
-	public static String UPLOAD_PATH="F:/Javawork/workspace_CafeInSpring/CafeIN/src/main/webapp/upload/franchise_menu";
+	public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/franchise_menu";
 	
 	//"F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/menu"
 	public static String rename(String fileName)throws Exception{

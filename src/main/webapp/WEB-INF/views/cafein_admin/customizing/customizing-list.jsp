@@ -33,7 +33,7 @@
 								<c:forEach items="${list }" var="list">
 									<tr>
 										<td>${list.custom_num}</td>
-										<td>${list.custom_num}</td>
+										<td>${list.franchise_name}</td>
 										<%-- <td>${list.franchise_name}</td> --%>
 										<td>${list.custom_name}</td>
 										<td>${list.custom_reg_date}</td>

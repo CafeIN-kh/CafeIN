@@ -91,11 +91,15 @@
 				<div class="pm-body clearfix">
 					<ul class="tab-nav tn-justified">
 						<li class="active waves-effect"><a
-							href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing
+							href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing List
 								Cafe</a></li>
 						<li class="waves-effect"><a
-							href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${admincustomizing.custom_num}">Cafe
+							href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${admincustomizing.custom_num}&franchise_num=${admincustomizing.franchise_num}">Cafe
 								Menu</a></li>
+									<li class="active waves-effect"><a
+							href="${pageContext.request.contextPath}/admin/customizing/customizing-reply.do?custom_num=${admincustomizing.custom_num}">Customizing
+								Reply</a></li>
+								
 					</ul>
 
 
@@ -156,10 +160,13 @@
 							<div class="pmbb-view">
 								<dl class="dl-horizontal">
 									<dt>Franchise Name</dt>
-									<dd><c:forEach var="text" items="${customizingDetailCafeNameCommand}" varStatus="status">
-												${status.index +1}: ${text.franchise_name}
-												</c:forEach></dd>
+									<dd> 
+												${franchise_name}
+												 
+												</dd>
 								</dl>
+								
+								
 								<dl class="dl-horizontal">
 									<dt>Introduce</dt>
 									<dd>${admincustomizing.custom_introduce}</dd>

@@ -13,6 +13,7 @@ import kr.cafein.domain.LikeCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
@@ -32,7 +33,10 @@ public interface AdminCustomizingService {
 	public List<LikeCommand> getLikeUser(Integer custom_num);
 	public int selectBookmarkCount(BookmarkCommand bookmark);
 	public List<AdminCustomizingDetailCafeNameCommand> selectCafeMenu_Admin();
-	
+
+	public String selectCafeName_Admin(Integer franchise_num);
+	public int selectFranchise_num(Integer custom_num);
+	public List<AdminCustomizingListCommand> selectCafeJoin();
 
 
 }

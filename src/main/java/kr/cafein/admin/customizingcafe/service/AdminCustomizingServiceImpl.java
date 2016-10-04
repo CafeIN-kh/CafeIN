@@ -14,6 +14,7 @@ import kr.cafein.admin.customizingcafe.dao.AdminCustomizingMapper;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 
@@ -36,6 +37,8 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 		return adminCustomizingMapper.searchList(map);
 	}
 
+	
+	
 	@Override
 	public List<AdminCustomizingCommand> getCustomizingList(Integer franchise_num) {
 		// TODO Auto-generated method stub
@@ -97,7 +100,24 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 		return adminCustomizingMapper.selectCafeMenu_Admin();
 	}
 
-	
+	@Override
+	public String selectCafeName_Admin(Integer franchise_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectCafeName_Admin(franchise_num);
+	}
+
+	@Override
+	public int selectFranchise_num(Integer custom_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectFranchise_num(custom_num);
+	}
+
+	@Override
+	public List<AdminCustomizingListCommand> selectCafeJoin() {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectCafeJoin();
+	}
+
 	
 
 

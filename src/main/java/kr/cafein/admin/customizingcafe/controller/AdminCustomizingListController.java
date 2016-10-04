@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 
 
@@ -26,10 +27,12 @@ public class AdminCustomizingListController {
 		
 		System.out.println("==============");
 		
-		List<AdminCustomizingCommand> list = admincustomizingService.selectCustomizing();
+		List<AdminCustomizingListCommand> list = admincustomizingService.selectCafeJoin();
+		
 		if(log.isDebugEnabled()){
 			log.debug("list : "+list);
 		}
+		
 		ModelAndView mav = new ModelAndView("adminCustomizing");
 		mav.addObject("list", list);
 		

@@ -231,7 +231,7 @@
 							<a
 								href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do?custom_num=${article1.custom_num}&franchise_num=${article1.u_uid}&uid=${article1.franchise_num}">${article1.custom_name}</a>
 						</h3>
-						<small class="korean-font">By ${article1.u_name} | Like
+						<small class="korean-font">By ${article1.u_name} | 조회수
 							${article1.custom_visit} | ${article1.custom_reg_date} </small>
 						<p class="korean-font">${article1.custom_introduce}</p>
 					</div>

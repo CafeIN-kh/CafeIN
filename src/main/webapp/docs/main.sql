@@ -337,21 +337,6 @@ create table mlog(
 drop sequence mlog_seq;
 create sequence mlog_seq;
 
-/* nlog 테이블 - 공지사항 로그 테이블 */
-drop table nlog;
-
-create table nlog(
-   nlog_seq number(20) not null,
-   nlog_reg_date date not null,
-   nlog_num number(20) not null,
-   nlog_processInfo varchar2(20) not null,
-   nlog_content varchar2(200) not null,
-   constraint nlog_pk primary key (nlog_seq)
-);
-
-drop sequence nlog_seq;
-create sequence nlog_seq;
-
 /*user_log - 회원 로그 테이블 */
 drop table user_log;
 
@@ -459,6 +444,71 @@ create table user_count_log(
 
 drop sequence user_count_log_seq;
 create sequence user_count_log_seq;
+
+/* admin_notice_log 테이블 - 관리자 공지사항 로그 테이블 */
+
+drop table admin_notice_log;
+
+create table admin_notice_log(
+  an_log_num number not null primary key,
+  an_log_uid varchar2(20) not null,
+  an_log_reg_date date not null,
+  an_log_change number not null,
+  an_log_message varchar2(100) not null,
+  
+  constraint admin_notice_log_fk foreign key (an_log_uid) references u_user(u_uid)
+);
+
+drop sequence an_log_seq;
+create sequence an_log_seq;
+
+/* notice_log 테이블 - 공지사항 로그 테이블 */
+drop table notice_log;
+
+create table notice_log(
+  n_log_num number not null primary key,
+  n_log_uid varchar2(20) not null,
+  n_log_reg_date date not null,
+  n_log_change number not null,
+  n_log_message varchar2(100) not null,
+  
+  constraint notice_log_fk foreign key (n_log_uid) references u_user(u_uid)
+);
+
+drop sequence n_log_seq;
+create sequence n_log_seq;
+
+/* event_log 테이블 - 이벤트 게시판 로그 테이블 */
+drop table event_log;
+
+create table event_log(
+  e_log_num number not null primary key,
+  e_log_uid varchar2(20) not null,
+  e_log_reg_date date not null,
+  e_log_change number not null,
+  e_log_message varchar2(100) not null,
+  
+  constraint evnet_log_fk foreign key (e_log_uid) references u_user(u_uid)
+);
+
+drop sequence e_log_seq;
+create sequence e_log_seq;
+
+/* event_log 테이블 - qna 게시판 로그 테이블 */
+drop table qna_log;
+
+create table qna_log(
+  qa_log_num number not null primary key,
+  qa_log_uid varchar2(20) not null,
+  qa_log_reg_date date not null,
+  qa_log_change number not null,
+  qa_log_message varchar2(100) not null,
+  
+  constraint qna_log_fk foreign key (qa_log_uid) references u_user(u_uid)
+);
+
+drop sequence qa_log_seq;
+create sequence qa_log_seq;
 
 
 /*프랜차이즈*/

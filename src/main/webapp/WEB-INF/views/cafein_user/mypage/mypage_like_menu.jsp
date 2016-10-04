@@ -235,8 +235,7 @@
 			                                    <p class="margin-bottom-20 korean-font">
 			                                    	${likeMypage.custom_introduce}
 			                                    </p>
-			                                    <!-- 나중에 커스텀 메뉴 url로 바꾸기 -->
-			                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${likeMypage.custom_fnum}'">
+			                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/customizing/customizing_detail.do?custom_num=${likeMypage.custom_num}&franchise_num=${likeMypage.custom_fnum}&u_uid=${likeMypage.u_uid}'">
 			                                    	Detail Page
 			                                    </button>
 			                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_like_menu_deletelike.do?category=${category}&custom_num=${likeMypage.custom_num}'">

@@ -15,7 +15,7 @@ public class FileUtil_PrivateMenu {
 	//public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/CafeIN/src/main/webapp/upload/private_menu";
 	//public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/private_menu";
 	//½ÂÇö ÇÐ¿øPC
-	public static String UPLOAD_PATH="E:/javaWork/workspace/CafeIN/src/main/webapp/upload/private_menu";
+	public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/private_menu";
 	
 	public static String rename(String fileName)throws Exception{
 

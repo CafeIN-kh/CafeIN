@@ -1,8 +1,8 @@
 jQuery(document).ready(function() {
 	App.init();
-	ContactPage.initMap();        
-	LoginForm.initLoginForm();
-	ContactForm.initContactForm();
+	//ContactPage.initMap();        
+	//LoginForm.initLoginForm();
+	Registration.initRegistration();
 	/* OwlCarousel.initOwlCarousel(); */
 });
 

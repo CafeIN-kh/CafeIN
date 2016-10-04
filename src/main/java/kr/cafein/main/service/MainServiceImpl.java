@@ -1,7 +1,6 @@
 package kr.cafein.main.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,10 +9,10 @@ import org.springframework.stereotype.Service;
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.domain.FranchiseCommand;
 import kr.cafein.domain.FranchiseMenuCommand;
-import kr.cafein.domain.MainBookmarkCommand;
 import kr.cafein.domain.PrivateCafeCommand;
 import kr.cafein.domain.PrivateCafeMenuCommand;
 import kr.cafein.domain.ULikeCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.main.dao.MainMapper;
 
 
@@ -76,6 +75,18 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public List<PrivateCafeMenuCommand> selectLikePmenu() {
 		return mainMapper.selectLikePmenu();
+	}
+	@Override
+	public void insertMainUserCountLog() {
+		mainMapper.insertMainUserCountLog();
+	}
+	@Override
+	public void updateMainUserCountLog() {
+		mainMapper.updateMainUserCountLog();
+	}
+	@Override
+	public UserCountLogCommand selectMainUserCountLogByDate() {
+		return mainMapper.selectMainUserCountLogByDate();
 	}
 
 

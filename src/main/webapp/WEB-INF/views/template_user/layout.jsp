@@ -53,6 +53,9 @@
 		if(document.location.pathname=="/CafeIN/cafein_user/private/private_detail.do"){
 			$('body').append('<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyByaawrixh9HdCUSOSfjvGM4wGM9XCyRHo&callback=initCafeINMap\" async defer><\/script>');
 		}
+		if(document.location.pathname=="/CafeIN/cafein_user/qna/qna.do"){
+			$('body').append('<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyByaawrixh9HdCUSOSfjvGM4wGM9XCyRHo&callback=initCafeINMap\" async defer><\/script>');
+		}
 	}, 0);
 </script>
 

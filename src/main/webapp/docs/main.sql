@@ -130,6 +130,7 @@ drop sequence private_cafe_reply_seq;
 create sequence private_cafe_reply_seq;
 
 /* notice 테이블 - 공지사항 */
+/*
 drop table notice;
 
 create table notice(
@@ -144,8 +145,10 @@ create table notice(
 
 drop sequence notice_seq;
 create sequence notice_seq;
+*/
 
 /* event 테이블 - 이벤트 */
+/*
 drop table event;
 
 create table event(
@@ -159,10 +162,12 @@ create table event(
 
 drop sequence event_seq;
 create sequence event_seq;
+*/
 
 /* Q&A 테이블 - 고객문의, 건의사항 정보 
  * 
  * qa_f_option : 0:프랜차이즈카페문의,1:개인카페문의,2:커스터마이밍문의,3:이벤트문의,4:건의사항 */
+/*
 drop table QNA;
 
 create table QNA(
@@ -178,6 +183,7 @@ create table QNA(
 
 drop sequence qna_seq;
 create sequence qna_seq;
+*/
 
 /* u_like 테이블  - 좋아요 누른 유저 목록 정보*/
 drop table u_like;
@@ -338,6 +344,7 @@ drop sequence mlog_seq;
 create sequence mlog_seq;
 
 /* nlog 테이블 - 공지사항 로그 테이블 */
+/*
 drop table nlog;
 
 create table nlog(
@@ -351,6 +358,7 @@ create table nlog(
 
 drop sequence nlog_seq;
 create sequence nlog_seq;
+*/
 
 /*user_log - 회원 로그 테이블 */
 drop table user_log;
@@ -459,6 +467,135 @@ create table user_count_log(
 
 drop sequence user_count_log_seq;
 create sequence user_count_log_seq;
+
+
+/* 지오 admin 테이블 */
+
+/* Q&A 테이블 - 고객문의, 건의사항 정보 
+ * 
+ * qa_f_option : 0:프랜차이즈카페문의,1:개인카페문의,2:커스터마이밍문의,3:이벤트문의,4:건의사항
+ * qa_answer : 0 답장안함 ,1 답장함
+ * */
+drop table qna;
+create table qna(
+	qa_num number not null primary key,
+	qa_email varchar2(50) not null,
+	qa_title varchar2(100) not null,
+	qa_content varchar2(4000) not null,
+	pa_password varchar2(15) not null,
+	qa_reg_date date not null,
+	qa_f_option number default(0),
+	qa_answer number default(0)
+);
+
+drop sequence qna_seq;
+create sequence qna_seq;
+
+/* notice 테이블 - 공지사항 */
+DROP TABLE NOTICE;
+create table notice(
+   notice_num number not null primary key,
+   notice_title varchar2(100) not null,
+   notice_content varchar2(500) not null,
+   notice_reg_date date not null,
+   notice_hit number default(0),
+   notice_img varchar2(2000),
+   notice_uid varchar2(20) not null,
+   constraint notice_fk foreign key (notice_uid) references u_user(u_uid)
+
+);
+DROP SEQUENCE NOTICE_SEQ;
+create sequence notice_seq;
+
+/* notice 테이블 - 공지사항 */
+drop table event;
+create table event(
+   event_num number not null primary key,
+   event_title varchar2(100) not null,
+   event_content varchar2(500) not null,
+   event_reg_date date not null,
+   event_hit number default(0),
+   event_img varchar2(2000),
+   event_uid varchar2(20),
+   constraint event_fk foreign key (event_uid) references u_user(u_uid)
+);
+
+drop sequence event_seq;
+create sequence event_seq;
+
+/* 관리자용 공지사항 테이블 */
+drop table admin_notice;
+create table admin_notice(
+   admin_notice_num number not null primary key,
+   admin_notice_title varchar2(100) not null,
+   admin_notice_content varchar2(500) not null,
+   admin_notice_reg_date date not null,
+   u_uid varchar2(20) not null,
+   admin_notice_img varchar2(2000),
+
+   constraint admin_notice_fk foreign key (u_uid) references u_user(u_uid)
+);
+
+drop sequence admin_notice_seq;
+create sequence admin_notice_seq;
+
+drop table admin_notice_log;
+create table admin_notice_log(
+  an_log_num number not null primary key,
+  an_log_uid varchar2(20) not null,
+  an_log_reg_date date not null,
+  an_log_change number not null,
+  an_log_message varchar2(100) not null,
+  
+  constraint admin_notice_log_fk foreign key (an_log_uid) references u_user(u_uid)
+);
+
+drop sequence an_log_seq;
+create sequence an_log_seq;
+
+drop table notice_log;
+create table notice_log(
+  n_log_num number not null primary key,
+  n_log_uid varchar2(20) not null,
+  n_log_reg_date date not null,
+  n_log_change number not null,
+  n_log_message varchar2(100) not null,
+  
+  constraint notice_log_fk foreign key (n_log_uid) references u_user(u_uid)
+);
+
+drop sequence n_log_seq;
+create sequence n_log_seq;
+
+drop table event_log;
+create table event_log(
+  e_log_num number not null primary key,
+  e_log_uid varchar2(20) not null,
+  e_log_reg_date date not null,
+  e_log_change number not null,
+  e_log_message varchar2(100) not null,
+  
+  constraint evnet_log_fk foreign key (e_log_uid) references u_user(u_uid)
+);
+
+drop sequence e_log_seq;
+create sequence e_log_seq;
+
+drop table qna_log;
+create table qna_log(
+  qa_log_num number not null primary key,
+  qa_log_uid varchar2(20) not null,
+  qa_log_reg_date date not null,
+  qa_log_change number not null,
+  qa_log_message varchar2(100) not null,
+  qa_num number not null,
+  
+  constraint qna_log_fk foreign key (qa_log_uid) references u_user(u_uid),
+  constraint qna_log_fk2 foreign key (qa_num) references qna(qa_num)
+);
+
+drop sequence qa_log_seq;
+create sequence qa_log_seq;
 
 
 /*프랜차이즈*/

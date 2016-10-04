@@ -118,14 +118,22 @@
                    </li>
                             </li> --%>
                             
-                            <li class="sub-menu"><a href=""><i class="md md-announcement"></i>Admin Notice</a>
-
-						<ul>
-							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">Admin Notice List</a></li>
-							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/write.do">Admin Notice Write</a></li>
-							<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/LogList.do">Admin Notice Log List</a></li>
-						</ul>
+                        <li class="sub-menu"><a href=""><i class="md md-announcement"></i>Admin Notice</a>
+							<ul>
+								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">Admin Notice List</a></li>
+								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/write.do">Admin Notice Write</a></li>
+								<li><a href="${pageContext.request.contextPath}/cafein_admin/admin_notice/LogList.do">Admin Notice Log List</a></li>
+							</ul>
 						</li>
+						
+						<li class="sub-menu">
+	                        <a href=""><i class="md md-trending-up"></i>Charts</a>
+	                        <ul>
+	                           <li><a href="franchise_charts.do">Franchise</a></li>
+	                           <li><a href="private_charts.do">Private</a></li>
+	                           <li><a href="custom_charts.do">Custom</a></li>
+	                        </ul>
+	                    </li>
 <%-- 
 					<li class="active"><a href="${pageContext.request.contextPath}/cafein_admin/qna/List.do"><i
 							class="md md-content-copy"></i> Q&A Pages</a></li> --%>

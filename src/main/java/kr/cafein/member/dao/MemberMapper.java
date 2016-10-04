@@ -20,10 +20,18 @@ public interface MemberMapper {
 	@Select("SELECT u_uid FROM u_user WHERE u_email= #{u_email}")
 	public String selectUid(String u_email);
 	
-	@Update("UPDATE u_user SET u_email=#{u_email},u_name=#{u_name},u_password=#{u_password} WHERE u_uid=#{u_uid}")
+	@Update("UPDATE u_user SET u_email=#{u_email},u_name=#{u_name},u_password=#{u_password},u_level=#{u_level} WHERE u_uid=#{u_uid}")
 	public void update(MemberCommand member);
+	
+	
+	@Update("UPDATE u_user SET u_level=4 WHERE u_uid = #{u_uid}")
+	public void deleteLevel(String u_uid);
+	
 	@Delete("DELETE FROM u_user WHERE u_uid = #{u_uid}")
-	public void delete(String u_uid);
+	public void deleteAll(String u_uid);
+	
+	
+	
 	
 	// 관리자 페이지
 	public List<MemberCommand> getMemberList(Map<String,Object> map);

@@ -70,8 +70,8 @@ public class MemberDeleteController {
 			}
 			if(check){
 				// 인증성공, 회원정보 삭제
-				memberService.delete(id);
-				log.debug("회원탈퇴 성공!! ");
+				memberService.deleteLevel(id);  // u_level=4 로 변경  _ 정지 계정
+				log.debug("회원정지 성공!! ");
 				// 로그아웃
 				session.invalidate();
 				return "redirect:/cafein_user/main/main.do";

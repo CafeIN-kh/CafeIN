@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <section id="content">
@@ -28,8 +26,6 @@
 					</ul></li>
 			</ul>
 		</div>
-
-
 
 
 		<div class="card">
@@ -79,6 +75,10 @@
 									<c:when test="${member.u_level == '2'}">
 										<td>관리자</td>
 									</c:when>
+									
+									<c:when test="${member.u_level == '3'}">
+										<td>계정 정지</td>
+									</c:when>
 
 									<c:otherwise>
 										<td>회원정보 없음</td>
@@ -101,94 +101,112 @@
 
 
 
-   <!-- 회원정보 모달      tabindex="-1"   aria-labelledby="myModalLabel" aria-hidden="true" -->
-            <div class="modal fade admin_memberModify" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title korean-font" id="myModalLabel4">회원정보</h4>
-                            </div>
-                            <div class="modal-body">
-                            
-                            
-                            <%-- <form>
-            <div class="form-group">
-              <label for="recipient-name" class="form-control-label">Recipient:</label>
-              <input type="text" class="form-control recipient-name" >
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="form-control-label">Message:</label>
-              <textarea class="form-control" id="message-text"></textarea>
-            </div>
-          </form>
-                             --%>
-                            
-                            
-            <form action="admin_memberModify.do" id="adminMembermodify_form" class="log-reg-block sky-form">
-                       
-             <fieldset>     
-                                           
-              <div class="form-group">
-              <label for="u_email" class="form-control-label">Email </label>
-              <input type="text" class="form-control" placeholder="Email" name="u_email" id="u_email">
-            </div>
-                                         
-                <div class="form-group">
-              <label for="u_name" class="form-control-label">Name </label>
-              <input type="text" class="form-control" placeholder="Username" name="u_name" id="u_name">
-            </div>
-            
-            <div class="form-group">
-              <label for="u_name" class="form-control-label">Password </label>
-              <input type="text" class="form-control" placeholder="New Password" name="u_password" id="u_password">
-            </div>
-                                         
-                       
-                       	권한
-                       	
-							<div class="inline-group">
-							
+		<!-- 회원정보 모달  -->
+		<div class="modal fade admin_memberModify" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title korean-font" id="myModalLabel4">회원정보</h4>
+					</div>
+					<div class="modal-body">
+
+
+
+						<!-- action="admin_memberModify.do"  -->
+						<form id="adminMembermodify_form" class="log-reg-block sky-form">
+
+							<fieldset>
+
+								<div class="form-group">
+									<label for="u_email" class="form-control-label">Email </label>
+									<input type="text" class="form-control" placeholder="Email"
+										name="u_email" id="u_email" readonly>
+								</div>
+
+								<div class="form-group">
+									<label for="u_name" class="form-control-label">Name </label> 
+									<input type="text" class="form-control" placeholder="Username"
+										name="u_name" id="u_name">
+								</div>
+
+								<div class="form-group">
+									<label for="u_name" class="form-control-label">Password</label> 
+									<input type="text" class="form-control"
+										placeholder="New Password" name="u_password" id="u_password">
+								</div>
+
+
+								권한
+
+								<div class="inline-group">
+
 									<div class="adminMemberChk">
-									
-									
-									<input type="radio"  value="0" name="adminMemberRight"/>
-									<label class="radio korean-font">일반회원</label>
-									
-									
-									<input type="radio"  value="1" name="adminMemberRight"/>
-									<label class="radio korean-font">사업자 회원</label>
-									
-									
-									<input type="radio"  value="2" name="adminMemberRight"/>
-									<label class="radio korean-font">관리자</label>
+
+
+										<input type="radio" value="0" name="u_level" /> 
+										<label class="radio korean-font">일반회원</label> 
 										
+										<input type="radio" value="1" name="u_level" /> 
+										<label class="radio korean-font">사업자 회원</label> 
+										
+										<input type="radio" value="2" name="u_level" /> 
+										<label class="radio korean-font">관리자</label>
+										
+										<input type="radio" value="4" name="u_level" /> 
+										<label class="radio korean-font">계정 정지</label>
+
 									</div>
-								
-							</div>
+
+								</div>
 							</fieldset>
-                                
-                                <div class="modal-footer">
-                                      <button type="button" class="btn-u btn-u-default" data-dismiss="modal">닫기</button>
-									  <button type="submit" class="btn-u btn-u-primary">수정</button>
-                                  </div>
-                         </form>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- 카페등록 모달 END -->
+
+							<div class="modal-footer">
+								<button type="button" class="btn-u btn-u-default" data-dismiss="modal">닫기</button>
+								<button type="submit" class="btn-u btn-u-primary" id="adminMemberModifyBtn">수정</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 카페등록 모달 END -->
 
 
 
 
 
+	<!-- 회원삭제 모달  -->
+		<div class="modal fade admin_memberDelete" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title korean-font" id="myModalLabel4">회원삭제</h4>
+					</div>
+					<div class="modal-body">
+
+								 정말 <span style="color:red; font-weight:bold;" id="checkemail"></span> 계정을 삭제하시겠습니까?
+
+							<div class="modal-footer">
+								<button type="button" class="btn-u btn-u-default" data-dismiss="modal">취소</button>
+								<button type="submit" class="btn-u btn-u-primary" id="adminMemberDeleteBtn">삭제</button>
+							</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 회원 삭제 모달 END -->
 
 
 
 
 
-
-	</div><!--  End container -->
+	</div>
+	<!--  End container -->
 </section>
 
 

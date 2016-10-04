@@ -23,7 +23,8 @@ public interface MemberService {
 	public String selectUid(String u_email);
 	
 	public void update(MemberCommand member);
-	public void delete(String u_uid);
+	public void deleteLevel(String u_uid);
+	public void deleteAll(String u_uid);
 	
 	// 관리자 페이지 회원정보 테이블
 	public List<MemberCommand> getMemberList(Map<String,Object> map);

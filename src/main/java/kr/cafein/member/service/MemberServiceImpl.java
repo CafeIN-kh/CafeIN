@@ -33,23 +33,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void delete(String u_uid) {
-		/*// id로 작성된 부모글의 번호를 구함
-		List <Integer> seq = boardMapper.selectSeqById(id);
-		// 해당 id로 작성된 부모글에 달린 댓글 삭제
-		if(seq!=null && !seq.isEmpty()){
-			boardMapper.deleteReplyBySeqList(seq);
-		}
+	public void deleteLevel(String u_uid) {
 		
-		// 해당 id로 작성된 댓글 삭제
-		boardMapper.deleteReplyById(id);
-		// 해당 id로 작성된 부모글 삭제
-		boardMapper.deleteById(id);
-		
-		// 해당 id 삭제
-		*/
-		
-		memberMapper.delete(u_uid);
+		memberMapper.deleteLevel(u_uid); // update level =4  계정 정지
 	}
 
 	@Override
@@ -74,6 +60,35 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberCommand> getAllMemberList() {
 		// TODO Auto-generated method stub
 		return memberMapper.getAllMemberList();
+	}
+
+	@Override
+	public void deleteAll(String u_uid) {
+		/*// id로 작성된 부모글의 번호를 구함
+		List <Integer> seq = boardMapper.selectSeqById(id);
+		// 해당 id로 작성된 부모글에 달린 댓글 삭제
+		if(seq!=null && !seq.isEmpty()){
+			boardMapper.deleteReplyBySeqList(seq);
+		}
+		
+		// 해당 id로 작성된 댓글 삭제
+		boardMapper.deleteReplyById(id);
+		// 해당 id로 작성된 부모글 삭제
+		boardMapper.deleteById(id);
+		
+		// 해당 id 삭제
+		*/
+		
+		
+		
+		// 개인카페 게시글, 연결 댓글 삭제
+		// 커스텀 좋아요, 즐겨찾기, 커스텀 넘을 지움, 커스텀 넘에연결된 댓글
+		// 좋아요 즐겨찾기테이블에 있는 모든 정보 
+		// user 테이블 삭제
+		
+		
+		
+		memberMapper.deleteAll(u_uid); 
 	}
 
 

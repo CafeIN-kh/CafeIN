@@ -13,7 +13,7 @@ import kr.cafein.qna.domain.QnaCommand;
 @Repository
 public interface QnaMapper {
 	
-	@Insert("INSERT INTO QNA(QA_NUM,QA_EMAIL,QA_TITLE,QA_CONTENT,QA_PASSWORD,QA_REG_DATE,QA_F_OPTION) VALUES (qna_seq.nextval,#{email},#{title},#{content},#{password},sysdate,#{inline})")
+	@Insert("INSERT INTO QNA(QA_NUM,QA_EMAIL,QA_TITLE,QA_CONTENT,pa_password,QA_REG_DATE,QA_F_OPTION,qa_answer) VALUES (qna_seq.nextval,#{email},#{title},#{content},#{password},sysdate,#{inline},#{qa_answer})")
 	public void insert(QnaCommand qna);
 
 	//qna 페이지뷰 로그, 오늘 날짜의 데이터가 없으면 insert, 있으면 update로 +1 카운트

@@ -245,10 +245,10 @@
             
             <form action="${pageContext.request.contextPath}/cafein_user/franchise/writeReply.do?franchise_num=${franchise.franchise_num}" method="post" id="reply" class="reply">
             	<input type="hidden" value="${franchise.franchise_num}" id="franchise_num" name="franchise_num">
-                <label style="font-size:17px;" id="u_name"><i class="fa fa-user">&nbsp;&nbsp;</i>${u_name} </label>
+                <label style="font-size:17px;" id="u_name" class="korean-font-bold"><i class="fa fa-user">&nbsp;&nbsp;</i>${u_name} </label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-12 col-md-offset-0">
-                        <textarea class="form-control" rows="5" id="freply_content" name="freply_content"></textarea>
+                        <textarea class="form-control korean-font" rows="5" id="freply_content" name="freply_content"></textarea>
                     </div>                
                 </div>
                

@@ -152,14 +152,14 @@ $(document).ready(function(){
 					var output = '';
 					output += '<div class="media-body">';
 					output += '<input type="hidden" value="' + item.freply_num + '" id="freply_num">';
-					output += '<h4 class="media-heading korean-font">' + item.freply_nickname;
+					output += '<h4 class="media-heading korean-font-bold">' + item.freply_nickname;
 
 					if($('#u_uid').val() && $('#u_uid').val() == item.u_uid){
 						output += '<span>' + item.freply_reg_date;
 						output += ' <a href="" id="deleteReply">삭제</a> |';  
 						output += ' <a class="fdeclear_button" data-toggle="modal" data-target="#declear" data-num="' +item.freply_num+ '" data-id="' +item.u_uid+ '" style="text-decoration:none;cursor:pointer;">신고</a></span></h4>';
 					}else{
-						output += '<span>' + item.freply_reg_date;
+						output += '<span>' + item.freply_reg_date + ' |';
 						output += ' <a class="fdeclear_button" data-toggle="modal" data-target="#declear" data-num="' +item.freply_num+ '" data-id="' +item.u_uid+ '" style="text-decoration:none;cursor:pointer;">신고</a></span></h4>';
 					}
 

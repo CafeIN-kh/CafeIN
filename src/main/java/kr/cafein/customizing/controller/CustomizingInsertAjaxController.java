@@ -19,6 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.customizing.service.CustomizingService;
 import kr.cafein.util.FileUtilCus;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class CustomizingInsertAjaxController {
@@ -52,6 +53,9 @@ public class CustomizingInsertAjaxController {
 		  customizingCommand.setCustom_img(newName);
 		}
 		
+		//줄바꿈허용
+		customizingCommand.setCustom_introduce(StringUtil.useBrNoHtml(customizingCommand.getCustom_introduce()));
+		customizingCommand.setCustom_recipe(StringUtil.useBrNoHtml(customizingCommand.getCustom_recipe()));
 	      
 		
 		//글쓰기

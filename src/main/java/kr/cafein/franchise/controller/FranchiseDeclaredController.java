@@ -20,6 +20,7 @@ import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseDeclaredCommand;
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
 import kr.cafein.franchise.service.FranchiseService;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class FranchiseDeclaredController {
@@ -84,14 +85,18 @@ public class FranchiseDeclaredController {
 	     
 	      FC_FranchiseCommand franchiseCommand = franchiseService.selectFranchise(franchise_num);
 	      String franchise = franchiseCommand.getFranchise_name() + " 댓글에서 신고가 들어왔으며 처리 전 상태입니다."; 
-	      String logMessage = "[" + u_name + "] 사용자가 프랜차이즈 페이지에서 댓글을 신고 하였습니다."; 
+	      //String logMessage = "[" + u_name + "] 사용자가 프랜차이즈 페이지에서 댓글을 신고 하였습니다."; 
 	      
 	      //d_state[처리상태] = 0.처리 전, 1.처리 중,2.처리 완료, 3처리 보류, 4. 처리 취소
 	      int d_state = 0;
 	      declaredCommand.setD_state(d_state);
 	      declaredCommand.setD_target_num(franchise_num);
 	      declaredCommand.setD_comment(franchise);
-	      declaredCommand.setD_comment(logMessage);
+	      //declaredCommand.setD_comment(logMessage);
+	      
+	      //줄바꿈 처리
+	      declaredCommand.setD_content(StringUtil.useBrNoHtml(declaredCommand.getD_content()));
+	      
 	      //댓글 신고
 	      franchiseService.insertDeclared(declaredCommand);
 	      

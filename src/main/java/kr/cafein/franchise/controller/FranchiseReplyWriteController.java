@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
 import kr.cafein.franchise.service.FranchiseService;
+import kr.cafein.util.StringUtil;
 
 @Controller
 public class FranchiseReplyWriteController {
@@ -43,6 +44,10 @@ public class FranchiseReplyWriteController {
 		franchiseReplyCommand.setFranchise_num(franchise_num);
 		franchiseReplyCommand.setFreply_nickname(freply_nickname);
 		franchiseReplyCommand.setU_uid(u_uid);
+		
+		//¡ŸπŸ≤ﬁ √≥∏Æ
+		franchiseReplyCommand.setFreply_content(StringUtil.useBrNoHtml(franchiseReplyCommand.getFreply_content()));
+		
 		franchiseService.insertReply(franchiseReplyCommand);
 		
 		Map<String, String> map = new HashMap<String, String>();

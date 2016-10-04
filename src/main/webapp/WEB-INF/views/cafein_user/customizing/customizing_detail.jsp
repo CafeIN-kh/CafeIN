@@ -60,83 +60,45 @@
 							<section class="col col-6">
 								<label class="label">Custom Menu Name</label> <label
 									class="input"> <!-- <i class="icon-append fa fa-user"></i> -->
-									<input type="text" name="custom_name" id="custom_name"
+									<input type="text" name="custom_name" id="custom_name" class="korean-font"
 									value="${customCommand.custom_name}">
 								</label>
 							</section>
 
 							<section class="col col-6">
-								<%-- 				<label class="label">Cafe Name</label> <label
-									class="input"> <!-- <i class="icon-append fa fa-user"></i> -->
-									<input type="text" name="franchise_name" id="franchise_name"
-									value="${cafeName}" disabled="disabled" style="background-color:#dcdcdc">
-								</label> --%>
-								<label class="label">Custom Menu Name</label> <label
-									class="select"> <select name="franchise_num"
-									id="franchise_num">
-										<c:forEach var="article"
-											items="${customizingDetailCafeNameCommand}">
-											<option value="${article.franchise_num}">${article.franchise_name}</option>
+								<label class="label">Custom Menu Name</label> 
+								<label class="select"> 
+									<select name="franchise_num" id="franchise_num">
+										<c:forEach var="article" items="${customizingDetailCafeNameCommand}">
+											<option class="korean-font" value="${article.franchise_num}">${article.franchise_name}</option>
 										</c:forEach>
-								</select> <i></i>
+									</select> <i></i>
 								</label>
 							</section>
-							<%-- 
-								<label class="label">Cafe Name</label> <label class="input">
-							 		<c:forEach var="article"
-										items="${customizingDetailCafeNameCommand}">
-										<!-- <i class="icon-append fa fa-envelope-o"></i> -->
-										<input type="text" name="cafe_name" id="cafe_name"
-											value="${article.franchise_name}">
-									</c:forEach> 
-								</label>
-								
-							</section> --%>
-
 						</div>
 
 						<section>
 							<label class="label">Custom Introduce</label> <label
 								class="textarea"> <!-- <i class="icon-append fa fa-comment"></i> -->
-								<textarea rows="4" name="custom_introduce" id="custom_introduce">${customCommand.custom_introduce}</textarea>
+								<textarea rows="4" class="korean-font" name="custom_introduce" id="custom_introduce">${customCommand.custom_introduce}</textarea>
 							</label>
 						</section>
 
 						<section>
 							<label class="label">Custom Recipe</label> <label
 								class="textarea"> <!-- <i class="icon-append fa fa-comment"></i> -->
-								<textarea rows="4" name="custom_recipe" id="custom_recipe">${customCommand.custom_recipe}</textarea>
+								<textarea rows="4" class="korean-font" name="custom_recipe" id="custom_recipe">${customCommand.custom_recipe}</textarea>
 							</label>
 						</section>
 
 						<section>
-							<label class="label">Custom Tag (Tag 구분은 , 또는 # 으로 표현 하셔야
-								합니다.)</label> <label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
-								<input type="text" name="custom_hash_tag" id="custom_hash_tag"
-								value="${customCommand.custom_hash_tag}">
+							<label class="label korean-font">Custom Tag (쉼표로 구분해주세요)</label> 
+							<label class="input"> <!-- <i class="icon-append fa fa-tag"></i> -->
+								<%-- <input type="text" name="custom_hash_tag" id="custom_hash_tag"
+								value="${customCommand.custom_hash_tag}"> --%>
+								<input type="text" class="korean-font" name="custom_hash_tag" id="custom_hash_tag" value="${customTagName}">
 							</label>
 						</section>
-
-						<%-- <section>
-				                            <label class="label">Cafe Image Upload</label>
-				                            <!-- <label for="file" class="input input-captcha"> -->
-				                            <label for="file" class="input input-file">
-				                                <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/captcha/image.php?<?php echo time(); ?>" width="100" height="32" alt="Captcha image" />
-				                                <div class="button">
-				                                	<input type="file" multiple onchange="this.parentNode.nextSibling.value = this.value" maxlength="6" name="pcafe_img" id="pcafe_img">"Browse"
-				                            	</div>
-				                            </label>
-				                        </section> --%>
-
-						<!-- 					<section>
-							<label class="label">Custom Image Upload</label> <label
-								for="file" class="input input-file">
-								<div class="button">
-									<input type="file" name="custom_img" id="custom_img" multiple
-										onchange="this.parentNode.nextSibling.value = this.value">Browse
-								</div> <input type="text" readonly="">
-							</label>
-						</section> -->
 
 						<section style="margin-bottom: 50px;">
 							<label class="label">Cafe Image Upload</label> <label
@@ -154,14 +116,6 @@
 					</fieldset>
 				</form>
 			</div>
-			<!-- <div class="modal-footer">
-                                <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn-u btn-u-primary">Register</button>
-                            </div> -->
-			<!-- <div class="message">
-		                        <i class="rounded-x fa fa-check"></i>
-		                        <p>Your message was successfully sent!</p>
-		                    </div> -->
 		</div>
 	</div>
 </div>
@@ -351,7 +305,7 @@
 					<input type="hidden" id="custom_num" name="custom_num" value="${customCommand.custom_num}">
 					
 					<c:if test="${u_uid != null}">
-						<label style="font-size: 17px;"><i class="fa fa-user">&nbsp;&nbsp;</i>${u_name}</label>
+						<label style="font-size: 17px;" class="korean-font-bold"><i class="fa fa-user">&nbsp;&nbsp;</i>${u_name}</label>
 						<input type="hidden" id="creply_nickname" name="creply_nickname" value="${u_name}">
 					</c:if>
 					<c:if test="${u_uid == null}">
@@ -360,7 +314,7 @@
 					</c:if>
 					<div class="row margin-bottom-20">
 						<div class="col-md-12 col-md-offset-0">
-							<textarea class="form-control" id="creply_content"
+							<textarea class="form-control korean-font" id="creply_content"
 								name="creply_content" rows="5"></textarea>
 						</div>
 					</div>

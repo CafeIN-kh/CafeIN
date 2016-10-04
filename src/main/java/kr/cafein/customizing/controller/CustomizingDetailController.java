@@ -80,26 +80,16 @@ public class CustomizingDetailController {
 		
 		customCommand.setCustom_recipe(customCommand.getCustom_recipe().replace("<br>","\n"));
 		
-		//개인카페 즐겨찾기
-		/*List<PrivateCafeCommand> privateCafeCommand = null;
-		privateCafeCommand = mainService.selectBookmarkPrivateCafe();
-		
-		//개인카페의 이미지의 대표이미지 *와 ,구별되있는 것 쪼개기
-		for(int i = 0; i < privateCafeCommand.size(); i++) {
-			String pcafeImgName = privateCafeCommand.get(i).getPcafe_img();
-		    String[] pcafeImgNameArray;
-		    
-		  //문자열에 ,가 있다면 쪼개서 배열에 담기
-		    pcafeImgNameArray = pcafeImgName.split(",");
-		    for (int j = 0; j < pcafeImgNameArray.length; j++) {
-				//pcafeImgNameArray 인덱스 안에 * 값이 없으면 -1 반환
-				if(pcafeImgNameArray[j].indexOf("*") != -1){
-					//*이 있다는 것이므로 *표를 빈값으로 대체	//대표이미지 찾아서 *표시 없애주기
-					pcafeImgNameArray[j] = pcafeImgNameArray[j].replace("*","");
-					privateCafeCommand.get(i).setPcafe_img(pcafeImgNameArray[j]);
-				}
-			}
-		}*/
+		//해쉬태그 #로 바꾸는 과정
+		String customTagName = customCommand.getCustom_hash_tag();
+	    String[] customTagNameArray;
+	    String customTagSum = "";
+	    //문자열에 ,가 있다면 쪼개서 배열에 담기
+	    customTagNameArray = customTagName.split(",");
+	    for (int j = 0; j < customTagNameArray.length; j++) {
+	    	customTagSum += "#"+customTagNameArray[j]+" ";
+		}
+	    customCommand.setCustom_hash_tag(customTagSum);
 		
 		String cafeName = customizingDetailService.selectCafeName(custom_num);
 		
@@ -128,6 +118,8 @@ public class CustomizingDetailController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("customizing_detail");
 		mav.addObject("customCommand",customCommand);
+		//#로 바꾸기 전 ,태그 수정창에 띄우기 위함
+		mav.addObject("customTagName",customTagName);
 		mav.addObject("cafeName",cafeName);
 		mav.addObject("bookmarkCount",bookmarkCount);
 		mav.addObject("likeCount",likeCount);

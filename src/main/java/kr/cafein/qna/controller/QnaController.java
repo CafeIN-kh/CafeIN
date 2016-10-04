@@ -50,13 +50,17 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="/cafein_user/qna/qna.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command")
-	@Valid QnaCommand qnaCommand,BindingResult result,SessionStatus status)
-			throws Exception{
+	public String submit(@ModelAttribute("command")	@Valid QnaCommand qnaCommand,
+													BindingResult result,
+													SessionStatus status) throws Exception{
 
 		if(log.isDebugEnabled()){
 			log.debug("qnaCommand : " + qnaCommand);
 		}
+		
+		//qa_answer : 답장여부 고정-0 답장안함 1 답장함
+		qnaCommand.setQa_answer(0);
+		
 		//글쓰기
 		qnaService.insert(qnaCommand);
 		status.setComplete();
@@ -69,7 +73,7 @@ public class QnaController {
 		userMenuLogCommand.setUmenu_name(5);
 		userMenuLogCommand.setUmenu_log_state(0);
 		//String u_email = qnaService.selectUserLogByMember(u_uid).getU_email();
-		String logMessage = "[" + qnaCommand.getEmail() + "] Guest가 개인카페에서 카페등록을 하였습니다."; 
+		String logMessage = "[" + qnaCommand.getEmail() + "] Guest가 Qna에서 글을 등록 하였습니다."; 
 		userMenuLogCommand.setUmenu_log_message(logMessage);
 		qnaService.insertQnaUserLog(userMenuLogCommand);
 		log.debug("[QnA 로그] userMenuLogCommand : " + userMenuLogCommand);

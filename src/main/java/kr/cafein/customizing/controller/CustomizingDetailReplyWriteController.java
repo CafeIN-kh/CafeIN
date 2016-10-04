@@ -69,7 +69,7 @@ public class CustomizingDetailReplyWriteController {
 		}
 		
 		customizingDetailReplyCommand.setCreply_content(StringUtil.useBrNoHtml(customizingDetailReplyCommand.getCreply_content()));
-		
+
 		customizingDetailService.insertReply(customizingDetailReplyCommand);
 		
 		//System.out.println("커맨트등록" + customizingDetailReplyCommand.getCreply_content());

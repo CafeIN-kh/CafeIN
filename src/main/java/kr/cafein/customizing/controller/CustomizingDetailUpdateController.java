@@ -65,6 +65,7 @@ public class CustomizingDetailUpdateController {
 		if(log.isDebugEnabled()){
 			log.debug("CustomizingDetailCommand : " + customizingDetailCommand);
 		}
+		//줄바꿈 허용
 		customizingDetailCommand.setCustom_introduce(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_introduce()));
 		customizingDetailCommand.setCustom_recipe(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_recipe()));
 		

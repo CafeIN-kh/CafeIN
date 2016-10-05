@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.util.CustomFileUtil;
 import kr.cafein.util.StringUtil;
 
@@ -65,6 +66,7 @@ public class CustomizingDetailUpdateController {
 		if(log.isDebugEnabled()){
 			log.debug("CustomizingDetailCommand : " + customizingDetailCommand);
 		}
+		//줄바꿈 허용
 		customizingDetailCommand.setCustom_introduce(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_introduce()));
 		customizingDetailCommand.setCustom_recipe(StringUtil.useBrNoHtml(customizingDetailCommand.getCustom_recipe()));
 		
@@ -77,6 +79,19 @@ public class CustomizingDetailUpdateController {
 			customizingDetailCommand.getUpload().transferTo(file);
 			//CustomFileUtil.createThumbnail(newName, newName, 336, 252);
 		}
+		
+		//커스텀메뉴  로그, umenu_name=1, umenu_log_state=1 고정
+		//umenu_name : 0[개인카페] 1[커스텀메뉴] 2[프랜차이즈 댓글] 3[개인카페 댓글] 4[커스텀 댓글]
+		//umenu_log_state : 0[등록] 1[수정] 2[삭제] 3[신고]
+		UserMenuLogCommand userMenuLogCommand = new UserMenuLogCommand();
+		userMenuLogCommand.setUmenu_log_u_uid(u_uid);
+		userMenuLogCommand.setUmenu_name(1);
+		userMenuLogCommand.setUmenu_log_state(1);
+		String u_email = customizingDetailService.selectCustomUserLogByMember(u_uid).getU_email();
+		String logMessage = "[" + u_email + "] 사용자가 커스텀 메뉴를 수정 하였습니다."; 
+		userMenuLogCommand.setUmenu_log_message(logMessage);
+		customizingDetailService.insertCustomUserLog(userMenuLogCommand);
+		log.debug("[커스텀 로그] userMenuLogCommand : " + userMenuLogCommand);
 
 		Map<String,String> map = new HashMap<String,String>();
 		

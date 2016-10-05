@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.UserCountLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseDeclaredCommand;
@@ -97,7 +98,7 @@ public interface FranchiseMapper {
 	public FC_FranchiseReplyCommand selectReply(int freply_num);
 	//신고
 	@Insert("INSERT INTO declared(d_seq, d_target_path, d_target_num, d_target_id, d_mem_id, d_target_mem_id, d_reg_date, d_content, d_state, d_comment) "
-			+ "VALUES(declared_seq.nextval, #{d_target_path}, #{d_target_num}, #{d_target_id}, #{d_target_mem_id}, #{d_target_mem_id}, sysdate, #{d_content}, #{d_state}, #{d_comment})")
+			+ "VALUES(declared_seq.nextval, #{d_target_path}, #{d_target_num}, #{d_target_id}, #{d_mem_id}, #{d_target_mem_id}, sysdate, #{d_content}, #{d_state}, #{d_comment})")
 	public void insertDeclared(FC_FranchiseDeclaredCommand declaredCommand);
 	
 	//로그
@@ -112,5 +113,8 @@ public interface FranchiseMapper {
 	//@Select("SELECT TO_CHAR(ucnt_log_reg_date,'YYYY-MM-DD')ucnt_log_reg_date FROM user_count_log WHERE TO_CHAR(ucnt_log_reg_date,'YYYY-MM-DD') = TO_CHAR(#{today_reg_date},'YYYY-MM-DD')")
 	@Select("SELECT * FROM user_count_log WHERE TO_CHAR(ucnt_log_reg_date,'YY-MM-DD') = TO_CHAR(sysdate,'YY-MM-DD')")
 	public UserCountLogCommand selectFCafeUserCountLogByDate();
+	
+	@Insert("INSERT INTO user_menu_log (umenu_log_seq,umenu_log_reg_date,umenu_log_u_uid,umenu_name,umenu_log_state,umenu_log_message) VALUES (umenu_log_seq.nextval,sysdate,#{umenu_log_u_uid},#{umenu_name},#{umenu_log_state},#{umenu_log_message})")
+	public void insertUserLog_FC(UserMenuLogCommand userMenuLog);
 }
 

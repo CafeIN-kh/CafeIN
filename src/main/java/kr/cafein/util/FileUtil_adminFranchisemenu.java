@@ -12,8 +12,13 @@ import javax.imageio.ImageIO;
 public class FileUtil_adminFranchisemenu {
 
 	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/franchise_menu";*/
-	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu";
+	//public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/franchise_menu";
 	//"F:/javaworld/workspace/CafeIN/src/main/webapp/resources/cafein_user/assets/img/franchise/menu"
+	
+	//메타데이터에 저장(새로고침없이 저장)
+	public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/.metadata/.plugins/org.eclipse.wst.server.core/tmp5/wtpwebapps/CafeIN/upload/franchise_menu";
+	
+	
 	public static String rename(String fileName)throws Exception{
 
 		if(fileName==null) return null;

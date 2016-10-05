@@ -51,7 +51,7 @@ $(document).ready(function(){
 						$('#like_count').html(
 								'<i class="fa fa-heart color-green" style="font-size:15px;"></i>' + ' ' + data.count
 						);
-						alert(totalCount);
+						//alert(totalCount);
 					}
 					if(data.result == 'delete'){
 						$('#fcafe_like').html(
@@ -60,7 +60,7 @@ $(document).ready(function(){
 						$('#like_count').html(
 								'<i class="fa fa-heart color-green" style="font-size:15px;"></i>' + ' ' + data.count
 						);
-						alert(totalCount);
+						//alert(totalCount);
 					}
 				}
 			},error:function(){
@@ -152,14 +152,14 @@ $(document).ready(function(){
 					var output = '';
 					output += '<div class="media-body">';
 					output += '<input type="hidden" value="' + item.freply_num + '" id="freply_num">';
-					output += '<h4 class="media-heading korean-font">' + item.freply_nickname;
+					output += '<h4 class="media-heading korean-font-bold">' + item.freply_nickname;
 
 					if($('#u_uid').val() && $('#u_uid').val() == item.u_uid){
 						output += '<span>' + item.freply_reg_date;
 						output += ' <a href="" id="deleteReply">삭제</a> |';  
 						output += ' <a class="fdeclear_button" data-toggle="modal" data-target="#declear" data-num="' +item.freply_num+ '" data-id="' +item.u_uid+ '" style="text-decoration:none;cursor:pointer;">신고</a></span></h4>';
 					}else{
-						output += '<span>' + item.freply_reg_date;
+						output += '<span>' + item.freply_reg_date + ' |';
 						output += ' <a class="fdeclear_button" data-toggle="modal" data-target="#declear" data-num="' +item.freply_num+ '" data-id="' +item.u_uid+ '" style="text-decoration:none;cursor:pointer;">신고</a></span></h4>';
 					}
 
@@ -304,7 +304,7 @@ $(document).ready(function(){
 						$('#d_target_mem_id_name').html("피신고자 ID : " + declaredMember_u_name);
 						$('#d_target_mem_id').val(declaredMember_u_uid);
 
-						alert("신고댓글시퀀스 : " + declaredReply.freply_num + ", 신고당한 사람닉네임 :" + declaredMember_u_name + ", 신고당한사람 u_uid : " + declaredMember_u_uid + ", 신고한사람 u_uid : " + u_uid);
+						//alert("신고댓글시퀀스 : " + declaredReply.freply_num + ", 신고당한 사람닉네임 :" + declaredMember_u_name + ", 신고당한사람 u_uid : " + declaredMember_u_uid + ", 신고한사람 u_uid : " + u_uid);
 
 					}else {
 						alert('신고시 오류 발생!');

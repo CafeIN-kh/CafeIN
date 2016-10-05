@@ -31,6 +31,14 @@ var Registration = function () {
 	                    maxlength: 20,
 	                    equalTo: '#password'
 	                },
+	                title:
+	                {
+	                    required: true
+	                },
+	                content:
+	                {
+	                    required: true
+	                },
 	                firstname:
 	                {
 	                    required: true
@@ -71,6 +79,14 @@ var Registration = function () {
 	                {
 	                    required: 'Please enter your password one more time',
 	                    equalTo: 'Please enter the same password as above'
+	                },
+	                title:
+	                {
+	                	 required: 'Please enter your title'
+	                },
+	                content:
+	                {
+	                	 required: 'Please enter your content'
 	                },
 	                firstname:
 	                {

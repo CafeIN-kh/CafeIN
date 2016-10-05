@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.domain.CustomizingCommand;
+import kr.cafein.customizing.service.CustomizingDetailService;
 import kr.cafein.customizing.service.CustomizingService;
 import kr.cafein.domain.FranchiseCommand;
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.util.PagingUtilCus;
 
 
@@ -33,6 +35,8 @@ public class CustomizingListController {
 		
 		@Resource
 		private CustomizingService customizingService;
+		@Resource(name="customizingDetailService")
+		private CustomizingDetailService customizingDetailService;
 		
 		//customizing_list_check.do
 		@RequestMapping("/cafein_user/customizing/customizing_list.do")
@@ -126,6 +130,17 @@ public class CustomizingListController {
 				list = customizingService.pagingSearchLikeList(map);
 			}
 			
+			//페이지뷰 카운트, 오늘 날짜에 따라 페이지뷰 로우 생성(insert)과 업데이트(update)
+			//customizingService에도 mapper 만들기 귀찮아서 customizingDetailService 있는거 가져다 씀.
+			UserCountLogCommand userCountLogCommand = new UserCountLogCommand();
+	        userCountLogCommand = customizingDetailService.selectCustomUserCountLogByDate();	//오늘 날짜와 db에 저장된 날짜가 일치하는 row 찾기 
+	        if(userCountLogCommand == null) {
+	        	log.debug("★★★오늘날짜 페이지뷰 로우 없으므로 insert");
+	        	customizingDetailService.insertCustomUserCountLog();
+	        }else {
+	        	log.debug("★★★오늘날자 페이지뷰 로우 있으므로 update, 전체카운트와 개인카페 카운트+1");
+	        	customizingDetailService.updateCustomUserCountLog();
+	        }
 			
 			//System.out.println("마지막 리스트 점검 list : " +list.toString());
 			

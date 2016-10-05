@@ -30,11 +30,8 @@ public class CustomizingDetailReplyDeclaredController {
 
 	@Resource
 	private CustomizingDetailService customizingDetailService;
-
 	private CustomizingDetailReplyCommand customizingDetailReplyCommand;
-
 	private CustomizingDetailController customizingDetailController;
-
 	private FranchiseCommand franchiseCommand;
 
 	//신고 모달창에 신고자/피신고자 정보 넘겨주기

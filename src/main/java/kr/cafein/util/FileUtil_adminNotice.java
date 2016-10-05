@@ -14,7 +14,11 @@ public class FileUtil_adminNotice {
 	/*public static String UPLOAD_PATH="C:/Users/JJY/git/CafeIN-kh/CafeIN/src/main/webapp/upload/notice";*/
 	
 	//송지오컴퓨터용 지연언니컴퓨터로 합칠때는 위에꺼 주석풀면됨
-	public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/notice";
+	//public static String UPLOAD_PATH="E:/Javawork/git/CafeIN/src/main/webapp/upload/notice";
+	
+	//메타데이터에 저장(새로고침없이 저장)
+	public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/.metadata/.plugins/org.eclipse.wst.server.core/tmp5/wtpwebapps/CafeIN/upload/notice";
+	
 	
 	public static String rename(String fileName)throws Exception{
 

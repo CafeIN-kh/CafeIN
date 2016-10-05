@@ -177,6 +177,10 @@ public class CustomizingDetailServiceImpl implements CustomizingDetailService{
 		// TODO Auto-generated method stub
 		return customMapper.selectCustomUserCountLogByDate();
 	}
+	@Override
+	public MemberCommand selectCustomUserLogByMember(String u_uid) {
+		return customMapper.selectCustomUserLogByMember(u_uid);
+	}
 
 	
 }

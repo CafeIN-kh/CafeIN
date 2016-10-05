@@ -5,15 +5,14 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserLogCommand;
 import kr.cafein.member.service.MemberService;
 
 @Controller //@Controller라는걸 명시해줘야 읽을 수 있음
@@ -89,6 +88,20 @@ public class MemberLoginController {
 				session.setAttribute("u_level", member.getU_level());
 				session.setAttribute("u_name", member.getU_name());
 				log.debug("인증성공 ");
+				
+				//로그인   로그, u_log_change=1 고정
+				//u_log_change - 0[회원가입] 1[로그인] 2[수정] 3[탈퇴]
+				String u_uid = member.getU_uid();
+				UserLogCommand userLogCommand = new UserLogCommand();
+				userLogCommand.setU_uid(u_uid);
+				userLogCommand.setU_log_change(1);
+				String logMessage = "";
+				String u_email = memberService.selectMemberUserLogByUid(u_uid).getU_email();
+				logMessage = "[" + u_email + "] 사용자가 로그인을 하였습니다."; 
+				userLogCommand.setU_log_message(logMessage);
+				memberService.insertMemberUserLog(userLogCommand);
+				log.debug("[로그인 로그] userLogCommand : " + userLogCommand);
+				
 				return "redirect:/cafein_user/main/main.do"; // 인증성공하면 메인으로
 			}else {
 				//인증실패

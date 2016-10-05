@@ -13,7 +13,14 @@ public class QnaCommand {
 	private String password;
 	private Date reg_date;
 	private int inline;
+	private int qa_answer;
 	
+	public int getQa_answer() {
+		return qa_answer;
+	}
+	public void setQa_answer(int qa_answer) {
+		this.qa_answer = qa_answer;
+	}
 	public int getInline() {
 		return inline;
 	}

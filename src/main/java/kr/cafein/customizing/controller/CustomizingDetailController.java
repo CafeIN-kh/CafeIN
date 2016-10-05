@@ -20,6 +20,7 @@ import kr.cafein.customizing.domain.CustomizingDetailCafeNameCommand;
 import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.domain.CustomizingDetailReplyCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
+import kr.cafein.domain.PrivateCafeCommand;
 import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.util.PagingUtil;
 
@@ -79,6 +80,17 @@ public class CustomizingDetailController {
 		
 		customCommand.setCustom_recipe(customCommand.getCustom_recipe().replace("<br>","\n"));
 		
+		//해쉬태그 #로 바꾸는 과정
+		String customTagName = customCommand.getCustom_hash_tag();
+	    String[] customTagNameArray;
+	    String customTagSum = "";
+	    //문자열에 ,가 있다면 쪼개서 배열에 담기
+	    customTagNameArray = customTagName.split(",");
+	    for (int j = 0; j < customTagNameArray.length; j++) {
+	    	customTagSum += "#"+customTagNameArray[j]+" ";
+		}
+	    customCommand.setCustom_hash_tag(customTagSum);
+		
 		String cafeName = customizingDetailService.selectCafeName(custom_num);
 		
 		int start = 3;
@@ -106,6 +118,8 @@ public class CustomizingDetailController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("customizing_detail");
 		mav.addObject("customCommand",customCommand);
+		//#로 바꾸기 전 ,태그 수정창에 띄우기 위함
+		mav.addObject("customTagName",customTagName);
 		mav.addObject("cafeName",cafeName);
 		mav.addObject("bookmarkCount",bookmarkCount);
 		mav.addObject("likeCount",likeCount);

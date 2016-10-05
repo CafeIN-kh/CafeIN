@@ -56,6 +56,7 @@ $(document).ready(function(){
 				rowCount = data.rowCount;
 				var list = data.list;
 				var category_mywrite = data.category_mywrite;
+				//alert("category_mywrite : " + category_mywrite);
 				
 				//count가 음수가 오면 오류가 났다는거.
 				if(count < 0 || list == null) {
@@ -69,7 +70,7 @@ $(document).ready(function(){
 					if(list != 0) {
 						
 						$(list).each(function(index,item){
-							attach_pcafe_main(item,index.category_mywrite);
+							attach_pcafe_main(item,category_mywrite);
 						});
 						
 					}else {
@@ -213,6 +214,7 @@ function attach_pcafe_main(item,category_mywrite) {
 	
 	//삭제버튼 관련 소스, pcafeDelete() a태그와 바로 위 easy-bolck-v1 클래스
 	//내글 보기 누를 경우 삭제 버튼 나오는 html 붙이기
+	//alert("category_mywrite : " + category_mywrite);
 	if(category_mywrite == 'category_mywrite' ) {
 		$('#output').append(
 			'<div class="col-md-4 col-sm-6 easy-block-v1">' +

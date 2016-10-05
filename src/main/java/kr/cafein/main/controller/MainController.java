@@ -15,6 +15,7 @@ import kr.cafein.domain.FranchiseMenuCommand;
 import kr.cafein.domain.PrivateCafeCommand;
 import kr.cafein.domain.PrivateCafeMenuCommand;
 import kr.cafein.domain.ULikeCommand;
+import kr.cafein.domain.UserCountLogCommand;
 import kr.cafein.main.service.MainService;
 
 
@@ -72,6 +73,22 @@ public class MainController {
 		List<PrivateCafeCommand> privateCafeCommand = null;
 		privateCafeCommand = mainService.selectBookmarkPrivateCafe();
 		
+		//개인카페의 이미지의 대표이미지 *와 ,구별되있는 것 쪼개기
+		for(int i = 0; i < privateCafeCommand.size(); i++) {
+			String pcafeImgName = privateCafeCommand.get(i).getPcafe_img();
+		    String[] pcafeImgNameArray;
+		    
+		  //문자열에 ,가 있다면 쪼개서 배열에 담기
+		    pcafeImgNameArray = pcafeImgName.split(",");
+		    for (int j = 0; j < pcafeImgNameArray.length; j++) {
+				//pcafeImgNameArray 인덱스 안에 * 값이 없으면 -1 반환
+				if(pcafeImgNameArray[j].indexOf("*") != -1){
+					//*이 있다는 것이므로 *표를 빈값으로 대체	//대표이미지 찾아서 *표시 없애주기
+					pcafeImgNameArray[j] = pcafeImgNameArray[j].replace("*","");
+					privateCafeCommand.get(i).setPcafe_img(pcafeImgNameArray[j]);
+				}
+			}
+		}
 		
 		List<ULikeCommand> selectFMLike = null;
 		//프랜차이즈 메뉴 좋아요
@@ -95,6 +112,18 @@ public class MainController {
 		
 		System.out.println("pmenuCommandL.size() : " + pmenuCommandL.size());
 		System.out.println("pmenuCommandL.toString() : " + pmenuCommandL.toString());
+		
+		
+		//페이지뷰 카운트, 오늘 날짜에 따라 페이지뷰 로우 생성(insert)과 업데이트(update)
+		UserCountLogCommand userCountLogCommand = new UserCountLogCommand();
+        userCountLogCommand = mainService.selectMainUserCountLogByDate();	//오늘 날짜와 db에 저장된 날짜가 일치하는 row 찾기 
+        if(userCountLogCommand == null) {
+        	log.debug("★★★오늘날짜 페이지뷰 로우 없으므로 insert");
+        	mainService.insertMainUserCountLog();
+        }else {
+        	log.debug("★★★오늘날자 페이지뷰 로우 있으므로 update, 전체카운트와 매인 카운트+1");
+        	mainService.updateMainUserCountLog();
+        }
 
 		ModelAndView mav = new ModelAndView();
 		//데이터 매칭

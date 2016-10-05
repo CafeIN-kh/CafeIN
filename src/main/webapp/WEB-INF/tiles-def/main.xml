@@ -541,17 +541,19 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/back-to-top.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/smoothScroll.js"/>
         	
-<!--         	<add-attribute value=""/> -->
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/gmap/gmap.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/gmap/gmap.js"/> -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"/>
         	<!-- JS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/custom.js"/>
         	<!-- JS Page Level -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/login.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/contact.js"/>
-        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/pages/page_contacts.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/page_registration.js"/>
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/login.js"/> -->
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/forms/contact.js"/> -->
+        	<!-- <add-attribute value="/CafeIN/resources/cafein_user/assets/js/pages/page_contacts.js"/> -->
+        	<!-- 구글 맵에 필요(geocoding api, map api) -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/private_detail_map.js"/>
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/qna.js"/>
         </put-list-attribute>

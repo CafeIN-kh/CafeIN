@@ -73,8 +73,8 @@
 									</div>
 									<div class="news-v2-desc">
 										<h3 class="korean-font-bold2 likeRank1-custom-menuName">
-											커스텀마이징 좋아요 1위 메뉴 <br>
-											<h2>${cCommand.custom_name}</h2>
+											<!-- <div>커스텀마이징 좋아요 1위 메뉴</div><br> -->
+											${cCommand.custom_name}
 										</h3>
 										<ul class="list-inline news-v1-info" style="margin-top:15px;">
 											<li class="korean-font" style="color:#888;">작성자&nbsp;'&nbsp;${cCommand.u_uid}&nbsp;'&nbsp;&nbsp;/</li>
@@ -82,7 +82,7 @@
 											<li style="color:#888;"><i class="fa fa-heart"></i>&nbsp;${cCommand.cCount}</li>
 										</ul>
 										<p class="korean-font" style="margin-bottom:20px;">${cCommand.custom_introduce}</p>
-										<a class="read-more" href="#">Read More</a>
+										<a class="read-more" href="/CafeIN/cafein_user/customizing/customizing_detail.do?custom_num=${cCommand.custom_num}&franchise_num=${cCommand.franchise_num}&u_uid=${cCommand.u_uid}">Read More</a>
 									</div>
 								</div>
 								</c:if>
@@ -95,7 +95,12 @@
 										<img class="img-responsive" src="/CafeIN/upload/customizing/${cCommand.custom_img}" alt="">
 									</div>
 									<div class="col-md-8" style="padding-top:5px;">
-										<a href="#" class="korean-font likeRank-custom-menuName">커스텀마이징 좋아요 2~5위 메뉴 <br>${cCommand.custom_name}</a>
+										<a href="/CafeIN/cafein_user/customizing/customizing_detail.do?custom_num=${cCommand.custom_num}&franchise_num=${cCommand.franchise_num}&u_uid=${cCommand.u_uid}" 
+											class="korean-font likeRank-custom-menuName">
+											<!-- 커스텀마이징 좋아요 2~5위 메뉴 <br> -->
+											커스텀 메뉴 좋아요 순위 <br>
+											${cCommand.custom_name}
+										</a>
 										<ul class="list-inline news-v1-info" style="margin-top:8px;">
 											<li style="color:#888;"><i class="fa fa-clock-o"></i> ${cCommand.custom_reg_date}&nbsp;&nbsp;&nbsp;/</li>
 											<li style="color:#888;"><i class="fa fa-heart"></i> &nbsp;${cCommand.cCount} </li>
@@ -140,7 +145,7 @@
 										</h3>
 
 										<p class="korean-font" style="margin-bottom:20px;margin-top:20px;">${franchiseCommandB.franchise_introduce}</p>
-										<a class="read-more" href="#">Read More</a>
+										<a class="read-more" href="/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${franchiseCommandB.franchise_num}">Read More</a>
 										
 									</div>
 								</div>
@@ -186,7 +191,7 @@
 												<li style="color:#888;"><i class="fa fa-star"></i> ${pCommand.count } </li>
 											</ul>
 											<p class="korean-font" style="margin-bottom:20px;">${pCommand.pcafe_introduce}</p>
-											<a class="read-more" href="#">Read More</a>
+											<a class="read-more" href="/CafeIN/cafein_user/private/private_detail.do?pcafe_num=${pCommand.pcafe_num}">Read More</a>
 										</div>
 									</div>
 									</c:if>
@@ -227,7 +232,7 @@
 									<li><p class="korean-font" style="margin:0 10px 10px 10px;color:#888;">${fmCommand.franchise_name}&nbsp;&nbsp;&nbsp;&nbsp;/</p></li>
 									<li><i class="fa fa-heart" style="color:#888;"></i>&nbsp;${fmCommand.fcount} &nbsp; <br></li>
 								</ul>
-								<a class="read-more" href="#" style="margin:10px;">Read More</a>
+								<a class="read-more" href="/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${fmCommand.franchise_num}" style="margin:10px;">Read More</a>
 							</div>
 						</div>
 					</div>
@@ -263,10 +268,10 @@
 									</div>
 									<div class="news-v2-desc">
 										<h3 class="korean-font-bold2">
-											<a href="#" class="likeRank1-custom-menuName">개인카페 메뉴이름 (좋아요 순위) ${pmCommand.pmenu_name}</a>
+											<a href="/CafeIN/cafein_user/private/private_detail.do?pcafe_num=${pmCommand.pcafe_num}" class="likeRank1-custom-menuName">개인카페 메뉴 좋아요 순위  : ${pmCommand.pmenu_name}</a>
 										</h3>
 										<ul class="list-inline news-v1-info" style="margin-top:15px;">
-											<li class="korean-font" style="color:#888;">개인카페 이름&nbsp;&nbsp;${pmCommand.pcafe_name}&nbsp;/</li>
+											<li class="korean-font" style="color:#888;">카페이름&nbsp;&nbsp;:&nbsp;${pmCommand.pcafe_name}&nbsp;/</li>
 											<li style="color:#888;"><i class="fa fa-clock-o"></i> ${pmCommand.pcafe_reg_date }&nbsp;&nbsp;&nbsp;/</li>
 											<li style="color:#888;"><i class="fa fa-star"></i> ${pmCommand.pcount } </li>
 										</ul>

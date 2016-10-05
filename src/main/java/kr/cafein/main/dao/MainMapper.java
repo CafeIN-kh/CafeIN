@@ -1,18 +1,19 @@
 package kr.cafein.main.dao;
 
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.domain.FranchiseCommand;
 import kr.cafein.domain.FranchiseMenuCommand;
-import kr.cafein.domain.MainBookmarkCommand;
 import kr.cafein.domain.PrivateCafeCommand;
 import kr.cafein.domain.PrivateCafeMenuCommand;
 import kr.cafein.domain.ULikeCommand;
+import kr.cafein.domain.UserCountLogCommand;
 
 
 @Repository
@@ -43,15 +44,21 @@ public interface MainMapper {
 	
 	//프랜차이즈 메뉴 좋아요
 	//public List<ULikeCommand> selectFMLike();
-	@Select("select f.franchise_name, fm.fmenu_name, fm.fmenu_img, count(*) fcount from franchise f join franchise_menu fm on f.franchise_num = fm.franchise_num join u_like u on fm.fmenu_num = u.fmenu_num and fm.franchise_num in (select fmenu_num from u_like) group by f.franchise_name, fm.fmenu_name, fm.fmenu_img order by fcount desc")
+	@Select("select f.franchise_num, f.franchise_name, fm.fmenu_name, fm.fmenu_img, count(*) fcount from franchise f join franchise_menu fm on f.franchise_num = fm.franchise_num join u_like u on fm.fmenu_num = u.fmenu_num and fm.franchise_num in (select fmenu_num from u_like) group by f.franchise_num, f.franchise_name, fm.fmenu_name, fm.fmenu_img order by fcount desc")
 	public List<FranchiseMenuCommand> selectLikeFmenu();
 		
 	
 	//개인카페 메뉴 좋아요
 	//public List<ULikeCommand> selectPMLike();
-	@Select("select p.pcafe_name, pm.pmenu_name, pm.pmenu_img, p.pcafe_reg_date, count(*) pcount from private_cafe p join private_cafe_menu pm on p.pcafe_num = pm.pcafe_num join u_like u on pm.pmenu_num = u.pmenu_num group by  p.pcafe_name,pm.pmenu_name,pm.pmenu_img, p.pcafe_reg_date order by pcount desc")
+	@Select("select p.pcafe_num, p.pcafe_name, pm.pmenu_name, pm.pmenu_img, p.pcafe_reg_date, count(*) pcount from private_cafe p join private_cafe_menu pm on p.pcafe_num = pm.pcafe_num join u_like u on pm.pmenu_num = u.pmenu_num group by p.pcafe_num, p.pcafe_name,pm.pmenu_name,pm.pmenu_img, p.pcafe_reg_date order by pcount desc")
 	public List<PrivateCafeMenuCommand> selectLikePmenu();
 	
-	
+	//메인 페이지뷰 로그, 오늘 날짜의 데이터가 없으면 insert, 있으면 update로 +1 카운트
+	@Insert("INSERT INTO user_count_log (ucnt_log_seq,ucnt_log_reg_date,ucnt_total,ucnt_log_main,ucnt_log_franchise,ucnt_log_private,ucnt_log_custom,ucnt_log_qna,ucnt_log_notice) VALUES (user_count_log_seq.nextval,sysdate,0,0,0,0,0,0,0)")
+	public void insertMainUserCountLog();
+	@Update("UPDATE user_count_log SET ucnt_total=ucnt_total+1,ucnt_log_main=ucnt_log_main+1 WHERE TO_CHAR(ucnt_log_reg_date,'YY-MM-DD') = TO_CHAR(sysdate,'YY-MM-DD')")
+	public void updateMainUserCountLog();
+	@Select("SELECT * FROM user_count_log WHERE TO_CHAR(ucnt_log_reg_date,'YY-MM-DD') = TO_CHAR(sysdate,'YY-MM-DD')")
+	public UserCountLogCommand selectMainUserCountLogByDate();
 	
 }

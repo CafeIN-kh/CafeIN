@@ -153,8 +153,7 @@
 		                                    <p class="margin-bottom-20 korean-font">
 		                                    	${bookmarkMypage.custom_introduce}
 		                                    </p>
-		                                    <!-- 아직 커스텀 매핑 주소를 몰라서 프렌차이즈 매핑주소로 기입해놓음 후에 바꾸기 -->
-		                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/franchise/franchise_detail.do?franchise_num=${bookmarkMypage.custom_fnum}'">
+		                                    <button type="button" class="btn-u" onclick="location.href='/CafeIN/cafein_user/customizing/customizing_detail.do?custom_num=${bookmarkMypage.custom_num}&franchise_num=${bookmarkMypage.custom_fnum}&u_uid=${bookmarkMypage.u_uid}'">
 		                                    	Detail Page
 		                                    </button>
 		                                    <button type="button" class="btn-u btn-u-default korean-font" onclick="location.href='/CafeIN/cafein_user/mypage/mypage_bookmark_custom_deleteBookmark.do?custom_num=${bookmarkMypage.custom_num}'">

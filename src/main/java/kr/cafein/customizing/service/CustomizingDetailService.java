@@ -66,7 +66,7 @@ public interface CustomizingDetailService {
 	
 	//커스텀 등록,삭제,수정,신고에 따른 로그 
 	public void insertCustomUserLog(UserMenuLogCommand userMenuLog);
-	
+	public MemberCommand selectCustomUserLogByMember(String u_uid);
 	
 	public void insertCustomUserCountLog();
 	public void updateCustomUserCountLog();

@@ -13,7 +13,10 @@ public class FileUtil_Customizing {
 	
 	//자기 로컬의 주소 써주기
 	//public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/CafeIN/src/main/webapp/upload/private";
-	public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/customizing";
+	//public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/customizing";
+	
+	//메타데이터에 저장(새로고침없이 저장)
+	public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/.metadata/.plugins/org.eclipse.wst.server.core/tmp5/wtpwebapps/CafeIN/upload/customizing";
 	
 	public static String rename(String fileName)throws Exception{
 

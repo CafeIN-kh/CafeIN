@@ -1,15 +1,14 @@
 package kr.cafein.main.service;
 
 import java.util.List;
-import java.util.Map;
 
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.domain.FranchiseCommand;
 import kr.cafein.domain.FranchiseMenuCommand;
-import kr.cafein.domain.MainBookmarkCommand;
 import kr.cafein.domain.PrivateCafeCommand;
 import kr.cafein.domain.PrivateCafeMenuCommand;
 import kr.cafein.domain.ULikeCommand;
+import kr.cafein.domain.UserCountLogCommand;
 
 
 
@@ -39,6 +38,9 @@ public interface MainService {
 	//public List<ULikeCommand> selectPMLike();
 	public List<PrivateCafeMenuCommand> selectLikePmenu();
 
-	
+	//메인 페이지뷰 로그, 오늘 날짜의 데이터가 없으면 insert, 있으면 update로 +1 카운트
+	public void insertMainUserCountLog();
+	public void updateMainUserCountLog();
+	public UserCountLogCommand selectMainUserCountLogByDate();
 	
 }

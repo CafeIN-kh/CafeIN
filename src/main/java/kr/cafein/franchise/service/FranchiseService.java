@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.UserCountLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseDeclaredCommand;
@@ -53,4 +54,6 @@ public interface FranchiseService {
 	public void insertFCafeUserCountLog();
 	public void updateFCafeUserCountLog();
 	public UserCountLogCommand selectFCafeUserCountLogByDate();
+	
+	public void insertUserLog_FC(UserMenuLogCommand userMenuLog);
 }

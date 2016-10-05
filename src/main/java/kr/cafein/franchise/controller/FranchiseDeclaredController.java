@@ -111,7 +111,7 @@ public class FranchiseDeclaredController {
 			userMenuLogCommand.setUmenu_name(2);
 			userMenuLogCommand.setUmenu_log_state(3);
 			String u_email = franchiseService.selectDeclaredMember(u_uid).getU_email();
-			String logMessage = "[" + u_email + "] 사용자가 개인카페에서 댓글을 신고 하였습니다."; 
+			String logMessage = "[" + u_email + "] 사용자가 프렌차이즈 카페에서 댓글을 신고 하였습니다."; 
 			userMenuLogCommand.setUmenu_log_message(logMessage);
 			franchiseService.insertUserLog_FC(userMenuLogCommand);
 			log.debug("[프랜차이즈카페 로그] userMenuLogCommand : " + userMenuLogCommand);

@@ -64,7 +64,7 @@ public class FranchiseReplyWriteController {
 		String logMessage = "";
 		if(!u_uid.equals("Guest")){
 			String u_email = franchiseService.selectDeclaredMember(u_uid).getU_email();
-			logMessage = "[" + u_email + "] 사용자가 개인카페에서 댓글을 등록 하였습니다."; 
+			logMessage = "[" + u_email + "] 사용자가 프렌차이즈 카페에서 댓글을 등록 하였습니다."; 
 		}else {
 			logMessage = "[Guest] 사용자가 개인카페에서 댓글을 등록 하였습니다."; 
 		}

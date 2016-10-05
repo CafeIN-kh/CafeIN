@@ -6,11 +6,18 @@
 	
  <section id="content">
                 <div class="container">
+                <div class="pm-body clearfix">
+                             <ul class="tab-nav tn-justified">
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandLogList.do">Admin Log</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandUserLogList.do">User Log</a></li>
+                                
+                            </ul> 
                 
 	<div class="card">
 		<div class="card-header" style="padding-bottom: 0px;">
 			<h2>
-				Notice <small>Log List</small>
+				Franchise <small>User Log List</small>
+			    <%-- <a style="float: right" href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandWrite.do"><i class="md md-border-color"></i></a> --%>
 			</h2>
 		</div>
 
@@ -35,25 +42,29 @@
 			<tbody>
 				<c:forEach var="list" items="${list }">
 					<tr>
-						<td>${list.n_log_num }</td>
-						<td>${list.n_log_uid}</td>
-						<td>${list.n_log_message }</td>
-						<td>${list.n_log_reg_date}</td>
+						<td>${list.umenu_log_seq }</td>
+						<td>${list.umenu_log_u_uid}</td>
+						<td>${list.umenu_log_message }</td>
+						<td>${list.umenu_log_reg_date}</td>
 						<c:choose>
-							<c:when test="${list.n_log_change==0}">
+							<c:when test="${list.umenu_log_state==0}">
 								<td>Write</td>
 							</c:when>
-							<c:when test="${list.n_log_change==1}">
+							<c:when test="${list.umenu_log_state==1}">
+								<td>Update</td>
+							</c:when>
+							<c:when test="${list.umenu_log_state==2}">
 								<td>Delete</td>
 							</c:when>
 							<c:otherwise>
-								<td>Update</td>
+								<td>Report</td>
 							</c:otherwise>
-						</c:choose>  
+						</c:choose> 
 					</tr>  
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
 	</div>
 	</div>
 	</section>

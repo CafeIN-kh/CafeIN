@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import kr.cafein.admin.notice.domain.AdminNoticeLogCommand;
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
 import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Repository
 public interface AdminQnaMapper {
@@ -34,4 +35,7 @@ public interface AdminQnaMapper {
 	
 	@Insert("insert into qna_log (qa_log_num, qa_log_uid, qa_log_reg_date, qa_log_change, qa_log_message,qa_num) values (qa_log_seq.nextval, #{qa_log_uid}, sysdate, #{qa_log_change}, #{qa_log_message},#{qa_num})")
 	public void insertAdminQna_Log(AdminQnaLogCommand adminQnaLogCommand);
+	
+	@Select("select * from user_menu_log where umenu_name=5")
+	public List<UserMenuLogCommand> getUserQna_LogList();
 }

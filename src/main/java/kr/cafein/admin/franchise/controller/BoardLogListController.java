@@ -26,10 +26,12 @@ public class BoardLogListController {
          
          @RequestMapping("/cafein_admin/franchise/franchise_brandLogList.do")
          public ModelAndView process(){
+        	 
+        	 
       
             
             List<AdminFranchiseLogCommand> logList = adminFranchiseService.logList();
-            
+            System.out.println("========¸®½ºÆ®=========== : "+logList);
             ModelAndView mav = new ModelAndView();
             mav.setViewName("franchise_logList");
             mav.addObject("logList", logList);

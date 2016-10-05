@@ -137,7 +137,7 @@
 		                <form:form action="mypage_user_leave_check.do" commandName="command"  class="log-reg-block sky-form col-md-12" novalidate="novalidate">
 							<form:errors elements="div"/>
 		                        <h2 class="korean-font">비밀번호 재확인</h2>
-		
+								<%-- <form:input type="hidden" path="${username}"/> --%>
 		                        <div class="login-input reg-input">
 		                        	<div class="col-md-1">&nbsp;</div>
 			                        	<div class="col-md-8">

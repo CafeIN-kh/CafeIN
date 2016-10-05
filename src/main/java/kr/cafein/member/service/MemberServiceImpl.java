@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserLogCommand;
 import kr.cafein.member.dao.MemberMapper;
 
 @Service("memberService")
@@ -74,6 +75,26 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberCommand> getAllMemberList() {
 		// TODO Auto-generated method stub
 		return memberMapper.getAllMemberList();
+	}
+
+	@Override
+	public void insertMemberUserLog(UserLogCommand userLog) {
+		memberMapper.insertMemberUserLog(userLog);
+	}
+
+	@Override
+	public MemberCommand selectMemberUserLogByUid(String u_uid) {
+		return memberMapper.selectMemberUserLogByUid(u_uid);
+	}
+
+	@Override
+	public void deleteLevel(String u_uid) {
+		memberMapper.deleteLevel(u_uid);
+	}
+
+	@Override
+	public void deleteAll(String u_uid) {
+		memberMapper.deleteAll(u_uid);
 	}
 
 

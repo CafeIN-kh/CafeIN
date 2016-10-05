@@ -22,7 +22,18 @@ public class MemberCommand {
 	@Size(min=4,max=10,message="Please enter your Confirm Password¡Ú")
 	private String confirmpassword;
 	
+	private String username;
 	
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 
 
 	public String getConfirmpassword() {
@@ -92,12 +103,12 @@ public class MemberCommand {
 	public void setU_level(int u_level) {
 		this.u_level = u_level;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MemberCommand [u_uid=" + u_uid + ", u_email=" + u_email + ", u_name=" + u_name + ", u_password="
-				+ u_password + ", u_reg_date=" + u_reg_date + ", u_level=" + u_level + "]";
+				+ u_password + ", u_reg_date=" + u_reg_date + ", u_level=" + u_level + ", confirmpassword="
+				+ confirmpassword + ", username=" + username + "]";
 	}
-	
 	
 }

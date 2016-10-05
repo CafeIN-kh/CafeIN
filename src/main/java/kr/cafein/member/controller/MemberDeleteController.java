@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserLogCommand;
 import kr.cafein.member.service.MemberService;
 
 @Controller
@@ -38,6 +39,7 @@ public class MemberDeleteController {
 	@RequestMapping(value="/cafein_user/mypage/mypage_user_leave_check.do",method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command")
 						 @Valid MemberCommand memberCommand,
+						 //@ModelAttribute String username,
 						 BindingResult result,
 						 SessionStatus status,
 						 HttpSession session){
@@ -45,6 +47,10 @@ public class MemberDeleteController {
 		if(log.isDebugEnabled()){
 			log.debug("memberCommand : " + memberCommand);
 		}
+		
+		//System.out.println("탈퇴 요청 페이지 mypage_user_leave.do 진입 username : " + username);
+		//탈퇴사유 세션에 넣어주고 탈퇴하면 세션 삭제
+		//session.setAttribute("username", username);
 		
 		//passwd 필드의 에러만 체크
 		if(result.hasFieldErrors("u_password")){
@@ -69,10 +75,30 @@ public class MemberDeleteController {
 				
 			}
 			if(check){
-				// 인증성공, 회원정보 삭제
-				memberService.delete(id);
-				log.debug("회원탈퇴 성공!! ");
-				// 로그아웃
+				
+				//String username = memberCommand.getUsername();
+				//String username = (String)session.getAttribute("username");
+				//username = (String)session.getAttribute("username");
+				//System.out.println("username" + username);
+				//회원탈퇴  로그, u_log_change=3 고정
+				//u_log_change - 0[회원가입] 1[로그인] 2[수정] 3[탈퇴]
+				String u_uid = (String)session.getAttribute("u_uid");
+				String u_email = memberService.selectMemberUserLogByUid(u_uid).getU_email();
+				UserLogCommand userLogCommand = new UserLogCommand();
+				userLogCommand.setU_uid(u_uid);
+				userLogCommand.setU_log_change(3);
+				String logMessage = "";
+				logMessage = "[" + u_email + "] 사용자가 회원탈퇴를 하였습니다."; 
+				//logMessage = "[" + u_email + "] 사용자가 회원탈퇴를 하였습니다. [탈퇴사유: " + username + "]"; 
+				userLogCommand.setU_log_message(logMessage);
+				memberService.insertMemberUserLog(userLogCommand);
+				log.debug("[회원탈퇴 로그] userLogCommand : " + userLogCommand);
+
+	            // 인증성공, 회원정보 삭제
+	            memberService.deleteLevel(id);  // u_level=3 로 변경  _ 정지 계정
+	            log.debug("회원정지 성공!! ");
+				
+				// 로그아웃, 세션삭제
 				session.invalidate();
 				return "redirect:/cafein_user/main/main.do";
 			}else{

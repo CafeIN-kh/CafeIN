@@ -1,6 +1,7 @@
 package kr.cafein.member.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserLogCommand;
 import kr.cafein.member.service.MemberService;
 
 
@@ -37,7 +39,7 @@ public class MemberWriteController {
 	}
 	
 	@RequestMapping(value="/cafein_user/user/register.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result) {
+	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result,HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
 			log.debug("memberCommand : " + memberCommand);
@@ -63,6 +65,19 @@ public class MemberWriteController {
 		log.debug("회원등록 문제없음! 등록시작 ");
 		//회원 가입
 		memberService.insert(memberCommand);
+		
+		//회원가입   로그, u_log_change=0 고정
+		//u_log_change - 0[회원가입] 1[로그인] 2[수정] 3[탈퇴]
+		String u_email = memberCommand.getU_email();
+		String u_uid = memberService.selectUid(u_email);
+		UserLogCommand userLogCommand = new UserLogCommand();
+		userLogCommand.setU_uid(u_uid);
+		userLogCommand.setU_log_change(0);
+		String logMessage = "";
+		logMessage = "[" + u_email + "] 사용자가 회원가입을 하였습니다."; 
+		userLogCommand.setU_log_message(logMessage);
+		memberService.insertMemberUserLog(userLogCommand);
+		log.debug("[회원가입 로그] userLogCommand : " + userLogCommand);
 		
 		return "redirect:/cafein_user/main/main.do";
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserLogCommand;
 import kr.cafein.member.service.MemberService;
 
 
@@ -43,7 +44,7 @@ public class MemberUpdateController {
 	}
 	
 	@RequestMapping(value="/cafein_user/mypage/mypage_user_modify.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, SessionStatus status) {
+	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, BindingResult result, SessionStatus status, HttpSession session) {
 		
 		// SessionStatus  - 폼 처리를 완료 했음을 처리하기 위해 사용. @SessionAttribute를 명시한 session 속성을 제거하도록 이벤트를 발생시킨다.
 		
@@ -55,7 +56,7 @@ public class MemberUpdateController {
 			return "mypage_user_modify";
 		}
 		
-	if(!memberCommand.isConfirmPasswd()){
+		if(!memberCommand.isConfirmPasswd()){
 			
 			log.debug("비번 불일치!");
 			result.rejectValue("u_password", "messageCode","비밀번호와 비밀번호 확인이 일치하지 않습니다");
@@ -68,6 +69,19 @@ public class MemberUpdateController {
 		memberService.update(memberCommand);
 		//session에 저장된 model을 삭제하는 이벤트 발생
 		status.setComplete();
+		
+		//회원수정   로그, u_log_change=2 고정
+		//u_log_change - 0[회원가입] 1[로그인] 2[수정] 3[탈퇴]
+		String u_uid = (String)session.getAttribute("u_uid");
+		String u_email = memberService.selectMemberUserLogByUid(u_uid).getU_email();
+		UserLogCommand userLogCommand = new UserLogCommand();
+		userLogCommand.setU_uid(u_uid);
+		userLogCommand.setU_log_change(2);
+		String logMessage = "";
+		logMessage = "[" + u_email + "] 사용자가 회원수정을 하였습니다."; 
+		userLogCommand.setU_log_message(logMessage);
+		memberService.insertMemberUserLog(userLogCommand);
+		log.debug("[회원수정 로그] userLogCommand : " + userLogCommand);
 		
 		return "redirect:/cafein_user/main/main.do";
 	}

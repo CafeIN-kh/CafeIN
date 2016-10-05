@@ -97,6 +97,29 @@ public class CustomizingServiceImpl implements CustomizingService {
 	}
 
 
+	@Override
+	public void deleteU_like(int custom_num) {
+		// TODO Auto-generated method stub
+		customizingMapper.deleteU_like(custom_num);
+		
+	}
+
+
+	@Override
+	public void deleteReply(int custom_num) {
+		// TODO Auto-generated method stub
+		customizingMapper.deleteReply(custom_num);
+		
+	}
+
+
+	@Override
+	public void deleteBookmark(int custom_num) {
+		// TODO Auto-generated method stub
+		customizingMapper.deleteBookmark(custom_num);
+	}
+
+
 	
 
 }

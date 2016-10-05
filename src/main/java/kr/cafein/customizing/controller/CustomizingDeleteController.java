@@ -38,6 +38,9 @@ public class CustomizingDeleteController {
 		}
 		
 		//글 삭제
+		customizingService.deleteU_like(custom_num);
+		customizingService.deleteBookmark(custom_num);
+		customizingService.deleteReply(custom_num);
 		customizingService.deleteCboard(custom_num);
 		
 		//파일 삭제 여부 체크

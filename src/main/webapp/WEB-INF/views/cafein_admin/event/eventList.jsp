@@ -17,10 +17,19 @@
 
 
 	<table id="data-table-command"	class="table table-striped table-vmiddle" style="width: 100%;">
+		<colgroup>
+            <col style="width: 10%;" />
+            <col style="width: 20%;" />
+            <col style="width: *;" />
+            <col style="width: 15%;" />
+            <col style="width: 15%;" />
+
+         </colgroup>
 		<thead>
 			<tr>
 				<th data-column-id="id" data-type="numeric">Num</th>
 				<th data-column-id="sender">Title</th>
+				<th data-column-id="content">Content</th>
 				<th data-column-id="received" data-order="desc">Registered</th>
 				<th data-column-id="commands" data-formatter="commands"
 					data-sortable="false"></th>
@@ -31,6 +40,7 @@
 				<tr>
 					<td>${list.event_num}</td>
 					<td>${list.event_title}</td>
+					<td>${list.event_content}</td>
 					<td>${list.event_reg_date}</td>
 				</tr>
 			</c:forEach>

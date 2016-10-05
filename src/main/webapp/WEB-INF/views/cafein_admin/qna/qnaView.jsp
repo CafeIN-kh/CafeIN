@@ -94,7 +94,7 @@ Content : ${qnaCommand.qa_content }
 									<div class="row">
 										<div class="col-sm-4" style="float: right; width: 174px;">
 											<button type="submit" class="btn bgm-orange waves-effect waves-button waves-float fileupload1">SEND</button>
-											<button style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='list.do'">CANCEL</button>
+											<button type="button" style="margin-left: 10px;" class="btn bgm-green waves-effect waves-button waves-float fileupload1" onclick="location.href='List.do'">CANCEL</button>
 										</div>
 									</div>
 								</div>

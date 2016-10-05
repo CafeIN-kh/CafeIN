@@ -8,8 +8,8 @@
                 <div class="container">
                  <div class="pm-body clearfix">
                              <ul class="tab-nav tn-justified">
-                                <li class="active waves-effect"><a href="/cafein_admin/event/AdminLogList.do">Admin Log</a></li>
-                                <li class="waves-effect"><a href="/cafein_admin/event/UserLogList.do">User Log</a></li>
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/event/AdminLogList.do">Admin Log</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/event/UserLogList.do">User Log</a></li>
                                 
                             </ul> 
 	<div class="card">

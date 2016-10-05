@@ -6,6 +6,12 @@
 	
  <section id="content">
                 <div class="container">
+                <div class="pm-body clearfix">
+                             <ul class="tab-nav tn-justified">
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/qna/AdminLogList.do">Admin Log</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/event/UserLogList.do">User Log</a></li>
+                                
+                            </ul>
                 
 	<div class="card">
 		<div class="card-header" style="padding-bottom: 0px;">
@@ -18,7 +24,7 @@
 		<table id="data-table-command"
 			class="table table-striped table-vmiddle">
 			<colgroup>
-				<col style="width: 5%;" />
+				<col style="width: 10%;" />
 				<col style="width: 10%;" />
 
 				<col style="width: *;" />
@@ -56,6 +62,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
 	</div>
 	</div>
 	</section>

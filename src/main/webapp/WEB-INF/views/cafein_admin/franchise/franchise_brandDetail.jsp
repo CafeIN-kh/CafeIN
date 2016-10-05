@@ -13,7 +13,7 @@
 	<div class="pm-overview c-overflow">
 		<div class="pmo-pic">
 			<div class="p-relative">
-				<a href=""> 
+				<a style="text-decoration:none;"> 
 					<img class="img-responsive"src="/CafeIN/upload/franchise/${franchise.franchise_img}">
 				</a>
 
@@ -106,8 +106,8 @@
 			
 					<div class="pmbb-view">
 						<dl class="dl-horizontal">
-							<dt>번호</dt>
-							<dd>${franchise.franchise_num }</dd>
+							<dt>방문수</dt>
+							<dd>${franchise.franchise_visit }</dd>
 						</dl>   
 						<dl class="dl-horizontal">
 							<dt>상호</dt>

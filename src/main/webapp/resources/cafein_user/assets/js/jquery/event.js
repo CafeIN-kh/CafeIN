@@ -54,10 +54,10 @@ $(document).ready(function() {
 						output += '<p>' + item.event_reg_date + '</p></li></ul>';
 					} else {
 						output += '<div class="col-md-4">';
-						output += '<img class="img-responsive" src="' + item.event_img + '" alt=""></div>';
+						output += '<img class="img-responsive" src="/CafeIN/upload/event/' + item.event_img + '" alt=""></div>';
 						output += '<div class="col-md-8">';
 						output += '<div id="contentTwo" style="text-align: justify;">';
-						output += '<p>' + item.event_content + '</p></div>';
+						output += '<p class="korean-font">' + item.event_content + '</p></div>';
 						output += '<div class="col-md-13">';
 						output += '<p id="regDateTwo" style="float: right;">' + item.event_reg_date + '</p>';
 						output += '</div></div></div></div>';

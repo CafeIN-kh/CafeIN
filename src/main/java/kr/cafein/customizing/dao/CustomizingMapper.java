@@ -30,10 +30,23 @@ public interface CustomizingMapper {
 	public CustomizingCommand selectBoard(Integer custom_num);
 	@Select("SELECT * FROM franchise")
 	public List<FranchiseCommand> selectBrand(); 
+	
+	@Delete("DELETE FROM u_like WHERE custom_num=#{custom_num}")
+	public void deleteU_like(int custom_num);
+	@Delete("DELETE FROM customizing_reply WHERE custom_num=#{custom_num}")
+	public void deleteReply(int custom_num);
+	@Delete("DELETE FROM bookmark WHERE custom_num=#{custom_num}")
+	public void deleteBookmark(int custom_num);
 	@Delete("DELETE FROM customizing WHERE custom_num=#{custom_num}")
 	public void deleteCboard(int custom_num);
+	
+	
+	
 	public List<CustomizingCommand> selectCafe(Map<String,Object> map);
 
+	
+	@Select ("SELECT custom_num FROM customizing WHERE u_uid=#{u_uid}")
+	public List<Integer> selectCustomSeqByUid(String u_uid);
 	
 	
 	

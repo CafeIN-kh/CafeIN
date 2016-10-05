@@ -56,10 +56,10 @@ $(document).ready(function() {
 						output += '<p>' + item.notice_reg_date + '</p></li></ul>';
 					} else {
 						output += '<div class="col-md-4">';
-						output += '<img class="img-responsive" src="' + item.notice_img + '" alt=""></div>';
+						output += '<img class="img-responsive" src="/CafeIN/upload/notice/' + item.notice_img + '" alt=""></div>';
 						output += '<div class="col-md-8">';
 						output += '<div id="contentTwo" style="text-align: justify;">';
-						output += '<p>' + item.notice_content + '</p></div>';
+						output += '<p class="korean-font">' + item.notice_content + '</p></div>';
 						output += '<div class="col-md-13">';
 						output += '<p id="regDateTwo" style="float: right;">' + item.notice_reg_date + '</p>';
 						output += '</div></div></div></div>';

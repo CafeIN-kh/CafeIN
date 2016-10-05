@@ -71,12 +71,23 @@ public class AdminDeclaredListController {
 
 									// 리스트에서 mem_id(seq)를 가져와 멤버의 id(email)을 가져옴 
 				memberEmail = declaredService.getMemberId(list.get(x).getD_mem_id());
-
-				list.get(x).setD_mem_id(memberEmail); // target_id : 신고한 회원의 이메일
+				
+				if(memberEmail!=null && !memberEmail.isEmpty()){ // 정보가 없는 탈퇴한 회원이라면 
+					list.get(x).setD_mem_id(memberEmail); // target_id : 신고한 회원의 이메일
+				}else{
+					list.get(x).setD_mem_id("탈퇴 회원"); // target_id : 신고한 회원의 이메일
+				}
+					
+				
 
 				memberEmail = declaredService.getMemberId(list.get(x).getD_target_mem_id());
-
-				list.get(x).setD_target_mem_id(memberEmail); // target_mem_id
+				
+				if(memberEmail!=null && !memberEmail.isEmpty()){
+					list.get(x).setD_target_mem_id(memberEmail); // target_mem_id
+				}else{
+					list.get(x).setD_target_mem_id("탈퇴 회원"); // target_mem_id
+				}
+				
 
 			}
 		} catch (Exception e) {

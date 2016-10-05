@@ -18,21 +18,21 @@ $(document).ready(function(){
 		 
 		 // 공백 불가 체크
 		 if(!name.value){
-			   $('#message_name').css('color','red').text('Please enter your Username(등록)');
+			   $('#message_name').css({'color':'#F08080', 'font-size':'11px'}).text('Please enter your Username');
 			    
 			    //name.focus();
 			   
 		 }
 	
 		 if(!email.value){
-			   $('#message_email').css('color','red').text('Please enter your email address');
+			   $('#message_email').css({'color':'#F08080', 'font-size':'11px'}).text('Please enter your email address');
 			     
 			   // email.focus();
 			    
 		 }
 		 
 		 if(!password.value){
-			  $('#message_password').css('color','red').text('Please enter your password(등록)');
+			  $('#message_password').css({'color':'#F08080', 'font-size':'11px'}).text('Please enter your password');
 				    
 				  //password.focus();
 			 }
@@ -49,15 +49,13 @@ $(document).ready(function(){
 	    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	 
 	    if (!filter.test(email.value)) {
-	    $('#message_email').css('color','red').text('Please enter a VALID email address(영어,숫자)');
+	    $('#message_email').css({'color':'#F08080', 'font-size':'11px'}).text('Please enter a VALID email address(영어,숫자,@)');
 	    
 	    email.focus();
 	    return false;
 	 }
 	    
 	    
-		 
-		alert("공백 return false 이후 ");
 
 		 	$('#message_name').html(''); // 메시지 초기화
 			$('#message_email').html(''); // 메시지 초기화
@@ -66,7 +64,7 @@ $(document).ready(function(){
 		
 		// 비밀번호 형식 체크
 		    if(password.value.length <4 || password.value.length >10){
-		    	  $('#message_password').css('color','red').text('비밀번호는 4자이상 10자이하로 입력하세요.');
+		    	  $('#message_password').css({'color':'#F08080', 'font-size':'11px'}).text('비밀번호는 4자이상 10자이하로 입력하세요.');
 				    
 				  password.focus();
 				  return false;
@@ -89,25 +87,22 @@ $(document).ready(function(){
 					},
 				dataType:'json',
 				cache:false, //데이타를 보관 변하지 않으면 저장된 데이터 사용, 하지만 이건 변하는 데이터이기때문에 보관 xx
+				async: false,
 				timeout:30000,
 				success:function(data){
 					$('#loading').hide(); // 로딩이미지 감추기
 					
+					
 					if(data.result == 'idNotFound'){
-						$('#message_email').css('color','#000000').text('등록가능ID');
+						$('#message_email').css({'color':'#000000', 'font-size':'11px'}).text('등록가능ID');
 						checkIdDuplicated =1;
 						
-					}else if(data.result=='idDuplicated'){
-						$('#message_email').css('color','red').text('중복된 ID');
+					}else if(data.result=='idDuplicated'|| data.result=='failure'){
+						$('#message_email').css({'color':'#F08080', 'font-size':'11px'}).text('중복된 ID');
 						checkIdDuplicated =0;
 						return false;
 					}
 					
-					
-					
-					 if(checkIdDuplicated==1){
-						 adminRegister();
-					 }
 					
 					
 				},
@@ -118,15 +113,15 @@ $(document).ready(function(){
 				
 			});
 		    
-		    
+			if(checkIdDuplicated==1){ // 전역변수로 사용하기 위해 async: false 해줌
+				 adminRegister();
+			 }else{
+				 return false;   		// 전역변수로 빼줘야 ajax 의 순서에 상관없이 결과값으로 함수 호출이나 return false; 가능
+			 }
 		    
 		  
     
 	});  //submit
-	
-	
-	
-	
 	
 	
 	

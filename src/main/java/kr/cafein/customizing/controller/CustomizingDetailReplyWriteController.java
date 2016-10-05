@@ -36,35 +36,21 @@ public class CustomizingDetailReplyWriteController {
 											HttpSession session)throws Exception{
 
 		
-	/*	int custom_num = customizingDetailReplyCommand.getCustom_num();
-		customizingDetailReplyCommand.setCustom_num(custom_num);
-		*/
-		//String u_uid = "1";
-		//String u_uid = (String)session.getAttribute("u_uid");
+
 		
-		//customizingDetailReplyCommand.setU_uid(u_uid);
-		
+		String u_name= (String)session.getAttribute("u_name");
 		String u_uid = (String)session.getAttribute("u_uid");
 		if(u_uid != null) {
 			customizingDetailReplyCommand.setU_uid(u_uid);
+			customizingDetailReplyCommand.setCreply_nickname(u_name);
 			
 		}else {
 			u_uid = "Guest";
 			customizingDetailReplyCommand.setU_uid(u_uid);
+			customizingDetailReplyCommand.setCreply_nickname(u_uid);
 		}
-		/*
-		//int creply_num = 0;
-		//customizingDetailReplyCommand.setCreply_num(creply_num);
 		
-		session.setAttribute("creply_num", creply_num);
 		
-		if(u_uid != null){
-			session.setAttribute("u_uid", u_uid);
-		}
-		*/
-		//String nickname = "장딜바보";
-		
-		//customizingDetailReplyCommand.setCreply_nickname(nickname);
 		if(log.isDebugEnabled()){
 			log.debug("CustomizingDetailReplyCommand : " + customizingDetailReplyCommand);
 		}
@@ -72,8 +58,6 @@ public class CustomizingDetailReplyWriteController {
 		customizingDetailReplyCommand.setCreply_content(StringUtil.useBrNoHtml(customizingDetailReplyCommand.getCreply_content()));
 
 		customizingDetailService.insertReply(customizingDetailReplyCommand);
-		
-		//System.out.println("커맨트등록" + customizingDetailReplyCommand.getCreply_content());
 		
 		//커스텀메뉴 로그, umenu_name=4, umenu_log_state=0 고정
 		//umenu_name : 0[개인카페] 1[커스텀메뉴] 2[프랜차이즈 댓글] 3[개인카페 댓글] 4[커스텀 댓글]

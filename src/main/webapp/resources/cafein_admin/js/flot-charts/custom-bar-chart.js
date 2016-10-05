@@ -49,7 +49,7 @@ $(document).ready(function(){
 			}
 
 			var data1 = [[1,cLikeDayCount[0]], [2,cLikeDayCount[1]], [3,cLikeDayCount[2]], [4,cLikeDayCount[3]], [5,cLikeDayCount[4]], [6,cLikeDayCount[5]], [7,cLikeDayCount[6]]];
-			var data3 = [[1,cLikeMonthCount[0]], [2,cLikeMonthCount[1]], [3,cLikeMonthCount[2]], [4,cLikeMonthCount[3]], [5,cLikeMonthCount[4]], [6,cLikeMonthCount[5]], [7,cLikeMonthCount[6]], [6,cLikeMonthCount[7]], [9,cLikeMonthCount[8]], [10,cLikeMonthCount[9]], [11,cLikeMonthCount[10]], [12,cLikeMonthCount[11]]];
+			var data3 = [[1,cLikeMonthCount[0]], [2,cLikeMonthCount[1]], [3,cLikeMonthCount[2]], [4,cLikeMonthCount[3]], [5,cLikeMonthCount[4]], [6,cLikeMonthCount[5]], [7,cLikeMonthCount[6]], [8,cLikeMonthCount[7]], [9,cLikeMonthCount[8]], [10,cLikeMonthCount[9]], [11,cLikeMonthCount[10]], [12,cLikeMonthCount[11]]];
 			var data5 = [[1,cBookmarkDayCount[0]], [2,cBookmarkDayCount[1]], [3,cBookmarkDayCount[2]], [4,cBookmarkDayCount[3]], [5,cBookmarkDayCount[4]], [6,cBookmarkDayCount[5]], [7,cBookmarkDayCount[6]]];
 			var data6 = [[1,cBookmarkMonthCount[0]], [2,cBookmarkMonthCount[1]], [3,cBookmarkMonthCount[2]], [4,cBookmarkMonthCount[3]], [5,cBookmarkMonthCount[4]], [6,cBookmarkMonthCount[5]], [7,cBookmarkMonthCount[6]], [8,cBookmarkMonthCount[7]], [9,cBookmarkMonthCount[8]], [10,cBookmarkMonthCount[9]], [11,cBookmarkMonthCount[10]], [12,cBookmarkMonthCount[11]] ];
 			//alert(data6);

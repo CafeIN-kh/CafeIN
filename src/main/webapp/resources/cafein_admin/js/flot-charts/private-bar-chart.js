@@ -37,7 +37,7 @@ $(document).ready(function(){
 			
 			$(data.pBookmarkDayCount).each(function(index,item){
 				pBookmarkDayCount[index] = item.count;
-				pBookmarkDayRegDate[index] = item.bookmark_reg_date;
+		
 			});
 			
 			$(data.pBookmarkMonthCount).each(function(index,item){
@@ -72,8 +72,8 @@ $(document).ready(function(){
 
 			var data1 = [[1,pLikeDayCount[0]], [2,pLikeDayCount[1]], [3,pLikeDayCount[2]], [4,pLikeDayCount[3]], [5,pLikeDayCount[4]], [6,pLikeDayCount[5]], [7,pLikeDayCount[6]]];
 			var data2 = [[1,pMenuLikeDayCount[0]], [2,pMenuLikeDayCount[1]], [3,pMenuLikeDayCount[2]], [4,pMenuLikeDayCount[3]], [5,pMenuLikeDayCount[4]], [6,pMenuLikeDayCount[5]], [7,pMenuLikeDayCount[6]]];
-			var data3 = [[1,pLikeMonthCount[0]], [2,pLikeMonthCount[1]], [3,pLikeMonthCount[2]], [4,pLikeMonthCount[3]], [5,pLikeMonthCount[4]], [6,pLikeMonthCount[5]], [7,pLikeMonthCount[6]], [6,pLikeMonthCount[7]], [9,pLikeMonthCount[8]], [10,pLikeMonthCount[9]], [11,pLikeMonthCount[10]], [12,pLikeMonthCount[11]]];
-			var data4 = [[1,pMenuLikeMonthCount[0]], [2,pMenuLikeMonthCount[1]], [3,pMenuLikeMonthCount[2]], [4,pMenuLikeMonthCount[3]], [5,pMenuLikeMonthCount[4]], [6,pMenuLikeMonthCount[5]], [7,pMenuLikeMonthCount[6]], [6,pMenuLikeMonthCount[7]], [9,pMenuLikeMonthCount[8]], [10,pMenuLikeMonthCount[9]], [11,pMenuLikeMonthCount[10]], [12,pMenuLikeMonthCount[11]] ];
+			var data3 = [[1,pLikeMonthCount[0]], [2,pLikeMonthCount[1]], [3,pLikeMonthCount[2]], [4,pLikeMonthCount[3]], [5,pLikeMonthCount[4]], [6,pLikeMonthCount[5]], [7,pLikeMonthCount[6]], [8,pLikeMonthCount[7]], [9,pLikeMonthCount[8]], [10,pLikeMonthCount[9]], [11,pLikeMonthCount[10]], [12,pLikeMonthCount[11]]];
+			var data4 = [[1,pMenuLikeMonthCount[0]], [2,pMenuLikeMonthCount[1]], [3,pMenuLikeMonthCount[2]], [4,pMenuLikeMonthCount[3]], [5,pMenuLikeMonthCount[4]], [6,pMenuLikeMonthCount[5]], [7,pMenuLikeMonthCount[6]], [8,pMenuLikeMonthCount[7]], [9,pMenuLikeMonthCount[8]], [10,pMenuLikeMonthCount[9]], [11,pMenuLikeMonthCount[10]], [12,pMenuLikeMonthCount[11]] ];
 			var data5 = [[1,pBookmarkDayCount[0]], [2,pBookmarkDayCount[1]], [3,pBookmarkDayCount[2]], [4,pBookmarkDayCount[3]], [5,pBookmarkDayCount[4]], [6,pBookmarkDayCount[5]], [7,pBookmarkDayCount[6]]];
 			var data6 = [[1,pBookmarkMonthCount[0]], [2,pBookmarkMonthCount[1]], [3,pBookmarkMonthCount[2]], [4,pBookmarkMonthCount[3]], [5,pBookmarkMonthCount[4]], [6,pBookmarkMonthCount[5]], [7,pBookmarkMonthCount[6]], [8,pBookmarkMonthCount[7]], [9,pBookmarkMonthCount[8]], [10,pBookmarkMonthCount[9]], [11,pBookmarkMonthCount[10]], [12,pBookmarkMonthCount[11]] ];
 			//alert(data3);

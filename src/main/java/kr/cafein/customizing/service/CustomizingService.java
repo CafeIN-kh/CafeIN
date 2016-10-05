@@ -4,6 +4,8 @@ package kr.cafein.customizing.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
+
 import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.domain.FranchiseCommand;
 
@@ -20,5 +22,10 @@ public interface CustomizingService {
 	public List<FranchiseCommand> selectBrand();
 	public List<CustomizingCommand> pagingLikeList(Map<String,Object> map);
 	public List<CustomizingCommand> pagingSearchLikeList(Map<String,Object> map);
+	public List<CustomizingCommand> selectCafe(Map<String,Object> map);
 	public void deleteCboard(int custom_num);
-	public List<CustomizingCommand> selectCafe(Map<String,Object> map);}
+	public void deleteU_like(int custom_num);
+	public void deleteReply(int custom_num);
+	public void deleteBookmark(int custom_num);
+	public List<Integer> selectCustomSeqByUid(String u_uid);
+}

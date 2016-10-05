@@ -1,7 +1,6 @@
 package kr.cafein.admin.qna.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -9,7 +8,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import kr.cafein.admin.notice.domain.AdminNoticeLogCommand;
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
 import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
 import kr.cafein.domain.UserMenuLogCommand;
@@ -18,7 +16,7 @@ import kr.cafein.domain.UserMenuLogCommand;
 public interface AdminQnaMapper {
 	//public List<QnaCommand> list(Map<String, Object> map);
 
-	@Select("SELECT qa_num,qa_email,qa_title,qa_content,qa_reg_date,qa_f_option FROM qna")
+	@Select("SELECT qa_num,qa_email,qa_title,qa_content,qa_reg_date,qa_f_option,qa_answer FROM qna")
 	public List<AdminQnaCommand> getQaList();
 	
 	@Delete ("delete from qna where qa_num=#{seq}")

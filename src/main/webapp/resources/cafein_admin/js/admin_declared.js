@@ -10,23 +10,23 @@ $(document).ready(function() {
 
 	$(".recruit .title  td").click(function() {
 
-		var myArticle = $(this).parents().next("tr"); // 지금 선택된 tr의 다음 tr -> show,hide된 내용 tr
+		var myArticle = $(this).parents().next("tr"); 
 
-		if ($(myArticle).hasClass('hide')) { // 지금 선택된 머리 tr의 다음 tr(=내용 tr)이 hide 상태라면 
-			$(article).removeClass('show2').addClass('hide'); // 예전에 선택한 내용 tr을 숨기고
-			$(myArticle).removeClass('hide').addClass('show2'); // 지금 선택된 머리의 내용tr을 보여라
+		if ($(myArticle).hasClass('hide')) { 
+			$(article).removeClass('show2').addClass('hide'); 
+			$(myArticle).removeClass('hide').addClass('show2'); 
 
-			$(oldSelected).find("td:first").html("+"); // 예전에 선택된 tr의 첫번째 td 부분을 +로 변경
+			$(oldSelected).find("td:first").html("+"); 
 
-			$(oldSelected).removeClass('selectedColor'); // 예전에 선택된 머리 tr의 배경색 지우기
-			$(this).parent().addClass('selectedColor'); // 지금 선택된 머리tr의 배경색 넣기
+			$(oldSelected).removeClass('selectedColor'); 
+			$(this).parent().addClass('selectedColor');
 
-			$(this).parent().find("td:first").html("-"); // 지금 선택된 td의 부모인 머리 tr 의 첫번째 td (+/-)있는 부분의 htrml을 -로 변경
+			$(this).parent().find("td:first").html("-"); 
 
-		} else { // 지금 선택된 머리 tr이 이미 전에 선택된 머리 tr 이었다면 
-			$(myArticle).addClass('hide').removeClass('show2'); // 지금선택된 tr을 hide
-			$(this).parent().find("td:first").html("+"); // 지금 선택된 td의 부모인 머리 tr의 첫번째 td 의 html을 +로 변경
-			$(oldSelected).removeClass('selectedColor'); // 예전에 선택된 머리 tr의 배경색 지우기
+		} else { 
+			$(myArticle).addClass('hide').removeClass('show2'); 
+			$(this).parent().find("td:first").html("+"); 
+			$(oldSelected).removeClass('selectedColor'); 
 		}
 	});
 

@@ -186,6 +186,7 @@
 					                                   
 					                                </div>    
 					                            </label>
+					                              <form:errors path="u_password" class="error-color" />
 					                        </section>
 					                        
 					                        <div class="margin-bottom-20"></div>
@@ -196,8 +197,10 @@
 					                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
 					                                    <form:password path="confirmpassword" placeholder="Confirm Password"
 										name="confirmpassword" class="form-control" />
+										
 					                                </div>    
 					                            </label>
+					                             <form:errors path="confirmpassword" class="error-color" />
 					                        </section>
 				                        
 				                        </div> 

@@ -44,7 +44,10 @@ private Logger log = Logger.getLogger(this.getClass());
 	      
 		  
 	  	String uid = memberService.selectUid(u_email);  // 이메일을 이용해 회원 seq(u_uid) 찾아옴
-		//memberService.deleteAll(uid);
+	  	
+	  	log.debug("adminMemberDeleteController가 가져온 u_uid : "+uid);
+	  	
+		memberService.deleteAll(uid);
 		
 	    Map<String,Object> mapJson = new HashMap<String,Object> ();
 	    map.put("result", "success");

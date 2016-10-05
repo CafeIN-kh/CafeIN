@@ -75,7 +75,6 @@ public class MemberDeleteController {
 				
 			}
 			if(check){
-				
 				//String username = memberCommand.getUsername();
 				//String username = (String)session.getAttribute("username");
 				//username = (String)session.getAttribute("username");

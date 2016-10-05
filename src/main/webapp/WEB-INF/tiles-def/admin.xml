@@ -32,7 +32,6 @@
         	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
         	
-        	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery.validate.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/confirmId.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/js/admin_register.js"/>
         	
@@ -72,7 +71,6 @@
         <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
         
         
-        	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery.validate.min.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/confirmId.js"/>
         	<add-attribute value="/CafeIN/resources/cafein_admin/js/admin_register.js"/>
         

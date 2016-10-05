@@ -24,14 +24,13 @@
 
 		<div class="form-group fg-float">
 		
-		<div class="form-group fg-float">
+		<!-- <div class="form-group fg-float">
 		         
 			<div class="fg-line">        
 					 <input type="number" name="franchise_num" id="franchise_num" class="input-lg form-control fg-input" />
 				</div>
 			<label class="fg-label">franchise_num</label>
-		</div>
-	
+		</div> -->
 		<div class="form-group fg-float">
 		
 			<div class="fg-line">

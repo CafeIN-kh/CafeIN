@@ -62,10 +62,13 @@
 					<c:choose>
 
 						<c:when test="${list.qa_answer==0}">
+							<td>Incomplete</td>
+						</c:when>
+						<c:when test="${list.qa_answer==1}">
 							<td>Complete</td>
 						</c:when>
 						<c:otherwise>
-							<td>Incomplete</td>
+							<td>-</td>
 						</c:otherwise>
 					</c:choose>
 					

@@ -9,7 +9,7 @@
 
 /* u_user 테이블 - 회원정보 
  * 
- * u_level : 등급(0:일반회원,1:사업자) */
+ * u_level : 등급(0:일반회원,1:사업자  2:관리자 3:계정 정지) */
 drop table u_user;
 create table u_user(
    u_uid varchar2(20) not null,
@@ -341,89 +341,6 @@ create table user_menu_log(
 
 drop sequence umenu_log_seq;
 create sequence umenu_log_seq;
-
-
-/* 관리자용 공지사항 테이블 */
-drop table admin_notice;
-
-create table admin_notice(
-	admin_notice_num number not null,
-	admin_notice_title varchar2(100) not null,
-	admin_notice_content varchar2(500) not null,
-	admin_notice_reg_date date not null,
-	admin_notice_hit number default(0),
-	admin_notice_img varchar2(2000) not null,
-	constraint admin_notice primary key (admin_notice_num)
-);
-
-drop sequence admin_notice_num_seq;
-create sequence admin_notice_num_seq;
-
-/* admin_notice_log 테이블 - 관리자 공지사항 로그 테이블 */
-
-drop table admin_notice_log;
-
-create table admin_notice_log(
-  an_log_num number not null primary key,
-  an_log_uid varchar2(20) not null,
-  an_log_reg_date date not null,
-  an_log_change number not null,
-  an_log_message varchar2(100) not null,
-  
-  constraint admin_notice_log_fk foreign key (an_log_uid) references u_user(u_uid)
-);
-
-drop sequence an_log_seq;
-create sequence an_log_seq;
-
-/* notice_log 테이블 - 공지사항 로그 테이블 */
-drop table notice_log;
-
-create table notice_log(
-  n_log_num number not null primary key,
-  n_log_uid varchar2(20) not null,
-  n_log_reg_date date not null,
-  n_log_change number not null,
-  n_log_message varchar2(100) not null,
-  
-  constraint notice_log_fk foreign key (n_log_uid) references u_user(u_uid)
-);
-
-drop sequence n_log_seq;
-create sequence n_log_seq;
-
-/* event_log 테이블 - 이벤트 게시판 로그 테이블 */
-drop table event_log;
-
-create table event_log(
-  e_log_num number not null primary key,
-  e_log_uid varchar2(20) not null,
-  e_log_reg_date date not null,
-  e_log_change number not null,
-  e_log_message varchar2(100) not null,
-  
-  constraint evnet_log_fk foreign key (e_log_uid) references u_user(u_uid)
-);
-
-drop sequence e_log_seq;
-create sequence e_log_seq;
-
-/* event_log 테이블 - qna 게시판 로그 테이블 */
-drop table qna_log;
-
-create table qna_log(
-  qa_log_num number not null primary key,
-  qa_log_uid varchar2(20) not null,
-  qa_log_reg_date date not null,
-  qa_log_change number not null,
-  qa_log_message varchar2(100) not null,
-  
-  constraint qna_log_fk foreign key (qa_log_uid) references u_user(u_uid)
-);
-
-drop sequence qa_log_seq;
-create sequence qa_log_seq;
-
 
 /* 지오 admin 테이블 */
 

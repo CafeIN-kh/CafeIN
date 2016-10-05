@@ -13,7 +13,7 @@ public class FileUtil {
 
 	
 	
-	public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/private";
+	public static String UPLOAD_PATH="C:/Users/naddana/git/CafeIN/src/main/webapp/upload/private";
 	
 	public static String rename(String fileName)throws Exception{
 

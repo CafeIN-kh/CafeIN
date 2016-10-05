@@ -565,6 +565,63 @@
     
     
     
+    <definition name="adminPrivateReply" extends="adminMain">
+  
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/privatecafe/privatecafe-reply.jsp"/>
+    	
+    	<put-list-attribute name="cssList">
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.css"/>
+	    <add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/css/app0.min.1.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/css/app0.min.2.css"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/css/jys.css"/>
+    	
+    	
+    	
+    	
+
+	    	
+	    	
+    	</put-list-attribute>
+    	
+    	<put-list-attribute name="jsList">
+    	<add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/moment/moment.min.js"/>
+    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+  		<add-attribute value="/CafeIN/resources/cafein_admin/vendors/auto-size/jquery.autosize.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-select/bootstrap-select.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/chosen/chosen.jquery.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/noUiSlider/jquery.nouislider.all.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/input-mask/input-mask.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/farbtastic/farbtastic.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/summernote/summernote.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/fileinput/fileinput.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+	    	<add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>	
+    	
+    	
+    	
+	 
+    	
+    	</put-list-attribute>
+    	
+    </definition>
+    
+    
+    
+    
+    
+    
     
      	<!-- 커스터마이징 카페 (김영찬,박보균) -->
     	

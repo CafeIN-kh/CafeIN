@@ -83,10 +83,15 @@
                         </div>
                         
                         <div class="pm-body clearfix">
-                            <ul class="tab-nav tn-justified">
-                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${privatecafe.pcafe_num}">Private Cafe</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${privatecafe.pcafe_num}">Cafe Menu</a></li>
-                            </ul>
+                      <ul class="tab-nav tn-justified">
+					<li class="active waves-effect"><a
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${commandMenu.pcafe_num}">Private Cafe</a></li>
+					<li class="waves-effect"><a
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Menu</a></li>
+					<li class="waves-effect"><a
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-reply.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Reply</a></li>
+				</ul>
+
                             
                             <div class="pmb-block">
                                 <div class="p-header">

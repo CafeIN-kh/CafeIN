@@ -19,7 +19,7 @@
                     cus.*,u.u_name
                  FROM customizing cus,
                  u_user u
-                 WHERE cus.u_uid=#{u_uid} and cus.franchise_num=#{franchise_num} and cus.custom_num != #{custom_num} and cus.u_uid = u.u_uid
+                 WHERE cus.u_uid=#{u_uid} and cus.franchise_num=#{franchise_num}  and cus.u_uid = u.u_uid
 				<if test="keyword !=''">
 					and (custom_name like '%' || #{keyword} || '%' or
 					custom_introduce like '%' || #{keyword} || '%' or

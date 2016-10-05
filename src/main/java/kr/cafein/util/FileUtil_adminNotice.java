@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class FileUtil_adminNotice {
 
-	public static String UPLOAD_PATH="C:/Users/user1/git/CafeIN/src/main/webapp/upload/notice";
+	public static String UPLOAD_PATH="C:/Users/naddana/git/CafeIN/src/main/webapp/upload/notice";
 	
 	public static String rename(String fileName)throws Exception{
 

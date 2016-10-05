@@ -8,7 +8,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
+import kr.cafein.admin.privatecafe.domain.PrivateReplyCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
@@ -37,6 +40,7 @@ public class PrivateServiceImpl implements PrivateService{
 
 	@Override
 	public void delete(Integer pcafe_num) {
+		
 		privateMapper.delete(pcafe_num);
 	}
 
@@ -86,15 +90,53 @@ public class PrivateServiceImpl implements PrivateService{
 		return privateMapper.getLikeUser(pcafe_num);
 	}
 
-
-
-	
-	/*
+	@Override
+	public void deleteallmenu(Integer pcafe_num) {
+		// TODO Auto-generated method stub
+		privateMapper.deleteallmenu(pcafe_num);
+	}
 
 	@Override
-	public List<PrivateCommand> getPrivateDetailList() {
-		return privateMapper.getPrivateDetailList();
-	}*/
+	public void deletereply(Integer pcafe_num) {
+		// TODO Auto-generated method stub
+		privateMapper.deletereply(pcafe_num);
+	}
 
+	@Override
+	public List<PrivateReplyCommand> selectReplyp(int pcafe_num) {
+		// TODO Auto-generated method stub
+		return privateMapper.selectReplyp(pcafe_num);
+	}
+
+	@Override
+	public int selectPcafe_num(Integer preply_num) {
+		// TODO Auto-generated method stub
+		return privateMapper.selectPcafe_num(preply_num);
+	}
+
+	@Override
+	public void deletePrivateReplyAdminp(int preply_num) {
+		// TODO Auto-generated method stub
+		privateMapper.deletePrivateReplyAdminp(preply_num);
+	}
+
+	@Override
+	public MemberCommand selectEmail(String u_uid) {
+		return privateMapper.selectEmail(u_uid);
+	}
+
+	@Override
+	public void insertAdminPrivateLog(UserMenuLogCommand userMenuLogCommand) {
+		// TODO Auto-generated method stub
+		privateMapper.insertAdminPrivateLog(userMenuLogCommand);
+	}
+
+	
+	
+	
+	
+	
+	
+	
 
 }

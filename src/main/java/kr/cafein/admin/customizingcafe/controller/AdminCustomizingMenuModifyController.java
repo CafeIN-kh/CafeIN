@@ -87,7 +87,13 @@ public class AdminCustomizingMenuModifyController {
 			}
 		
 		}
-		return "redirect:/admin/customizing/customizingmenu.do?custom_num="+adminCustomizingCommand.getCustom_num();
+		return "redirect:/admin/customizing/customizingmenu.do?custom_num="+adminCustomizingCommand.getCustom_num()+"&franchise_num="+adminCustomizingCommand.getFranchise_num();
+       
+		
+	
+	
 	}
+	
+	
 	
 }

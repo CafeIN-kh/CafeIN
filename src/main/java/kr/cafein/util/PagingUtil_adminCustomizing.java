@@ -17,6 +17,10 @@ public class PagingUtil_adminCustomizing {
 			int pageCount, int custom_num,String pageUrl) {
 		this(keyword,currentPage,totalCount,rowCount,pageCount,pageUrl,null,custom_num);
 	}
+	public PagingUtil_adminCustomizing(int currentPage, int totalCount, int rowCount,
+			int pageCount, int custom_num, String pageUrl) {
+		this(null,currentPage,totalCount,rowCount,pageCount,pageUrl,null,custom_num);
+	}
 
 	public PagingUtil_adminCustomizing(String keyword, int currentPage, int totalCount, int rowCount,
 			int pageCount,String pageUrl,String addKey,int custom_num) {

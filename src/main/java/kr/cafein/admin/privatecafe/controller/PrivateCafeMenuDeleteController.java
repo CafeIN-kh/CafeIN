@@ -30,6 +30,8 @@ public class PrivateCafeMenuDeleteController {
 			log.debug("privateCafeMenuCommand : " +  privateCafeMenuCommand);
 		}
 		
+	
+		
 		adminprivateService.deletemenu(pmenu_num);
 		
 		

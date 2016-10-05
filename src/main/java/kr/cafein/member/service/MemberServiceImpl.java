@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.member.dao.MemberMapper;
+import kr.cafein.pcafe.dao.PCafeMapper;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 	
 	@Resource
 	private MemberMapper memberMapper;
+	
+	@Resource
+	private PCafeMapper pcafeMapper;
 
 	
 	@Override
@@ -82,12 +86,21 @@ public class MemberServiceImpl implements MemberService {
 		
 		
 		// 개인카페 게시글, 연결 댓글 삭제
+		// 해당 회원이 작성한 pcafe_num 구하기
+		List<Integer> pCafeSeq =  pcafeMapper.selectPCafeSeqByUid(u_uid);
+		
+		
+		
+		
+		
+		
+		
 		// 커스텀 좋아요, 즐겨찾기, 커스텀 넘을 지움, 커스텀 넘에연결된 댓글
 		// 좋아요 즐겨찾기테이블에 있는 모든 정보 
+		
+		
+		
 		// user 테이블 삭제
-		
-		
-		
 		memberMapper.deleteAll(u_uid); 
 	}
 

@@ -70,7 +70,7 @@ public class MemberDeleteController {
 			}
 			if(check){
 				// 인증성공, 회원정보 삭제
-				memberService.deleteLevel(id);  // u_level=4 로 변경  _ 정지 계정
+				memberService.deleteLevel(id);  // u_level=3 로 변경  _ 정지 계정
 				log.debug("회원정지 성공!! ");
 				// 로그아웃
 				session.invalidate();

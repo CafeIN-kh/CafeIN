@@ -22,6 +22,10 @@ import kr.cafein.domain.UserMenuLogCommand;
 @Repository
 public interface PCafeMapper {
 	
+	// 회원 탈퇴 (전체 삭제) 회원의 u_uid로 회원이 만든 pcafe_num들을 구함.  
+	@Select("SELECT pcafe_num FROM private_cafe WHERE u_uid=#{u_uid}")
+	public List<Integer> selectPCafeSeqByUid(String u_uid);
+	
 	//private_main에서 사용되는 부분(페이징)
 	public List<PCafeCommand> list(Map<String,Object> map);
 	public int getRowCount(Map<String,Object> map);

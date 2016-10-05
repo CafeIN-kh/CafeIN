@@ -44,6 +44,7 @@ private Logger log = Logger.getLogger(this.getClass());
 		
 		Map<String,String> map = new HashMap<String,String>();
 		
+		
 		//로그인 중인 사용자 u_uid
 		String u_uid = (String)session.getAttribute("u_uid");
 		log.debug("로그인 중인 u_uid : " + u_uid);

@@ -27,7 +27,10 @@ public class AdminCustomizingDeleteController {
 	/*	PrivateCommand privatecommand = privateService.selectBoard(pcafe_num);
 		*/
 		
+		admincustomizingService.deleteCutomizingReplyAdmin(custom_num);
 		admincustomizingService.delete(custom_num);
+		
+		
 		
 		return "redirect:/admin/customizing/customizing.do";
 		

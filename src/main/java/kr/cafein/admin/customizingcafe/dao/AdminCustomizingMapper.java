@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
@@ -23,8 +26,8 @@ public interface AdminCustomizingMapper {
 
 	public int getRowCount(int custom_num);
 	
-	@Select("SELECT creply_nickname, creply_content FROM customizing_reply WHERE custom_num = #{custom_num}")
-	public List<AdminCustomizingReplyCommand> selectReplyc(int custom_num);
+	@Select("SELECT * FROM (select ROWNUM rnum, a.* From(select * from customizing_reply where custom_num = #{custom_num} order by custom_num asc) a where ROWNUM <= #{end}) where rnum >= #{start}")
+	public List<AdminCustomizingReplyCommand> selectReplyc(Map<String, Object> map);
 
 	
 	
@@ -79,6 +82,20 @@ public interface AdminCustomizingMapper {
 	@Select("SELECT u_uid from u_like where custom_num = #{custom_num}")
 	public int selectBookmarkCount(BookmarkCommand bookmark);
 	
+	@Select("SELECT custom_num from customizing_reply WHERE creply_num = #{creply_num}")
+	public int selectCustom_num(int creply_num);
 	
-
+	@Delete("DELETE from customizing_reply where creply_num = #{creply_num}")
+	public void deleteCutomizingReplyAdmin(int creply_num);
+	
+	@Delete("DELETE from customizing_reply where custom_num = #{custom_num}")
+	public void deleteCutomizingCafeAdmin(int custom_num);
+	
+	@Select("SELECT count(*) from customizing_reply where custom_num = #{custom_num}")
+	public int getRowCount_admin_customizingReply(int custom_num);
+	
+	@Select("SELECT * FROM u_user WHERE u_uid = #{u_uid}")
+	public MemberCommand selectEmail(String u_uid);
+	@Insert("INSERT INTO user_menu_log (umenu_log_seq,umenu_log_reg_date,umenu_log_u_uid,umenu_name,umenu_log_state,umenu_log_message) VALUES (umenu_log_seq.nextval,sysdate,#{umenu_log_u_uid},#{umenu_name},#{umenu_log_state},#{umenu_log_message})")
+	public void insertAdminCustomLog(UserMenuLogCommand userMenuLogCommand);
 }

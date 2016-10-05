@@ -113,17 +113,18 @@
 							<!-- <여기다여기> -->
 							
 							
-							<h2>
-								<i class="md md-perm-identity">&nbsp;</i>닉네임 : ${admincustomizingre.creply_nickname}
-							</h2>
-
+							<h4>
+								<i class="md md-perm-identity">&nbsp;</i>닉네임 : ${admincustomizingre.creply_nickname} &nbsp;&nbsp;&nbsp;
+							</h4>
+							  
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${admincustomizingre.creply_reg_date}
 							<ul class="actions">
 								<li class="dropdown"><a href="" data-toggle="dropdown">
 										<i class="md md-more-vert"></i>
 								</a>
 
 									<ul class="dropdown-menu dropdown-menu-right">
-										<li><a data-pmb-action="edit" href="">Delete</a></li>
+										<li><a href="${pageContext.request.contextPath}/admin/customizing/deleteReply.do?creply_num=${admincustomizingre.creply_num}">Delete</a></li>
 									</ul></li>
 							</ul>
 						</div>
@@ -140,8 +141,10 @@
 						</c:forEach>
 					</div>
 
-					
-
+					<div class="load-more">
+                                   <!--  <a href=""><i class="md md-refresh"></i> Load More...</a> -->
+                                   ${pagingHtml}
+                                </div>
 					
 				</div>
 			</div>

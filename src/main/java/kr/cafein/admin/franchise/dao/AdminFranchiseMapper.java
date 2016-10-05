@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Repository
 public interface AdminFranchiseMapper {
@@ -61,5 +63,6 @@ public interface AdminFranchiseMapper {
 
 	@Select("SELECT * FROM franchise_menu WHERE fmenu_num = #{fmenu_num}")
 	public AdminFranchiseMenuCommand selectFmenu(int fmenu_num);
-
+	
+	
 }

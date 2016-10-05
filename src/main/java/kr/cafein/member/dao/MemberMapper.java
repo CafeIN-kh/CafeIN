@@ -40,4 +40,15 @@ public interface MemberMapper {
 	
 	@Select("SELECT * FROM u_user")
 	public List<MemberCommand> getAllMemberList();
+	
+	
+	// 북마크 즐겨찾기 삭제
+	@Delete("DELETE FROM bookmark where u_uid=#{u_uid}")
+	public void deleteBookmark(String u_uid);
+	
+	// 좋아여 삭제
+	@Delete("DELETE FROM u_like where u_uid=#{u_uid}")
+	public void deleteUlike(String u_uid);
+	
+	
 }

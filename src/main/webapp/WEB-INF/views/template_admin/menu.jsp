@@ -11,7 +11,7 @@
 						</div>
 						
 						<div class="profile-info">
-							Malinda Hollaway <i class="md md-arrow-drop-down"></i>
+							${u_email} <i class="md md-arrow-drop-down"></i>
 						</div>
 					</a>
 
@@ -31,7 +31,7 @@
 						<ul>
 						<!-- 같은경로  -->
 							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/memberlist.do">User Management</a></li>
-							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/declaredlist.do">User Report</a></li>
+							<li><a href="${pageContext.request.contextPath }/cafein_admin/member/declaredlist.do">User Declared</a></li>
 						</ul>
 					</li>
 						

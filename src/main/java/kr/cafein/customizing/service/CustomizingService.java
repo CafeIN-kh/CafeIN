@@ -27,4 +27,5 @@ public interface CustomizingService {
 	public void deleteU_like(int custom_num);
 	public void deleteReply(int custom_num);
 	public void deleteBookmark(int custom_num);
+	public List<Integer> selectCustomSeqByUid(String u_uid);
 }

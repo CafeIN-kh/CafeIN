@@ -28,14 +28,11 @@ public class CustomizingDetailReplyDeleteController {
 	
 	@RequestMapping(value="/cafein_user/customizing/customizing_deleteReplyAjax.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> process(//@ModelAttribute
-										//@Valid CustomizingDetailReplyCommand customizingDetailReplyCommand,
-										@RequestParam int creply_num,
+	public Map<String, String> process(@RequestParam int creply_num,
 										@RequestParam String u_uid,
-										 //@RequestParam(value="custom_num", defaultValue="1") int custom_num,
 										HttpSession session){
 		
-		System.out.println("댓글삭제 컨트롤러 진입!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("댓글삭제 컨트롤러 진입!!!!");
 		
 		//CustomizingDetailReplyCommand customizingDetailReplyCommand;
 		
@@ -47,14 +44,7 @@ public class CustomizingDetailReplyDeleteController {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		//int custom_num = 1;
-		 //customizingDetailReplyCommand.setCustom_num(custom_num);
 		
-		//String u_uid = "1";
-		//customizingDetailReplyCommand.setU_uid(u_uid);
-		
-		
-		//customizingDetailReplyCommand.setCreply_nickname(nickname);
 		System.out.println("u_uid!!!!!!!" + u_uid);
 		 
 		//로그인 여부

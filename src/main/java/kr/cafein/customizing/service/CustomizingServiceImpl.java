@@ -120,6 +120,13 @@ public class CustomizingServiceImpl implements CustomizingService {
 	}
 
 
+	@Override
+	public List<Integer> selectCustomSeqByUid(String u_uid) {
+		// TODO Auto-generated method stub
+		return customizingMapper.selectCustomSeqByUid(u_uid);
+	}
+
+
 	
 
 }

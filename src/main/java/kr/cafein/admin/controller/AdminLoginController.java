@@ -84,6 +84,7 @@ private Logger log = Logger.getLogger(this.getClass());
 				//인증성공, 로그인 처리
 				session.setAttribute("u_uid", member.getU_uid());
 				session.setAttribute("u_level", member.getU_level());
+				session.setAttribute("u_email", member.getU_email());
 				log.debug("인증성공 ");
 				return "redirect:/admin/main.do";
 			}else {

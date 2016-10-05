@@ -45,6 +45,9 @@ public interface CustomizingMapper {
 	public List<CustomizingCommand> selectCafe(Map<String,Object> map);
 
 	
+	@Select ("SELECT custom_num FROM customizing WHERE u_uid=#{u_uid}")
+	public List<Integer> selectCustomSeqByUid(String u_uid);
+	
 	
 	
 }

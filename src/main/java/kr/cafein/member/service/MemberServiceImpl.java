@@ -11,11 +11,13 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import kr.cafein.customizing.dao.CustomizingMapper;
+import kr.cafein.domain.CustomizingCommand;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
 import kr.cafein.member.dao.MemberMapper;
 import kr.cafein.pcafe.dao.PCafeMapper;
+import kr.cafein.util.FileUtilCus;
 import kr.cafein.util.FileUtil_Private;
 import kr.cafein.util.FileUtil_PrivateMenu;
 
@@ -30,6 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Resource
 	private CustomizingMapper customizingMapper;
+	
 	
 	
 	@Override
@@ -79,22 +82,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void deleteAll(String u_uid) {
-		/*// id로 작성된 부모글의 번호를 구함
-		List <Integer> seq = boardMapper.selectSeqById(id);
-		// 해당 id로 작성된 부모글에 달린 댓글 삭제
-		if(seq!=null && !seq.isEmpty()){
-			boardMapper.deleteReplyBySeqList(seq);
-		}
-		
-		// 해당 id로 작성된 댓글 삭제
-		boardMapper.deleteReplyById(id);
-		// 해당 id로 작성된 부모글 삭제
-		boardMapper.deleteById(id);
-		
-		// 해당 id 삭제
-		*/
 		
 		
+		//-------------- private 삭제 ----------------
 		
 		// 개인카페 게시글, 연결 댓글 삭제
 		// 1. 해당 회원이 작성한 pcafe_num 구하기
@@ -194,19 +184,53 @@ public class MemberServiceImpl implements MemberService {
 		
 		
 		 //-----------------------------------
-	    /*
-		//해당 u_uid가 작성한 
-		customizingMapper.deleteCboard(custom_num);*/
+	  
 		
+		//----------- custom 삭제 --------------
 		
 		
 		// 커스텀 좋아요, 즐겨찾기, 커스텀 넘을 지움, 커스텀 넘에 연결된 댓글
-		// 좋아요 즐겨찾기 테이블에 있는 모든 정보 
+		
+		// 해당 u_uid가 만든 커스텀의 seq 값
+		List<Integer> customSeq = customizingMapper.selectCustomSeqByUid(u_uid);
+		
+		System.err.println(customSeq);
 		
 		
+		for(int z=0; z < customSeq.size() ; z++){
+			
+			CustomizingCommand customizingCommand = customizingMapper.selectBoard(customSeq.get(z));
+			
+			
+			//글 삭제
+			customizingMapper.deleteU_like(customSeq.get(z));
+			customizingMapper.deleteBookmark(customSeq.get(z));
+			customizingMapper.deleteReply(customSeq.get(z));
+			customizingMapper.deleteCboard(customSeq.get(z));
+			
+			//파일 삭제 여부 체크
+			if(customizingCommand.getCustom_img() != null) {
+				FileUtilCus.removeFile(customizingCommand.getCustom_img());
+			}
+			
+		}
+		
+		
+		//-----------------End customizing ----------------------
+		//-------------------------------------------------------
+		//즐겨찾기 (Bookmark) 테이블에 있는 모든 정보 // memberMapper 에 작성함
+		
+		memberMapper.deleteBookmark(u_uid);
+		
+		// 좋아요 
+		memberMapper.deleteUlike(u_uid);
 		
 		// user 테이블 삭제
-		//memberMapper.deleteAll(u_uid); 
+		memberMapper.deleteAll(u_uid); 
+		
+		
+		//!!! 회원의 게시글이 아닌 다른 사람의 개인카페등의 게시글에 작성한 private_Cafe_reply 는 삭제되지 않음.
+		//  신고 테이블의 값은 삭제되지 않음. -> 탈퇴 회원이라고만 뜸
 	}
 
 

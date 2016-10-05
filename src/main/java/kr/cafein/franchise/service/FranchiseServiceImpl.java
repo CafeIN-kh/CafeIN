@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.UserCountLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.franchise.dao.FranchiseMapper;
 import kr.cafein.franchise.domain.FC_FranchiseBookmarkCommand;
 /*import kr.cafein.franchise.domain.FranchiseBookmarkCommand;*/
@@ -149,5 +150,9 @@ public class FranchiseServiceImpl implements FranchiseService{
 	@Override
 	public UserCountLogCommand selectFCafeUserCountLogByDate() {
 		return franchiseMapper.selectFCafeUserCountLogByDate();
+	}
+	@Override
+	public void insertUserLog_FC(UserMenuLogCommand userMenuLog) {
+		franchiseMapper.insertUserLog_FC(userMenuLog);
 	}
 }

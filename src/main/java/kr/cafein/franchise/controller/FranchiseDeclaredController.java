@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.franchise.domain.FC_FranchiseCommand;
 import kr.cafein.franchise.domain.FC_FranchiseDeclaredCommand;
 import kr.cafein.franchise.domain.FC_FranchiseReplyCommand;
@@ -82,13 +83,16 @@ public class FranchiseDeclaredController {
 	      }
 	      
 	      String u_name = (String)session.getAttribute("u_name");
+	      String u_uid = (String)session.getAttribute("u_uid");
+	     
 	     
 	      FC_FranchiseCommand franchiseCommand = franchiseService.selectFranchise(franchise_num);
 	      String franchise = franchiseCommand.getFranchise_name() + " 댓글에서 신고가 들어왔으며 처리 전 상태입니다."; 
 	      //String logMessage = "[" + u_name + "] 사용자가 프랜차이즈 페이지에서 댓글을 신고 하였습니다."; 
-	      
+	     
 	      //d_state[처리상태] = 0.처리 전, 1.처리 중,2.처리 완료, 3처리 보류, 4. 처리 취소
 	      int d_state = 0;
+	      //declaredCommand.setD_mem_id(u_uid);
 	      declaredCommand.setD_state(d_state);
 	      declaredCommand.setD_target_num(franchise_num);
 	      declaredCommand.setD_comment(franchise);
@@ -97,8 +101,21 @@ public class FranchiseDeclaredController {
 	      //줄바꿈 처리
 	      declaredCommand.setD_content(StringUtil.useBrNoHtml(declaredCommand.getD_content()));
 	      
+	      //System.out.println("declaredCommand : " + declaredCommand);
+	      
 	      //댓글 신고
 	      franchiseService.insertDeclared(declaredCommand);
+	      
+	      UserMenuLogCommand userMenuLogCommand = new UserMenuLogCommand();
+			userMenuLogCommand.setUmenu_log_u_uid(u_uid);
+			userMenuLogCommand.setUmenu_name(2);
+			userMenuLogCommand.setUmenu_log_state(3);
+			String u_email = franchiseService.selectDeclaredMember(u_uid).getU_email();
+			String logMessage = "[" + u_email + "] 사용자가 개인카페에서 댓글을 신고 하였습니다."; 
+			userMenuLogCommand.setUmenu_log_message(logMessage);
+			franchiseService.insertUserLog_FC(userMenuLogCommand);
+			log.debug("[프랜차이즈카페 로그] userMenuLogCommand : " + userMenuLogCommand);
+			
 	      
 	      //login과 js를 같이 쓰고 있는데  login에서 page_registration.js 에이작스를 안쓰므로 신고도 map으로 return 시키지 않음
 	      return "redirect:/cafein_user/franchise/franchise_detail.do?franchise_num="+franchise_num;

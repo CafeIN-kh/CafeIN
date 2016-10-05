@@ -7,7 +7,7 @@ public class FC_FranchiseDeclaredCommand {
 	private int d_target_path;
 	private int d_target_num;
 	private int d_target_id;
-	private int d_mem_id;
+	private String d_mem_id;
 	private String d_target_mem_id;
 	private Date d_reg_date;
 	private String d_content;
@@ -38,10 +38,11 @@ public class FC_FranchiseDeclaredCommand {
 	public void setD_target_id(int d_target_id) {
 		this.d_target_id = d_target_id;
 	}
-	public int getD_mem_id() {
+	
+	public String getD_mem_id() {
 		return d_mem_id;
 	}
-	public void setD_mem_id(int d_mem_id) {
+	public void setD_mem_id(String d_mem_id) {
 		this.d_mem_id = d_mem_id;
 	}
 	public String getD_target_mem_id() {

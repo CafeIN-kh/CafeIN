@@ -82,8 +82,14 @@ public class CustomizingDetailReplyWriteController {
 		userMenuLogCommand.setUmenu_log_u_uid(u_uid);
 		userMenuLogCommand.setUmenu_name(4);
 		userMenuLogCommand.setUmenu_log_state(0);
-		String u_email = customizingDetailService.selectCustomUserLogByMember(u_uid).getU_email();
-		String logMessage = "[" + u_email + "] 사용자가 커스텀 메뉴에서 댓글을 등록 하였습니다."; 
+		String u_email;
+		String logMessage;
+		if(u_uid != "Guest") {
+			u_email = customizingDetailService.selectCustomUserLogByMember(u_uid).getU_email();
+			logMessage = "[" + u_email + "] 사용자가 커스텀 메뉴에서 댓글을 등록 하였습니다.";
+		}else {
+			logMessage = "[Guest] 사용자가 커스텀 메뉴에서 댓글을 등록 하였습니다.";
+		}
 		userMenuLogCommand.setUmenu_log_message(logMessage);
 		customizingDetailService.insertCustomUserLog(userMenuLogCommand);
 		log.debug("[커스텀 로그] userMenuLogCommand : " + userMenuLogCommand);

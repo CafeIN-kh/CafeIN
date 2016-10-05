@@ -577,6 +577,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/line-icons/line-icons.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/plugins/font-awesome/css/font-awesome.min.css"/>
         	<!-- CSS Page Style -->
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/pages/blog.css"/>
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/pages/page_contact.css"/>
         	<!-- CSS Customization -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/css/custom.css"/>
@@ -595,6 +596,7 @@
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/app.js"/>
         	<!-- JS main jquery -->
         	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/notice.js"/>
+        	<add-attribute value="/CafeIN/resources/cafein_user/assets/js/jquery/event.js"/>
         </put-list-attribute>
     </definition>
     

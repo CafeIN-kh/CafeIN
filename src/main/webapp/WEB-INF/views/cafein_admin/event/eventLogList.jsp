@@ -6,12 +6,7 @@
 	
  <section id="content">
                 <div class="container">
-                 <div class="pm-body clearfix">
-                             <ul class="tab-nav tn-justified">
-                                <li class="active waves-effect"><a href="/cafein_admin/event/AdminLogList.do">Admin Log</a></li>
-                                <li class="waves-effect"><a href="/cafein_admin/event/UserLogList.do">User Log</a></li>
-                                
-                            </ul> 
+                 
 	<div class="card">
 		<div class="card-header" style="padding-bottom: 0px;">
 			<h2>
@@ -60,7 +55,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
 	</div>
 	</div>
 	</section>

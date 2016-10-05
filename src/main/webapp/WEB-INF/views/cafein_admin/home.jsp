@@ -206,10 +206,10 @@
                                     <div class="listview">
                                     <c:forEach var="notice"
 											items="${noticeList}">
-                                        <a class="lv-item" href="">
+                                        <a class="lv-item" href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">
                                             <div class="media">
                                                <div class="pull-left">
-                                                    <img class="lv-img-sm" src="${pageContext.request.contextPath}/resources/cafein_admin/img/profile-pics/2.jpg" alt="">
+                                                    <img class="lv-img-sm" src="${pageContext.request.contextPath}/resources/cafein_admin/img/profile-pics/pro8.png" alt="">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="lv-title">${notice.admin_notice_title}</div>
@@ -262,7 +262,7 @@
                                                 </div>
                                             </div>
                                         </a> --%>
-                                        <a class="lv-footer" href="">View All</a>
+                                        <a class="lv-footer" href="${pageContext.request.contextPath}/cafein_admin/admin_notice/List.do">View All</a>
                                     </div>
                                 </div>
                             </div>

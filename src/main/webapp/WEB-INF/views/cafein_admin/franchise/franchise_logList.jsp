@@ -6,11 +6,16 @@
 	
  <section id="content">
                 <div class="container">
+                <div class="pm-body clearfix">
+                             <ul class="tab-nav tn-justified">
+                                <li class="active waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandLogList.do">Admin Log</a></li>
+                                <li class=" waves-effect"><a href="${pageContext.request.contextPath }/cafein_admin/franchise/franchise_brandUserLogList.do">User Log</a></li>
+                                
+                            </ul> 
 	<div class="card">
 		<div class="card-header" style="padding-bottom: 0px;">
 			<h2>
 				FranchiseCafe <small>FranchiseCafe Controller Page</small>
-			    <%-- <a style="float: right" href="${pageContext.request.contextPath}/cafein_admin/franchise/franchise_brandWrite.do"><i class="md md-border-color"></i></a> --%>
 			</h2>
 		</div>
 
@@ -42,11 +47,23 @@
 						<td>${article.franchise_message_log }</td>
 						<td>${article.franchise_admin_log }</td>
 						<td>${article.franchise_reg_date_log}</td>
-						<td>${article.franchise_change_log}</td>  
+						<%-- <td>${article.franchise_change_log}</td>  --%> 
+						<c:choose>
+							<c:when test="${article.franchise_change_log==0}">
+								<td>Write</td>
+							</c:when>
+							<c:when test="${article.franchise_change_log==1}">
+								<td>Delete</td>
+							</c:when>
+							<c:otherwise>
+								<td>Update</td>
+							</c:otherwise>
+						</c:choose> 
 					</tr>  
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
 	</div>
 	</div>
 	</section>

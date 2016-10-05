@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 
 @Transactional
@@ -52,6 +53,8 @@ public interface AdminFranchiseService {
 	public AdminFranchiseMenuCommand selectFmenu(int fmenu_num);
 	
 	public void f_log_insert(AdminFranchiseLogCommand board);
+	
+	public List<UserMenuLogCommand> getUserFranchiseLog();
 	
 }
    

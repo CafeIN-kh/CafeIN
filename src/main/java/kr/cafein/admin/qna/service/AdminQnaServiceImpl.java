@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.cafein.admin.qna.dao.AdminQnaMapper;
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
 import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Service("adminQnaService")
 public class AdminQnaServiceImpl implements AdminQnaService{
@@ -47,6 +48,11 @@ public class AdminQnaServiceImpl implements AdminQnaService{
 	public void insertAdminQna_Log(AdminQnaLogCommand adminQnaLogCommand) {
 		adminQnaMapper.insertAdminQna_Log(adminQnaLogCommand);
 		
+	}
+
+	@Override
+	public List<UserMenuLogCommand> getUserQna_LogList() {
+		return adminQnaMapper.getUserQna_LogList();
 	}
 
 }

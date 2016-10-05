@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.cafein.admin.event.domain.AdminEventCommand;
 import kr.cafein.admin.event.domain.AdminEventLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Repository
 public interface AdminEventMapper {
@@ -37,6 +38,5 @@ public interface AdminEventMapper {
 	
 	@Insert("insert into event_log (e_log_num, e_log_uid, e_log_reg_date, e_log_change, e_log_message) values (e_log_seq.nextval, #{e_log_uid}, sysdate, #{e_log_change}, #{e_log_message})")
 	public void insertAdminEvent_Log(AdminEventLogCommand adminevnetLogCommand);
-	
 	
 }

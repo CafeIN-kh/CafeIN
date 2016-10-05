@@ -15,7 +15,7 @@ import kr.cafein.admin.event.domain.AdminEventCommand;
 @Repository
 public interface Admin_NoticeMapper {
 	
-	@Select("select * from admin_notice")
+	@Select("select * from admin_notice order by admin_notice_num desc")
 	public List<Admin_NoticeCommand> getAdmin_NoticeList();
 	
 	@Delete("delete from admin_notice where admin_notice_num=#{admin_notice_num}")

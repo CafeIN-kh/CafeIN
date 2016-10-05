@@ -11,6 +11,7 @@ import kr.cafein.admin.franchise.dao.AdminFranchiseMapper;
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Service("adminFranchiseService")
 public class AdminFranchiseServiceImpl implements AdminFranchiseService{
@@ -108,5 +109,10 @@ public class AdminFranchiseServiceImpl implements AdminFranchiseService{
 	@Override
 	public List<AdminFranchiseLogCommand> logList() {
 		return adminfranchiseMapper.logList();
+	}
+
+	@Override
+	public List<UserMenuLogCommand> getUserFranchiseLog() {
+		return adminfranchiseMapper.getUserFranchiseLog();
 	}
 }

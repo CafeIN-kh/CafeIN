@@ -13,13 +13,23 @@
       </div>
       
       <table id="data-table-command" class="table table-striped table-vmiddle">
+      	<colgroup>
+            <col style="width: 10%;" />
+            <col style="width: *;" />
+            <col style="width: 10%;" />
+            <col style="width: 15%;" />
+            <col style="width: 10%;" />
+            <col style="width: 10%;" />
+
+         </colgroup>
          <thead>
             <tr>     
                <th data-column-id="id" data-type="numeric">Num</th>
 				<th data-column-id="sender">Title</th>
 				<th data-column-id="sortd" data-order="desc">Classification</th>
 				<th data-column-id="writer" data-order="desc">Writer</th>
-				<th data-column-id="received" data-order="desc">Registered</th>			
+				<th data-column-id="received" data-order="desc">Registered</th>	
+				<th data-column-id="answer" data-order="desc">Reply Status</th>		
 				<th data-column-id="commands" data-formatter="commands"	data-sortable="false"></th>
             </tr>
          </thead>
@@ -49,6 +59,15 @@
 					</c:choose>
 					<td>${list.qa_email}</td>
 					<td>${list.qa_reg_date}</td>
+					<c:choose>
+
+						<c:when test="${list.qa_answer==0}">
+							<td>Complete</td>
+						</c:when>
+						<c:otherwise>
+							<td>Incomplete</td>
+						</c:otherwise>
+					</c:choose>
 					
 				</tr>
 			</c:forEach>

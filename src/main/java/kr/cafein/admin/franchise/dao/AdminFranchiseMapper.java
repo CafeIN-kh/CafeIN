@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import kr.cafein.admin.franchise.domain.AdminFranchiseCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Repository
 public interface AdminFranchiseMapper {
@@ -68,5 +69,8 @@ public interface AdminFranchiseMapper {
 	
 	@Insert("INSERT INTO f_log(franchise_log_seq,u_uid,franchise_num_log,franchise_reg_date_log,franchise_change_log,franchise_admin_log,franchise_message_log) VALUES(franchise_log_seq.nextval,#{u_uid},#{franchise_num_log},sysdate,#{franchise_change_log},#{franchise_admin_log},#{franchise_message_log})")
 	public void f_log_insert(AdminFranchiseLogCommand f_log_isert);
+	
+	@Select("select * from user_menu_log where umenu_name=2")
+	public List<UserMenuLogCommand> getUserFranchiseLog();
 
 }

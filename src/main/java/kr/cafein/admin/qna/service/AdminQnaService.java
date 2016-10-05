@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.cafein.admin.qna.domain.AdminQnaCommand;
 import kr.cafein.admin.qna.domain.AdminQnaLogCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Transactional
 public interface AdminQnaService {
@@ -17,4 +18,6 @@ public interface AdminQnaService {
 	
 	public List<AdminQnaLogCommand> getAdminQna_LogList();
 	public void insertAdminQna_Log(AdminQnaLogCommand adminQnaLogCommand);
+	
+	public List<UserMenuLogCommand> getUserQna_LogList();
 }

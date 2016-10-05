@@ -53,7 +53,7 @@ public class CustomizingDetailReplyDeleteController {
 		//String u_uid = "1";
 		//customizingDetailReplyCommand.setU_uid(u_uid);
 		
-		String nickname = "¿ÂµÙπŸ∫∏";
+		
 		//customizingDetailReplyCommand.setCreply_nickname(nickname);
 		System.out.println("u_uid!!!!!!!" + u_uid);
 		 

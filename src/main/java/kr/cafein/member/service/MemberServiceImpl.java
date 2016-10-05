@@ -10,10 +10,10 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import kr.cafein.customizing.dao.CustomizingMapper;
 import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.PCafeCommand;
 import kr.cafein.domain.PCafeMenuCommand;
-import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.member.dao.MemberMapper;
 import kr.cafein.pcafe.dao.PCafeMapper;
 import kr.cafein.util.FileUtil_Private;
@@ -28,6 +28,9 @@ public class MemberServiceImpl implements MemberService {
 	@Resource
 	private PCafeMapper pcafeMapper;
 
+	@Resource
+	private CustomizingMapper customizingMapper;
+	
 	
 	@Override
 	public void insert(MemberCommand member) {
@@ -184,17 +187,21 @@ public class MemberServiceImpl implements MemberService {
 		    pcafeMapper.deletePCafe(deleteMap);
 		    System.err.println("개인카페 정보 삭제 완료");
 		
-			
+		  
+		   
 			
 		} // End for pCafeSeq.get(i)
 		
-		//-----------------------------------
+		
+		 //-----------------------------------
+	    /*
+		//해당 u_uid가 작성한 
+		customizingMapper.deleteCboard(custom_num);*/
 		
 		
 		
-		
-		// 커스텀 좋아요, 즐겨찾기, 커스텀 넘을 지움, 커스텀 넘에연결된 댓글
-		// 좋아요 즐겨찾기테이블에 있는 모든 정보 
+		// 커스텀 좋아요, 즐겨찾기, 커스텀 넘을 지움, 커스텀 넘에 연결된 댓글
+		// 좋아요 즐겨찾기 테이블에 있는 모든 정보 
 		
 		
 		

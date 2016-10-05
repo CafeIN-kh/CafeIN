@@ -21,7 +21,7 @@
 						<li><a href=""><i class="md md-settings-input-antenna"></i>
 								Privacy Settings</a></li>
 						<li><a href=""><i class="md md-settings"></i> Settings</a></li> -->
-						<li><a href=""><i class="md md-history"></i> Logout</a></li>
+						<li><a href="${pageContext.request.contextPath }/admin/logout.do"><i class="md md-history"></i> Logout</a></li>
 					</ul>
 				</div>
 				

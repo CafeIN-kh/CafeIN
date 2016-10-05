@@ -129,12 +129,12 @@
 				src="${pageContext.request.contextPath}/upload/customizing/${customCommand.custom_img}">
 			<div class="news-v3-in">
 				<ul class="list-inline posted-info korean-font">
-					<li>By <a href="#">${customCommand.u_name}</a></li>
+					<li>By <a style="text-decoration:none;color:#555;">${customCommand.u_name}</a></li>
 					<li>Like <a href="#">${customCommand.custom_visit}</a></li>
 					<li>${customCommand.custom_reg_date}</li>
 				</ul>
 				<h2 class="korean-font">
-					<a href="#">${customCommand.custom_name}</a>
+					<a style="text-decoration:none;color:#555;">${customCommand.custom_name}</a>
 				</h2>
 				<p class="korean-font">${customCommand.custom_introduce}</p>
 				<p class="korean-font">${customCommand.custom_recipe}</p>
@@ -183,7 +183,7 @@
 					<div class="news-v2-desc">
 						<h3 class="korean-font">
 							<a
-								href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do?custom_num=${article1.custom_num}&franchise_num=${article1.u_uid}&uid=${article1.franchise_num}">${article1.custom_name}</a>
+								href="${pageContext.request.contextPath}/cafein_user/customizing/customizing_detail.do?custom_num=${article1.custom_num}&u_uid=${article1.u_uid}&franchise_num=${article1.franchise_num}">${article1.custom_name}</a>
 						</h3>
 						<small class="korean-font">By ${article1.u_name} | 조회수
 							${article1.custom_visit} | ${article1.custom_reg_date} </small>

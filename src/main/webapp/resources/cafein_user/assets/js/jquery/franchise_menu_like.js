@@ -25,7 +25,7 @@ function fcafeMenu_like(){
 					);
 				}else if(result == 'likeDelete'){
 					$('#fcafeMenu_like').html(
-						'<i class="fa fa-thumbs-o-up"></i> 취소하기!'		
+						'<i class="fa fa-thumbs-o-up"></i> 좋아요!'		
 					);
 					$('#fmenuLike_count').html(
 						'<i class="fa fa-heart color-green" style="font-size:15px;"></i> ' + totalLikeCount

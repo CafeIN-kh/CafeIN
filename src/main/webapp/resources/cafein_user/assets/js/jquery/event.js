@@ -15,9 +15,9 @@ $(document).ready(function() {
 	
 	function eventList(pageNum){
 		currentPage = pageNum;
-
+		
 		$('#eventSection').empty();
-
+		
 		$.ajax({
 			type:'post',
 			data:{pageNum:pageNum},
@@ -30,18 +30,17 @@ $(document).ready(function() {
 				rowCount = data.rowCount;
 				pageCount = data.pageCount;
 				var eventList = data.eventList;
-				alert('또잉또잉');
+				
 				$(eventList).each(function(index, item) {
 					var output = '';
-					//alert('item : ' + item.event_num); 
 					output += '<div class="panel-group acc-v1 margin-bottom-40" id="accordion">';
 					output += '<div class="panel panel-default" style="height: 5px; line-height: 30px; border: 0;">';
 					output += '<div class="panel-heading">';
 					output += '<ul class="panel-title" style="padding-left: 0;">';
 					output += '<li id="nNum" style="list-style: none; float: left; width: 10%; text-align: center; border: 1px solid #DDD; border-right: 0;">';
 					output += '<a style="text-decoration: none;">' + item.event_num + '</a></li>';
-					output += '<li id="nTitle" style="list-style: none; float: left; width: 75%; text-align: center; border-top: 1px solid #DDD; border-bottom: 1px solid #DDD;">';
-					output += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-' + index + '" style="text-decoration: none; overflow: hidden">';
+					output += '<li id="eTitle" style="list-style: none; float: left; width: 75%; text-align: center; border-top: 1px solid #DDD; border-bottom: 1px solid #DDD;">';
+					output += '<a class="accordion-toggle" onclick="visit_event(' + item.event_num + ')" data-toggle="collapse" data-parent="#accordion" href="#collapse-' + index + '" style="text-decoration: none; overflow: hidden">';
 					output += item.event_title + '</a></li>';
 					output += '<li id="nHit" style="list-style: none; float: left; width: 15%; text-align: center; border: 1px solid #DDD; border-left: 0;">';
 					output += '<a style="text-decoration: none;">' + item.event_hit + '</a></li>';
@@ -65,9 +64,8 @@ $(document).ready(function() {
 						output += '<p id="regDateTwo" style="float: right;">' + item.event_reg_date + '</p>';
 						output += '</div></div></div></div>';
 					}
-
+					
 					$('#eventSection').append(output);
-
 				});
 				setPage();
 			},
@@ -83,21 +81,20 @@ $(document).ready(function() {
 		}
 		var totalPage = Math.ceil(count/rowCount);
 		var startPage = Math.floor((currentPage - 1)/pageCount)*pageCount + 1;
-		var endPage = startPage+pageCount-1;
-
+		var endPage = startPage+pageCount-1
 		
 		if(currentPage == undefined || currentPage == ''){
 			currentPage = 1;
 		}
-
+		
 		if(currentPage > totalPage){
 			currentPage = totalPage;
 		}
-
+		
 		if(endPage > totalPage){
 			endPage = totalPage;
 		}
-
+		
 		var add;
 		if(startPage > pageCount){
 			add = '';
@@ -105,18 +102,16 @@ $(document).ready(function() {
 			add += '<a style="padding-right:6px;cursor:pointer;" data-page="' + (startPage-1) + '"><</a>';
 			add += '</li>';
 			//$('<li><a style="padding-right:6px;cursor:pointer;"></a></li>').html('<').attr('data-page', (startPage-1));
-			$('.pagination2').append(add);
+			$('.pagination2').append(add); 
 		}
 		
 		for(var i=startPage; i<=endPage; i++){
 			if(i == currentPage){
-				//add = $('<li style="padding-right:6px;"><a style="cursor:pointer;"></a></li>').html(i).attr('data-page', i).css('color','red');   
 				add = '';
 				add += '<li class="active">';
 				add += '<a style="cursor:pointer;" data-page="'+i+'">' + i + '</a>';
 				add += '</li>';
 			}else{
-				//add = $('<li style="padding-right:6px;"><a style="cursor:pointer;"></a></li>').html(i).attr('data-page', i);
 				add = '';
 				add += '<li>';
 				add += '<a style="cursor:pointer;" data-page="'+i+'">'+i+'</a>';
@@ -125,7 +120,6 @@ $(document).ready(function() {
 			$('.pagination2').append(add);
 		}
 		if(endPage < totalPage){
-			//add = $('<li style="padding-right:6px;><a style="cursor:pointer;"></a></li>').html('>').attr('data-page', (startPage + pageBlock));
 			add = '';
 			add += '<li>';
 			add += '<a style="cursor:pointer;" data-page="'+(startPage + pageBlock)+'">></a>';
@@ -140,4 +134,28 @@ $(document).ready(function() {
 		}
 	});
 	eventList(1, count);
+	
+	function visit_event (event_num) {
+		alert("event_num : " + event_num);
+		var event_num = event_num;
+		
+		$.ajax({
+			type:'post',
+			data:{event_num:event_num},
+			url:'/cafein_user/notice/visit_eventAjax.do',
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(data){
+				if(data.visit_event == 'visit_event') {
+					alert("성공");
+				}
+			}, 
+			error:function(){
+				alert('네트워크 오류');
+			}
+		});
+	}
+		
 });
+

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -45,14 +47,13 @@ public class NoticeListController {
 	
 	@RequestMapping("/cafein_user/notice/noticeAjax.do")
 	@ResponseBody
-	public Map<String, Object> noticeList(@RequestParam(value="pageNum", defaultValue="1")int currentPage){
+	public Map<String, Object> noticeList(@RequestParam(value="pageNum", defaultValue="1")int currentPage) {
 		if(log.isDebugEnabled()){
 			log.debug("pageNum : " + currentPage);
 		}
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		int count = noticeService.getRowCount(map);
-		System.out.println("count : " + count);
 		
 		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "noticeAjax.do");
 		map.put("start", page.getStartCount());
@@ -73,9 +74,11 @@ public class NoticeListController {
 		mapJson.put("noticeList", noticeList);
 		
 		return mapJson;	
+		
 	}
 	
-	@RequestMapping("/cafein_user/event/eventAjax.do")
+	
+	@RequestMapping("/cafein_user/notice/eventAjax.do")
 	@ResponseBody
 	public Map<String, Object> eventList(@RequestParam(value="pageNum", defaultValue="1")int currentPage){
 		if(log.isDebugEnabled()){
@@ -101,6 +104,22 @@ public class NoticeListController {
 		mapJson.put("rowCount", rowCount);
 		mapJson.put("pageCount", pageCount);
 		mapJson.put("eventList", eventList);
+		
+		return mapJson;
+	}
+	
+	@RequestMapping("/cafein_user/notice/visit_eventAjax.do")
+	@ResponseBody
+	public Map<String, Object> visit_eventList(@RequestParam int event_num){
+		if(log.isDebugEnabled()){
+			log.debug("event_num : " + event_num);
+		}
+		
+		noticeService.updateEventHit(event_num);
+		
+		Map<String, Object> mapJson = new HashMap<String, Object>();
+
+		mapJson.put("visit_event", "visit_event");
 		
 		return mapJson;
 	}

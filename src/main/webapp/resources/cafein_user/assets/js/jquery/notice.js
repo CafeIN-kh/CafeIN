@@ -42,12 +42,12 @@ $(document).ready(function() {
 					output += '<li id="nNum" style="list-style: none; float: left; width: 10%; text-align: center; border: 1px solid #DDD; border-right: 0;">';
 					output += '<a style="text-decoration: none;">' + item.notice_num + '</a></li>';
 					output += '<li id="nTitle" style="list-style: none; float: left; width: 75%; text-align: center; border-top: 1px solid #DDD; border-bottom: 1px solid #DDD;">';
-					output += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-' + index + '" style="text-decoration: none; overflow: hidden">';
+					output += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + index + '" style="text-decoration: none; overflow: hidden">';
 					output += item.notice_title + '</a></li>';
 					output += '<li id="nHit" style="list-style: none; float: left; width: 15%; text-align: center; border: 1px solid #DDD; border-left: 0;">';
 					output += '<a style="text-decoration: none;">' + item.notice_hit + '</a></li>';
 					output += '</ul></div></div></div>';
-					output += '<div id="collapse-' + index + '" class="panel-collapse collapse" style="border: 1px solid #DDD; border-top: 0; margin-bottom: 5px;">';
+					output += '<div id="collapse' + index + '" class="panel-collapse collapse" style="border: 1px solid #DDD; border-top: 0; margin-bottom: 5px;">';
 					output += '<div class="panel-body">';
 
 					if(item.notice_img==null) {
@@ -77,9 +77,8 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
 	function setPage(){
-		$('.pagination').empty();
+		$('.pagination1').empty();
 		if(count == 0){
 			return;
 		}
@@ -107,7 +106,7 @@ $(document).ready(function() {
 			add += '<a style="padding-right:6px;cursor:pointer;" data-page="' + (startPage-1) + '"><</a>';
 			add += '</li>';
 			//$('<li><a style="padding-right:6px;cursor:pointer;"></a></li>').html('<').attr('data-page', (startPage-1));
-			$('.pagination').append(add);
+			$('.pagination1').append(add);
 		}
 		
 		for(var i=startPage; i<=endPage; i++){
@@ -124,7 +123,7 @@ $(document).ready(function() {
 				add += '<a style="cursor:pointer;" data-page="'+i+'">'+i+'</a>';
 				add += '</li>';
 			}
-			$('.pagination').append(add);
+			$('.pagination1').append(add);
 		}
 		if(endPage < totalPage){
 			//add = $('<li style="padding-right:6px;><a style="cursor:pointer;"></a></li>').html('>').attr('data-page', (startPage + pageBlock));
@@ -132,10 +131,10 @@ $(document).ready(function() {
 			add += '<li>';
 			add += '<a style="cursor:pointer;" data-page="'+(startPage + pageBlock)+'">></a>';
 			add += '</li>';
-			$('.pagination').append(add);
+			$('.pagination1').append(add);
 		}
 	}
-	$(document).on('click', '.pagination li a', function(){
+	$(document).on('click', '.pagination1 li a', function(){
 		if(currentPage != $(this).attr('data-page')){
 			currentPage = $(this).attr('data-page');
 			noticeList(currentPage, rowCount);

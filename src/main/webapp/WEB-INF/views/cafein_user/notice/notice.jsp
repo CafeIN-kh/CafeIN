@@ -26,16 +26,14 @@
 				<h2 class="korean-font">공지 사항</h2>
 			</div>
 			<div id="noticeSection"></div>
-
 		</div>
 		<!--/acc-v1-->
 		
 		<div class="text-center">
-			<ul class="pagination"></ul>
+			<ul class="pagination1 pagination"></ul>
 		</div>
 		<!--END Notice Pagination-->
 	</div>
-	<!--End Notice Section -->
 	
 	<br> <br> <br> <br>
 
@@ -46,14 +44,13 @@
 				<h2 class="korean-font">이벤트</h2>
 			</div>
 			<div id="eventSection"></div>
-
 		</div>
 		<!--/acc-v1-->
-		<!--End Event Section -->
+		
 		<div class="text-center">
-			<ul class="pagination2"></ul>
+			<ul class="pagination2 pagination"></ul>
 		</div>
-		<!--END Event Pagination-->
+		<!--END Notice Pagination-->
 	</div>
 	<!--/acc-v1-->
 	<!-- End Other Questions -->

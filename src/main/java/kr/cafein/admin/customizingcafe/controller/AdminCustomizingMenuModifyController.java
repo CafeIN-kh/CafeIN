@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingLogCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 
 import kr.cafein.util.FileUtil_Customizing;
@@ -74,6 +75,18 @@ public class AdminCustomizingMenuModifyController {
 		
 		//글수정
 		admincustomizingService.update(adminCustomizingCommand);
+		
+		String u_uid = (String)session.getAttribute("u_uid");
+		int custom_num = adminCustomizingCommand.getCustom_num();
+		
+		AdminCustomizingLogCommand adminCustomizingLogCommand = new AdminCustomizingLogCommand();
+		
+		adminCustomizingLogCommand.setCustom_num(custom_num);
+		adminCustomizingLogCommand.setU_uid(u_uid);
+		adminCustomizingLogCommand.setC_log_change(2);
+		adminCustomizingLogCommand.setC_log_message("["+u_uid+"] 사용자가 ["+custom_num+"]의 Customizing 글을 수정했습니다");
+		
+		admincustomizingService.insertLog(adminCustomizingLogCommand);
 		status.setComplete();
 		
 		if(!adminCustomizingCommand.getUpload().isEmpty()){

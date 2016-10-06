@@ -890,6 +890,33 @@
     </definition>
     
     
+       <definition name="admin_customizingLog" extends="adminMain">
+    	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/customizing/customizing_LogList.jsp"/>
+    	<put-list-attribute name="cssList">
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/animate-css/animate.min.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/material-icons/material-design-iconic-font.min.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/socicon/socicon.min.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.1.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/css/app.min.2.css"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/css/jys.css"/>
+       </put-list-attribute>
+       
+       <put-list-attribute name="jsList">
+       <add-attribute value="/CafeIN/resources/cafein_admin/js/jquery-2.1.1.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/js/bootstrap.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/nicescroll/jquery.nicescroll.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootgrid/jquery.bootgrid.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/waves/waves.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/bootstrap-growl/bootstrap-growl.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/vendors/sweet-alert/sweet-alert.min.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/js/functions.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/js/demo.js"/>
+       <add-attribute value="/CafeIN/resources/cafein_admin/jys-js/fr-board2.js"/>
+       
+       </put-list-attribute>
+    </definition>
      <definition name="adminCustomizingMenu" extends="adminMain">
   
     	<put-attribute name="body" value="/WEB-INF/views/cafein_admin/customizing/customizingmenu.jsp"/>

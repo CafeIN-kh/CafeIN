@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingLogCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.UserMenuLogCommand;
 
@@ -43,21 +44,15 @@ private Logger log = Logger.getLogger(this.getClass());
 		String u_uid = (String)session.getAttribute("u_uid");
 		
 		
-		UserMenuLogCommand userMenuLogCommand = new UserMenuLogCommand();
-		userMenuLogCommand.setUmenu_log_u_uid(u_uid);
-		userMenuLogCommand.setUmenu_name(4);
-		userMenuLogCommand.setUmenu_log_state(2);
-		String logMessage = "";
-		if(!u_uid.equals("Guest")){
-			String u_email = admincustomizingService.selectEmail(u_uid).getU_email();
-			logMessage = "[" + u_email + "] 사용자가 프렌차이즈 카페에서 댓글을 삭제 하였습니다."; 
-		}else {
-			logMessage = "[Guest] 사용자가 개인카페에서 댓글을 삭제 하였습니다."; 
-		}
-		userMenuLogCommand.setUmenu_log_message(logMessage);
-		admincustomizingService.insertAdminCustomLog(userMenuLogCommand);
-		log.debug("[커스터마이징 admin 로그] userMenuLogCommand : " + userMenuLogCommand);
-	      
+		AdminCustomizingLogCommand adminCustomizingLogCommand = new AdminCustomizingLogCommand();
+		
+		adminCustomizingLogCommand.setCustom_num(custom_num);
+		adminCustomizingLogCommand.setU_uid(u_uid);
+		adminCustomizingLogCommand.setC_log_change(2);
+		adminCustomizingLogCommand.setC_log_message("["+u_uid+"] 사용자가 ["+custom_num+"]의 Customizing_reply 글을 삭제했습니다");
+		
+		admincustomizingService.insertLog(adminCustomizingLogCommand);
+		
 		
 		return "redirect:/admin/customizing/customizing-reply.do?custom_num=" + custom_num;
 		

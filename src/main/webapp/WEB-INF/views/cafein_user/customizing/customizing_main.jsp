@@ -90,7 +90,7 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
         <section class="col col-6">
            <label class="label">Custom_name</label>
             <label class="input">
-                <input type="text" name="custom_name" id="custom_name">
+                <input type="text" class="korean-font" name="custom_name" id="custom_name">
             </label>
         </section>
       
@@ -114,19 +114,19 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
        <section>
         <label class="label">custom Introduce</label>
         <label class="textarea">
-            <textarea rows="4" name="custom_introduce" id="custom_introduce"></textarea>
+            <textarea class="korean-font" rows="4" name="custom_introduce" id="custom_introduce"></textarea>
         </label>
     </section>
     <section>
         <label class="label">custom_recipe</label>
         <label class="input">
-            <input type="text" name="custom_recipe" id="custom_recipe">
+            <input type="text" class="korean-font" name="custom_recipe" id="custom_recipe">
         </label>
     </section>
     <section>
         <label class="label">Cafe Hash Tag</label>
         <label class="input">
-            <input type="text" name="custom_hash_tag" id="custom_hash_tag" data-role="tagsinput" 
+            <input type="text" class="korean-font" name="custom_hash_tag" id="custom_hash_tag" data-role="tagsinput" 
             placeholder=",를 넣어서 입력하세요">
         </label>
     </section>    
@@ -155,7 +155,7 @@ enctype="multipart/form-data" id="re_form" class="sky-form" style="border:0;">
 
 
 <!--=== Cube-Portfdlio ===-->
-<div class="cube-portfolio container margin-bottom-60">
+<div class="cube-portfolio container margin-bottom-60" style="margin-bottom:20%";>
    <div class="content-xs">
       <div id="filters-container" class="cbp-l-filters-text content-xs">
          <div data-filter="*" class="cbp-filter-item-active cbp-filter-item korean-font">

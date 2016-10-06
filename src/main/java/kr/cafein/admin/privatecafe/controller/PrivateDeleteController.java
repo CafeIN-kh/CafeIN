@@ -28,6 +28,10 @@ public class PrivateDeleteController {
 	/*	PrivateCommand privatecommand = privateService.selectBoard(pcafe_num);
 		*/
 		
+		
+		
+		privateService.deletereply(pcafe_num);
+		privateService.deleteallmenu(pcafe_num);
 		privateService.delete(pcafe_num);
 		
 		return "redirect:/admin/privatecafe/privatecafe.do";

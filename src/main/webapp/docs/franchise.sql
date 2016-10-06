@@ -1,10 +1,3 @@
-Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Starbucks','starbucks.png','음료를 전해주기 위해서 카운터 너머로 쭉 뻗은 손 하나가 맞은 편에서 이를 받기 위해 뻗은 다른 손과 만나는 것은 단 한 순간의 일입니다.
-그러나 이는 두 사람의 교감이 이루어지는 순간이기도 합니다.
-“세계 최고 품질의 커피를 제공하겠다는 약속부터 책임 있는 기업이 되기 위해서
-고객 및 지역사회와 교감하는 것까지,
-스타벅스는 모든 일에 있어서 고객과의 관계를 존중할 수 있도록 노력합니다.”
-40여 년 전에 하나의 매장으로 시작한 이래, 우리는 스타벅스가 함께하게 되는 모든 장소 및 지역사회를 처음보다 더 나은 곳으로 만들 수 있도록
-늘 노력하고 있습니다.',0);
 Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Tomntoms','tomntoms.png','오리지널 스페셜티 커피 전문점 브랜드 TOM N TOMS
 탐앤탐스는 신선하고 풍부한 커피의 맛과 향으로 고객 만족을 위해 최선을 다하고 있습니다. 국내 및 세계 커피전문점 시장을 선도하며
 고품격 커피와 갓 구운 따뜻한 프레즐 그리고 좋은 사람들이 함께하는 편안한 분위기로 지금 대한민국을 비롯해 전 세계에서 사랑 받고 있습니다.',0);
@@ -24,7 +17,7 @@ Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTR
 노력을 지속하고 있습니다. 커피가 주는 아름다움을 보다 많은 고객들이 즐길 수 있도록, 매 순간 의미 있는 작은 차이를 
 만들어가는 할리스커피가 되겠습니다.',0);
 Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Gongcha','gongcha.png','공차는 원산지의 특별한 향이 느껴지는 양질의 차 잎을 정성스럽게 우려내어 만듭니다. 공차는 고객들의 건강을 위해 음료의 원재료부터 가공방법까지 신중하게 고려하고 있습니다. 공차는 다양한 메뉴와 즐거운 선택을 통해 남녀노소 누구나 쉽게 즐기는 차 문화를 만들어 가겠습니다.
-',13);
+',0);
 Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Coffeebean','coffeebean.png','(주)커피빈코리아는 미국 International Coffee 티, LLC 와 프랜차이즈 계약을 맺어 
 2000년 6월 설립된 회사로서 최상급의 커피와 차를 제공하는 커피전문점입니다. 
 커피와 차를 기본으로 함께 할 수 있는 Cake과 Bagel, Sandwich 등의 다양한 베이커리를 판매하고 있으며,
@@ -37,3 +30,10 @@ Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTR
 현재 전국적으로 브랜드를 운영하여 발전해 왔습니다.',0);
 Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Yogerpresso','yogerpresso.png','''요거프레소''는 ''yogurt''와 ''espresso''의 합성어로, 진한 커피와 특제 요거트 아이스크림을 즐길 수 있는  프리미엄 디저트 카페임을 함축하고 있는 브랜드입니다.
 신메뉴 출시마다 SNS상에서 화제를 모으며 브랜드 경쟁력을 높이고 있는 요거프레소. 그 뒤에는 TV/라디오 광고, 드라마 PPL, 문화마케팅, 스타마케팅, 신메뉴 프로모션, SNS마케팅 등 브랜드 컨셉과 인지도를 극대화시키는 마케팅 전략이 있습니다. 고객 방문을 이끄는 힘, 바로 ''요거프레소''라는 브랜드 가치에 있습니다.',0);
+Insert into FRANCHISE (FRANCHISE_NUM,FRANCHISE_NAME,FRANCHISE_IMG,FRANCHISE_INTRODUCE,FRANCHISE_VISIT) values (franchise_seq.nextval,'Starbucks','starbucks.png','음료를 전해주기 위해서 카운터 너머로 쭉 뻗은 손 하나가 맞은 편에서 이를 받기 위해 뻗은 다른 손과 만나는 것은 단 한 순간의 일입니다.
+그러나 이는 두 사람의 교감이 이루어지는 순간이기도 합니다.
+“세계 최고 품질의 커피를 제공하겠다는 약속부터 책임 있는 기업이 되기 위해서
+고객 및 지역사회와 교감하는 것까지,
+스타벅스는 모든 일에 있어서 고객과의 관계를 존중할 수 있도록 노력합니다.”
+40여 년 전에 하나의 매장으로 시작한 이래, 우리는 스타벅스가 함께하게 되는 모든 장소 및 지역사회를 처음보다 더 나은 곳으로 만들 수 있도록
+늘 노력하고 있습니다.',0);

@@ -20,6 +20,7 @@ import kr.cafein.customizing.domain.CustomizingDetailCommand;
 import kr.cafein.customizing.service.CustomizingDetailService;
 import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.util.CustomFileUtil;
+import kr.cafein.util.FileUtilCus;
 import kr.cafein.util.StringUtil;
 
 @Controller
@@ -77,6 +78,7 @@ public class CustomizingDetailUpdateController {
 		if(customizingDetailCommand.getUpload()!=null && !customizingDetailCommand.getUpload().isEmpty()) {
 			File file = new File (CustomFileUtil.UPLOAD_PATH + "/" +newName);
 			customizingDetailCommand.getUpload().transferTo(file);
+			FileUtilCus.createThumbnail(newName, newName, 720, 455);
 			//CustomFileUtil.createThumbnail(newName, newName, 336, 252);
 		}
 		

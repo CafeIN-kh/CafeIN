@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
@@ -39,7 +41,13 @@ public interface AdminCustomizingService {
 	public List<AdminCustomizingListCommand> selectCafeJoin();
 	public String selectUid(Integer custom_num);
 	
-	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num);
-
+	public List<AdminCustomizingReplyCommand> selectReplyc(Map<String, Object> map);
+	public int selectCustom_num(Integer creply_num);
+	public void deleteCutomizingReplyAdmin(int creply_num);
+	public void deleteCutomizingReplyAdminc(int custom_num);
+	public int getRowCount_admin_customizingReply(int custom_num);
+	public void deleteCutomizingCafeAdmin(int custom_num);
+	public MemberCommand selectEmail(String u_uid);
+	public void insertAdminCustomLog(UserMenuLogCommand userMenuLogCommand);
 
 }

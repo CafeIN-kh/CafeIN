@@ -15,6 +15,8 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.domain.MemberCommand;
+import kr.cafein.domain.UserMenuLogCommand;
 
 @Service("admincustomizingService")
 public class AdminCustomizingServiceImpl implements AdminCustomizingService{
@@ -120,13 +122,56 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 		return adminCustomizingMapper.selectUid(custom_num);
 	}
 
+	
 	@Override
-	public List<AdminCustomizingReplyCommand> selectReply(Integer custom_num) {
-		// TODO Auto-generated method stub
-		return adminCustomizingMapper.selectReply(custom_num);
+	public int selectCustom_num(Integer creply_num) {
+		return adminCustomizingMapper.selectCustom_num(creply_num);
+	}
 
+	@Override
+	public void deleteCutomizingReplyAdmin(int creply_num) {
+		
+		adminCustomizingMapper.deleteCutomizingReplyAdmin(creply_num);
+		
+	}
+
+	@Override
+	public int getRowCount_admin_customizingReply(int custom_num) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.getRowCount_admin_customizingReply(custom_num);
+	}
+
+	@Override
+	public void deleteCutomizingCafeAdmin(int custom_num) {
+		// TODO Auto-generated method stub
+		adminCustomizingMapper.deleteCutomizingCafeAdmin(custom_num);
+	}
+
+	@Override
+	public MemberCommand selectEmail(String u_uid) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectEmail(u_uid);
+	}
+
+	@Override
+	public void insertAdminCustomLog(UserMenuLogCommand userMenuLogCommand) {
+		adminCustomizingMapper.insertAdminCustomLog(userMenuLogCommand);
+		
+	}
+
+	@Override
+	public List<AdminCustomizingReplyCommand> selectReplyc(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectReplyc(map);
+	}
+
+	@Override
+	public void deleteCutomizingReplyAdminc(int custom_num) {
+		// TODO Auto-generated method stub
+		adminCustomizingMapper.deleteCutomizingReplyAdminc(custom_num);
 	}
 	
+
 
 
 }

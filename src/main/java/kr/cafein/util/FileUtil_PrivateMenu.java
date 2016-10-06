@@ -19,7 +19,6 @@ public class FileUtil_PrivateMenu {
 	
 	//메타데이터에 저장(새로고침없이 저장)
 	public static String UPLOAD_PATH="D:/Program Files/Development/spring_project/workspace_mars/.metadata/.plugins/org.eclipse.wst.server.core/tmp5/wtpwebapps/CafeIN/upload/private_menu";
-	
 	public static String rename(String fileName)throws Exception{
 
 		if(fileName==null) return null;

@@ -91,6 +91,8 @@
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
 					<li class="waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Menu</a></li>
+					<li class="waves-effect"><a
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-reply.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Reply</a></li>
 				</ul>
 
 

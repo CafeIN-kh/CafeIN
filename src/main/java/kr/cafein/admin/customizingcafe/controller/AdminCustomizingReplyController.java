@@ -2,6 +2,7 @@ package kr.cafein.admin.customizingcafe.controller;
 
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,10 +24,16 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.util.PagingUtil;
+import kr.cafein.util.PagingUtil_adminCustomizing;
 
 @Controller
 @SessionAttributes("admincustomizingreply")
 public class AdminCustomizingReplyController {
+	
+	private int rowCount = 8;
+	private int pageCount = 10; 
+	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource(name="admincustomizingService")
@@ -34,7 +41,8 @@ public class AdminCustomizingReplyController {
 	
 	
 	@RequestMapping(value="/admin/customizing/customizing-reply.do",method=RequestMethod.GET)
-	public ModelAndView process(@RequestParam("custom_num") int custom_num)throws Exception{
+	public ModelAndView process(@RequestParam("custom_num") int custom_num,   
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage)throws Exception{
 		
 		System.out.println("==============");
 		
@@ -42,15 +50,15 @@ public class AdminCustomizingReplyController {
 			log.debug("custom_num : "+custom_num);
 		}
 		
-		List<AdminCustomizingReplyCommand> admincustomizingre = admincustomizingService.selectReply(custom_num);
+		
 		
 		AdminCustomizingCommand admincustomizingreply = admincustomizingService.getCustomizing(custom_num);
 		ModelAndView mav = new ModelAndView("adminCustomizingReply");
 		//adminCustomizingDetail
 		List<LikeCommand> getLikeUser1= admincustomizingService.getLikeUser(custom_num);
-List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = null;
-		
+		List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = null;	
 		customizingDetailCafeNameCommand = admincustomizingService.selectCafeMenu_Admin();
+		List<AdminCustomizingReplyCommand> admincustomizingre = null;
 	
          //해쉬태그
          String hashTag = admincustomizingreply.getCustom_hash_tag();
@@ -73,12 +81,32 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
         
         String franchise_name = admincustomizingService.selectCafeName_Admin(franchise_num);
          
+        //System.out.println("admincustomizingre : " + admincustomizingre);
+        
+
+        
+        int count = admincustomizingService.getRowCount_admin_customizingReply(custom_num);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+		PagingUtil_adminCustomizing paging = new PagingUtil_adminCustomizing(currentPage, count, rowCount, pageCount, custom_num, "customizing-reply.do");
+		
+		map.put("custom_num", custom_num);
+		map.put("end", paging.getEndCount());
+		map.put("start", paging.getStartCount());
+		
+		admincustomizingre = admincustomizingService.selectReplyc(map);	
+		
+		System.out.println("admincustomizingre : " + admincustomizingre);
+		System.out.println("custom_num : " + custom_num + ", end : " + paging.getEndCount() + ", start : " + paging.getStartCount());
+		
+		
+		
 		mav.addObject("admincustomizingreply", admincustomizingreply);
 		mav.addObject("hashTagOriginal1", hashTagOriginal1);
 		mav.addObject("getLikeUser1", getLikeUser1);
 		mav.addObject("customizingDetailCafeNameCommand", customizingDetailCafeNameCommand);
 		mav.addObject("franchise_name", franchise_name);
 		mav.addObject("admincustomizingre", admincustomizingre);
+		mav.addObject("pagingHtml", paging.getPagingHtml());
 		
 
 		return mav;
@@ -87,7 +115,7 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 	}
 	
 	@RequestMapping(value="/admin/customizing/customizing-reply.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("admincustomizingreply") @Valid AdminCustomizingCommand admincustomizingreply, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("admincustomizingreply") @Valid AdminCustomizingCommand admincustomizingreply, BindingResult result)throws Exception{
 	
 		if(log.isDebugEnabled()){
 			log.debug("admincustomizingreply : "+admincustomizingreply);
@@ -97,15 +125,13 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 			return "adminCustomizingReply";
 		}
 		
-		//adminCustomizingDetail
-		
-		
 		
 		
 		
 		AdminCustomizingCommand ccommand = null;
 		
 		ccommand = admincustomizingService.getCustomizing(admincustomizingreply.getCustom_num());
+		
 		
 		
 		

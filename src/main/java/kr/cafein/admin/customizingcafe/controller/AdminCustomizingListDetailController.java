@@ -143,6 +143,8 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		oldFileName = ccommand.getCustom_img();
 		
 		String newName="";
+		newName = admincustomizing.getCustom_img();
+		
 		if(!admincustomizing.getUpload().isEmpty()){
 			//전송될 파일이 있는 경우
 			admincustomizing.setCustom_img(FileUtilCus.rename(admincustomizing.getUpload().getOriginalFilename()));

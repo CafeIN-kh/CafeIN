@@ -112,6 +112,9 @@ public class PrivateListDetailController {
 
 		//사업자
 		String newName="";
+		newName = commandMenu.getPcafe_img();
+
+		
 		if (!commandMenu.getUpload().isEmpty()) {
 			// 전송될 파일이 있는 경우
 			commandMenu.setPcafe_img(FileUtil_Private.rename(commandMenu.getUpload().getOriginalFilename()));

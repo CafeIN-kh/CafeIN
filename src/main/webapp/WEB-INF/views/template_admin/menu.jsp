@@ -53,7 +53,7 @@
 					<li class="sub-menu"><a href=""><i class="md md-view-list"></i>Private Cafe </a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe.do">Private Cafe</a></li>
-							<li><a href="">Private Log</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/privatecafe/private_log.do">Private Log</a></li>
 						</ul>
 					</li>
 					

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import kr.cafein.admin.privatecafe.domain.PrivateLogCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateMenuCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 import kr.cafein.util.FileUtil_PrivateMenu;
@@ -73,7 +74,18 @@ public class PrivateCafeMenuModifyController {
 		
 		//글수정
 		privateService.update2(privateCafeMenuCommand);
-		status.setComplete();
+		
+		String u_uid = (String)session.getAttribute("u_uid");
+		int pcafenum = privateCafeMenuCommand.getPmenu_num();
+		
+		PrivateLogCommand privateLogCommand = new PrivateLogCommand();
+		
+		privateLogCommand.setPcafe_num(pcafenum);
+		privateLogCommand.setU_uid(u_uid);
+		privateLogCommand.setP_log_change(2);
+		privateLogCommand.setP_log_message("["+u_uid+"] 사용자가 ["+pcafenum+"]의 Private Cafe Menu 글을 수정했습니다");
+		
+		privateService.insertLog(privateLogCommand);
 		
 		if(!privateCafeMenuCommand.getUpload().isEmpty()){
 			//전송된 파일이 있을 경우

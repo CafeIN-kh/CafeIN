@@ -16,6 +16,7 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingLogCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
@@ -49,5 +50,7 @@ public interface AdminCustomizingService {
 	public void deleteCutomizingCafeAdmin(int custom_num);
 	public MemberCommand selectEmail(String u_uid);
 	public void insertAdminCustomLog(UserMenuLogCommand userMenuLogCommand);
+	public void insertLog(AdminCustomizingLogCommand adminCustomizingLogCommand);
 
+	public List<AdminCustomizingLogCommand> selectLog();
 }

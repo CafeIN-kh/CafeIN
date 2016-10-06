@@ -63,7 +63,7 @@
 						</a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/customizing/customizing.do">Customizing Cafe</a></li>
-							<li><a href="">Customizing Log</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/customizing/customizing_log.do">Customizing Log</a></li>
 						</ul>
 					</li>
 						

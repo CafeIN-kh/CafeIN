@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingLogCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Customizing;
@@ -122,7 +124,7 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 	}
 	
 	@RequestMapping(value="/admin/customizing/customizing-detail.do",method=RequestMethod.POST)
-	public String submit(@ModelAttribute("admincustomizing") @Valid AdminCustomizingCommand admincustomizing, BindingResult result )throws Exception{
+	public String submit(@ModelAttribute("admincustomizing") @Valid AdminCustomizingCommand admincustomizing, BindingResult result ,HttpSession session)throws Exception{
 	
 		if(log.isDebugEnabled()){
 			log.debug("admincustomizing : "+admincustomizing);
@@ -155,7 +157,19 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		}
 		
 		admincustomizingService.update(admincustomizing);
-		 
+		
+		String u_uid = (String)session.getAttribute("u_uid");
+		int custom_num = admincustomizing.getCustom_num();
+		
+		AdminCustomizingLogCommand adminCustomizingLogCommand = new AdminCustomizingLogCommand();
+		
+		adminCustomizingLogCommand.setCustom_num(custom_num);
+		adminCustomizingLogCommand.setU_uid(u_uid);
+		adminCustomizingLogCommand.setC_log_change(2);
+		adminCustomizingLogCommand.setC_log_message("["+u_uid+"] 사용자가 ["+custom_num+"]의 Customizing 글을 수정했습니다");
+		
+		admincustomizingService.insertLog(adminCustomizingLogCommand);
+		
 		 if(!admincustomizing.getUpload().isEmpty()){
 			 //전송된 파일이 있을 경우
 			 File file = new File(FileUtil_Customizing.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());

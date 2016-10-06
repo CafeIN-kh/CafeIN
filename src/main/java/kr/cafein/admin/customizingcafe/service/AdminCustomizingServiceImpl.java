@@ -12,6 +12,7 @@ import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingListCommand;
+import kr.cafein.admin.customizingcafe.domain.AdminCustomizingLogCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingReplyCommand;
 import kr.cafein.domain.BookmarkCommand;
 import kr.cafein.domain.LikeCommand;
@@ -169,6 +170,18 @@ public class AdminCustomizingServiceImpl implements AdminCustomizingService{
 	public void deleteCutomizingReplyAdminc(int custom_num) {
 		// TODO Auto-generated method stub
 		adminCustomizingMapper.deleteCutomizingReplyAdminc(custom_num);
+	}
+
+	@Override
+	public void insertLog(AdminCustomizingLogCommand adminCustomizingLogCommand) {
+		// TODO Auto-generated method stub
+		adminCustomizingMapper.insertLog(adminCustomizingLogCommand);
+	}
+
+	@Override
+	public List<AdminCustomizingLogCommand> selectLog() {
+		// TODO Auto-generated method stub
+		return adminCustomizingMapper.selectLog();
 	}
 	
 

@@ -52,7 +52,7 @@
 						</div>
 					</div>
 
-					<div class="pmo-block pmo-contact hidden-xs">
+					<%-- <div class="pmo-block pmo-contact hidden-xs">
 						<h2>Customizing Info</h2>
 
 						<ul>
@@ -66,8 +66,8 @@
 							<li><i class="md md-location-on"></i>
 								<address class="m-b-0">
 									${adminprivatereply.pcafe_hash_tag} <br />
-									<%-- 	${commandMenu.pcafe_hash_tag} <br />
-								${commandMenu.pcafe_hash_tag} --%>
+										${commandMenu.pcafe_hash_tag} <br />
+								${commandMenu.pcafe_hash_tag}
 								</address></li>
 						</ul>
 
@@ -85,16 +85,16 @@
 								</div>
 							</c:forEach>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 
 				<div class="pm-body clearfix">
 					   <ul class="tab-nav tn-justified">
-					<li class="active waves-effect"><a
+					<li class="waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${commandMenu.pcafe_num}">Private Cafe</a></li>
 					<li class="waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Menu</a></li>
-					<li class="waves-effect"><a
+					<li class="active waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-reply.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Reply</a></li>
 				</ul>
 					

@@ -19,11 +19,11 @@
         <title>Material Admin</title>
         
     <c:forEach var="cssName" items="${cssList}">
-	<link rel="stylesheet" href="<c:out value='${cssName}' />"/>
-	</c:forEach>
-	</head>	
-	
-	 <body class="login-content">
+   <link rel="stylesheet" href="<c:out value='${cssName}' />"/>
+   </c:forEach>
+   </head>   
+   
+    <body class="login-content">
  <!-- Login --------------------------------->
  
        <div class="lc-block toggled" id="l-login">
@@ -38,7 +38,7 @@
                 <span class="input-group-addon"><i class="md md-person"></i></span>
                 <div class="fg-line">
                 
-                	<form:input path="u_email" placeholder="Email" name="u_email" id="u_email" class="form-control" />
+                   <form:input path="u_email" placeholder="Email" name="u_email" id="u_email" class="form-control" />
                 </div>
                <form:errors path="u_email" class="error-color" /> 
           <!--      <span id ="1message_email"></span> -->
@@ -85,8 +85,8 @@
         <div class="lc-block" id="l-register">
          <span id ="message_2"></span>
          
-				<img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/ajax-loader.gif"
-					width="16" height="16" style="display:none;" id="loading">
+            <img src="${pageContext.request.contextPath}/resources/cafein_user/assets/img/ajax-loader.gif"
+               width="16" height="16" style="display:none;" id="loading">
          
          
         <!-- adminRegister.do -->
@@ -96,7 +96,7 @@
                 <div class="fg-line">
                     <input type="text" id="r_u_name" placeholder="Username" class="form-control" />
                 </div>
-              	 <span id ="message_name"></span>
+                  <span id ="message_name"></span>
             </div>
             
             <div class="input-group m-b-20">
@@ -108,7 +108,7 @@
                 <span id ="message_email"></span>
             </div>
              
-	      
+         
             
             
             <div class="input-group m-b-20">
@@ -135,7 +135,7 @@
             <a href="" id="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></a>
             
 <!--             <input type="button" id="admin_RegisterBtn"  name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i>
- 	 	         <button type="submit" id="admin_RegisterBtn" name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
+                 <button type="submit" id="admin_RegisterBtn" name="admin_RegisterBtn" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></button>
  submit은 모든 form 의 정보를 다 가져감 
  정보를 따로 보내고 싶다면 input type button .
  근데 input type button  는 이미지를 안에다 못넣음.
@@ -181,8 +181,7 @@
         
         
         <c:forEach var="jsName" items="${jsList}">
-		<script src="<c:out value='${jsName}' />"></script>
-		</c:forEach>
-
+      <script src="<c:out value='${jsName}' />"></script>
+      </c:forEach>
            </body>
         </html>

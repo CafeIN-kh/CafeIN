@@ -29,7 +29,7 @@
                 	<div class="view view-tenth">
                     	<img class="img-logo" src="/CafeIN/upload/franchise/${logo.franchise_img}" alt="" />
                     	<div class="mask">
-                        	<h2>${logo.franchise_name}</h2>
+                        	<h2 class="korean-font">${logo.franchise_name}</h2>
                         	<a href="${pageContext.request.contextPath}/cafein_user/franchise/franchise_detail.do?franchise_num=${logo.franchise_num}" class="info">Read More</a>
                         	<input type="hidden" value="${logo.franchise_num}">
                     	</div>                

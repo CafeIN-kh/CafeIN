@@ -34,7 +34,7 @@
             <div class="col-sm-8">
                 <div class="overflow-h funny-boxes" style="background:#ffffff;">
                     <div class="pull-left">
-                        <h2>${franchise.franchise_name}</h2>
+                        <h2 class="korean-font">${franchise.franchise_name}</h2>
                         <!-- <span class="korean-font"><-왼쪽은 카페 로고 들어가는 부분</span> -->
                         
                     </div>    

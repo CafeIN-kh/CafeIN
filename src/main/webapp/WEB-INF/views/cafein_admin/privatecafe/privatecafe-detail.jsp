@@ -50,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="pmo-block pmo-contact hidden-xs">
+				<%-- <div class="pmo-block pmo-contact hidden-xs">
 					<h2>Private Cafe Info</h2>
 				
 					<ul>
@@ -63,14 +63,14 @@
 						<li><i class="md md-location-on"></i>
 							<address class="m-b-0">
 								${commandMenu.pcafe_hash_tag} <br />
-							<%-- 	${commandMenu.pcafe_hash_tag} <br />
-								${commandMenu.pcafe_hash_tag} --%>
+								${commandMenu.pcafe_hash_tag} <br />
+								${commandMenu.pcafe_hash_tag}
 							</address></li>
 					</ul>
 				
-				</div>
+				</div> --%>
 
-				<div class="pmo-block pmo-items hidden-xs">
+				<%-- <div class="pmo-block pmo-items hidden-xs">
 					<h5>Following User</h5>
 
 					<div class="pmob-body">
@@ -82,7 +82,7 @@
 						</div>
 						</c:forEach>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 
 			<div class="pm-body clearfix">

@@ -20,10 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingCommand;
 import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCafeNameCommand;
-import kr.cafein.admin.customizingcafe.domain.AdminCustomizingDetailCommand;
 import kr.cafein.admin.customizingcafe.service.AdminCustomizingService;
 import kr.cafein.domain.LikeCommand;
+import kr.cafein.util.FileUtilCus;
 import kr.cafein.util.FileUtil_Customizing;
+import kr.cafein.util.FileUtil_Private;
 
 @Controller
 @SessionAttributes("admincustomizing")
@@ -133,9 +134,6 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		}
 		
 		
-		
-		
-		
 		AdminCustomizingCommand ccommand = null;
 		String oldFileName = "";
 		
@@ -143,14 +141,16 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		
 		oldFileName = ccommand.getCustom_img();
 		
+		String newName="";
 		if(!admincustomizing.getUpload().isEmpty()){
 			//전송될 파일이 있는 경우
-			admincustomizing.setCustom_img(FileUtil_Customizing.rename(admincustomizing.getUpload().getOriginalFilename()));
+			admincustomizing.setCustom_img(FileUtilCus.rename(admincustomizing.getUpload().getOriginalFilename()));
+			newName = admincustomizing.getCustom_img();
 			
 		}else{
 			//전송된 파일이 있는 경우
-			admincustomizing.setCustom_img(oldFileName);
-			
+			admincustomizing.setCustom_img(newName);
+			newName = admincustomizing.getCustom_img();
 			
 		}
 		
@@ -158,8 +158,10 @@ List<AdminCustomizingDetailCafeNameCommand> customizingDetailCafeNameCommand = n
 		 
 		 if(!admincustomizing.getUpload().isEmpty()){
 			 //전송된 파일이 있을 경우
-			 File file = new File(FileUtil_Customizing.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());
+			 //File file = new File(FileUtil_Customizing.UPLOAD_PATH+"/"+admincustomizing.getCustom_img());
+			 File file = new File(FileUtilCus.UPLOAD_PATH+"/"+newName);
 			 admincustomizing.getUpload().transferTo(file);
+			 FileUtilCus.createThumbnail(newName, newName, 720, 455);
 			 
 			 if(oldFileName != null){
 				 //이전 파일 삭제

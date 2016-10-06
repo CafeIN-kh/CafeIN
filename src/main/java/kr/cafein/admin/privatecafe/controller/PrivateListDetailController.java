@@ -108,13 +108,17 @@ public class PrivateListDetailController {
 
 		oldFileName = pcommand.getPcafe_img();
 
+		//사업자
+		String newName="";
 		if (!commandMenu.getUpload().isEmpty()) {
 			// 전송될 파일이 있는 경우
 			commandMenu.setPcafe_img(FileUtil_Private.rename(commandMenu.getUpload().getOriginalFilename()));
+			newName = commandMenu.getPcafe_img();
 
 		} else {
 			// 전송된 파일이 있는 경우
-			commandMenu.setPcafe_img(oldFileName);
+			commandMenu.setPcafe_img(newName);
+			newName = commandMenu.getPcafe_img();
 
 		}
 
@@ -122,8 +126,11 @@ public class PrivateListDetailController {
 
 		if (!commandMenu.getUpload().isEmpty()) {
 			// 전송된 파일이 있을 경우
-			File file = new File(FileUtil_Private.UPLOAD_PATH + "/" + commandMenu.getPcafe_img());
+			//File file = new File(FileUtil_Private.UPLOAD_PATH + "/" + commandMenu.getPcafe_img());
+			
+			File file = new File(FileUtil_Private.UPLOAD_PATH + "/" + newName);
 			commandMenu.getUpload().transferTo(file);
+			FileUtil_Private.createThumbnail(newName, newName, 720, 455);
 
 			if (oldFileName != null) {
 				// 이전 파일 삭제

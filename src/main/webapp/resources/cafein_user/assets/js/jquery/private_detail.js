@@ -180,7 +180,7 @@ function attach_pcafe_info_list(pcafe_info_list) {
 			pcafe_img_append_front += '<div class="item active"><img src="/CafeIN/upload/private/' + pcafe_img_front + '"></div>';
 		}else{
 			var pcafe_img_front = pcafe_img_array[i];
-			pcafe_img_append_front += '<div class="item"><img src="/CafeIN/upload/private/' + pcafe_img_front + '"></div>';
+			pcafe_img_append_front += '<div class="item active"><img src="/CafeIN/upload/private/' + pcafe_img_front + '"></div>';
 		}
 	}
 	
@@ -247,7 +247,7 @@ function pcafeMenu_like() {
 
 //개인카페 메뉴 삭제
 function pcafeMenuDelete(pmenu_num,pcafe_num) {
-	alert('pmenu_num : ' + pmenu_num + ', pcafe_num : ' + pcafe_num);
+	//alert('pmenu_num : ' + pmenu_num + ', pcafe_num : ' + pcafe_num);
 	var answer = confirm("메뉴를 삭제 하시겠습니까?");
 	
 	if(answer){

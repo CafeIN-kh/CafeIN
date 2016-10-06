@@ -369,7 +369,7 @@ $(document).ready(function(){
 						   }else if(data.result == 'wrongAccess'){
 							   alert('잘못된 접속입니다.');
 						   }else if(data.result == 'success'){
-							   alert('삭제 완료!');
+							   //alert('삭제 완료!');
 							   //삭제후 데이터 읽어오기
 							   selectData(1,$('#custom_num').val());
 						   }else{

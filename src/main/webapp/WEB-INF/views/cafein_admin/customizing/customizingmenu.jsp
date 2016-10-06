@@ -45,9 +45,9 @@
 
 								
 							</div>
-                  </div>
+                  	</div>
                             
-                            <div class="pmo-block pmo-contact hidden-xs">
+                            <%-- <div class="pmo-block pmo-contact hidden-xs">
                                 <h2>Customizing Info</h2>
                                 
                                 <ul>
@@ -58,9 +58,9 @@
                                     <li>
                                         <i class="md md-location-on"></i>
                                         <address class="m-b-0">
-                                           		${adminCustomizingCommand.custom_hash_tag}<%-- ,${privatecafe.pcafe_hash_tag} <br/>
+                                           		${adminCustomizingCommand.custom_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
                                             	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
-                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} --%>
+                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag}
                                         </address>
                                     </li>
                                 </ul>
@@ -72,23 +72,23 @@
                                 <h5>Following User</h5>
                                 
                                
-						<div class="pmob-body">
-							<c:forEach items="${getLikeUser1 }" var="getLikeUser1">
-								<div class="row">
-									<code>${getLikeUser1.u_uid}</code>
-
-
+								<div class="pmob-body">
+									<c:forEach items="${getLikeUser1 }" var="getLikeUser1">
+										<div class="row">
+											<code>${getLikeUser1.u_uid}</code>
+		
+		
+										</div>
+									</c:forEach>
 								</div>
-							</c:forEach>
-						</div>
-                            </div>
+                            </div> --%>
                         </div>
                         
                         <div class="pm-body clearfix">
                             <ul class="tab-nav tn-justified">
                                 <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizing-detail.do?custom_num=${adminCustomizingCommand.custom_num}">Customizing</a></li>
                                 <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu.do?custom_num=${adminCustomizingCommand.custom_num}&franchise_num=${adminCustomizingCommand.franchise_num}">Cafe Menu</a></li>
-                                <li class="active waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizing-reply.do?custom_num=${adminCustomizingCommand.custom_num}">Customizing	Reply</a></li>
+                                <li class="waves-effect"><a href="${pageContext.request.contextPath}/admin/customizing/customizing-reply.do?custom_num=${adminCustomizingCommand.custom_num}">Customizing	Reply</a></li>
                             </ul>
                             
                             <div class="pmb-block">
@@ -130,9 +130,9 @@
                                 <c:forEach items="${searchList }" var="searchList">
               
                                     <div class="col-md-3 col-sm-6 col-xs-6">
-                                        <div class="c-item">
-                                            <a href="" class="ci-avatar">
-                                                <img src="${pageContext.request.contextPath}/upload/customizing/${searchList.custom_img}" alt="">
+                                        <div class="c-item" style="width:auto;">
+                                            <a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu-modify.do?custom_num=${searchList.custom_num}" class="ci-avatar" style="border:1px solid #e2e2e2;">
+                                                <img style="width:100%" src="${pageContext.request.contextPath}/upload/customizing/${searchList.custom_img}" alt="">
                                            
                                             </a>
                                             
@@ -142,8 +142,9 @@
                                             </div>
                                             
                                             <div class="c-footer">
-                                                <a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu-modify.do?custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
-                                                <a href="customizingmenu-delete.do?custom_num=${searchList.custom_num}&custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a>
+                                                <%-- <a href="${pageContext.request.contextPath}/admin/customizing/customizingmenu-modify.do?custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a> --%>
+                                                <%-- <a href="customizingmenu-delete.do?custom_num=${searchList.custom_num}&custom_num=${searchList.custom_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a> --%>
+                                            	<button style="border:1px solid #e2e2e2;" class="waves-effect" onclick="location.href='customizingmenu-delete.do?custom_num=${searchList.custom_num}&custom_num=${searchList.custom_num}"><i class="md md-delete"></i> 삭제</button>
                                             </div>
                                         </div>
                                     </div>

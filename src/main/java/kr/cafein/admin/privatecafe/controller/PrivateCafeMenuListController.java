@@ -65,14 +65,28 @@ public class PrivateCafeMenuListController {
       
       
       
-   
-      
       if(count > 0){
     	  menuList = privateService.menuList(map);
       }else{
     	  menuList = Collections.emptyList();
       }
 		List<LikeCommand> getLikeUser = privateService.getLikeUser(pcafe_num);
+		
+		// 개인카페의 이미지들을 지우기 위해 개인카페 정보 찾기
+		String pcafeImgName = privatecafe.getPcafe_img();
+		String[] pcafeImgNameArray;
+
+		// 문자열에 ,가 있다면 쪼개서 배열에 담기
+		pcafeImgNameArray = pcafeImgName.split(",");
+		for (int i = 0; i < pcafeImgNameArray.length; i++) {
+			// pcafeImgNameArray 인덱스 안에 * 값이 없으면 -1 반환
+			if (pcafeImgNameArray[i].indexOf("*") != -1) {
+				// *이 있다는 것이므로 *표를 빈값으로 대체
+				// 대표이미지 찾아서 *표시 없애주기
+				pcafeImgNameArray[i] = pcafeImgNameArray[i].replace("*", "");
+				privatecafe.setPcafe_img(pcafeImgNameArray[i]);
+			}
+		}
 
 		String hashTag = privatecafe.getPcafe_hash_tag();
 		// 원래 , 적용된 해쉬태그 뷰에 반환

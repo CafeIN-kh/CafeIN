@@ -19,15 +19,13 @@
                             <div class="pmo-pic">
                      
 							<div class="fileinput fileinput-new" data-provides="fileinput">
-								<div class="fileinput-preview thumbnail"
-									data-trigger="fileinput">
-									<img src="${pageContext.request.contextPath}/upload/private/${privatecafe.pcafe_img}" alt=""> 
+								<div class="fileinput-preview thumbnail" data-trigger="fileinput">
+									<img src="${pageContext.request.contextPath}/upload/private/${commandMenu.pcafe_img}">
 								</div>
-								<div style="display:none;">
+								<div style="display: none;">
 									<span class="btn btn-info btn-file"> <span
-										class="fileinput-new"></span> <span
-										class="fileinput-exists"></span> <input type="file"
-										name="upload">
+										class="fileinput-new"></span> <span class="fileinput-exists"></span>
+										<input type="file" name="upload" id="pcafe_img">
 									</span> <a href="#" class="btn btn-danger fileinput-exists"
 										data-dismiss="fileinput"></a>
 								</div>
@@ -45,9 +43,9 @@
 
 								
 							</div>
-                  </div>
+                  	</div>
                             
-                            <div class="pmo-block pmo-contact hidden-xs">
+<%--                             <div class="pmo-block pmo-contact hidden-xs">
                                 <h2>Private Cafe Info</h2>
                                 
                                 <ul>
@@ -58,9 +56,9 @@
                                     <li>
                                         <i class="md md-location-on"></i>
                                         <address class="m-b-0">
-                                           		${privatecafe.pcafe_hash_tag}<%-- ,${privatecafe.pcafe_hash_tag} <br/>
+                                           		${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
                                             	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} <br/>
-                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag} --%>
+                                            	${privatecafe.pcafe_hash_tag},${privatecafe.pcafe_hash_tag}
                                         </address>
                                     </li>
                                 </ul>
@@ -68,25 +66,24 @@
                             
                             <div class="pmo-block pmo-items hidden-xs">
                                
-                                
                                 <h5>Following User</h5>
                               	<div class="pmob-body">
-					<c:forEach items="${getLikeUser }" var="getLikeUser">
-						<div class="row">
-							<code>${getLikeUser.u_uid}</code>
-							
-
-						</div>
-						</c:forEach>
-					</div>
-                            </div>
+									<c:forEach items="${getLikeUser }" var="getLikeUser">
+										<div class="row">
+											<code>${getLikeUser.u_uid}</code>
+											
+				
+										</div>
+										</c:forEach>
+								</div>
+                            </div> --%>
                         </div>
                         
                         <div class="pm-body clearfix">
                       <ul class="tab-nav tn-justified">
-					<li class="active waves-effect"><a
-						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${commandMenu.pcafe_num}">Private Cafe</a></li>
 					<li class="waves-effect"><a
+						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-detail.do?pcafe_num=${commandMenu.pcafe_num}">Private Cafe</a></li>
+					<li class="active waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Menu</a></li>
 					<li class="waves-effect"><a
 						href="${pageContext.request.contextPath}/admin/privatecafe/privatecafe-reply.do?pcafe_num=${commandMenu.pcafe_num}">Cafe Reply</a></li>
@@ -98,7 +95,7 @@
                                 <form action="privatecafemenu.do" id="search_form" method="get">
                                     <ul class="p-menu">
                                         
-                                        <li><a href=""><i class="md md-people hidden-xs"></i> Search Menu</a></li>
+                                        <!-- <li><a href=""><i class="md md-people hidden-xs"></i> Search Menu</a></li> -->
                                         <li class="pm-search">
                                             <div class="pms-inner">
                                                 <i class="md md-search"></i>
@@ -131,9 +128,9 @@
                                 <c:forEach items="${menuList }" var="menuList">
               
                                     <div class="col-md-3 col-sm-6 col-xs-6">
-                                        <div class="c-item">
-                                            <a href="" class="ci-avatar">
-                                                <img src="${pageContext.request.contextPath}/upload/private_menu/${menuList.pmenu_img}" alt="">
+                                        <div class="c-item" style="width:auto;">
+                                            <a style="border:1px solid #e2e2e2;" href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}" class="ci-avatar">
+                                                <img style="width:100%" src="${pageContext.request.contextPath}/upload/private_menu/${menuList.pmenu_img}" alt="">
                                             </a>
                                             
                                             <div class="c-info">
@@ -141,9 +138,10 @@
                                                 <small>${menuList.pmenu_price}원</small>
                                             </div>
                                             
-                                            <div class="c-footer">
-                                                <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a>
-                                                <a href="privatecafemenu-delete.do?pmenu_num=${menuList.pmenu_num}&pcafe_num=${menuList.pcafe_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a>
+                                            <div class="c-footer" >
+                                                <%-- <a href="${pageContext.request.contextPath}/admin/privatecafe/privatecafemenu-modify.do?pmenu_num=${menuList.pmenu_num}"><button class="waves-effect"><i class="md md-person-add"></i> Modify</button></a> --%>
+                                                <%-- <a href="privatecafemenu-delete.do?pmenu_num=${menuList.pmenu_num}&pcafe_num=${menuList.pcafe_num}"><button class="waves-effect"><i class="md md-person-add"></i> Delete</button></a> --%>
+                                            	<button style="border:1px solid #e2e2e2;" class="waves-effect" onclick="location.href='privatecafemenu-delete.do?pmenu_num=${menuList.pmenu_num}"><i class="md md-delete"></i> 삭제</button>
                                             </div>
                                         </div>
                                     </div>

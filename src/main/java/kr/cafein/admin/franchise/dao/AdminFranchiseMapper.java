@@ -67,7 +67,7 @@ public interface AdminFranchiseMapper {
 	@Select("SELECT * FROM franchise_menu WHERE fmenu_num = #{fmenu_num}")
 	public AdminFranchiseMenuCommand selectFmenu(int fmenu_num);
 	
-	@Insert("INSERT INTO f_log(franchise_log_seq,u_uid,franchise_num_log,franchise_reg_date_log,franchise_change_log,franchise_admin_log,franchise_message_log) VALUES(franchise_log_seq.nextval,#{u_uid},#{franchise_num_log},sysdate,#{franchise_change_log},#{franchise_admin_log},#{franchise_message_log})")
+	@Insert("INSERT INTO f_log(franchise_log_seq,u_uid,franchise_num_log,franchise_reg_date_log,franchise_change_log,franchise_admin_log,franchise_message_log) VALUES(franchise_seq.nextval,#{u_uid},#{franchise_num_log},sysdate,#{franchise_change_log},#{franchise_admin_log},#{franchise_message_log})")
 	public void f_log_insert(AdminFranchiseLogCommand f_log_isert);
 	
 	@Select("select * from user_menu_log where umenu_name=2")

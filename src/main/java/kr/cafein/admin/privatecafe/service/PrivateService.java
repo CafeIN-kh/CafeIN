@@ -16,6 +16,7 @@ import kr.cafein.domain.MemberCommand;
 import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.admin.franchise.domain.AdminFranchiseMenuCommand;
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
+import kr.cafein.admin.privatecafe.domain.PrivateLogCommand;
 
 @Repository
 public interface PrivateService {
@@ -61,5 +62,9 @@ public interface PrivateService {
 	public MemberCommand selectEmail(String u_uid);
 	
 	public void insertAdminPrivateLog(UserMenuLogCommand userMenuLogCommand);
+	
+	
+	public void insertLog(PrivateLogCommand privateLogCommand);
 
+	public List<PrivateLogCommand> selectLog();
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
+import kr.cafein.admin.privatecafe.domain.PrivateLogCommand;
 import kr.cafein.admin.privatecafe.service.PrivateService;
 import kr.cafein.domain.LikeCommand;
 import kr.cafein.util.FileUtil_Private;
@@ -90,7 +92,7 @@ public class PrivateListDetailController {
 	}
 
 	@RequestMapping(value = "/admin/privatecafe/privatecafe-detail.do", method = RequestMethod.POST)
-	public String submit(@ModelAttribute("commandMenu") @Valid PrivateCommand commandMenu, BindingResult result)
+	public String submit(@ModelAttribute("commandMenu") @Valid PrivateCommand commandMenu, BindingResult result,HttpSession session)
 			throws Exception {
 
 		if (log.isDebugEnabled()) {
@@ -119,6 +121,18 @@ public class PrivateListDetailController {
 		}
 
 		privateService.update(commandMenu);
+
+		String u_uid = (String)session.getAttribute("u_uid");
+		int pcafenum = commandMenu.getPcafe_num();
+		
+		PrivateLogCommand privateLogCommand = new PrivateLogCommand();
+		
+		privateLogCommand.setPcafe_num(pcafenum);
+		privateLogCommand.setU_uid(u_uid);
+		privateLogCommand.setP_log_change(2);
+		privateLogCommand.setP_log_message("["+u_uid+"] 사용자가 ["+pcafenum+"]의 Private Cafe 글을 수정했습니다");
+		
+		privateService.insertLog(privateLogCommand);
 
 		if (!commandMenu.getUpload().isEmpty()) {
 			// 전송된 파일이 있을 경우

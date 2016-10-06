@@ -15,6 +15,7 @@ import kr.cafein.domain.UserMenuLogCommand;
 import kr.cafein.admin.privatecafe.dao.PrivateMapper;
 
 import kr.cafein.admin.privatecafe.domain.PrivateCommand;
+import kr.cafein.admin.privatecafe.domain.PrivateLogCommand;
 
 @Service("privateService")
 public class PrivateServiceImpl implements PrivateService{
@@ -129,6 +130,18 @@ public class PrivateServiceImpl implements PrivateService{
 	public void insertAdminPrivateLog(UserMenuLogCommand userMenuLogCommand) {
 		// TODO Auto-generated method stub
 		privateMapper.insertAdminPrivateLog(userMenuLogCommand);
+	}
+
+	@Override
+	public void insertLog(PrivateLogCommand privateLogCommand) {
+		// TODO Auto-generated method stub
+		privateMapper.insertLog(privateLogCommand);
+	}
+
+	@Override
+	public List<PrivateLogCommand> selectLog() {
+		// TODO Auto-generated method stub
+		return privateMapper.selectLog();
 	}
 
 	

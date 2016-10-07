@@ -1,0 +1,19 @@
+/* 개인 카페 메뉴 insert 
+ * 해당 이미지 upload 폴더에 넣어놓음 
+ * 개인카페 시퀀스 22번으로 박아 넣었으므로 개인카페 22번까지 만든 후 만든 후 insert 하기*/
+
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스 롱블랙',5000,'리스트레또 투샷을 넣어 아메리카노보다 진하고 부드러운 커피 플레이버를 느낄 수 있는 에스프레소 음료','147570469321837.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스 숏라떼 ',4600,'리스트레또 투샷의 에스프레소와 우유가 어우러져 진한 바디감과 부드러운 풍미를 느낄 수 있는 에스프레소 음료 ','14757047088767.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스 화이트 모카',5400,'화이트 모카 시럽과 풍부한 에스프레소를 신선한 우유와 혼합하여 만든 달콤하고 부드러운 에스프레소 음료 ','147570472287939.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스티 ',4000,'얼그레이와 잉글리쉬가 어우러진 티백으로 우려낸 시원한 홍차 ','147570474310737.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'망고 프라페',5200,'열대 망고의 시원한 맛을 느낄 수 있는 프라페 ','147570475871214.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스 카라멜 마키아또 ',5600,'잘 어우러진 바닐라 향과 우유, 에스프레소 샷 위에 카라멜 소스를 뿌려 시원하면서도 달콤하게 즐길 수 있는 에스프레소 음료  ','147570477145315.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,' 그린티 프라페  ',5200,'녹차의 싱그러움과 프라페가 만나 시원하고 산뜻하게 즐길 수 있는 프라페  ','147570478398332.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'카라멜 프라페',5200,'커피 프라페에 달콤한 카라멜 시럽을 가미하고, 그 위에 휘핑크림과 카라멜 소스로 토핑하여 풍부한 카라멜 향을 느낄 수 있는 프라페','147570479999210.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'아이스 초콜릿 ',4500,'초콜릿의 풍부한 맛과 휘핑크림, 초코칩이 조화로운 달콤한 초콜릿 음료 ','147570481927726.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'버블 그린티 라떼 ',5500,'깔끔한 녹차향과 부드러운 우유가 입안 가득 조화를 이룬 티라떼에 쫀득한 타피오카를 넣어 씹는 재미를 더한 음료   ','14757048325119.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'버블 밀크티',6000,'향긋한 홍차와 부드러운 우유가 입안 가득 조화를 이룬 티라떼에 쫀득한 타피오카를 넣어 씹는 재미를 더한 음료    ','147570484571527.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'키위 바나나 주스  ',5500,'그린키위와 바나나가 블렌딩 된 주스     ','147570485928611.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'오렌지 자몽 주스',6000,'통 오렌지와 자몽을 블렌딩한 상큼함이 입안 가득 느껴지는 주스 ','147570487244340.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'유자 프라페',5200,' 유자청과 유자액을 밀크로 블렌디드 한 상큼한 음료           ','147570489355246.jpg');
+Insert into PRIVATE_CAFE_MENU (PMENU_NUM,PCAFE_NUM,PMENU_NAME,PMENU_PRICE,PMENU_INTRODUCE,PMENU_IMG) values (private_cafe_menu_seq.nextval,22,'커피 쉐이크  ',5500,'에스프레소의 쌉싸름함과 아이스크림의 달콤함을 동시에 즐길 수 있는 쉐이크           ','14757049078369.jpg');
